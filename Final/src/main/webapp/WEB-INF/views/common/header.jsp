@@ -83,6 +83,7 @@
 								</ul>
 							</div>
 							<a href="#" class="btn_1 d-none d-lg-block">로그인</a>
+							<a href="#" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">회원가입</a>
 						</nav>
 					</div>
 				</div>
