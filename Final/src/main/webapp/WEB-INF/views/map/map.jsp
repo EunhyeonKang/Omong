@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<section class="breadcrumb breadcrumb_bg">
+	<section class="breadcrumb breadcrumb_bg"  style="background-image: url(/resources/img/main2.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -26,7 +26,7 @@
 
     <br><br><br><br><br>
     <!--top place start-->
-    <section class="event_part section_padding" style="height: 800px;">
+    <section class="event_part section_padding" style="height: 800px;  background-image: url(/resources/img/map.PNG);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -59,27 +59,27 @@
                     <div class="card-columns">
                         <div class="card">
                             <a href="/img/산굼부리.jpg" class="gallery_img">
-                               <img src="/img/산굼부리.jpg" class="card-img-top" alt="">
+                               <img src="/resources/img/산굼부리.jpg" class="card-img-top" alt="">
                             </a>
                         </div>
                         <div class="card">
                             <a href="/img/성산일출봉.jpg" class="gallery_img">
-                                <img src="/img/성산일출봉.jpg" class="card-img-top" alt="">
+                                <img src="/resources/img/성산일출봉.jpg" class="card-img-top" alt="">
                             </a>
                         </div>
                         <div class="card">
                             <a href="/img/쇠소깍.jpg" class="gallery_img">
-                                <img src="/img/쇠소깍.jpg" class="card-img-top" alt="">
+                                <img src="/resources/img/쇠소깍.jpg" class="card-img-top" alt="">
                             </a>
                         </div>
                         <div class="card">
                             <a href="/img/올레길 10코스.jpg" class="gallery_img">
-                                <img src="/img/올레길 10코스.jpg" class="card-img-top" alt="">
+                                <img src="/resources/img/올레길 10코스.jpg" class="card-img-top" alt="">
                             </a>
                         </div>
                         <div class="card">
                             <a href="/img/우도.jpg" class="gallery_img">
-                                <img src="/img/우도.jpg" class="card-img-top" alt="">
+                                <img src="/resources/img/우도.jpg" class="card-img-top" alt="">
                             </a>
                         </div>
                       </div>

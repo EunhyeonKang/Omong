@@ -37,7 +37,7 @@
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"/>
 		<beans:property name="configLocation" value="classpath:mybatis-config.xml"/>
-		<!-- <beans:property name="mapperLocations" value="classpath:/mapper/*mapper.xml"/> -->
+		<beans:property name="mapperLocations" value="classpath:/mapper/*mapper.xml"/>
 	</beans:bean>
 	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSession"/>
@@ -84,6 +84,7 @@
 	</websocket:handlers>
 	 -->
 	<context:component-scan base-package="kr.or.omong" />
+	<context:component-scan base-package="kr.or.member"/>
 	
 	
 </beans:beans>

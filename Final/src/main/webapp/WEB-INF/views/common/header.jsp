@@ -55,9 +55,9 @@
 								class="collapse navbar-collapse main-menu-item justify-content-center"
 								id="navbarSupportedContent">
 								<ul class="navbar-nav">
-									<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a>
+									<li class="nav-item"><a class="nav-link" href="/">메인</a>
 									</li>
-									<li class="nav-item"><a class="nav-link" href="/map.jsp">제주도
+									<li class="nav-item"><a class="nav-link" href="/map.do">제주도
 											지도</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="packages.html">예약</a></li>
@@ -67,7 +67,7 @@
 										aria-haspopup="true" aria-expanded="false"> 일정 </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="blog.html">일정등록</a> <a
-												class="dropdown-item" href="single-blog.html">일정공유</a>
+												class="dropdown-item" href="/schedule.do">일정공유</a>
 										</div></li>
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" href="blog.html"
