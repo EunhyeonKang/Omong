@@ -9,7 +9,7 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- breadcrumb start-->
-	<section class="breadcrumb breadcrumb_bg">
+	<section class="breadcrumb breadcrumb_bg"style="background-image: url(/resources/img/main2.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">

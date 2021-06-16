@@ -68,7 +68,8 @@
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="blog.html">일정등록</a> <a
 												class="dropdown-item" href="/schedule.do">일정공유</a>
-										</div></li>
+										</div>
+										</li>
 									<li class="nav-item dropdown"><a
 										class="nav-link dropdown-toggle" href="blog.html"
 										id="navbarDropdown_1" role="button" data-toggle="dropdown"

@@ -11,7 +11,6 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	
 	@RequestMapping(value="/map.do")
 	public String map() {
 		return "map/map";
