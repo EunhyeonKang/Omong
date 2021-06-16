@@ -9,7 +9,7 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- breadcrumb start-->
-	<section class="breadcrumb breadcrumb_bg">
+	<section class="breadcrumb breadcrumb_bg"style="background-image: url(/resources/img/main2.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -35,7 +35,7 @@
 			<div class="row">
 				<div style="margin-right: 50px; margin-left: 90px;">
 					<div class="single_place">
-						<img src="img/single_place_1.png" alt="">
+						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -58,7 +58,7 @@
 				</div>
 				<div style="margin-right: 50px;">
 					<div class="single_place">
-						<img src="img/single_place_2.png" alt="">
+						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -81,7 +81,7 @@
 				</div>
 				<div>
 					<div class="single_place">
-						<img src="img/single_place_3.png" alt="">
+						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -114,7 +114,7 @@
 			<div class="row">
 				<div style="margin-right: 50px; margin-left: 90px;">
 					<div class="single_place">
-						<img src="img/single_place_1.png" alt="">
+						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -137,7 +137,7 @@
 				</div>
 				<div style="margin-right: 50px;">
 					<div class="single_place">
-						<img src="img/single_place_2.png" alt="">
+						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -160,7 +160,7 @@
 				</div>
 				<div>
 					<div class="single_place">
-						<img src="img/single_place_3.png" alt="">
+						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -193,7 +193,7 @@
 			<div class="row">
 				<div style="margin-right: 50px; margin-left: 90px;">
 					<div class="single_place">
-						<img src="img/single_place_1.png" alt="">
+						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -216,7 +216,7 @@
 				</div>
 				<div style="margin-right: 50px;">
 					<div class="single_place">
-						<img src="img/single_place_2.png" alt="">
+						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
@@ -239,7 +239,7 @@
 				</div>
 				<div>
 					<div class="single_place">
-						<img src="img/single_place_3.png" alt="">
+						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
