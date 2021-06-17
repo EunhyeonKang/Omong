@@ -88,7 +88,8 @@
 			if($("#user").css("display") == "none"){
 				$("#user").show();
 				$("#partner").hide();
-				$("#partner_login").toggleClass('change_partner');
+				$("#partner_login").attr('class','genric-btn success-border e-large');
+				$("#user_login").attr('class','genric-btn primary e-large');
 			}
 		});
 
@@ -97,6 +98,8 @@
 				$("#partner").show();
 				$("#user").hide();
 				$("#user_login").toggleClass('change_user');
+				$("#user_login").attr('class','genric-btn primary-border e-large');
+				$("#partner_login").attr('class','genric-btn success e-large');
 			}
 		});
 	</script>
