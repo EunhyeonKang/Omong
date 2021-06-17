@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모듈에 오신것을 환영합니다</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
