@@ -27,4 +27,12 @@ public class MemberController {
 	public String boardList() {
 		return "board/boardList";
 	}
+	@RequestMapping(value="/boardWriteFrm.do")
+	public String boardWriteFrm() {
+		return "board/boardWriteFrm";
+	}
+	@RequestMapping(value="/noticeWriteFrm.do")
+	public String noticeWriteFrm() {
+		return "notice/noticeWriteFrm";
+	}
 }
