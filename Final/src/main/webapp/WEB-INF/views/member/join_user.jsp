@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,19 +31,11 @@
 				<h3 class="mb-30">회원가입</h3>
 				<hr>
 				<form action="#">
-					<h4>이름</h4>
+					<h4>아이디(메일)</h4>
 					<div class="mt-10">
 						<input type="text" name="first_name" placeholder="First Name"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'First Name'" required
-							class="single-input">
-					</div>
-					<hr>
-					<h4>아이디</h4>
-					<div class="mt-10">
-						<input type="text" name="last_name" placeholder="Last Name"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Last Name'" required
 							class="single-input">
 					</div>
 					<hr>
@@ -62,7 +55,7 @@
 							class="single-input">
 					</div>
 					<hr>
-					<h4>이메일</h4>
+					<h4>이름</h4>
 					<div class="input-group-icon mt-10">
 						<div class="icon">
 							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
@@ -95,21 +88,50 @@
 							class="single-input">
 					</div>
 					<hr>
-					<h4>성별</h4>
+					<h4>생년월일</h4>
 					<div class="input-group-icon mt-10">
 						<div class="icon">
-							<i class="fa fa-plane" aria-hidden="true"></i>
+							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 						</div>
-						<div class="form-select" id="default-select"">
-							<select>
-								<option value="남">남자</option>
-								<option value="여">여자</option>
+						<div class="form-select" id="default-select" style="font-size:15px;">
+							<select style="float:left;">
+								<c:forEach var="i" begin= "0" end= "61">
+								<option value=2021-${i}>${2021-i }</option>
+								</c:forEach>
 							</select>
+							<p style="float:left; margin-right:30px;">년</p>
+							<select style="float:left;">
+								<c:forEach var="i" begin= "0" end= "11">
+								<option value=1+${i}>${1+i }</option>
+								</c:forEach>
+							</select>
+							<p style="float:left; margin-right:30px;">월</p>
+							<select style="float:left;">
+								<c:forEach var="i" begin= "0" end= "30">
+								<option value=1+${i}>${1+i }</option>
+								</c:forEach>
+							</select>
+							<p style="float:left; margin-right:30px;">일</p>
+							
 						</div>
 					</div>
 					<hr>
+					<div class="single-element-widget mt-30">
+						<h4>성별</h4>
+							<label for="male">
+							<div style="width : 150px; height : 150px; background-image: url(/resources/img/male.png); background-size:cover; text-align:center;">
+								<input type="radio" name="gender" id="male" value="남자">남자
+							</div>
+							</label>
+							<label for="female">
+							<div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
+								<input type="radio" name="gender" id="female" value="여자">여자
+							</div>
+							</label>
+					</div>
+					<hr>
 					<div style="text-align : center;">
-					<input type="submit" value="회 원 가 입" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold";>
+					<input type="submit" value="회 원 가 입" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
 					</div>
 				</form>
 			</div>
