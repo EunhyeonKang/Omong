@@ -51,4 +51,8 @@ public class MemberController {
 	public String join_partner() {
 		return "member/join_partner";
 	}
+	@RequestMapping(value="/login.do")
+	public String login() {
+		return "member/login";
+	}
 }

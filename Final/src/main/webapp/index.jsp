@@ -16,7 +16,7 @@
 					<div class="banner_text text-center">
 						<div class="banner_text_iner">
 							<img src="/resources/img/모들ver1.png" width="300px" height="300px">
-							<form action="#" method="GET">
+							<form action="/search.do" method="GET">
 								<input type="text" class="search" placeholder="검색어 입력">
 								<i class="icon-search"></i> <input type="submit" value="검색"
 									class="search-btn">
