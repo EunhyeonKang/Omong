@@ -30,7 +30,15 @@
 				<h3 class="mb-30">회원가입</h3>
 				<hr>
 				<form action="#">
-					<h4>이름</h4>
+					<h4>상호명</h4>
+					<div class="mt-10">
+						<input type="text" name="first_name" placeholder="First Name"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'First Name'" required
+							class="single-input">
+					</div>
+					<hr>
+					<h4>대표자명</h4>
 					<div class="mt-10">
 						<input type="text" name="first_name" placeholder="First Name"
 							onfocus="this.placeholder = ''"
@@ -95,17 +103,15 @@
 							class="single-input">
 					</div>
 					<hr>
-					<h4>성별</h4>
+					<h4>매장전화번호</h4>
 					<div class="input-group-icon mt-10">
 						<div class="icon">
-							<i class="fa fa-plane" aria-hidden="true"></i>
+							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 						</div>
-						<div class="form-select" id="default-select"">
-							<select>
-								<option value="남">남자</option>
-								<option value="여">여자</option>
-							</select>
-						</div>
+						<input type="text" name="address" placeholder="Address"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'Address'" required
+							class="single-input">
 					</div>
 					<hr>
 					<div style="text-align : center;">
