@@ -28,7 +28,10 @@
 	<!--================Blog Area =================-->
 	<section class="blog_area single-post-area section_padding">
 		<div class="container">
-			<h3>공지사항</h3>
+			<div class="container">
+			<h3 style="float: left; margin-left: 40px;">공지사항</h3>
+			<button
+			style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;"><a href="noticeWriteFrm.do">글쓰기</a></button>
 			<hr style="border: 1px solid black;">
 			<div class="progress-table-wrap">
 				<div class="progress-table">
