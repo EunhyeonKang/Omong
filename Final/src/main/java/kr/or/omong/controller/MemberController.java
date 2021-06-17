@@ -35,4 +35,20 @@ public class MemberController {
 	public String noticeWriteFrm() {
 		return "notice/noticeWriteFrm";
 	}
+	@RequestMapping(value="/noticeView.do")
+	public String noticeView() {
+		return "notice/noticeView";
+	}
+	@RequestMapping(value="/join.do")
+	public String join() {
+		return "member/join";
+	}
+	@RequestMapping(value="/join_user.do")
+	public String join_user() {
+		return "member/join_user";
+	}
+	@RequestMapping(value="/join_partner.do")
+	public String join_partner() {
+		return "member/join_partner";
+	}
 }
