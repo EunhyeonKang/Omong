@@ -31,7 +31,7 @@
 			<div class="container">
 			<h3 style="float: left; margin-left: 40px;">공지사항</h3>
 			<button
-			style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;"><a href="noticeWriteFrm.do">글쓰기</a></button>
+			style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;"><a href="/noticeWriteFrm.do">글쓰기</a></button>
 			<hr style="border: 1px solid black;">
 			<div class="progress-table-wrap">
 				<div class="progress-table">
@@ -51,7 +51,7 @@
 					</div>
 					<div class="table-row">
 						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
+						<div class="percentage"><a href="/noticeView.do">제목입니다</a></div>
 						<div class="country">
 							<img src="img/elements/f1.jpg" alt="flag">Canada
 						</div>

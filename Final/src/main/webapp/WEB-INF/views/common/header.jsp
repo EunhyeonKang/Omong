@@ -41,7 +41,7 @@
 						<nav
 							class="navbar navbar-expand-lg navbar-light justify-content-between">
 							<a class="navbar-brand" href="index.jsp"> <img
-								src="/resources/img/오몽ver2_(가로).png" style="width: 160px; height: 75px;"
+								src="/resources/img/logo_2.png" style="width: 100px;"
 								alt="logo">
 							</a>
 							<button class="navbar-toggler" type="button"
@@ -83,8 +83,8 @@
 										href="contact.html">마이페이지</a></li>
 								</ul>
 							</div>
-							<a href="#" class="btn_1 d-none d-lg-block">로그인</a>
-							<a href="#" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">회원가입</a>
+							<a href="/login.do" class="btn_1 d-none d-lg-block">로그인</a>
+							<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">회원가입</a>
 						</nav>
 					</div>
 				</div>
