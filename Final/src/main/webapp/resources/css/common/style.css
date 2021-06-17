@@ -5579,4 +5579,16 @@ h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 }
 
+.change_partner {
+	color: #4cd3e3;
+	border: 1px solid #4cd3e3;
+	background: #fff;
+}
+
+.change_user {
+	color: #fe5c24;
+	border: 1px solid #fe5c24;
+	background: #fff;
+}
+
 /*# sourceMappingURL=../css/style.map */
