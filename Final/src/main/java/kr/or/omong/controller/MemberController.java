@@ -19,4 +19,12 @@ public class MemberController {
 	public String schedule() {
 		return "schedule/scheduleList";
 	}
+	@RequestMapping(value="/noticeList.do")
+	public String noticeList() {
+		return "notice/noticeList";
+	}
+	@RequestMapping(value="/boardList.do")
+	public String boardList() {
+		return "board/boardList";
+	}
 }
