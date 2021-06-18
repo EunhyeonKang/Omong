@@ -93,7 +93,11 @@
 						<div class="icon">
 							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
 						</div>
-						<div class="form-select" id="default-select" style="font-size:15px;">
+						<input type="text" name="address" placeholder="Address"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'Address'" required
+							class="single-input">
+						<!-- <div class="form-select" id="default-select" style="font-size:15px;">
 							<select style="float:left;">
 								<c:forEach var="i" begin= "0" end= "61">
 								<option value=2021-${i}>${2021-i }</option>
@@ -112,8 +116,7 @@
 								</c:forEach>
 							</select>
 							<p style="float:left; margin-right:30px;">일</p>
-							
-						</div>
+						</div> -->
 					</div>
 					<hr>
 					<div class="single-element-widget mt-30">
