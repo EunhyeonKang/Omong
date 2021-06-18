@@ -36,6 +36,7 @@
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
+						<div></div>
 						<div class="serial">번호</div>
 						<div class="percentage">제목</div>
 						<div class="country">작성자</div>
