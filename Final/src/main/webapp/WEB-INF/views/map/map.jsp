@@ -26,7 +26,7 @@
 
     <br><br><br><br><br>
     <!--top place start-->
-    <section class="event_part section_padding" style="height: 800px;  background-image: url(/resources/img/map.PNG);">
+    <section class="event_part section_padding" id="map" style="height: 800px; width: 70%; margin: 0 auto;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -40,6 +40,19 @@
             </div>
         </div>
     </section>
+    
+    <!-- 카카오 맵 api javascript key -->
+   	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0069a695a69eb1289dd330cee4957ce8"></script>
+   	<!-- 카카오 맵 api 등록 스크립트 -->
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+ 		mapOption = { 
+        	center: new kakao.maps.LatLng(33.387496, 126.555218), // 지도의 중심좌표
+        	level: 9 // 지도의 확대 레벨
+	    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	</script>
     <!--top place end-->
 
     <!--::industries start::-->
