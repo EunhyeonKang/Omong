@@ -48,7 +48,9 @@
 					</div>
 					<br><br>
 					<div class="social">
-						Kakao / Naver / FaceBook
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&redirect_uri=http://localhost:8082/kakaologin.do&response_type=code">
+						<img src="/resources/img/kakao.jpg" style="margin-left: 1px; width : 50px;" >
+						/ Naver / FaceBook
 					</div>
 					<br><br>
 					<div style="text-align : center;">

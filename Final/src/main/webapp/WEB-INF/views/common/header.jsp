@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,8 +84,16 @@
 										href="/mypage.do">마이페이지</a></li>
 								</ul>
 							</div>
-							<a href="/login.do" class="btn_1 d-none d-lg-block" style="background-color:#F18101;">로그인</a>
-							<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px; background-color:#F18101">회원가입</a>
+							<c:choose>
+								<c:when test="${empty sessionScope.userId }">
+									<a href="/login.do" class="btn_1 d-none d-lg-block" style="background-color:#F18101;">로그인</a>
+									<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px; background-color:#F18101">회원가입</a>
+								</c:when>
+								<c:otherwise>
+									<a href="https://kauth.kakao.com/oauth/logout?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&logout_redirect_uri=http://localhost:8082/logout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
+									<a href="#" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">마이페이지</a>
+								</c:otherwise>
+							</c:choose>
 						</nav>
 					</div>
 				</div>
