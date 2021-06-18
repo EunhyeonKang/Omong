@@ -55,4 +55,8 @@ public class MemberController {
 	public String login() {
 		return "member/login";
 	}
+	@RequestMapping(value="/mypage.do")
+	public String mypage() {
+		return "member/mypage";
+	}
 }
