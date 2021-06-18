@@ -58,8 +58,8 @@
                 <div class="col-lg-12">
                     <div class="card-columns">
                         <div class="card">
-                            <a href="/img/산굼부리.jpg" class="gallery_img">
-                               <img src="/resources/img/산굼부리.jpg" class="card-img-top" alt="">
+                            <a href="/img/sangom.jpg" class="gallery_img">
+                               <img src="/resources/img/sangom.jpg" class="card-img-top" alt="">
                             </a>
                         </div>
                         <div class="card">

@@ -41,7 +41,7 @@
 						<nav
 							class="navbar navbar-expand-lg navbar-light justify-content-between">
 							<a class="navbar-brand" href="index.jsp"> <img
-								src="/resources/img/logo_2.png" style="width: 100px;"
+								src="/resources/img/logo_3.png" style="width: 100px;"
 								alt="logo">
 							</a>
 							<button class="navbar-toggler" type="button"
@@ -80,11 +80,11 @@
 												class="dropdown-item" href="elements.html">문의사항</a>
 										</div></li>
 									<li class="nav-item"><a class="nav-link"
-										href="contact.html">마이페이지</a></li>
+										href="/mypage.do">마이페이지</a></li>
 								</ul>
 							</div>
-							<a href="/login.do" class="btn_1 d-none d-lg-block">로그인</a>
-							<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">회원가입</a>
+							<a href="/login.do" class="btn_1 d-none d-lg-block" style="background-color:#F18101;">로그인</a>
+							<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px; background-color:#F18101">회원가입</a>
 						</nav>
 					</div>
 				</div>

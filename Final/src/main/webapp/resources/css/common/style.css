@@ -4436,63 +4436,63 @@ h1, h2, h3, h4, h5, h6 {
 /* line 217, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.primary {
 	color: #fff;
-	background: #fe5c24;
+	background: #F18101;
 	border: 1px solid transparent;
 }
 
 /* line 221, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.primary:hover {
 	color: #fe5c24;
-	border: 1px solid #fe5c24;
+	border: 1px solid #F18101;
 	background: #fff;
 }
 
 /* line 227, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.primary-border {
 	color: #fe5c24;
-	border: 1px solid #fe5c24;
+	border: 1px solid #F18101;
 	background: #fff;
 }
 
 /* line 231, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.primary-border:hover {
 	color: #fff;
-	background: #fe5c24;
+	background: #F18101;
 	border: 1px solid transparent;
 }
 
 /* line 237, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.success {
 	color: #fff;
-	background: #4cd3e3;
+	background: #F18101;
 	border: 1px solid transparent;
 }
 
 /* line 241, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.success:hover {
-	color: #4cd3e3;
-	border: 1px solid #4cd3e3;
-	background: #fff;
+	color: #0173BC;
+	border: 1px solid #0173BC;
+	background-color: #fff;
 }
 
 /* line 247, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.success-border {
-	color: #4cd3e3;
-	border: 1px solid #4cd3e3;
+	color: #0173BC;
+	border: 1px solid #0173BC;
 	background: #fff;
 }
 
 /* line 251, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.success-border:hover {
 	color: #fff;
-	background: #4cd3e3;
+	background: #0173BC;
 	border: 1px solid transparent;
 }
 
 /* line 257, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.info {
 	color: #fff;
-	background: #38a4ff;
+	background: #0173BC;
 	border: 1px solid transparent;
 }
 
@@ -5577,18 +5577,6 @@ h1, h2, h3, h4, h5, h6 {
 	width: 80px;
 	height: 40px;
 	color: #fff;
-}
-
-.change_partner {
-	color: #4cd3e3;
-	border: 1px solid #4cd3e3;
-	background: #fff;
-}
-
-.change_user {
-	color: #fe5c24;
-	border: 1px solid #fe5c24;
-	background: #fff;
 }
 
 /*# sourceMappingURL=../css/style.map */
