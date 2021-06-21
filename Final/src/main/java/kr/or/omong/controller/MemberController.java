@@ -92,8 +92,7 @@ public class MemberController {
 	public String employeeLogin(Employee e,HttpServletRequest request,Model model) {
 		Employee employee = service.selectOneEmployee(e);
 		if (employee != null) {
-			HttpSession session = request.getSession();//// HttpServletRequest request 대신 HttpSession session을 매개변수로 주면
-														//// 생략가능
+			HttpSession session = request.getSession();
 			session.setAttribute("e", employee);
 			model.addAttribute("msg", "로그인 성공");
 		} else {
@@ -101,6 +100,15 @@ public class MemberController {
 		}
 		model.addAttribute("loc", "/");
 		return "common/msg";
+	}
+	@RequestMapping(value="/employeeMypage.do")
+	public String employeeMypage() {
+		return "member/employeeMypage";
+	}
+	@RequestMapping(value="/employeeUpdate.do")
+	public String employeeUpdate(Employee e,Model model) {
+		int result = service.employeeUpdate(e);
+		return "redirect:/employeeMypage.do?employeeId=" + e.getEmployeeId();
 	}
 	@RequestMapping(value="/login.do")
 	public String login() {

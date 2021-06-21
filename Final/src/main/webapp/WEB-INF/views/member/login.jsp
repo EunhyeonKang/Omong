@@ -9,8 +9,7 @@
 <!-- 네이버 스크립트 -->
   <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -35,6 +34,8 @@
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">일반회원</button>
 		<button class="genric-btn success large" id="partner_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">파트너</button>
+		<button class="genric-btn success large" id="employee_login"
+		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
 		<div class="section-top-border" id="user" style="margin-left:34%; width:480px; display:none;">
 			<form action="#">
 					<h4 style="text-align:left;">아이디(메일)</h4>
@@ -87,6 +88,29 @@
 					</div>
 				</form>
 		</div>
+		<div class="section-top-border" id="employee" style="margin-left:34%; width:480px; display:none;">
+			<form action="/employeeLogin.do">
+					<h4 style="text-align:left;">직원 아이디</h4>
+					<div class="mt-10">
+						<input type="text" name="employeeId" placeholder="아이디를 입력해주세요"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'First Name'" required
+							class="single-input">
+					</div>
+					<hr>
+					<h4 style="text-align:left;">비밀번호</h4>
+					<div class="mt-10">
+						<input type="password" name="employeePw" placeholder="비밀번호를 입력해주세요"
+							onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'Last Name'" required
+							class="single-input">
+					</div>
+					<br><br>
+					<div style="text-align : center;">
+					<input type="submit" value="로 그 인" class="genric-btn success e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+					</div>
+				</form>
+		</div>
 	</div>
 
 	<!--================ Blog Area end =================-->
@@ -96,8 +120,10 @@
 			if($("#user").css("display") == "none"){
 				$("#user").show();
 				$("#partner").hide();
+				$("#employee").hide();
 				$("#partner_login").attr('class','genric-btn success-border e-large');
 				$("#user_login").attr('class','genric-btn primary e-large');
+				$("#employee_login").attr('class','genric-btn success e-large');
 			}
 		});
 
@@ -105,8 +131,20 @@
 			if($("#partner").css("display") == "none"){
 				$("#partner").show();
 				$("#user").hide();
+				$("#employee").hide();
 				$("#user_login").attr('class','genric-btn primary-border e-large');
 				$("#partner_login").attr('class','genric-btn success e-large');
+				$("#employee_login").attr('class','genric-btn success e-large');
+			}
+		});
+		$("#employee_login").click(function(){
+			if($("#employee").css("display") == "none"){
+				$("#employee").show();
+				$("#user").hide();
+				$("#partner").hide();
+				$("#user_login").attr('class','genric-btn primary-border e-large');
+				$("#partner_login").attr('class','genric-btn success e-large');
+				$("#employee_login").attr('class','genric-btn success e-large');
 			}
 		});
 		/* 네이버 스크립트문  */

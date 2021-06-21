@@ -23,4 +23,8 @@ public class EmployeeService {
 		return dao.selectOneEmployee(e);
 	}
 
+	public int employeeUpdate(Employee e) {
+		return dao.employeeUpdate(e);
+	}
+
 }

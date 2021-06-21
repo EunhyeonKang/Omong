@@ -22,4 +22,14 @@
 	 	and employee_pw=#{employeePw}
  	  </if>
   </select>
+  <update id="employeeUpdate" parameterType="e">
+ 	update employee set 
+ 		employee_pw=#{employeePw}, 
+ 		employee_email=#{employeeEmail},
+ 		employee_phone=#{employeePhone},
+ 		employee_address=#{employeeAddress},
+ 		employee_birth=#{employeeBirth},
+ 		employee_gender=#{employeeGender}
+ 	where employee_id = #{employeeId}
+ 	</update>
 </mapper>

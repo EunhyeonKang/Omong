@@ -22,5 +22,9 @@ public class EmployeeDao {
 	public Employee selectOneEmployee(Employee e) {
 		return sqlSession.selectOne("employee.selectOneEmployee",e);
 	}
+
+	public int employeeUpdate(Employee e) {
+		return sqlSession.update("employee.employeeUpdate",e);
+	}
 	
 }
