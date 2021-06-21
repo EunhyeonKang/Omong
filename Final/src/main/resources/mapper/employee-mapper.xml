@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="employee">
+	<insert id="insertEmployee" parameterType="e">
+ 	insert into employee values
+ 	(EMPLOYEE_SEQUENCE.nextval,#{employeeId},#{employeePw},#{employeeName},#{employeeEmail},#{employeePhone},#{employeeAddress},#{employeeBirth},#{employeeGender},0)
+ 	</insert>
+ 	 <select id="selectOneEmployee" parameterType="e" resultType="e">
+	  select 
+	  	employee_no as employeeNo,
+	  	employee_id as employeeId,
+	  	employee_pw as employeePw, 
+	  	employee_name as employeeName,
+	  	employee_email as employeeEmail,
+	  	employee_phone as employeePhone,
+	  	employee_address as employeeAddress,
+	  	employee_birth as employeeBirth,
+	  	employee_gender as employeeGender,
+		charge_pw as chargePw
+	  from employee where employee_id=#{employeeId}
+	  <if test="employeePw != null">
+	 	and employee_pw=#{employeePw}
+ 	  </if>
+  </select>
+</mapper>

@@ -29,9 +29,9 @@
 	<!-- DB 접속 정보를 저장하는 dataSource객체 생성 -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<beans:property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
-		<beans:property name="username" value="mybatis"/>
-		<beans:property name="password" value="1234"/>
+		<beans:property name="url" value="jdbc:oracle:thin:@1.220.236.74:15212:xe"/>
+		<beans:property name="username" value="Omong"/>
+		<beans:property name="password" value="modle"/>
 	</beans:bean>
 	<!-- Mybatis 설정 -->
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -1,15 +1,27 @@
 package kr.or.omong.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.or.member.model.service.MemberService;
-
+import kr.or.member.model.vo.Employee;
+import kr.or.member.model.vo.Member;
+import kr.or.member.model.service.EmployeeService;
 @Controller
 public class MemberController {
 	@Autowired
-	private MemberService service;
+	private EmployeeService service;
+	
+	public MemberController() {
+		super();
+		System.out.println("Controller 생성완료");
+	}
+	
 	
 	@RequestMapping(value="/map.do")
 	public String map() {
@@ -50,6 +62,45 @@ public class MemberController {
 	@RequestMapping(value="/join_partner.do")
 	public String join_partner() {
 		return "member/join_partner";
+	}
+	@RequestMapping(value="/join_employee.do")
+	public String join_employee() {
+		return "member/join_employee";
+	}
+	@RequestMapping(value="/join_employee_info.do")
+	public String join_employee_info(Employee e,Model model) {
+		int result = service.insertEmployee(e);
+		if (result > 0) {
+			model.addAttribute("msg", "회원가입 성공");
+		} else {
+			model.addAttribute("msg", "회원가입 실패");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+	@ResponseBody
+	@RequestMapping(value="/idCheck")
+	public String idCheck(Employee e) {
+		Employee employee = service.selectOneEmployee(e);
+		if(employee!=null) {
+			return "1";
+		}else {
+			return "0";
+		}
+	}
+	@RequestMapping(value="/employeeLogin.do")
+	public String employeeLogin(Employee e,HttpServletRequest request,Model model) {
+		Employee employee = service.selectOneEmployee(e);
+		if (employee != null) {
+			HttpSession session = request.getSession();//// HttpServletRequest request 대신 HttpSession session을 매개변수로 주면
+														//// 생략가능
+			session.setAttribute("e", employee);
+			model.addAttribute("msg", "로그인 성공");
+		} else {
+			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
 	}
 	@RequestMapping(value="/login.do")
 	public String login() {

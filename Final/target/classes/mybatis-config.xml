@@ -6,5 +6,6 @@
 	</settings>
 	<typeAliases>
 <!-- 		<typeAlias type="" alias=""/> -->
+	<typeAlias type="kr.or.member.model.vo.Employee" alias="e"/>
 	</typeAliases>
 </configuration>
