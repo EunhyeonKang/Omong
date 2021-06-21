@@ -3,8 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 네이버 스크립트 -->
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -49,8 +53,8 @@
 					<br><br>
 					<div class="social">
 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&redirect_uri=http://localhost:8082/kakaologin.do&response_type=code">
-						<img src="/resources/img/kakao.jpg" style="margin-left: 1px; width : 50px;" >
-						/ Naver / FaceBook
+						<img src="/resources/img/kakao.jpg" style="margin-left: 1px; width : 50px;" ></a>
+						/ <div id="naver_id_login" style="display : inline"></div> / FaceBook
 					</div>
 					<br><br>
 					<div style="text-align : center;">
@@ -103,6 +107,14 @@
 				$("#partner_login").attr('class','genric-btn success e-large');
 			}
 		});
+		/* 네이버 스크립트문  */
+		var naver_id_login = new naver_id_login("_H2__p5_op3sciR2ACV2", "http://localhost/naver/naverCallback.jsp");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("green", 1,50);
+	  	naver_id_login.setDomain("http://localhost");
+	  	naver_id_login.setState(state);
+	  	naver_id_login.setPopup();
+	  	naver_id_login.init_naver_id_login();
 	</script>
 </body>
 </html>
