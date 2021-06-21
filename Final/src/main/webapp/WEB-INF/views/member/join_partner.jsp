@@ -115,7 +115,7 @@
 					</div>
 					<hr>
 					<div style="text-align : center;">
-					<input type="submit" value="회 원 가 입" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold";>
+					<input type="submit" value="회 원 가 입" class="genric-btn success e-large" style="width:300px; font-size:x-large; font-weight:bold";>
 					</div>
 				</form>
 			</div>

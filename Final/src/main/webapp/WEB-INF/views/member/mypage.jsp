@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +24,14 @@
 		</div>
 	</section>
 	<!--마이페이지 첫 화면-->
-	<div class="section-top-border" style="margin-left: 30%" id="mypage">
+	<div style="margin-left: 30%; margin-top: 1%">
+		<button class="genric-btn primary-border e-large" id="change">정보변경</button>
+		<button class="genric-btn primary-border e-large">내 일정</button>
+		<button class="genric-btn primary-border e-large">구매이력</button>
+	</div>
+	<div class="section-top-border" style="margin-left: 30%;" id="mypage">
 		<div class="row">
 			<div class="col-lg-8 col-md-8">
-				<button class="genric-btn primary-border e-large" id="change">정보변경</button>
-				<button class="genric-btn primary-border e-large">내 일정</button>
-				<button class="genric-btn primary-border e-large">구매이력</button>
 				<hr>
 				<form action="#">
 					<h4>아이디(메일)</h4>
@@ -114,20 +116,23 @@
 					<hr>
 					<div class="single-element-widget mt-30">
 						<h4>성별</h4>
-							<label for="male">
-							<div style="width : 150px; height : 150px; background-image: url(/resources/img/male.png); background-size:cover; text-align:center;">
+						<label for="male">
+							<div
+								style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
 								<input type="radio" name="gender" id="male" value="남자">남자
 							</div>
-							</label>
-							<label for="female">
-							<div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
+						</label> <label for="female">
+							<div
+								style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
 								<input type="radio" name="gender" id="female" value="여자" checked>여자
 							</div>
-							</label>
+						</label>
 					</div>
 					<hr>
-					<div style="text-align : center;">
-					<input type="submit" value="회 원 가 입" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+					<div style="text-align: center;">
+						<input type="submit" value="회 원 가 입"
+							class="genric-btn primary e-large"
+							style="width: 300px; font-size: x-large; font-weight: bold;">
 					</div>
 				</form>
 			</div>
@@ -135,7 +140,8 @@
 	</div>
 	<!--================ 마이페이지첫화면 end =================-->
 	<!--마이페이지_정보변경-->
-	<div class="section-top-border" style="margin-left: 30%; display:none;" id="change_information">
+	<div class="section-top-border"
+		style="margin-left: 30%; display:none;" id="change_information">
 		<div class="row">
 			<div class="col-lg-8 col-md-8">
 				<button class="genric-btn primary-border e-large">정보변경</button>
@@ -145,7 +151,7 @@
 				<form action="#">
 					<h4>아이디(메일)</h4>
 					<div class="mt-10">
-						<input type="text" name="first_name" placeholder="First Name"
+						<input type="text" name="first_name" placeholder="변경 Name"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'First Name'" required
 							class="single-input">
@@ -225,20 +231,23 @@
 					<hr>
 					<div class="single-element-widget mt-30">
 						<h4>성별</h4>
-							<label for="male">
-							<div style="width : 150px; height : 150px; background-image: url(/resources/img/male.png); background-size:cover; text-align:center;">
+						<label for="male">
+							<div
+								style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
 								<input type="radio" name="gender" id="male" value="남자">남자
 							</div>
-							</label>
-							<label for="female">
-							<div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
+						</label> <label for="female">
+							<div
+								style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
 								<input type="radio" name="gender" id="female" value="여자" checked>여자
 							</div>
-							</label>
+						</label>
 					</div>
 					<hr>
-					<div style="text-align : center;">
-					<input type="submit" value="회 원 가 입" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+					<div style="text-align: center;">
+						<input type="submit" value="회 원 가 입"
+							class="genric-btn primary e-large"
+							style="width: 300px; font-size: x-large; font-weight: bold;">
 					</div>
 				</form>
 			</div>
@@ -248,10 +257,10 @@
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script>
 		$("#change_information").click(function(){
-			if($("#change_information").css("display") == "none"){
+			if($("#change_information").css("display") == "none") {
 				$("#change_information").show();
-				$("#mypage").hide();
-				$("#change")attr('class','genric-btn primary e-large');
+			}
+		});
 	</script>
 </body>
 </html>
