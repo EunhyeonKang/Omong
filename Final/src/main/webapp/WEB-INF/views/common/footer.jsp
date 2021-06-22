@@ -57,8 +57,8 @@
 								document.write(new Date().getFullYear());
 							</script>
 							All rights reserved | This template is made with <i
-								class="ti-heart" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank"> (주) 모들</a>
+								class="ti-heart" aria-hidden="true"></i> by 
+								<a  target="_blank" id="dblclick"> (주) 모들</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>
 					</div>
@@ -90,4 +90,10 @@
 	<!-- custom js -->
 	<script src="/resources/js/common/js/custom.js"></script>
 </body>
+<script>
+	$("#dblclick").dblclick(function(){
+		$(location).attr('href','http://naver.com'); //네이버만 바꿔주면댐
+	
+	})
+</script>
 </html>
