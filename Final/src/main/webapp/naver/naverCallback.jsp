@@ -22,6 +22,7 @@
     alert(naver_id_login.getProfileData('id')); // 고유값 id
     alert(naver_id_login.getProfileData('gender')); //성별  M , F 
     alert(naver_id_login.getProfileData('profile_image')); // 프로필사진 주소 (Stirng)값
+    alert(naver_id_login.getProfileData('age')); // 나이대 값
     
     //언디파인으로 불러옴..
     alert(naver_id_login.getProfileData('birthday')); //생일 월/일 
