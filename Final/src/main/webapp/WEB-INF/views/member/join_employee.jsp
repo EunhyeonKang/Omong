@@ -33,7 +33,7 @@
             <form action="/join_employee_info.do">
                <h4>아이디</h4>
                <div class="mt-10">
-                  <input type="text" name="employeeId" placeholder="아이디 입력"
+                  <input type="text" name="id" placeholder="아이디 입력"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '아이디 입력'" required
                      class="single-input">
@@ -43,7 +43,7 @@
                <hr>
                <h4>비밀번호</h4>
                <div class="mt-10">
-                  <input type="password" name="employeePw" placeholder="비밀번호 입력"
+                  <input type="password" name="pw" placeholder="비밀번호 입력"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '비밀번호 입력'" required
                      class="single-input">
@@ -51,7 +51,7 @@
                <hr>
                <h4>비밀번호 확인</h4>
                <div class="mt-10">
-                  <input type="password" name="employeePwRe" placeholder="비밀번호 확인 입력"
+                  <input type="password" name="pwRe" placeholder="비밀번호 확인 입력"
                      onfocus="this.placeholder = ''"
                    	 onblur="this.placeholder = '비밀번호확인 입력'" required
                      class="single-input" >
@@ -61,7 +61,7 @@
                <hr>
                <h4>직원이름</h4>
                <div class="mt-10">
-                  <input type="text" name="employeeName" placeholder="직원 이름 입력"
+                  <input type="text" name="name" placeholder="직원 이름 입력"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '직원 이름 입력'" required
                      class="single-input">
@@ -72,7 +72,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="email" name="employeeEmail" placeholder="이메일 입력"
+                  <input type="email" name="email" placeholder="이메일 입력"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '이메일 입력'" required
                      class="single-input">
@@ -83,7 +83,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="text" name="employeePhone" placeholder="예) 010-0000-0000"
+                  <input type="text" name="phone" placeholder="예) 010-0000-0000"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '전화번호 입력'" required
                      class="single-input">
@@ -94,7 +94,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="text" name="employeeAddress" placeholder="예) 서울 영등포구"
+                  <input type="text" name="address" placeholder="예) 서울 영등포구"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '주소입력'" required
                      class="single-input">
@@ -105,7 +105,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="text" name="employeeBirth" placeholder="예) 2021-06-21"
+                  <input type="text" name="birth" placeholder="예) 2021-06-21"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '생년월일'" required
                      class="single-input">
@@ -143,12 +143,12 @@
                   <h4>성별</h4>
                      <label for="male">
                      <div style="width : 150px; height : 150px; background-image: url(/resources/img/male.png); background-size:cover; text-align:center;">
-                        <input type="radio" name="employeeGender" id="male" value="M">남자
+                        <input type="radio" name="gender" id="male" value="M">남자
                      </div>
                      </label>
                      <label for="female">
                      <div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
-                        <input type="radio" name="employeeGender" id="female" value="F">여자
+                        <input type="radio" name="gender" id="female" value="F">여자
                      </div>
                      </label>
                </div>
