@@ -177,7 +177,7 @@
                                 </div>
                             </div>
 
-                            <button id="live-chat" onclick="initChat('${sessionScope.e.employeeId}')">실시간 채팅 💬</button>
+                            <button id="live-chat" onclick="initChat('${sessionScope.e.employeeId}')">1:1 채팅 💬</button>
 						</div>
 					</div>
 				</div>
