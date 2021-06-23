@@ -51,6 +51,10 @@ public class MemberController {
 	public String noticeView() {
 		return "notice/noticeView";
 	}
+	@RequestMapping(value="/boardView.do")
+	public String boardView() {
+		return "board/boardView";
+	}
 	@RequestMapping(value="/join.do")
 	public String join() {
 		return "member/join";
@@ -117,5 +121,13 @@ public class MemberController {
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
 		return "member/mypage";
+	}
+	@RequestMapping(value="/topScheduleList.do")
+	public String topScheduleList() {
+		return "schedule/topScheduleList";
+	}
+	@RequestMapping(value="/scheduleInsert.do")
+	public String scheduleInsert() {
+		return "schedule/scheduleInsert";
 	}
 }
