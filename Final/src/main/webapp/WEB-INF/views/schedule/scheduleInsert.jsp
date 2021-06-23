@@ -42,9 +42,9 @@
     	<br>
     	<h4 style="float:left">인원  </h4><div class="percentage"><input class="input-first" name="countPeople" id="countPeople" type="number"></div>
     	<br>
-    	<h4 style="float:left">구분  </h4><div class="percentage"><input class="input-first" name="schedule_title" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
+    	<h4 style="float:left">구분  </h4><div class="percentage"><input class="input-first" name="separation" id="separation" type="text" placeholder='레저와 체험'></div>
     	<br>
-    	<h4 style="float:left">태그  </h4><div class="percentage"><input class="input-first" name="schedule_title" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
+    	<h4 style="float:left">태그  </h4><div class="percentage"><input class="input-first" name="tag" id="tag" type="text" placeholder='#레저와 체험  #혼자'></div>
     	<br>
     	<button class="genric-btn success">일정만들기</button>
     </div>
