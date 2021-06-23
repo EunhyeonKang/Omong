@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.partner.model.service.PartnerService;
 
-
 @Controller
 public class PartnerController {
 	
@@ -17,5 +16,8 @@ private PartnerService serviec;
 public String insertPackage() {
 	return "partner/insertPackage";
 }
-
+@RequestMapping(value="/packageView.do")
+public String packageView() {
+	return "partner/packageView";
+}
 }
