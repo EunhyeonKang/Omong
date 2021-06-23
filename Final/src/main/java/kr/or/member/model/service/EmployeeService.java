@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.member.model.dao.EmployeeDao;
 import kr.or.member.model.vo.Employee;
+import kr.or.member.model.vo.User;
 
 @Service
 public class EmployeeService {
@@ -15,9 +16,15 @@ public class EmployeeService {
 		System.out.println("Service 생성");
 	}
 
-	public int insertEmployee(Employee e) {
+	public int insertEmployee(User u) {
+		return dao.insertEmployee(u);
+	}
+	
+	/*
+	 	public int insertEmployee(Employee e) {
 		return dao.insertEmployee(e);
 	}
+	 */
 
 	public Employee selectOneEmployee(Employee e) {
 		return dao.selectOneEmployee(e);

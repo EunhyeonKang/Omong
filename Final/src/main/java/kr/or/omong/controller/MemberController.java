@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.member.model.vo.Employee;
-import kr.or.member.model.vo.Member;
+import kr.or.member.model.vo.User;
 import kr.or.member.model.service.EmployeeService;
 @Controller
 public class MemberController {
@@ -68,7 +68,20 @@ public class MemberController {
 		return "member/join_employee";
 	}
 	@RequestMapping(value="/join_employee_info.do")
-	public String join_employee_info(Employee e,Model model) {
+	public String join_employee_info(User u, Model model) {
+		int result = service.insertEmployee(u);
+		if (result > 0) {
+			model.addAttribute("msg", "회원가입 성공");
+		} else {
+			model.addAttribute("msg", "회원가입 실패");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+	
+	/*
+	@RequestMapping(value="/join_employee_info.do")
+	public String join_employee_info(Employee e, Model model) {
 		int result = service.insertEmployee(e);
 		if (result > 0) {
 			model.addAttribute("msg", "회원가입 성공");
@@ -78,6 +91,7 @@ public class MemberController {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
+	 */
 	@ResponseBody
 	@RequestMapping(value="/idCheck")
 	public String idCheck(Employee e) {

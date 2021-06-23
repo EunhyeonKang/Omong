@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="employee">
+	<!-- User insert 예시 -->
+	<insert id="insertEmployee" parameterType="u">
+ 		insert into employee values
+ 		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0)
+ 	</insert>
+ 	<!-- User select 예시 -->
+	<select id="selectOneEmployee" parameterType="u" resultType="u">
+	  select 
+	  	e.employee_no as no,
+	  	e.employee_id as id,
+	  	e.employee_pw as pw, 
+	  	e.employee_name as name,
+	  	e.employee_email as email,
+	  	e.employee_phone as phone,
+	  	e.employee_address as address,
+	  	e.employee_birth as birth,
+	  	e.employee_gender as gender,
+		e.charge_pw as chargePw,
+		'e' AS type
+	  from employee where employee_id=#{employeeId}
+	  <if test="employeePw != null">
+	 	and employee_pw=#{employeePw}
+ 	  </if>
+	</select>
+	<!-- 
 	<insert id="insertEmployee" parameterType="e">
  	insert into employee values
  	(EMPLOYEE_SEQUENCE.nextval,#{employeeId},#{employeePw},#{employeeName},#{employeeEmail},#{employeePhone},#{employeeAddress},#{employeeBirth},#{employeeGender},0)
  	</insert>
+
  	 <select id="selectOneEmployee" parameterType="e" resultType="e">
 	  select 
 	  	employee_no as employeeNo,
@@ -32,4 +58,5 @@
  		employee_gender=#{employeeGender}
  	where employee_id = #{employeeId}
  	</update>
+ 	 	-->
 </mapper>
