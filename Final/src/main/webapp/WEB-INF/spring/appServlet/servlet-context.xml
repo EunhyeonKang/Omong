@@ -70,19 +70,17 @@
 		</aop:aspect>
 	</aop:config>
 	 -->
-	 <!-- AOP어노테이션 방식 사용 선언 
-	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+	 <!-- AOP어노테이션 방식 사용 선언 -->
+<!-- 	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
 	<!-- 트렌젝션 어노테이션 사용 -->
 	<tx:annotation-driven/>
 	<!-- 스케줄링 어노테이션 사용 -->
 	<task:annotation-driven/>
 	<!-- 웹소켓 전체 채팅용 설정 -->
-	<!-- 
-	<beans:bean id="allMemberChat" class=""/>
+	<beans:bean id="allMemberChat" class="kr.or.member.model.service.ChatService"/>
 	<websocket:handlers>
 		<websocket:mapping handler="allMemberChat" path="/chat.do"/>
 	</websocket:handlers>
-	 -->
 	<context:component-scan base-package="kr.or.omong" />
 	<context:component-scan base-package="kr.or.member"/>
 	<context:component-scan base-package="kr.or.partner"/>
