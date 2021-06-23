@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 네이버 스크립트 -->
@@ -32,9 +31,9 @@
 	<div class="section-top-border" style="text-align: center;">
 		<button class="genric-btn primary e-large" id="user_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">일반회원</button>
-		<button class="genric-btn info large" id="partner_login"
+		<button class="genric-btn info e-large" id="partner_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">파트너</button>
-		<button class="genric-btn success large" id="employee_login"
+		<button class="genric-btn success e-large" id="employee_login"
 		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
 		<div class="section-top-border" id="user" style="margin-left:34%; width:480px; display:none;">
 			<form action="#">
