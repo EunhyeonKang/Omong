@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapPartner">
+	<select id="selectCheckMapPartner" parameterType="string" resultType="int">
+		SELECT COUNT(*) FROM map_Partner WHERE map_partner_id = #{_parameter}
+	</select>
+	<insert id="insertMapPartner" parameterType="mapPartner">
+		INSERT INTO map_partner VALUES(
+			map_partner_sequence.NEXTVAL,
+			#{mapPartnerId},
+			#{mapPartnerName},
+			#{mapPartnerAddress},
+			#{mapPartnerLatitude},
+			#{mapPartnerLongitude},
+			#{mapPartnerThumbnailpath}
+		) 
+	</insert>
+	<update id="updateMapPartner" parameterType="mapPartner">
+		UPDATE map_partner SET
+			map_partner_name = #{mapPartnerName},
+			map_partner_address = #{mapPartnerAddress},
+			map_partner_latitude = #{mapPartnerLatitude},
+			map_partner_longitude = #{mapPartnerLongitude},
+			map_partner_thumbnailpath = #{mapPartnerThumbnailpath}
+		WHERE map_partner_id = #{mapPartnerId}
+	</update>
+</mapper>
