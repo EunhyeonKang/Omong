@@ -26,5 +26,5 @@ public  class User {
 	private String business;
 	private String ceo;
 	private String email;
-	private String store;
+	private String tel;
 }

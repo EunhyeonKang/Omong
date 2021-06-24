@@ -65,20 +65,20 @@
 				</form>
 		</div>
 		<div class="section-top-border" id="partner" style="margin-left:34%; width:480px; display:none;">
-			<form action="#">
+			<form action="/partnerLogin.do" method="get">
 					<h4 style="text-align:left;">아이디</h4>
 					<div class="mt-10">
-						<input type="text" name="first_name" placeholder="First Name"
+						<input type="text" name="id" placeholder="아이디를 입력해주세요"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'First Name'" required
+							onblur="this.placeholder = '아이디를 입력해주세요'" required
 							class="single-input">
 					</div>
 					<hr>
 					<h4 style="text-align:left;">비밀번호</h4>
 					<div class="mt-10">
-						<input type="text" name="last_name" placeholder="Last Name"
+						<input type="password" name="pw" placeholder="비밀번호를 입력해주세요"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Last Name'" required
+							onblur="this.placeholder = '비밀번호를 입력해주세요'" required
 							class="single-input">
 					</div>
 					<br><br>
