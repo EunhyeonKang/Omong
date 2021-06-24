@@ -197,8 +197,7 @@
 						<div class="banner_text_iner">
 							<form action="/search.do" method="GET">
 								<input type="text" class="search" placeholder="검색어 입력">
-								<i class="icon-search"></i> <input type="submit" value="검색"
-									class="search-btn">
+								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn">
 							</form>
 							   <div class="chatting">
 							   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
@@ -210,7 +209,8 @@
                                 </div>
                             </div>
 
-                            <button id="live-chat" onclick="initChat('${sessionScope.e.id}');">1:1 채팅 💬</button>
+                            <button id="live-chat" onclick="initChat('${sessionScope.u.id}');">1:1 채팅 💬</button>
+
 						</div>
 					</div>
 				</div>

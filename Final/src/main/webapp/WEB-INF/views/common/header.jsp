@@ -32,9 +32,70 @@
 </head>
 <body>
 	<!--::header part start::-->
-	<header class="main_menu">
+	<c:choose>
+	<c:when test="${sessionScope.u.type eq 'p'}">
+	<header class="main_menu">	
+		<div class="main_menu_iner">
+			<div class="container">
+				<div class="row align-items-center ">
+					<div class="col-lg-12">
+						<nav
+							class="navbar navbar-expand-lg navbar-light justify-content-between">
+							<a class="navbar-brand" href="index.jsp"> 
+								<img src="/resources/img/logo_3.png" style="width: 100px;" alt="logo">
+							</a>
+							<button class="navbar-toggler" type="button"
+								data-toggle="collapse" data-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
 
+							<div
+								class="collapse navbar-collapse main-menu-item justify-content-center"
+								id="navbarSupportedContent">
+								<ul class="navbar-nav">
+									<li class="nav-item"><a class="nav-link" href="/insertPackage.do">상품등록</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/packageView.do">등록상품 상세보기</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="packages.html">예약</a>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 일정 </a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="/scheduleInsert.do">일정등록</a> 
+											<a class="dropdown-item" href="/schedule.do">일정공유</a>
+										</div>
+									</li>
+									<li class="nav-item dropdown"><a
+										class="nav-link dropdown-toggle" href="/boardList.do"
+										id="navbarDropdown_1" role="button" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"> 게시판 </a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+											<a class="dropdown-item" href="/noticeList.do">공지사항</a> 
+											<a class="dropdown-item" href="/boardList.do">자유게시판</a> 
+											<a class="dropdown-item" href="elements.html">문의사항</a>
+										</div>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/mypage.do">마이페이지</a>
+									</li>
+								</ul>
+							</div>							
+									<a href="/logout.do" class="genric-btn info d-none d-lg-block" style="">로그아웃</a>
+									<a href="/employeeMypage.do" class="genric-btn info d-none d-lg-block" style="margin-left: 1px;">${sessionScope.u.id}</a>
+						</nav>
+					</div>
+				</div>
+			</div>
 		</div>
+	</header>
+	</c:when>
+	<c:otherwise>
+		<header class="main_menu">	
 		<div class="main_menu_iner">
 			<div class="container">
 				<div class="row align-items-center ">
@@ -58,8 +119,7 @@
 								<ul class="navbar-nav">
 									<li class="nav-item"><a class="nav-link" href="/">메인</a>
 									</li>
-									<li class="nav-item"><a class="nav-link" href="/map.do">제주도
-											지도</a></li>
+									<li class="nav-item"><a class="nav-link" href="/map.do">제주도 지도</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="packages.html">예약</a></li>
 									<li class="nav-item dropdown"><a
@@ -67,7 +127,7 @@
 										id="navbarDropdown" role="button" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false"> 일정 </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<a class="dropdown-item" href="blog.html">일정등록</a> <a
+											<a class="dropdown-item" href="/scheduleInsert.do">일정등록</a> <a
 												class="dropdown-item" href="/schedule.do">일정공유</a>
 										</div>
 										</li>
@@ -76,14 +136,14 @@
 										id="navbarDropdown_1" role="button" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false"> 게시판 </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-											<a class="dropdown-item" href="/noticeList.do">공지사항</a> <a
-												class="dropdown-item" href="/boardList.do">자유게시판</a> <a
-												class="dropdown-item" href="elements.html">문의사항</a>
+											<a class="dropdown-item" href="/noticeList.do">공지사항</a> 
+											<a class="dropdown-item" href="/boardList.do">자유게시판</a> 
+											<a class="dropdown-item" href="elements.html">문의사항</a>
 										</div></li>
 									<li class="nav-item"><a class="nav-link"
 										href="/mypage.do">마이페이지</a></li>
 								</ul>
-							</div>
+							</div>							
 							<c:choose>
 								<c:when test="${empty sessionScope.userId && empty sessionScope.u.id}">
 									<a href="/login.do" class="btn_1 d-none d-lg-block" style="background-color:#F18101;">로그인</a>
@@ -100,6 +160,8 @@
 			</div>
 		</div>
 	</header>
+	</c:otherwise>
+	</c:choose>
 	
 </body>
 </html>

@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 네이버 스크립트 -->
@@ -32,9 +31,9 @@
 	<div class="section-top-border" style="text-align: center;">
 		<button class="genric-btn primary e-large" id="user_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">일반회원</button>
-		<button class="genric-btn success large" id="partner_login"
+		<button class="genric-btn info e-large" id="partner_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">파트너</button>
-		<button class="genric-btn success large" id="employee_login"
+		<button class="genric-btn success e-large" id="employee_login"
 		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
 		<div class="section-top-border" id="user" style="margin-left:34%; width:480px; display:none;">
 			<form action="#">
@@ -66,25 +65,25 @@
 				</form>
 		</div>
 		<div class="section-top-border" id="partner" style="margin-left:34%; width:480px; display:none;">
-			<form action="#">
+			<form action="/partnerLogin.do" method="get">
 					<h4 style="text-align:left;">아이디</h4>
 					<div class="mt-10">
-						<input type="text" name="first_name" placeholder="First Name"
+						<input type="text" name="id" placeholder="아이디를 입력해주세요"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'First Name'" required
+							onblur="this.placeholder = '아이디를 입력해주세요'" required
 							class="single-input">
 					</div>
 					<hr>
 					<h4 style="text-align:left;">비밀번호</h4>
 					<div class="mt-10">
-						<input type="text" name="last_name" placeholder="Last Name"
+						<input type="password" name="pw" placeholder="비밀번호를 입력해주세요"
 							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Last Name'" required
+							onblur="this.placeholder = '비밀번호를 입력해주세요'" required
 							class="single-input">
 					</div>
 					<br><br>
 					<div style="text-align : center;">
-					<input type="submit" value="로 그 인" class="genric-btn success e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+					<input type="submit" value="로 그 인" class="genric-btn info e-large" style="width:300px; font-size:x-large; font-weight:bold;">
 					</div>
 				</form>
 		</div>
@@ -121,9 +120,9 @@
 				$("#user").show();
 				$("#partner").hide();
 				$("#employee").hide();
-				$("#partner_login").attr('class','genric-btn success-border e-large');
+				$("#partner_login").attr('class','genric-btn info-border e-large');
 				$("#user_login").attr('class','genric-btn primary e-large');
-				$("#employee_login").attr('class','genric-btn success e-large');
+				$("#employee_login").attr('class','genric-btn success-border e-large');
 			}
 		});
 
@@ -133,8 +132,8 @@
 				$("#user").hide();
 				$("#employee").hide();
 				$("#user_login").attr('class','genric-btn primary-border e-large');
-				$("#partner_login").attr('class','genric-btn success e-large');
-				$("#employee_login").attr('class','genric-btn success e-large');
+				$("#partner_login").attr('class','genric-btn info e-large');
+				$("#employee_login").attr('class','genric-btn success-border e-large');
 			}
 		});
 		$("#employee_login").click(function(){
@@ -143,7 +142,7 @@
 				$("#user").hide();
 				$("#partner").hide();
 				$("#user_login").attr('class','genric-btn primary-border e-large');
-				$("#partner_login").attr('class','genric-btn success e-large');
+				$("#partner_login").attr('class','genric-btn info-border e-large');
 				$("#employee_login").attr('class','genric-btn success e-large');
 			}
 		});

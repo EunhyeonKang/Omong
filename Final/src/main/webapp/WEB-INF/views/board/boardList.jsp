@@ -42,7 +42,7 @@
 					</div>
 					<div class="table-row">
 						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
+						<div class="percentage"><a href="/boardView.do">제목입니다</a></div>
 						<div class="country">
 							<img src="/resources/img/elements/f1.jpg" alt="flag">Canada
 						</div>

@@ -4471,7 +4471,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 241, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.success:hover {
 	color: #0173bc;
-	border: 1px solid #010173bc73BC;
+	border: 1px solid #0173bc;
 	background-color: #fff;
 }
 
@@ -4492,28 +4492,28 @@ h1, h2, h3, h4, h5, h6 {
 /* line 257, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.info {
 	color: #fff;
-	background: #0173BC;
+	background: #00a074;
 	border: 1px solid transparent;
 }
 
 /* line 261, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.info:hover {
-	color: #38a4ff;
-	border: 1px solid #38a4ff;
+	color: #00a074;
+	border: 1px solid #00a074;
 	background: #fff;
 }
 
 /* line 267, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.info-border {
-	color: #38a4ff;
-	border: 1px solid #38a4ff;
+	color: #00a074;
+	border: 1px solid #00a074;
 	background: #fff;
 }
 
 /* line 271, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .genric-btn.info-border:hover {
 	color: #fff;
-	background: #38a4ff;
+	background: #00a074;
 	border: 1px solid transparent;
 }
 
@@ -4621,7 +4621,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 353, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .progress-table-wrap {
 	overflow-x: scroll;
-}
+}s
 
 /* line 357, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .progress-table {
@@ -5577,6 +5577,56 @@ h1, h2, h3, h4, h5, h6 {
 	width: 80px;
 	height: 40px;
 	color: #fff;
+}
+.input-first {
+	display: block;
+	line-height:25px;
+	width: 80%;
+	border: none;
+	outline: none;
+	background: #e6e6e6;
+}
+.day1{
+	border : 2px solid #F18101;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day2{
+	border : 2px solid #0173BC;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day3{
+	border : 2px solid #00A074;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day4{
+	border : 2px solid #CFAC6A;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day5{
+	border : 2px solid #C9C9CB;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day6{
+	border : 2px solid #33aacc;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day7{
+	border : 2px solid #48c817;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
 }
 
 /*# sourceMappingURL=../css/style.map */

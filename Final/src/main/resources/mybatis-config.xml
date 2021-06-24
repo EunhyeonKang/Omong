@@ -8,5 +8,8 @@
 <!-- 		<typeAlias type="" alias=""/> -->
 	<typeAlias type="kr.or.member.model.vo.Employee" alias="e"/>
 	<typeAlias type="kr.or.member.model.vo.User" alias="u"/>
+	<typeAlias type="kr.or.mapPartner.model.vo.MapPartner" alias="mapPartner"/>
+	<typeAlias type="kr.or.admin.model.vo.Admin" alias="admin"/>
+	
 	</typeAliases>
 </configuration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="admin">
+ <select id="selectOneAdmin" parameterType="admin">
+ 	select
+ 		admin_id as adminId,
+ 		admin_pw as adminPw,
+ 		admin_name as adminName,
+ 		admin_email as adminEmail,
+ 		admin_phone as adminPhone
+ 		from admin where admin_id=#{adminId} 		
+ 		and admin_pw=#{adminPw} 		
+ </select>
+</mapper>

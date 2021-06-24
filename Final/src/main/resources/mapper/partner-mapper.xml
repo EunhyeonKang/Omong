@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="partner">
+  <select id="selectOnePartner" parameterType="u" resultType="u">
+  	select
+  		partner_no as no,
+  		partner_yn as yn,
+  		partner_id as id,
+  		partner_pw as pw,
+  		partner_name as name,
+  		partner_business as business,
+  		partner_ceo as ceo,
+  		partner_email as email,
+  		partner_phone phone,
+  		partner_tel as tel,
+  		partner_address as address,
+  		change_pw as changePw,
+  		'p' as type
+	from partner where partner_id=#{id}
+		<if test="pw != null">
+		and partner_pw=#{pw}
+		</if>  		
+  </select>
+</mapper>
