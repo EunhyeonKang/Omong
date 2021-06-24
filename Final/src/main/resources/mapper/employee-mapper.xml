@@ -18,9 +18,9 @@
 	  	e.employee_address as address,
 	  	e.employee_birth as birth,
 	  	e.employee_gender as gender,
-		e.charge_pw as chargePw,
+		e.change_pw as changePw,
 		'e' AS type
-	  from employee where employee_id=#{employeeId}
+	  from employee e where employee_id=#{employeeId}
 	  <if test="employeePw != null">
 	 	and employee_pw=#{employeePw}
  	  </if>

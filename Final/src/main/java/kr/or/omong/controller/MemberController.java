@@ -144,4 +144,10 @@ public class MemberController {
 	public String scheduleInsert() {
 		return "schedule/scheduleInsert";
 	}
+	/*
+	 * @RequestMapping(value="/logout.do") public String logout(User u , Model model
+	 * , HttpSession session ) { if(session != null ) { session.invalidate();
+	 * model.addAttribute("msg", "로그아웃 완료"); } model.addAttribute("loc", "/");
+	 * return "common/msg"; }
+	 */
 }

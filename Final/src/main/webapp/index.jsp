@@ -166,8 +166,7 @@
 						<div class="banner_text_iner">
 							<form action="/search.do" method="GET">
 								<input type="text" class="search" placeholder="검색어 입력">
-								<i class="icon-search"></i> <input type="submit" value="검색"
-									class="search-btn">
+								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn">
 							</form>
 							   <div class="chatting">
                                 <div class="messageArea"></div>
@@ -176,7 +175,6 @@
                                     <button id="sendBtn" onclick="sendMsg();"><i class="fa fa-send" style="padding-right:3px;"></i></button>
                                 </div>
                             </div>
-
                             <button id="live-chat" onclick="initChat('${sessionScope.e.employeeId}')">실시간 채팅 💬</button>
 						</div>
 					</div>
