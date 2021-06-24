@@ -94,8 +94,8 @@ public class MemberController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/idCheck")
-	public String idCheck(Employee e) {
-		Employee employee = service.selectOneEmployee(e);
+	public String idCheck(User u) {
+		User employee = service.selectOneEmployee(u);
 		if(employee!=null) {
 			return "1";
 		}else {
@@ -103,8 +103,8 @@ public class MemberController {
 		}
 	}
 	@RequestMapping(value="/employeeLogin.do")
-	public String employeeLogin(Employee e,HttpServletRequest request,Model model) {
-		Employee employee = service.selectOneEmployee(e);
+	public String employeeLogin(User u,HttpServletRequest request,Model model) {
+		User employee = service.selectOneEmployee(u);
 		if (employee != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("e", employee);
@@ -120,9 +120,9 @@ public class MemberController {
 		return "member/employeeMypage";
 	}
 	@RequestMapping(value="/employeeUpdate.do")
-	public String employeeUpdate(Employee e,Model model) {
-		int result = service.employeeUpdate(e);
-		return "redirect:/employeeMypage.do?employeeId=" + e.getEmployeeId();
+	public String employeeUpdate(User u,Model model) {
+		int result = service.employeeUpdate(u);
+		return "redirect:/employeeMypage.do?employeeId=" + u.getId();
 	}
 	@RequestMapping(value="/login.do")
 	public String login() {

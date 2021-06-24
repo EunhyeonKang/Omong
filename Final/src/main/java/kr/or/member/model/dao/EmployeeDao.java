@@ -26,12 +26,12 @@ public class EmployeeDao {
 	}
 	*/
 
-	public Employee selectOneEmployee(Employee e) {
-		return sqlSession.selectOne("employee.selectOneEmployee",e);
+	public User selectOneEmployee(User u) {
+		return sqlSession.selectOne("employee.selectOneEmployee",u);
 	}
 
-	public int employeeUpdate(Employee e) {
-		return sqlSession.update("employee.employeeUpdate",e);
+	public int employeeUpdate(User u) {
+		return sqlSession.update("employee.employeeUpdate",u);
 	}
 	
 }

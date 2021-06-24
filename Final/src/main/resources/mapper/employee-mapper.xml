@@ -9,22 +9,32 @@
  	<!-- User select 예시 -->
 	<select id="selectOneEmployee" parameterType="u" resultType="u">
 	  select 
-	  	e.employee_no as no,
-	  	e.employee_id as id,
-	  	e.employee_pw as pw, 
-	  	e.employee_name as name,
-	  	e.employee_email as email,
-	  	e.employee_phone as phone,
-	  	e.employee_address as address,
-	  	e.employee_birth as birth,
-	  	e.employee_gender as gender,
-		e.charge_pw as chargePw,
+	  	employee_no as no,
+	  	employee_id as id,
+	  	employee_pw as pw, 
+	  	employee_name as name,
+	  	employee_email as email,
+	  	employee_phone as phone,
+	  	employee_address as address,
+	  	employee_birth as birth,
+	  	employee_gender as gender,
+		change_pw as changePw,
 		'e' AS type
-	  from employee where employee_id=#{employeeId}
-	  <if test="employeePw != null">
-	 	and employee_pw=#{employeePw}
+	  from employee where employee_id=#{id}
+	  <if test="pw != null">
+	 	and employee_pw=#{pw}
  	  </if>
 	</select>
+	<update id="employeeUpdate" parameterType="u">
+ 	update employee set 
+ 		employee_pw=#{pw}, 
+ 		employee_email=#{email},
+ 		employee_phone=#{phone},
+ 		employee_address=#{address},
+ 		employee_birth=#{birth},
+ 		employee_gender=#{gender}
+ 	where employee_id = #{id}
+ 	</update>
 	<!-- 
 	<insert id="insertEmployee" parameterType="e">
  	insert into employee values

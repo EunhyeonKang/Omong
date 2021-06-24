@@ -85,7 +85,7 @@
 								</ul>
 							</div>
 							<c:choose>
-								<c:when test="${empty sessionScope.userId && empty sessionScope.e.employeeId}">
+								<c:when test="${empty sessionScope.userId && empty sessionScope.u.id}">
 									<a href="/login.do" class="btn_1 d-none d-lg-block" style="background-color:#F18101;">로그인</a>
 									<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px; background-color:#F18101">회원가입</a>
 								</c:when>

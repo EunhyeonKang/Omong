@@ -36,7 +36,7 @@
 				<form action="/employeeUpdate.do">
                <h4>아이디</h4>
                <div class="mt-10">
-                  <input type="text" name="employeeId" value="${sessionScope.e.employeeId }"
+                  <input type="text" name="id" value="${sessionScope.e.id }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '아이디 입력'" required
                      class="single-input" style="background: #E2E2E2" readonly="readonly">
@@ -46,7 +46,7 @@
                <hr>
                <h4>비밀번호</h4>
                <div class="mt-10">
-                  <input type="password" name="employeePw" value="${sessionScope.e.employeePw }"
+                  <input type="password" name="pw" value="${sessionScope.e.pw }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '비밀번호 입력'" required
                      class="single-input">
@@ -54,7 +54,7 @@
                <hr>
                <h4>직원이름</h4>
                <div class="mt-10">
-                  <input type="text" name="employeeName" value="${sessionScope.e.employeeName }"
+                  <input type="text" name="name" value="${sessionScope.e.name }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '직원 이름 입력'" required
                      class="single-input" style="background: #E2E2E2" readonly="readonly">
@@ -65,7 +65,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="email" name="employeeEmail" value="${sessionScope.e.employeeEmail }"
+                  <input type="email" name="email" value="${sessionScope.e.email }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '이메일 입력'" required
                      class="single-input">
@@ -76,7 +76,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="text" name="employeePhone" value="${sessionScope.e.employeePhone }"
+                  <input type="text" name="phone" value="${sessionScope.e.phone }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '전화번호 입력'" required
                      class="single-input">
@@ -87,7 +87,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="text" name="employeeAddress" value="${sessionScope.e.employeeAddress }"
+                  <input type="text" name="address" value="${sessionScope.e.address }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '주소입력'" required
                      class="single-input">
@@ -98,7 +98,7 @@
                   <div class="icon">
                      <i class="fa fa-thumb-tack" aria-hidden="true"></i>
                   </div>
-                  <input type="text" name="employeeBirth" value="${sessionScope.e.employeeBirth }"
+                  <input type="text" name="birth" value="${sessionScope.e.birth }"
                      onfocus="this.placeholder = ''"
                      onblur="this.placeholder = '생년월일'" required
                      class="single-input">
@@ -136,12 +136,12 @@
                   <h4>성별</h4>
                      <label for="male">
                      <div style="width : 150px; height : 150px; background-image: url(/resources/img/male.png); background-size:cover; text-align:center;">
-                        <input type="radio" name="employeeGender" id="male" value="${sessionScope.e.employeeGender }">남자
+                        <input type="radio" name="gender" id="male" value="${sessionScope.e.gender }">남자
                      </div>
                      </label>
                      <label for="female">
                      <div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
-                        <input type="radio" name="employeeGender" id="female"value="${sessionScope.e.employeeGender }">여자
+                        <input type="radio" name="gender" id="female"value="${sessionScope.e.gender }">여자
                      </div>
                      </label>
                </div>

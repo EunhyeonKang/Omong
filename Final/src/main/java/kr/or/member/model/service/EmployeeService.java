@@ -26,12 +26,12 @@ public class EmployeeService {
 	}
 	 */
 
-	public Employee selectOneEmployee(Employee e) {
-		return dao.selectOneEmployee(e);
+	public User selectOneEmployee(User u) {
+		return dao.selectOneEmployee(u);
 	}
 
-	public int employeeUpdate(Employee e) {
-		return dao.employeeUpdate(e);
+	public int employeeUpdate(User u) {
+		return dao.employeeUpdate(u);
 	}
 
 }

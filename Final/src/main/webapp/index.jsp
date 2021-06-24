@@ -75,6 +75,32 @@
 
     }
 
+ 	#closeBtn{
+ 		border-radius: 50%;
+	    padding: 5px;
+	    width: 40px;
+	    background-color: #ffa707c7;
+	    color: white;
+	    border: 0;
+	    outline: 0;
+	    margin: 10px;
+	    position: absolute;
+	    right: 0;
+ 	}
+ 	
+ 	#closeBtn:hover{
+ 		border-radius: 50%;
+	    padding: 5px;
+	    width: 40px;
+	    background-color: #ffa707c7;
+	    color: red;
+	    border: 0;
+	    outline: 0;
+	    margin: 10px;
+	    position: absolute;
+	    right: 0;
+ 	}
+ 	
     #sendBtn {
         flex: 1;
         color: rgb(255, 255, 255);
@@ -145,6 +171,11 @@
             appendChat("<div class='chat right'>" + msg + "</div>");
         }
     }
+    function closeClick(){
+    	ws.onclose = endChat;
+    	$(".chatting").slideUp();
+    	location.reload();
+    }
     $(function () {
         $("#sendMsg").keydown(function (key) {
             if (key.keyCode == 13) {
@@ -170,14 +201,16 @@
 									class="search-btn">
 							</form>
 							   <div class="chatting">
+							   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
+							   	<br>
                                 <div class="messageArea"></div>
                                 <div class="sendBox">
                                     <input type="text" id="sendMsg" placeholder="메세지를 입력해주세요">
-                                    <button id="sendBtn" onclick="sendMsg();"><i class="fa fa-send" style="padding-right:3px;"></i></button>
+                                    <button id="sendBtn" onclick="sendMsg(); "><i class="fa fa-send" style="padding-right:3px;"></i></button>
                                 </div>
                             </div>
 
-                            <button id="live-chat" onclick="initChat('${sessionScope.e.employeeId}')">1:1 채팅 💬</button>
+                            <button id="live-chat" onclick="initChat('${sessionScope.e.id}');">1:1 채팅 💬</button>
 						</div>
 					</div>
 				</div>
