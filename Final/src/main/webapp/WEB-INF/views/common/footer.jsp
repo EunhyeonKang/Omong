@@ -92,7 +92,7 @@
 </body>
 <script>
 	$("#dblclick").dblclick(function(){
-		$(location).attr('href','http://naver.com'); //네이버만 바꿔주면댐
+		$(location).attr('href','/adminLogin1.do'); //네이버만 바꿔주면댐
 	
 	})
 </script>
