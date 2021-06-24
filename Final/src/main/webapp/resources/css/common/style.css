@@ -4621,7 +4621,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 353, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .progress-table-wrap {
 	overflow-x: scroll;
-}
+}s
 
 /* line 357, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_elements.scss */
 .progress-table {
@@ -5580,11 +5580,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 .input-first {
 	display: block;
-	width: 70%;
-	line-height: 40px;
+	line-height:25px;
+	width: 80%;
 	border: none;
 	outline: none;
-	background: #c0c0c0;
-	padding: 0 20px;
+	background: #e6e6e6;
 }
+.day1{
+	border : 2px solid #F18101;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day2{
+	border : 2px solid #0173BC;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day3{
+	border : 2px solid #00A074;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day4{
+	border : 2px solid #CFAC6A;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day5{
+	border : 2px solid #C9C9CB;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day6{
+	border : 2px solid #33aacc;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+.day7{
+	border : 2px solid #48c817;
+	width : 100%;
+	height : 80px;
+	margin-top:3px;
+}
+
 /*# sourceMappingURL=../css/style.map */

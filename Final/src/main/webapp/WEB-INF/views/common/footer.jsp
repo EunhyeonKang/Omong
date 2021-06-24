@@ -67,7 +67,7 @@
 		</div>
 	</footer>
 	<!-- jquery plugins here-->
-	<script src="/resources/js/common/jquery-1.12.1.min.js"></script>
+	<script src="/resources/js/common/jquery-1.12.1.min.js"></script><!-- datepicker충돌 로인해 주석처리 제거시 문제는 없어보임 -->
 	<!-- popper js -->
 	<script src="/resources/js/common/js/popper.min.js"></script>
 	<!-- bootstrap js -->
@@ -89,6 +89,8 @@
 	<script src="/resources/js/common/js/contact.js"></script>
 	<!-- custom js -->
 	<script src="/resources/js/common/js/custom.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> datepicker용 스크립트문 -->
 </body>
 <script>
 	$("#dblclick").dblclick(function(){

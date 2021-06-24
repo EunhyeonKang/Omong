@@ -144,4 +144,8 @@ public class MemberController {
 	public String scheduleInsert() {
 		return "schedule/scheduleInsert";
 	}
+	@RequestMapping(value="/scheduleDetail.do")
+	public String scheduleDetail() {
+		return "schedule/scheduleDetail";
+	}
 }
