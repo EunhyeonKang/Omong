@@ -32,8 +32,8 @@
         box-shadow: 5px 5px 25px 0 rgb(46 61 73 / 20%);
         flex-direction: column;
         display: none;
-        bottom: calc(2 * 120px + 52px);
-        right: -100px;
+        bottom: 0;
+        right:0;
         width: 377px;
         height: auto;
         background-color: #fff;
@@ -137,7 +137,7 @@
     function initChat(param) {
         employeeId = param;
         //웹소켓 연결시도
-        ws = new WebSocket("ws://192.168.105.193:8082/chat.do");
+        ws = new WebSocket("ws://172.30.1.2:8082/chat.do");
         //소켓 연결 성공시 실행될 함수 지정
         ws.onopen = startChat;
         //소켓으로 서버가 데이터를 전송하면 로직을 수행할 함수
