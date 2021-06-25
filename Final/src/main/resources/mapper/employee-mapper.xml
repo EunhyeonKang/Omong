@@ -35,38 +35,19 @@
  		employee_gender=#{gender}
  	where employee_id = #{id}
  	</update>
-	<!-- 
-	<insert id="insertEmployee" parameterType="e">
- 	insert into employee values
- 	(EMPLOYEE_SEQUENCE.nextval,#{employeeId},#{employeePw},#{employeeName},#{employeeEmail},#{employeePhone},#{employeeAddress},#{employeeBirth},#{employeeGender},0)
- 	</insert>
-
- 	 <select id="selectOneEmployee" parameterType="e" resultType="e">
-	  select 
-	  	employee_no as employeeNo,
-	  	employee_id as employeeId,
-	  	employee_pw as employeePw, 
-	  	employee_name as employeeName,
-	  	employee_email as employeeEmail,
-	  	employee_phone as employeePhone,
-	  	employee_address as employeeAddress,
-	  	employee_birth as employeeBirth,
-	  	employee_gender as employeeGender,
-		charge_pw as chargePw
-	  from employee where employee_id=#{employeeId}
-	  <if test="employeePw != null">
-	 	and employee_pw=#{employeePw}
- 	  </if>
-  </select>
-  <update id="employeeUpdate" parameterType="e">
- 	update employee set 
- 		employee_pw=#{employeePw}, 
- 		employee_email=#{employeeEmail},
- 		employee_phone=#{employeePhone},
- 		employee_address=#{employeeAddress},
- 		employee_birth=#{employeeBirth},
- 		employee_gender=#{employeeGender}
- 	where employee_id = #{employeeId}
- 	</update>
- 	 	-->
+	<select id="totalUserList" resultType="u">
+	select 
+	  	employee_no as no,
+	  	employee_id as id,
+	  	employee_pw as pw, 
+	  	employee_name as name,
+	  	employee_email as email,
+	  	employee_phone as phone,
+	  	employee_address as address,
+	  	employee_birth as birth,
+	  	employee_gender as gender,
+		change_pw as changePw,
+		'e' AS type
+	from employee
+	</select>
 </mapper>

@@ -1,5 +1,7 @@
 package kr.or.member.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,10 @@ public class EmployeeService {
 
 	public int employeeUpdate(User u) {
 		return dao.employeeUpdate(u);
+	}
+
+	public ArrayList<User> totalUserList() {
+		return dao.totalUserList();
 	}
 
 }

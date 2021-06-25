@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#btn{
+		background-color: tomato;
+	    border: 0;
+	    outline: 0;
+	    padding: 13px;
+	    color: white;
+	}
+</style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -262,87 +272,14 @@
 		style="margin-left: 30%; display:none;" id="userListpage">
 		<div class="row">
 			<div class="col-lg-8 col-md-8">
-				<hr>
-				<form action="#">
-						<div class="progress-table-wrap">
-						<div class="progress-table">
-							<div class="table-head">
-								<div class="serial">번호</div>
-								<div class="percentage">제목</div>
-								<div class="country">작성자</div>
-								<div class="visit">조회수</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage"><a href="/noticeView.do">제목입니다</a></div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>
-						</div>
-					</div>
-				</form>
+				<button id="btn">전체회원정보 불러오기</button>
+				<hr>				
+				<div id="result">
+				</div>
 			</div>
 		</div>
 	</div>
-
+	
 	
 	<!--================ 마이페이지_내일정 end =================-->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
@@ -379,6 +316,31 @@
 				$("#notice").attr('class','genric-btn primary-border e-large');
 				$("#userList").attr('class','genric-btn primary-border e-large');
 			}
+		});
+		
+	</script>
+	<script>
+		$("#btn").click(function(){
+			$.ajax({
+				url:"/totalUserList.do",
+				success : function(data){
+					
+					$("#result").empty();
+					var table = $("<div class='progress-table'>");
+					var titleTr = $("<div class='table-head'>");
+					titleTr.append("<div class='serial'>번호</div><div class='percentage'>아이디</div><div class='country'>이름</div><div class='visit'>전화번호</div>");
+					table.append(titleTr);
+					for(var i=0;i<data.length;i++){
+						var tr = $("<div class='table-head'>");
+						tr.append("<div class='serial'>"+data[i].no+"</div>");
+						tr.append("<div class='percentage'>"+data[i].id+"</div>");
+						tr.append("<div class='country'>"+data[i].name+"</div>");
+						tr.append("<div class='country'>"+data[i].phone+"</div>");
+						table.append(tr);						
+					};
+					$("#result").append(table);
+				}
+			});
 		});
 		
 	</script>
