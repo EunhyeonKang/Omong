@@ -91,20 +91,7 @@ public class MemberController {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
-	
-	/*
-	@RequestMapping(value="/join_employee_info.do")
-	public String join_employee_info(Employee e, Model model) {
-		int result = service.insertEmployee(e);
-		if (result > 0) {
-			model.addAttribute("msg", "회원가입 성공");
-		} else {
-			model.addAttribute("msg", "회원가입 실패");
-		}
-		model.addAttribute("loc", "/");
-		return "common/msg";
-	}
-	 */
+
 	@ResponseBody
 	@RequestMapping(value="/idCheck")
 	public String idCheck(User u) {
