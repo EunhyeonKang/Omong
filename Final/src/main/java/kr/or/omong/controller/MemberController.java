@@ -1,6 +1,9 @@
 package kr.or.omong.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,7 +148,9 @@ public class MemberController {
 		return "schedule/scheduleInsert";
 	}
 	@RequestMapping(value="/scheduleDetail.do")
-	public String scheduleDetail() {
+	public String scheduleDetail(HttpServletRequest request, Model model) {
+		String diff = request.getParameter("diff");
+		model.addAttribute("diff", diff);
 		return "schedule/scheduleDetail";
 	}
 }
