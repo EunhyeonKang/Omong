@@ -35,17 +35,21 @@
     <br>
     <div style="width:400px; margin-left:40%; text-align:center">
     	<br>
-    	<h4 style="float:left; margin-right:20px">제목  </h4><div class="percentage"><input class="input-first" name="schedule_title" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
-    	<br>
-    	<h4 style="float:left;">기간  </h4><div class="percentage"><input name="schedule_startDate" type="text" id="sDatepicker"> ~ <input name="schedule_endDate" id="eDatepicker" type="text"></div>
-    	<br>
-    	<h4 style="float:left; margin-right:20px">인원  </h4><div class="percentage"><input class="input-first" name="countPeople" id="countPeople" type="number" min="1" max="30"></div>
-    	<br>
-    	<h4 style="float:left; margin-right:20px">구분  </h4><div class="percentage"><input class="input-first" name="separation" id="separation" type="text" placeholder='레저와 체험'></div>
-    	<br>
-    	<h4 style="float:left; margin-right:20px">태그  </h4><div class="percentage"><input class="input-first" name="tag" id="tag" type="text" placeholder='#레저와 체험  #혼자'></div>
-    	<br>
-    	<a href="/scheduleDetail.do"><button class="genric-btn success" id="create">일정만들기</button></a>
+    		<form action="/scheduleDetail.do" method="GET">
+		    	<h4 style="float:left; margin-right:20px">제목  </h4><div class="percentage"><input class="input-first" name="schedule_title" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
+		    	<br>
+		    	<h4 style="float:left;">기간  </h4><div class="percentage"><input name="schedule_startDate" type="text" id="sDatepicker"> ~ <input name="schedule_endDate" id="eDatepicker" type="text"></div>
+		    	<br>
+		    	<h4 style="float:left; margin-right:20px">인원  </h4><div class="percentage"><input class="input-first" name="countPeople" id="countPeople" type="number" min="1" max="30"></div>
+		    	<br>
+		    	<h4 style="float:left; margin-right:20px">구분  </h4><div class="percentage"><input class="input-first" name="separation" id="separation" type="text" placeholder='레저와 체험'></div>
+		    	<br>
+		    	<h4 style="float:left; margin-right:20px">태그  </h4><div class="percentage"><input class="input-first" name="tag" id="tag" type="text" placeholder='#레저와 체험  #혼자'></div>
+		    	<br>
+		    	<input type="hidden" id="diff" name="diff">
+		    	<button class="genric-btn success" type="submit" id="test1">일정만들기</button>
+		    </form>
+		    
     </div>
      <br>
      <br>
@@ -181,7 +185,20 @@
 	        }
 	    });
 	    $('#eDatepicker').datepicker('setDate', 'today');                        //끝일 초기값 셋팅
-	});	
+	});
+	    
+	    $("#test1").click(function(e){
+	    	var d1 = $('#sDatepicker').datepicker('getDate');
+            var d2 = $('#eDatepicker').datepicker('getDate');
+            var diff = 0;
+            diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
+            if(diff > 7){
+            	alert("최대 7일까지 가능합니다");
+            	e.preventDefault();
+            }else{
+            	$("#diff").val(diff+1);	
+            }
+	    });
 	</script>
 </body>
 </html>
