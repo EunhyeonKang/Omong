@@ -40,5 +40,19 @@ public String login(User u ,HttpServletRequest request, Model model) {
 	model.addAttribute("loc", "/");	
 	return "common/msg";
 }
+@RequestMapping(value="/partnerLogout.do")
+public String logout(User u , Model model , HttpSession session) {
+	if(session != null) {
+		session.invalidate();
+		model.addAttribute("msg", "로그아웃 되었습니다.");		
+	}
+	model.addAttribute("loc", "/");
+	return "common/msg";
+}
+@RequestMapping(value="/partnerNotice.do")
+	public String partnerNotice() {
+	return "partner/partnerNotice";
+}
+		
 
 }

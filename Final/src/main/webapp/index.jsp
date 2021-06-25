@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +33,8 @@
         box-shadow: 5px 5px 25px 0 rgb(46 61 73 / 20%);
         flex-direction: column;
         display: none;
-        bottom: calc(2 * 120px + 52px);
-        right: -100px;
+        bottom: 0;
+        right:0;
         width: 377px;
         height: auto;
         background-color: #fff;
@@ -129,15 +130,17 @@
         align-self: flex-start;
         margin-left: 20px;
     }
+    #employeeChat{
+    	
+    }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
     var ws;
-    var memberId;
     function initChat(param) {
         employeeId = param;
         //웹소켓 연결시도
-        ws = new WebSocket("ws://192.168.105.193:8082/chat.do");
+        ws = new WebSocket("ws://172.30.1.2:8082/chat.do");
         //소켓 연결 성공시 실행될 함수 지정
         ws.onopen = startChat;
         //소켓으로 서버가 데이터를 전송하면 로직을 수행할 함수
@@ -199,18 +202,21 @@
 								<input type="text" class="search" placeholder="검색어 입력">
 								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn">
 							</form>
-							   <div class="chatting">
-							   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
-							   	<br>
-                                <div class="messageArea"></div>
-                                <div class="sendBox">
-                                    <input type="text" id="sendMsg" placeholder="메세지를 입력해주세요">
-                                    <button id="sendBtn" onclick="sendMsg(); "><i class="fa fa-send" style="padding-right:3px;"></i></button>
-                                </div>
-                            </div>
-
-                            <button id="live-chat" onclick="initChat('${sessionScope.u.id}');">1:1 채팅 💬</button>
-
+							<!-- type이 u이면 채팅창 보이기(임시차원에서 직원으로 함)-->
+							<c:choose>
+								<c:when test="${sessionScope.u.id != null && sessionScope.u.type eq 'e'}">
+								   	<div class="chatting">
+								   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
+									<br>
+		                            <div class="messageArea"></div>
+		                                <div class="sendBox">
+		                                    <input type="text" id="sendMsg" placeholder="메세지를 입력해주세요">
+		                                    <button id="sendBtn" onclick="sendMsg(); "><i class="fa fa-send" style="padding-right:3px;"></i></button>
+		                                </div>
+	                            	</div>
+	                            	<button id="live-chat" onclick="initChat('${sessionScope.u.id}');this.onclick=null;">1:1 채팅 💬</button>
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 				</div>

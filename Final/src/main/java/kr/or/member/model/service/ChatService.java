@@ -3,6 +3,8 @@ package kr.or.member.model.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -11,8 +13,13 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import kr.or.member.model.dao.EmployeeDao;
+
+@Service
 public class ChatService extends TextWebSocketHandler{
 	//접속한 회원의 세션을 저장하는 리스트
+	@Autowired
+	private EmployeeDao dao;
 		private ArrayList<WebSocketSession> sessionList;
 		//각 세션별로 접속한 회원의 아이디를 저장하는 map
 		private HashMap<WebSocketSession,String> employeeList;
@@ -44,7 +51,7 @@ public class ChatService extends TextWebSocketHandler{
 			//키가 msg인 value를 추출
 			String msg = element.getAsJsonObject().get("msg").getAsString();
 			if(type.equals("enter")) {
-				//map에 세션에 해당하는 memberId를 저장
+				//map에 세션에 해당하는id를 저장
 				employeeList.put(session, msg);
 				String sendMsg = "<p>"+msg+"님이 입장하셨습니다.</p>";
 				for(WebSocketSession s : sessionList) {
