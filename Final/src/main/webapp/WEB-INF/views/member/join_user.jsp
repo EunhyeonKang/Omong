@@ -30,10 +30,10 @@
 			<div class="col-lg-8 col-md-8">
 				<h3 class="mb-30">회원가입</h3>
 				<hr>
-				<form action="#">
+				<form action="/joinMember.do">
 					<h4>아이디(메일)</h4>
 					<div class="mt-10">
-						<input type="text" name="first_name" placeholder="First Name"
+						<input type="text" name="email" placeholder="이메일을 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'First Name'" required
 							class="single-input">
@@ -41,7 +41,7 @@
 					<hr>
 					<h4>비밀번호</h4>
 					<div class="mt-10">
-						<input type="text" name="last_name" placeholder="Last Name"
+						<input type="password" name="pw" placeholder="비밀번호를 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Last Name'" required
 							class="single-input">
@@ -49,7 +49,7 @@
 					<hr>
 					<h4>비밀번호 확인</h4>
 					<div class="mt-10">
-						<input type="email" name="EMAIL" placeholder="Email address"
+						<input type="password" name="re_password" placeholder="비밀번호 확인"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Email address'" required
 							class="single-input">
@@ -57,10 +57,7 @@
 					<hr>
 					<h4>이름</h4>
 					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input type="text" name="address" placeholder="Address"
+						<input type="text" name="name" placeholder="이름을 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Address'" required
 							class="single-input">
@@ -68,10 +65,7 @@
 					<hr>
 					<h4>주소</h4>
 					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input type="text" name="address" placeholder="Address"
+						<input type="text" name="address" placeholder="주소를 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Address'" required
 							class="single-input">
@@ -79,21 +73,15 @@
 					<hr>
 					<h4>전화번호</h4>
 					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input type="text" name="address" placeholder="Address"
+						<input type="text" name="phone" placeholder="전화번호를 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Address'" required
-							class="single-input">
+							class="single-input" style="width:30%; float:left;">						
 					</div>
 					<hr>
 					<h4>생년월일</h4>
 					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input type="text" name="address" placeholder="Address"
+						<input type="date" name="birth" placeholder="생년월일을 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Address'" required
 							class="single-input">
@@ -123,12 +111,12 @@
 						<h4>성별</h4>
 							<label for="male">
 							<div style="width : 150px; height : 150px; background-image: url(/resources/img/male.png); background-size:cover; text-align:center;">
-								<input type="radio" name="gender" id="male" value="남자">남자
+								<input type="radio" name="gender" id="male" value="남">남자
 							</div>
 							</label>
 							<label for="female">
 							<div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
-								<input type="radio" name="gender" id="female" value="여자">여자
+								<input type="radio" name="gender" id="female" value="여">여자
 							</div>
 							</label>
 					</div>

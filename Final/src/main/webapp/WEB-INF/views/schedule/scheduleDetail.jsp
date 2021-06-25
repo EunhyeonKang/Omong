@@ -15,7 +15,7 @@
          <br>
          <form>
          <input type="text" style="border: 1px solid blue" placeholder="검색어를 입력하세요">
-         <input type="submit" style="border: 1px solid blue" value="검색">
+         <input type="submit" style="border: 1px solid blue" la>
          </form>
       </div>
       <hr>

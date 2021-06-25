@@ -9,13 +9,14 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- breadcrumb start-->
-	<section class="breadcrumb breadcrumb_bg"style="background-image: url(/resources/img/main2.jpg);">
+	<section class="breadcrumb breadcrumb_bg"
+		style="background-image: url(/resources/img/main2.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
 						<div class="breadcrumb_iner_item text-center">
-							<h2>일정</h2>
+							<h2>상품 예약</h2>
 						</div>
 					</div>
 				</div>
@@ -27,17 +28,17 @@
 	<!-- hotel list css start-->
 	<section class="top_place"
 		style="margin-top: 50px; margin-bottom: 50px;">
-		<h3 style="margin-left: 40px;">추천일정</h3>
+		<h3 style="margin-left: 40px;">상품 패키지</h3>
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row">
 				<div style="margin-right: 5%; margin-left: 5%;">
 					<div class="single_place">
-						<img src="/resources/img/single_place_1.png" alt="">
+						<img src="/resources/img/성산일출봉.jpg" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a> 
+								<a href="/packageView.do" class="place_btn">travel</a>
 								<h3>Saintmartine Iceland</h3>
 								<p>Technaf, Bangladesh</p>
 								<div class="place_review">
@@ -204,7 +205,7 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 5%;">
+				<div style="margin-right: 50px;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div

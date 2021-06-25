@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
+	<!-- member 회원가입 -->
+	<insert id="insertMember" parameterType="u">
+		insert into member values
+		(member_seq.nextval,#{email},#{pw},#{name},#{address},#{phone},#{birth},#{gender},'N','N')
+	</insert>
+	<!-- member  select -->
+	<select id="selectOneMember" parameterType="u" resultType="u">
+		select
+			member_no as no,
+			member_id as id,
+			member_pw as pw,
+			member_name as name,
+			member_phone as phone,
+			member_address as address,
+			member_birth as birth,
+			member_gender as gender,
+			change_pw as changePw,
+			loginpath as path
+		from member where member_id=#{email}
+		<if test="pw != null">
+			and member_pw = #{pw}
+		</if>
+	</select>
 </mapper>

@@ -33,7 +33,7 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row">
-				<div style="margin-right: 50px; margin-left: 90px;">
+				<div style="margin-right: 5%; margin-left: 5%;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 50px;">
+				<div style="margin-right: 5%;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
@@ -112,7 +112,7 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row">
-				<div style="margin-right: 50px; margin-left: 90px;">
+				<div style="margin-right: 5%; margin-left: 5%;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
@@ -135,7 +135,7 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 50px;">
+				<div style="margin-right: 5%;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
@@ -191,7 +191,7 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row">
-				<div style="margin-right: 50px; margin-left: 90px;">
+				<div style="margin-right: 5%; margin-left: 5%;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
@@ -214,7 +214,7 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 50px;">
+				<div style="margin-right: 5%;">
 					<div class="single_place">
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
