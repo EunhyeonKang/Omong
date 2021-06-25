@@ -61,9 +61,9 @@
 										<a class="nav-link" href="/packageView.do">등록상품 상세보기</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="packages.html">예약</a>
+										<a class="nav-link" href="partnerNotice.do">공지사항 리스트</a>
 									</li>
-									<li class="nav-item dropdown">
+									<!-- <li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 일정 </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="/scheduleInsert.do">일정등록</a> 
@@ -82,11 +82,11 @@
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="/mypage.do">마이페이지</a>
-									</li>
+									</li> -->
 								</ul>
 							</div>							
-									<a href="/logout.do" class="genric-btn info d-none d-lg-block" style="">로그아웃</a>
-									<a href="/employeeMypage.do" class="genric-btn info d-none d-lg-block" style="margin-left: 1px;">${sessionScope.u.id}</a>
+									<a href="/partnerLogout.do" class="genric-btn info d-none d-lg-block" style="font-size:large;">로그아웃</a>
+									<a href="/employeeMypage.do" class="genric-btn info d-none d-lg-block" style="margin-left: 1px; font-size:large;">${sessionScope.u.id}</a>
 						</nav>
 					</div>
 				</div>
