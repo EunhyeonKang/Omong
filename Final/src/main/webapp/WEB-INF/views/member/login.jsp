@@ -36,21 +36,15 @@
 		<button class="genric-btn success e-large" id="employee_login"
 		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
 		<div class="section-top-border" id="user" style="margin-left:34%; width:480px; display:none;">
-			<form action="#">
+			<form action="/memberLogin.do">
 					<h4 style="text-align:left;">아이디(메일)</h4>
 					<div class="mt-10">
-						<input type="text" name="first_name" placeholder="First Name"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'First Name'" required
-							class="single-input">
+						<input type="text" name="email" placeholder="E-mail을 입력해주세요" class="single-input">
 					</div>
 					<hr>
 					<h4 style="text-align:left;">비밀번호</h4>
 					<div class="mt-10">
-						<input type="text" name="last_name" placeholder="Last Name"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Last Name'" required
-							class="single-input">
+						<input type="text" name="pw" placeholder="패스워드를 입력해주세요" class="single-input">
 					</div>
 					<br><br>
 					<div class="social">

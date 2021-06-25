@@ -2772,6 +2772,15 @@ ul {
 	position: relative;
 	z-index: 2;
 	margin-bottom: 30px;
+	width: 555px;
+	heigth: 396px;
+	overflow: hidden;
+}
+
+.top_place .single_place img {
+	width: 100%;
+	heigth: 100%;
+	object-fit: fill;
 }
 
 /* line 7, /Applications/MAMP/htdocs/palash/cl/july 2019/193 Travel/193 travel html/sass/_top_place.scss */

@@ -14,45 +14,52 @@ import sun.print.resources.serviceui;
 
 @Controller
 public class PartnerController {
-	
-@Autowired
-private PartnerService service;
 
-@RequestMapping(value="/insertPackage.do")
-public String insertPackage() {
-	return "partner/insertPackage";
-}
-@RequestMapping(value="/packageView.do")
-public String packageView() {
-	return "partner/packageView";
-}
+	@Autowired
+	private PartnerService service;
 
-@RequestMapping(value="/partnerLogin.do")
-public String login(User u ,HttpServletRequest request, Model model) {
-	User partner = service.selectOnePatner(u);
-	if(partner != null) {
-		HttpSession session = request.getSession();
-		session.setAttribute("u", partner);
-		model.addAttribute("msg", "로그인 성공");		
-	}else {
-		model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요");	
-	}	
-	model.addAttribute("loc", "/");	
-	return "common/msg";
-}
-@RequestMapping(value="/partnerLogout.do")
-public String logout(User u , Model model , HttpSession session) {
-	if(session != null) {
-		session.invalidate();
-		model.addAttribute("msg", "로그아웃 되었습니다.");		
+	@RequestMapping(value = "/insertPackage.do")
+	public String insertPackage() {
+		return "partner/insertPackage";
 	}
-	model.addAttribute("loc", "/");
-	return "common/msg";
-}
-@RequestMapping(value="/partnerNotice.do")
+
+	@RequestMapping(value = "/packageView.do")
+	public String packageView() {
+		return "partner/packageView";
+	}
+
+	@RequestMapping(value = "/partnerLogin.do")
+	public String login(User u, HttpServletRequest request, Model model) {
+		User partner = service.selectOnePatner(u);
+		if (partner != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("u", partner);
+			model.addAttribute("msg", "로그인 성공");
+		} else {
+			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+
+	@RequestMapping(value = "/partnerLogout.do")
+	public String logout(User u, Model model, HttpSession session) {
+		if (session != null) {
+			session.invalidate();
+			model.addAttribute("msg", "로그아웃 되었습니다.");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+
+	@RequestMapping(value = "/partnerNotice.do")
 	public String partnerNotice() {
-	return "partner/partnerNotice";
-}
-		
+		return "partner/partnerNotice";
+	}
+
+	@RequestMapping(value = "/join_partner.do")
+	public String join_partner() {
+		return "member/join_partner";
+	}
 
 }

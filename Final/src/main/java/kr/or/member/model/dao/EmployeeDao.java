@@ -33,5 +33,6 @@ public class EmployeeDao {
 	public int employeeUpdate(User u) {
 		return sqlSession.update("employee.employeeUpdate",u);
 	}
+
 	
 }

@@ -121,9 +121,9 @@
 									</li>
 									<li class="nav-item"><a class="nav-link" href="/map.do">제주도 지도</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="packages.html">예약</a></li>
+										href="/packageList.do">예약</a></li>
 									<li class="nav-item dropdown"><a
-										class="nav-link dropdown-toggle" href="blog.html"
+										class="nav-link dropdown-toggle" href="/scheduleInsert.do"
 										id="navbarDropdown" role="button" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false"> 일정 </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
