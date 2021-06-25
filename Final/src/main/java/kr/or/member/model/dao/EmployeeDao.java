@@ -20,11 +20,6 @@ public class EmployeeDao {
 		return sqlSession.insert("employee.insertEmployee", u);
 	}
 	
-	/*
-	public int insertEmployee(Employee e) {
-		return sqlSession.insert("employee.insertEmployee", e);
-	}
-	*/
 
 	public User selectOneEmployee(User u) {
 		return sqlSession.selectOne("employee.selectOneEmployee",u);
@@ -34,5 +29,10 @@ public class EmployeeDao {
 		return sqlSession.update("employee.employeeUpdate",u);
 	}
 
+
+	public void selectOneEmployee(String msg) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -66,20 +66,7 @@ public class MemberController {
 		return "member/join_user";
 	}
 
-	
-	/*
-	@RequestMapping(value="/join_employee_info.do")
-	public String join_employee_info(Employee e, Model model) {
-		int result = service.insertEmployee(e);
-		if (result > 0) {
-			model.addAttribute("msg", "회원가입 성공");
-		} else {
-			model.addAttribute("msg", "회원가입 실패");
-		}
-		model.addAttribute("loc", "/");
-		return "common/msg";
-	}
-	 */
+
 	@RequestMapping(value="/login.do")
 	public String login() {
 		return "member/login";

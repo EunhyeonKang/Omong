@@ -20,12 +20,6 @@ public class EmployeeService {
 		return dao.insertEmployee(u);
 	}
 	
-	/*
-	 	public int insertEmployee(Employee e) {
-		return dao.insertEmployee(e);
-	}
-	 */
-
 	public User selectOneEmployee(User u) {
 		return dao.selectOneEmployee(u);
 	}
