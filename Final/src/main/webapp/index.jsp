@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,11 +130,13 @@
         align-self: flex-start;
         margin-left: 20px;
     }
+    #employeeChat{
+    	
+    }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
     var ws;
-    var memberId;
     function initChat(param) {
         employeeId = param;
         //웹소켓 연결시도
@@ -199,18 +202,21 @@
 								<input type="text" class="search" placeholder="검색어 입력">
 								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn">
 							</form>
-							   <div class="chatting">
-							   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
-							   	<br>
-                                <div class="messageArea"></div>
-                                <div class="sendBox">
-                                    <input type="text" id="sendMsg" placeholder="메세지를 입력해주세요">
-                                    <button id="sendBtn" onclick="sendMsg(); "><i class="fa fa-send" style="padding-right:3px;"></i></button>
-                                </div>
-                            </div>
-
-                            <button id="live-chat" onclick="initChat('${sessionScope.u.id}');">1:1 채팅 💬</button>
-
+							<!-- type이 u이면 채팅창 보이기(임시차원에서 직원으로 함)-->
+							<c:choose>
+								<c:when test="${sessionScope.u.id != null && sessionScope.u.type eq 'e'}">
+								   	<div class="chatting">
+								   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
+									<br>
+		                            <div class="messageArea"></div>
+		                                <div class="sendBox">
+		                                    <input type="text" id="sendMsg" placeholder="메세지를 입력해주세요">
+		                                    <button id="sendBtn" onclick="sendMsg(); "><i class="fa fa-send" style="padding-right:3px;"></i></button>
+		                                </div>
+	                            	</div>
+	                            	<button id="live-chat" onclick="initChat('${sessionScope.u.id}');this.onclick=null;">1:1 채팅 💬</button>
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 				</div>
