@@ -36,6 +36,10 @@
 .step{
 	display: none;
 }
+h4{
+	display: inline-block;
+}
+
 </style>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -56,17 +60,19 @@
 	</section> -->
 	<!-- breadcrumb start-->
 	<div class="joinWrap">
-		<!-- 회원가입 정보입력 -->
+		
 		<div class="section-top-border" style="margin-left: 30%">
+			<!-- 상단 텝 -->
 			<ul class="tabs">
 				<li class="tab" style="background: #00a074; color: #fff;">약관 확인</li>
 				<li class="tab">정보입력</li>
 			</ul>
+			<!-- 상단 텝 끝-->
 			<div class="step col-lg-8 col-md-8" style="padding-left: 0px; display:none;">
 				<!-- 약관동의  -->
 				<h3 class="mb-30">약관 동의</h3>
 				<div class="checkbox">
-					<label><input type="checkbox" id="default-checkbox"> 구매이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</label>
+					<label><input type="checkbox" id="allAgree"> 구매이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</label>
 				</div>
 				<br>
 				<div>
@@ -520,7 +526,7 @@
 제1조 (시행일) 이 약관은 2016년 1월 19일부터 시행합니다.
 					</textarea>
 					<div class="checkbox">
-						<br> <label><input type="checkbox" id="default-checkbox"> 오몽 구매약관을 읽었으며 이에 동의함(필수)</label>
+						<br> <label><input type="checkbox" class="requiredAgree"> 오몽 구매약관을 읽었으며 이에 동의함(필수)</label>
 					</div>
 					<hr>
 				</div>
@@ -706,7 +712,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 - 시행일 2016년 1월 19일
 					</textarea>
 					<div class="checkbox">
-						<br> <label><input type="checkbox" id="default-checkbox"> 개인정보 수집 및 이용동의 약관을 읽었으며 이에 동의함(필수)</label>
+						<br> <label><input type="checkbox" class="requiredAgree"> 개인정보 수집 및 이용동의 약관을 읽었으며 이에 동의함(필수)</label>
 					</div>
 					<hr>
 				</div>
@@ -723,13 +729,13 @@ LG U+	안심번호 / 전자결제 / SMS전송
 라. 상품 구매 시 제 3자 제공에 동의한 경우, 해당 서비스 제공 업체에 아래의 개인정보가 제공됩니다.
 					</textarea>
 					<div class="checkbox">
-						<br> <label><input type="checkbox" id="default-checkbox"> 개인정보의 제3자제공 약관을 읽었으며 이에 동의함 이에
+						<br> <label><input type="checkbox" class="requiredAgree"> 개인정보의 제3자제공 약관을 읽었으며 이에 동의함 이에
 							동의함(필수)</label>
 					</div>
 					<br>
 				</div>
 				<div class="checkbox">
-					<label><input type="checkbox" id="default-checkbox">
+					<label><input type="checkbox" class="agree">
 						이벤트 및 신규 서비스 안내,마케팅활용에 동의합니다.(선택)</label>
 				</div>
 				<br>
@@ -739,44 +745,46 @@ LG U+	안심번호 / 전자결제 / SMS전송
 						</div>
 				
 			</div>
+			<!-- 약관동의 끝-->
+			<!-- 정보입력-->
 			<div class="row" >
 				<div class="col-lg-8 col-md-8 step">
 					<h3 class="mb-30">회원가입</h3>
 					
-					<form action="#">
-						<h4>상호명</h4>
+					<form action="/partnerJoin.do" method="post">
+						<h4>상호명</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerName" placeholder="상호명"
+							<input type="text" name="name" placeholder="상호명"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '상호명'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>대표자명</h4>
+						<h4>대표자명</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerCeo" placeholder="대표자명"
+							<input type="text" name="ceo" placeholder="대표자명"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '대표자명'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>아이디</h4>
+						<h4>아이디</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerId" placeholder="아이디"
+							<input type="text" name="id" placeholder="아이디"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '아이디'" required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>비밀번호</h4>
+						<h4>비밀번호</h4> <span></span>
 						<div class="mt-10">
-							<input type="password" name="partnerPw" placeholder="비밀번호"
+							<input type="password" name="pw" placeholder="비밀번호"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '비밀번호'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>비밀번호 확인</h4>
+						<h4>비밀번호 확인</h4> <span></span>
 						<div class="mt-10">
 							<input type="password" name="rePassword" placeholder="비밀번호 확인"
 								onfocus="this.placeholder = ''"
@@ -784,33 +792,41 @@ LG U+	안심번호 / 전자결제 / SMS전송
 								class="single-input">
 						</div>
 						<hr>
-						<h4>이메일</h4>
+						<h4>이메일</h4> <span></span>
 						<div class="mt-10">							
-							<input type="text" name="partnerEmail" placeholder="이메일주소"
+							<input type="text" name="email" placeholder="이메일주소"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '이메일주소'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>주소</h4>
+						<h4>주소</h4> <span></span>
 						<div class="mt-10">						
-							<input type="text" name="partnerAddress" placeholder="주소"
+							<input type="text" name="address" placeholder="주소"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '주소'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>전화번호</h4>
+						<h4>전화번호</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerPhone" placeholder="(-을 제외하고 작성해주세요)"
+							<input type="text" name="phone" placeholder="(-을 제외하고 작성해주세요)"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '(-을 제외하고 작성해주세요)'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>매장전화번호</h4>
+						<h4>매장전화번호</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerTell" placeholder="(-을 제외하고 작성해주세요)"
+							<input type="text" name="tel" placeholder="(-을 제외하고 작성해주세요)"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = '(-을 제외하고 작성해주세요)'"
+								class="single-input">
+						</div>
+						<hr>
+						<h4>사업자 번호</h4> <span></span>
+						<div class="mt-10">
+							<input type="text" name="business" placeholder="(-을 제외하고 작성해주세요)"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '(-을 제외하고 작성해주세요)'"required
 								class="single-input">
@@ -824,6 +840,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 					</form>
 				</div>
 			</div>
+			<!-- 정보입력 끝-->
 		</div>
 	</div>
 	<!--================ Blog Area end =================-->
@@ -833,14 +850,69 @@ LG U+	안심번호 / 전자결제 / SMS전송
 	
 	$(function(){
 		$(".step").eq(0).show();
+		
+		
 	})
-		$(".next").click(function(){
-			$(".step").hide();
-			$(".step").eq(1).show();			
-			$(".tab").eq(0).css("color","#00a074");
-			$(".tab").eq(0).css("background-color","#fff");
-			$(".tab").eq(1).css("color","#fff");
-			$(".tab").eq(1).css("background-color","#00a074");
+		$(".next").click(function(){			
+			if($(".requiredAgree:checked").length == 3) {
+				$(".step").hide();
+				$(".step").eq(1).show();			
+				$(".tab").eq(0).css("color","#00a074");
+				$(".tab").eq(0).css("background-color","#fff");
+				$(".tab").eq(1).css("color","#fff");
+				$(".tab").eq(1).css("background-color","#00a074");	
+			}else{
+				alert("필수항목을 체크해주세요");
+			}
 		})
+		$("#allAgree").change(function(){
+			$(".requiredAgree").prop("checked",$(this).prop("checked"));
+			$(".agree").prop("checked",$(this).prop("checked"));
+		})
+	$(function(){
+		/* 대표자명 유효성 */
+		$("[name=ceo]").keyup(function(){
+			var ceoReg = /^[가-힣]{2,6}$/;
+			var ceo = $(this).val();
+
+			if(ceoReg.test(ceo)){
+				$(this).parent().prev().html("거짓으로 작성한 정보인 경우 로그인 권한이 부여되지 않을 수 있습니다.");
+				$(this).parent().prev().css("color","blue");
+			}else{
+				$(this).parent().prev().html("바른 이름의 양식을 적어주세요.")
+				$(this).parent().prev().css("color","red");
+			}
+			
+		})
+		
+		/* 아이디 유효성 검사 */
+		$("[name=id]").keyup(function(){
+			var idReg = /^[\w]{4,12}$/;
+			var id = $(this).val();
+			
+			if(idReg.test(id)){	
+				$(this).parent().prev().html("사용가능한 아이디 입니다.");
+				$(this).parent().prev().css("color","blue");
+			}else{
+				$(this).parent().prev().html("영어 숫자를 조합하여 4~12자로 적어주세요.")
+				$(this).parent().prev().css("color","red");
+			}
+			
+		})
+		/* 비밀번호 유효성 해야함*/
+		$("[name=id]").keyup(function(){
+			var idReg = /^[\w]{4,12}$/;
+			var id = $(this).val();
+
+			if(idReg.test(id)){
+				$(this).parent().prev().html("사용가능한 아이디 입니다.");
+				$(this).parent().prev().css("color","blue");
+			}else{
+				$(this).parent().prev().html("영어 숫자를 조합하여 4~12자로 적어주세요.")
+				$(this).parent().prev().css("color","red");
+			}
+			
+		})
+	})
 </script>
 </html>

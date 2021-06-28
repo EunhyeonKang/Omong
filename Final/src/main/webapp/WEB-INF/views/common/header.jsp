@@ -33,7 +33,7 @@
 <body>
 	<!--::header part start::-->
 	<c:choose>
-	<c:when test="${sessionScope.u.type eq 'p'}">
+	<c:when test="${sessionScope.u.type eq 'p' and sessionScope.u.yn eq 1}">	
 	<header class="main_menu">	
 		<div class="main_menu_iner">
 			<div class="container">
@@ -85,8 +85,8 @@
 									</li> -->
 								</ul>
 							</div>							
-									<a href="/partnerLogout.do" class="genric-btn info d-none d-lg-block" style="font-size:large;">로그아웃</a>
-									<a href="/employeeMypage.do" class="genric-btn info d-none d-lg-block" style="margin-left: 1px; font-size:large;">${sessionScope.u.id}</a>
+									<a href="/partnerLogout.do" class="genric-btn info d-none d-lg-block" style="font-size:large;">로그아웃</a>									
+									<a href="/employeeMypage.do" class="genric-btn info d-none d-lg-block" style="margin-left: 1px; font-size:large;">${sessionScope.u.name}</a>
 						</nav>
 					</div>
 				</div>

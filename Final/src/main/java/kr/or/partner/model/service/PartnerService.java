@@ -15,5 +15,10 @@ public class PartnerService {
 		
 		return dao.selectOnePartner(u);
 	}
+
+	public int insertPartner(User u) {
+		// TODO Auto-generated method stub
+		return dao.insertPartner(u);
+	}
 	
 }
