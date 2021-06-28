@@ -4,7 +4,7 @@
 	<!-- User insert 예시 -->
 	<insert id="insertEmployee" parameterType="u">
  		insert into employee values
- 		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0)
+ 		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0,#{detail_address})
  	</insert>
  	<!-- User select 예시 -->
 	<select id="selectOneEmployee" parameterType="u" resultType="u">
@@ -19,6 +19,7 @@
 	  	employee_birth as birth,
 	  	employee_gender as gender,
 		change_pw as changePw,
+		detail_address as detail_address
 		'e' AS type
 	  from employee where employee_id=#{id}
 	  <if test="pw != null">
@@ -32,7 +33,8 @@
  		employee_phone=#{phone},
  		employee_address=#{address},
  		employee_birth=#{birth},
- 		employee_gender=#{gender}
+ 		employee_gender=#{gender},
+ 		detail_address = #{detail_address}
  	where employee_id = #{id}
  	</update>
 	<select id="totalUserList" resultType="u">
@@ -47,6 +49,7 @@
 	  	employee_birth as birth,
 	  	employee_gender as gender,
 		change_pw as changePw,
+		detail_address as detail_address
 		'e' AS type
 	from employee
 	</select>

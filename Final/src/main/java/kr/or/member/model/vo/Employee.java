@@ -11,6 +11,7 @@ public class Employee {
 	private String employeeBirth;
 	private String employeeGender;
 	private String chargePw;
+	private String detail_address;
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub

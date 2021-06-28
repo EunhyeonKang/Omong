@@ -44,7 +44,7 @@
 					<hr>
 					<h4 style="text-align:left;">비밀번호</h4>
 					<div class="mt-10">
-						<input type="text" name="pw" placeholder="패스워드를 입력해주세요" class="single-input">
+						<input type="password" name="pw" placeholder="패스워드를 입력해주세요" class="single-input">
 					</div>
 					<br><br>
 					<div class="social">

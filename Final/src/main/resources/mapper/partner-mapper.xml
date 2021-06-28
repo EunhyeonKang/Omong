@@ -15,6 +15,7 @@
   		partner_tel as tel,
   		partner_address as address,
   		change_pw as changePw,
+  		detail_address as detail_address,
   		'p' as type
 	from partner where partner_id=#{id}
 		<if test="pw != null">
