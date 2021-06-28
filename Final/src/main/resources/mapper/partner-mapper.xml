@@ -22,4 +22,7 @@
 		and partner_pw=#{pw}
 		</if>  		
   </select>
+  <insert id="insertPartner" parameterType="u">
+  	insert into partner values(partner_sequence.nextval,0,#{id},#{pw},#{name},#{business},#{ceo},#{email},#{phone},#{tel},#{address},'n')  		
+  </insert>
 </mapper>

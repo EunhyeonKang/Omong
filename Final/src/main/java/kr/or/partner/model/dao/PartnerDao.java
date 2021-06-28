@@ -16,4 +16,9 @@ public class PartnerDao {
 		
 		return sqlSession.selectOne("partner.selectOnePartner" ,u);
 	}
+
+	public int insertPartner(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("partner.insertPartner" , u);
+	}
 }
