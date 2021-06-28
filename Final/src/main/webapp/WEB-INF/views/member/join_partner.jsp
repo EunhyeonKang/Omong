@@ -735,12 +735,11 @@ LG U+	안심번호 / 전자결제 / SMS전송
 					<br>
 				</div>
 				<div class="checkbox">
-					<label><input type="checkbox" id="default-checkbox">
-						이벤트 및 신규 서비스 안내,마케팅활용에 동의합니다.(선택)</label>
+					<label><input type="checkbox" class="agree" id="default-checkbox"> 이벤트 및 신규 서비스 안내,마케팅활용에 동의합니다.(선택)</label>
 				</div>
 				<br>
 					<div style="text-align: center;">
-							<input type="submit" value=" N E X T "
+							<input type="submit" value=" 다 음  "
 								class="genric-btn info e-large next" style="width: 300px; font-size: x-large; font-weight: bold;">
 						</div>
 				
@@ -749,71 +748,71 @@ LG U+	안심번호 / 전자결제 / SMS전송
 				<div class="col-lg-8 col-md-8 step">
 					<h3 class="mb-30">회원가입</h3>
 					
-					<form action="#">
+					<form action="partnerJoin.do" method="post">
 						<h4>상호명</h4>
 						<div class="mt-10">
-							<input type="text" name="partnerName" placeholder="상호명"
+							<input type="text" name="name" placeholder="상호명"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '상호명'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>대표자명</h4>
+						<h4>대표자명</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerCeo" placeholder="대표자명"
+							<input type="text" name="ceo" placeholder="대표자명"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '대표자명'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>아이디</h4>
+						<h4>아이디</h4> <span></span>
 						<div class="mt-10">
-							<input type="text" name="partnerId" placeholder="아이디"
+							<input type="text" name="id" placeholder="아이디"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '아이디'" required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>비밀번호</h4>
+						<h4>비밀번호</h4> <span></span>
 						<div class="mt-10">
-							<input type="password" name="partnerPw" placeholder="비밀번호"
+							<input type="password" name="pw" placeholder="비밀번호"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '비밀번호'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>비밀번호 확인</h4>
+						<h4>비밀번호 확인</h4> <span></span>
 						<div class="mt-10">
-							<input type="password" name="rePassword" placeholder="비밀번호 확인"
+							<input type="password" name="rePw" placeholder="비밀번호 확인"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '비밀번호 확인'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>이메일</h4>
+						<h4>이메일</h4> 
+						<span></span>
 						<div class="mt-10">							
-							<input type="text" name="partnerEmail" placeholder="이메일주소"
+							<input type="text" name="email" placeholder="이메일주소"
 								onfocus="this.placeholder = ''"
 								onblur="this.placeholder = '이메일주소'"required
 								class="single-input">
 						</div>
 						<hr>
-						<h4>주소</h4> <span></span>
-						<div class="input-group-icon mt-10">
-							<input type="hidden" id="sample2_extraAddress">
-							<input type="button" style="margin-left:88%; border:0;" onclick="findAddress()" value="주소 찾기">
-							<br><br>
-							<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-							<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-							<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-							</div>
-							<input type="text" name="address" id="address" placeholder="주소를 입력해주세요"
-								 required
-								class="single-input" readonly>
-							<br>	
-							<input type="text" name="address_detail" id="address_detail"  placeholder="상세주소를 입력해주세요" 
-							required class="single-input">
+						<h4>주소</h4><span><input type="button" class="genric-btn info-border d-none d-lg-block" style=" border:1;" onclick="findAddress()" value="주소 찾기"></span>
+					<div class="input-group-icon mt-10">
+						<input type="hidden" id="sample2_extraAddress">
+						
+						<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+						<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 						</div>
+						<input type="text" name="address" id="address" placeholder="주소를 입력해주세요"
+							 required
+							class="single-input" readonly>
+						<br>	
+						<input type="text" name="detailAddress" id="detail_address"  placeholder="상세주소를 입력해주세요" 
+						required class="single-input">
+					</div>
 						<hr>
 						<h4>전화번호</h4> <span></span>
 						<div class="mt-10">
@@ -853,6 +852,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 	<!--================ Blog Area end =================-->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	    // 우편번호 찾기 화면을 넣을 element
@@ -905,7 +905,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById("address").value = addr;
 	                // 커서를 상세주소 필드로 이동한다.
-	                document.getElementById("address_detail").focus();
+	                document.getElementById("detail_address").focus();
 	
 	                // iframe을 넣은 element를 안보이게 한다.
 	                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -927,7 +927,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 	    // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
 	    // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
 	    function initLayerPosition(){
-	        var width = 300; //우편번호서비스가 들어갈 element의 width
+	        var width = 700; //우편번호서비스가 들어갈 element의 width
 	        var height = 400; //우편번호서비스가 들어갈 element의 height
 	        var borderWidth = 5; //샘플에서 사용하는 border의 두께
 	
@@ -979,7 +979,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 			
 		})
 		
-		/* 아이디 유효성 검사 */
+		/* 아이디 유효성 검사 자세히 해야함*/
 		$("[name=id]").keyup(function(){
 			var idReg = /^[\w]{4,12}$/;
 			var id = $(this).val();
@@ -993,20 +993,48 @@ LG U+	안심번호 / 전자결제 / SMS전송
 			}
 			
 		})
-		/* 비밀번호 유효성 해야함*/
-		$("[name=id]").keyup(function(){
-			var idReg = /^[\w]{4,12}$/;
-			var id = $(this).val();
+		/* 비밀번호 유효성 자세히 해야함*/
+		$("[name=pw]").keyup(function(){
+			var pwReg = /^[\w]{8,20}$/;
+			var pw = $(this).val();
 
-			if(idReg.test(id)){
-				$(this).parent().prev().html("사용가능한 아이디 입니다.");
+			if(pwReg.test(pw)){
+				$(this).parent().prev().html("사용가능한 비밀번호 입니다.");
 				$(this).parent().prev().css("color","blue");
 			}else{
-				$(this).parent().prev().html("영어 숫자를 조합하여 4~12자로 적어주세요.")
+				$(this).parent().prev().html("영어 숫자를 조합하여 8~20자로 적어주세요.")
 				$(this).parent().prev().css("color","red");
 			}
 			
 		})
+		/* 이메일 유효성 */
+		$("[name=email]").keyup(function(){
+			var emailReg = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+			var email = $(this).val();
+
+			if(emailReg.test(email)){
+				$(this).parent().prev().html("존재하지 않는 메일의 경우 파트너 동의 확인서를 받지 못하실 수 있습니다.");
+				$(this).parent().prev().css("color","blue");
+			}else{
+				$(this).parent().prev().html("정확한 양식으로 작성해주세요")
+				$(this).parent().prev().css("color","red");
+			}
+			
+		})
+		/* 비밀번호 확인 */
+		$("[name=rePw]").keyup(function(){
+			var pw = $("[name=pw]").val();
+			var rePw = $(this).val();
+			
+			if(pw == rePw) {
+				$(this).parent().prev().html("비밀번호가 일치합니다.");
+				$(this).parent().prev().css("color","blue");
+			}else{
+				$(this).parent().prev().html("비밀번호가 일치하지 않습니다.")
+				$(this).parent().prev().css("color","red");
+			}
+			
+		}) 
 	})
 </script>
 </html>

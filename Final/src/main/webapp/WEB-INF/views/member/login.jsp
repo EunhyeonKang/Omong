@@ -28,14 +28,14 @@
 		</div>
 	</section>
 	<!-- breadcrumb start-->
-	<div class="section-top-border" style="text-align: center;">
+	<div class="section-top-border" style=" text-align: center;">
 		<button class="genric-btn primary e-large" id="user_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">일반회원</button>
 		<button class="genric-btn info e-large" id="partner_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">파트너</button>
 		<button class="genric-btn success e-large" id="employee_login"
 		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
-		<div class="section-top-border" id="user" style="margin-left:34%; width:480px; display:none;">
+		<div class="section-top-border" id="user" style="margin:0 auto; width:480px; display:none;">
 			<form action="/memberLogin.do">
 					<h4 style="text-align:left;">아이디(메일)</h4>
 					<div class="mt-10">
@@ -58,7 +58,7 @@
 					</div>
 				</form>
 		</div>
-		<div class="section-top-border" id="partner" style="margin-left:34%; width:480px; display:none;">
+		<div class="section-top-border" id="partner" style="margin:0 auto; width:480px; display:none;">
 			<form action="/partnerLogin.do" method="get">
 					<h4 style="text-align:left;">아이디</h4>
 					<div class="mt-10">
@@ -81,7 +81,7 @@
 					</div>
 				</form>
 		</div>
-		<div class="section-top-border" id="employee" style="margin-left:34%; width:480px; display:none;">
+		<div class="section-top-border" id="employee" style="margin:0 auto; width:480px; display:none;">
 			<form action="/employeeLogin.do">
 					<h4 style="text-align:left;">직원 아이디</h4>
 					<div class="mt-10">
