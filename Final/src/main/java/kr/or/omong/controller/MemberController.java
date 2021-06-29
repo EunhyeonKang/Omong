@@ -69,40 +69,6 @@ public class MemberController {
 	public String join_user() {
 		return "member/join_user";
 	}
-
-
-	@ResponseBody
-	@RequestMapping(value="/idCheck")
-	public String idCheck(User u) {
-		User employee = eService.selectOneEmployee(u);
-		if(employee!=null) {
-			return "1";
-		}else {
-			return "0";
-		}
-	}
-	@RequestMapping(value="/employeeLogin.do")
-	public String employeeLogin(User u,HttpServletRequest request,Model model) {
-		User employee = eService.selectOneEmployee(u);
-		if (employee != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("u", employee);
-			model.addAttribute("msg", "로그인 성공");
-		} else {
-			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
-		}
-		model.addAttribute("loc", "/");
-		return "common/msg";
-	}
-	@RequestMapping(value="/employeeMypage.do")
-	public String employeeMypage() {
-		return "member/employeeMypage";
-	}
-	@RequestMapping(value="/employeeUpdate.do")
-	public String employeeUpdate(User u,Model model) {
-		int result = eService.employeeUpdate(u);
-		return "redirect:/employeeMypage.do?employeeId=" + u.getId();
-	}
 	@ResponseBody
 	@RequestMapping(value="/totalUserList.do", produces = "application/json; charset=utf-8")
 	public String totalUserList(Model model) {
