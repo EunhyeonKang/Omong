@@ -29,8 +29,7 @@
 	<section class="blog_area single-post-area section_padding">
 		<div class="container">
 			<h3 style="float: left; margin-left: 40px;">자유게시판</h3>
-		<button
-			style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;"><a href="boardWriteFrm.do">글쓰기</a></button>
+			<a href="boardWriteFrm.do"><button style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">글쓰기</button></a>
 			<hr style="border: 1px solid black;">
 			<div class="progress-table-wrap">
 				<div class="progress-table">

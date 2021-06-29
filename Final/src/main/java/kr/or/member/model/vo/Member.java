@@ -14,6 +14,6 @@ public class Member {
 	private String memberGender;
 	private String changePw;
 	private String loginPath;
-	private String detail_address;
+	private String detailAddress;
 	
 }
