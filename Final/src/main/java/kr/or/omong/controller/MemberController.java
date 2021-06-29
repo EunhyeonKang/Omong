@@ -130,9 +130,20 @@ public class MemberController {
 		ArrayList<User> list = service.totalUserList();
 		return new Gson().toJson(list);
 	}
+	
+	@RequestMapping(value="/consulting.do")
+	public String consulting(){
+		return "member/consulting";
+	}
+	
 	@RequestMapping(value="/login.do")
 	public String login() {
 		return "member/login";
+	}
+	@RequestMapping(value="/basicLogout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {

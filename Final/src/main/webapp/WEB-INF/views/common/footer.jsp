@@ -14,7 +14,7 @@
 			<div class="row justify-content-between" style="margin-left: 100px;">
 				<div class="col-sm-6 col-md-5">
 					<div style="width: 700px; float: left;">
-						<h3 style="color: white;">고객센터</h3>
+						<h3 style="color: white;">고객센터</h3><span><a href="/consulting.do"><img src="/resources/img/kakao.jpg" style="margin-left: 1px; width : 50px;" ></a></span>
 						<h3 style="color: white;">1544-3100</h3>
 						<br>
 						<h5 style="color: white;">운영시간 09:00 ~ 18:00</h5>

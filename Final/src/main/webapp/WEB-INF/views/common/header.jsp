@@ -150,8 +150,21 @@
 									<a href="/join.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px; background-color:#F18101">회원가입</a>
 								</c:when>
 								<c:otherwise>
-									<a href="https://kauth.kakao.com/oauth/logout?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&logout_redirect_uri=http://localhost:8082/logout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
-									<a href="/employeeMypage.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">마이페이지</a>
+									<c:if test="${sessionScope.u.type eq 'e' }">
+										<a href="/basicLogout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
+										<a href="/employeeMypage.do" class="btn_1 d-none d-lg-block" style="margin-left: 1px;">마이페이지</a>	
+									</c:if>
+									<c:if test="${sessionScope.u.type eq 'u' }">
+										<c:if test="${sessionScope.u.changePw eq 1 }">
+											<!-- 유저 - 기본로그아웃 (임시발급 안해도됨 (기본값 1)-->
+											<a href="/basicLogout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
+										</c:if>
+										<c:if test="${sessionScope.u.changePw eq 0 }">
+											<!-- 유저 - 소셜로그아웃(임시발급 비밀번호 0이면 소셜)-->
+											<a href="https://kauth.kakao.com/oauth/logout?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&logout_redirect_uri=http://localhost:8082/logout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
+										</c:if>
+										
+									</c:if>
 								</c:otherwise>
 							</c:choose>
 						</nav>

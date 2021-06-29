@@ -163,11 +163,11 @@
    <!--================ Blog Area end =================-->
    <%@include file="/WEB-INF/views/common/footer.jsp"%>
    <script>
-		$("[name=employeeId]").keyup(function(){
-			var employeeId = $(this).val();
+		$('[name=id]').keyup(function(){
+			var id = $(this).val();
 			$.ajax({
 				url:"/idCheck.do",
-				data : {employeeId:employeeId},
+				data : {id:id},
 				type : "get",
 				success: function(data){
 					if(data==1){
@@ -178,16 +178,16 @@
 				}
 			})
 		});
-		$('[name=employeeId]').on('keyup' ,function(event) {
-		    if (/^[0-9a-z]+$/g.test($('[name=employeeId]').val())) {
+		$('[name=id]').on('keyup' ,function(event) {
+		    if (/^[0-9a-z]+$/g.test($('[name=id]').val())) {
 		         $('.idChk').html("<i class='bi bi-exclamation-circle'></i>"); 
 		    } else {
 		    	 $('.idChk').html("<i class='bi bi-exclamation-circle'></i> 숫자, 영문만 입력 가능");
 		     
 		    }
 		});
-		$('[name=employeePw]').on('keyup' ,function(event) {
-		    if (/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/g.test($('[name=employeePw]').val())) {
+		$('[name=pw]').on('keyup' ,function(event) {
+		    if (/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/g.test($('[name=pw]').val())) {
  		        $('.pwChk').html("<i class='bi bi-exclamation-circle'></i>"); 
 		    } else {
 		    	 $('.pwChk').html("<i class='bi bi-exclamation-circle'></i> 숫자, 특문 각 1회 이상, 영문은 2개 이상 사용하여 8자리 이상 입력");
@@ -195,9 +195,9 @@
 		    }
 		});
 		
-		 $('[name=employeePwRe]').focusout(function () {
-		        var pwd1 = $("[name=employeePw]").val();
-		        var pwd2 = $("[name=employeePwRe]").val();
+		 $('[name=pwRe]').focusout(function () {
+		        var pwd1 = $("[name=pw]").val();
+		        var pwd2 = $("[name=pwRe]").val();
 		  
 		        if ( pwd1 != '' && pwd2 == '' ) {
 		            null;
