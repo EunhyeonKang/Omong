@@ -1,23 +1,27 @@
 package kr.or.omong.controller;
 
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.or.member.model.vo.User;
+import com.google.gson.Gson;
+
+import kr.or.member.model.service.EmployeeService;
 import kr.or.member.model.service.MemberService;
+import kr.or.member.model.vo.User;
 
 @Controller
 public class MemberController {
 	@Autowired
 	private MemberService service;
+	private EmployeeService eService;
 	
 	public MemberController() {
 		super();
@@ -67,9 +71,58 @@ public class MemberController {
 	}
 
 
+	@ResponseBody
+	@RequestMapping(value="/idCheck")
+	public String idCheck(User u) {
+		User employee = eService.selectOneEmployee(u);
+		if(employee!=null) {
+			return "1";
+		}else {
+			return "0";
+		}
+	}
+	@RequestMapping(value="/employeeLogin.do")
+	public String employeeLogin(User u,HttpServletRequest request,Model model) {
+		User employee = eService.selectOneEmployee(u);
+		if (employee != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("u", employee);
+			model.addAttribute("msg", "로그인 성공");
+		} else {
+			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+	@RequestMapping(value="/employeeMypage.do")
+	public String employeeMypage() {
+		return "member/employeeMypage";
+	}
+	@RequestMapping(value="/employeeUpdate.do")
+	public String employeeUpdate(User u,Model model) {
+		int result = eService.employeeUpdate(u);
+		return "redirect:/employeeMypage.do?employeeId=" + u.getId();
+	}
+	@ResponseBody
+	@RequestMapping(value="/totalUserList.do", produces = "application/json; charset=utf-8")
+	public String totalUserList(Model model) {
+		ArrayList<User> list = eService.totalUserList();
+		return new Gson().toJson(list);
+	}
+	
+	@RequestMapping(value="/consulting.do")
+	public String consulting(){
+		return "member/consulting";
+	}
+
 	@RequestMapping(value="/login.do")
 	public String login() {
 		return "member/login";
+	}
+	@RequestMapping(value="/basicLogout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {

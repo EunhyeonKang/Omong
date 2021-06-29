@@ -1,10 +1,14 @@
 package kr.or.member.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.member.model.vo.Employee;
+import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.User;
 
 @Repository
@@ -33,6 +37,12 @@ public class EmployeeDao {
 	public void selectOneEmployee(String msg) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public ArrayList<User> totalUserList() {
+		// TODO Auto-generated method stub
+		List<User> list = sqlSession.selectList("employee.totalUserList");
+		return (ArrayList<User>)list;
 	}
 	
 }

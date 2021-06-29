@@ -15,7 +15,7 @@ public  class User {
 	private String gender;
 	private String changePw;
 	private String detailAddress;
-	
+
 	// Member, Partner, Employee, Admin의 구분 요소
 	private String type;
 	
