@@ -5,7 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script type="text/javaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<style>
+input.button-add {
+   padding: 10px;
+    background-color: #ffc107;
+    border: 0;
+    color: #955900;
+    border-radius: 10px;
+    font-weight: bolder;    
+    border: 3px solid white;
+}
+</style>
 </head>
 <body>
 	<!-- footer part start-->
@@ -14,7 +27,57 @@
 			<div class="row justify-content-between" style="margin-left: 100px;">
 				<div class="col-sm-6 col-md-5">
 					<div style="width: 700px; float: left;">
-						<h3 style="color: white;">고객센터</h3><span><a href="/consulting.do"><img src="/resources/img/kakao.jpg" style="margin-left: 1px; width : 50px;" ></a></span>
+						<h3 style="color: white;">고객센터</h3>
+						<span><input type="button" onClick="sendLinkCustom();" value="오픈채팅 링크 보내기"class="button-add"/></span><br><br> 
+						<!-- <input type="button" onClick="secdLinkDefault();" value="Default"/> -->
+						<script type="text/javascript">
+						 	Kakao.init('5e721adb2b93aa6c4075e9c0c13ce4b6');
+							function sendLinkCustom(){
+								Kakao.Link.sendCustom({
+									templateId : 56062 
+								});
+							}
+						</script>
+			
+						<script type="text/javascript">
+						try{
+							function secdLinkDefault(){
+								Kakao.init("5e721adb2b93aa6c4075e9c0c13ce4b6")
+								Kakao.Link.sendDefault({
+									objectType: 'feed',
+								      content: {
+								        title: '오픈채팅방',
+								        description: '#제주 #여행 #계획 #공유 #모들 #오몽',
+								        imageUrl:
+								          'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
+								        link: {
+								          mobileWebUrl: 'https://developers.kakao.com',
+								          webUrl: 'https://developers.kakao.com',
+								        },
+								      },
+								      
+								      buttons: [
+								        {
+								          title: '웹으로 보기',
+								          link: {
+								            mobileWebUrl: 'https://developers.kakao.com',
+								            webUrl: 'https://developers.kakao.com',
+								          },
+								        },
+								        {
+								          title: '앱으로 보기',
+								          link: {
+								            mobileWebUrl: 'https://developers.kakao.com',
+								            webUrl: 'https://developers.kakao.com',
+								          },
+								        },
+								      ],
+								})
+							}
+						;window.kakaoDemoCallback && window.kakaoDemoCallback()}
+						catch(e){window.kakaoDemoException && window.kakaoDemoException(e)}
+						  </script>
+												
 						<h3 style="color: white;">1544-3100</h3>
 						<br>
 						<h5 style="color: white;">운영시간 09:00 ~ 18:00</h5>
@@ -98,4 +161,5 @@
 	
 	})
 </script>
+
 </html>

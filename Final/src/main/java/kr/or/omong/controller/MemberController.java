@@ -69,16 +69,10 @@ public class MemberController {
 	public String join_user() {
 		return "member/join_user";
 	}
-	@ResponseBody
-	@RequestMapping(value="/totalUserList.do", produces = "application/json; charset=utf-8")
-	public String totalUserList(Model model) {
-		ArrayList<User> list = eService.totalUserList();
-		return new Gson().toJson(list);
-	}
-	
-	@RequestMapping(value="/consulting.do")
-	public String consulting(){
-		return "member/consulting";
+
+	@RequestMapping(value="/join_partner.do")
+	public String join_partner() {
+		return "member/join_partner";
 	}
 
 	@RequestMapping(value="/login.do")
