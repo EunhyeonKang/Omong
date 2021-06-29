@@ -21,7 +21,6 @@ import kr.or.member.model.vo.User;
 public class MemberController {
 	@Autowired
 	private MemberService service;
-	private EmployeeService eService;
 	
 	public MemberController() {
 		super();
@@ -68,11 +67,6 @@ public class MemberController {
 	@RequestMapping(value="/join_user.do")
 	public String join_user() {
 		return "member/join_user";
-	}
-
-	@RequestMapping(value="/join_partner.do")
-	public String join_partner() {
-		return "member/join_partner";
 	}
 
 	@RequestMapping(value="/login.do")

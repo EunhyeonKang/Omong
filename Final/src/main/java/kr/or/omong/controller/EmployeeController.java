@@ -1,5 +1,7 @@
 package kr.or.omong.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import kr.or.member.model.service.EmployeeService;
+import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.User;
 
 @Controller
@@ -33,6 +38,13 @@ public class EmployeeController {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
+	@ResponseBody
+	@RequestMapping(value = "/totalUserList.do", produces = "application/json; charset=utf-8")
+	public String totalUserList() {
+		ArrayList<User> list = service.totalUserList();
+		return new Gson().toJson(list);
+	}
+
 	
 	@ResponseBody
 	@RequestMapping(value="/idCheck")
