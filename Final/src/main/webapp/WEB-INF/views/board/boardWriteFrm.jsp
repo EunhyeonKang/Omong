@@ -34,19 +34,24 @@
 				<div class="progress-table">
 					<div class="table-head">
 						<div class="serial">제목</div>
-						<div class="percentage"><input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
+						<div class="percentage"><input class="form-control" name="title" id="title" type="text" placeholder='제목을 입력하세요'></div>
 						<div class="serial">작성자</div>
-						<div class="percentage"><input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" ></div>
+						<div class="percentage"><input class="form-control" name="date" id="writer" type="writer" value="${sessionScope.u.id }" readonly></div>
 					</div>
 					<div class="table-row">
 					<div class="serial">첨부파일</div>
-						<div class="percentage"><input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" ></div>
+						<div class="percentage"><input class="form-control" name="file" id="file" type="file"></div>
 						<div class="serial">작성일</div>
-						<div class="percentage"><input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" ></div>
+						<c:set var="now" value="<%=new java.util.Date()%>" />
+						<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
+						<div class="percentage"><input class="form-control" name="date" id="date" type="text" value="${sysDate }" readonly></div>
 					</div>
 					<div class="table-row">
 						<div class="serial">내용</div>
-						<div style="width: 80%"> <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message'></textarea></div>
+						<div style="width: 80%"> <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9" placeholder='내용을 입력하세요'></textarea></div>
+					</div>
+					<div style="text-align : center;">
+					<input type="submit" value="작 성 완 료" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
 					</div>
 				</div>
 			</div>
