@@ -37,11 +37,11 @@
 							<div class="serial">제목</div>
 							<div class="percentage"><input class="form-control" name="title" id="title" type="text" placeholder='제목을 입력하세요'></div>
 							<div class="serial">작성자</div>
-							<div class="percentage"><input class="form-control" name="date" id="writer" type="writer" value="${sessionScope.u.id }" readonly></div>
+							<div class="percentage"><input class="form-control" name="writer" id="writer" type="writer" value="${sessionScope.u.id }" readonly></div>
 						</div>
 						<div class="table-row">
 						<div class="serial">첨부파일</div>
-							<div class="percentage"><input class="form-control" name="file" id="file" type="file"></div>
+							<div class="percentage"><input class="form-control" name="files" id="files" type="file" multiple></div>
 							<div class="serial">작성일</div>
 							<c:set var="now" value="<%=new java.util.Date()%>" />
 							<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 

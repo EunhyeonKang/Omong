@@ -845,7 +845,14 @@ LG U+	안심번호 / 전자결제 / SMS전송
 							</div>
 							</label>
 					</div>
-					
+					<h4>프로필 사진</h4>
+					<div id="imagePreview" class="box " style="background: #BDBDBD; margin-right:20px">
+    					<img id="image" class="profile">
+					</div>
+					<div class="input-group-icon mt-10" style="width:30%">
+						<input type="file" name="profile_image" required class="single-input"  onchange="previewImage(this)" >						
+					</div>
+					<br><br>
 					<div style="text-align : center;">
 					<input type="submit" value="회 원 가 입" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
 					</div>
@@ -941,6 +948,36 @@ LG U+	안심번호 / 전자결제 / SMS전송
 	        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
 	        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 	    }
+	    function previewImage(f){
+
+	    	var file = f.files;
+
+	    	// 확장자 체크
+	    	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+	    		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+
+	    		// 선택한 파일 초기화
+	    		f.outerHTML = f.outerHTML;
+
+	    		document.getElementById('imagePreview').innerHTML = '';
+
+	    	}
+	    	else {
+
+	    		// FileReader 객체 사용
+	    		var reader = new FileReader();
+
+	    		// 파일 읽기가 완료되었을때 실행
+	    		reader.onload = function(rst){
+	    			document.getElementById('imagePreview').innerHTML = '<img src="' + rst.target.result + '">';
+	    		}
+
+	    		// 파일을 읽는다
+	    		reader.readAsDataURL(file[0]);
+
+	    	}
+	    }
+
 	</script>
 	<script>
 	/* 약관동의 필수동의 클릭시 페이지 넘김 */

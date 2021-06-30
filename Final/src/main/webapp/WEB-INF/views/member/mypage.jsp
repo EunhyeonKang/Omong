@@ -121,17 +121,34 @@
 					<hr>
 					<div class="single-element-widget mt-30">
 						<h4>성별</h4>
-						<label for="male">
-							<div
-								style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-								<input type="radio" name="gender" id="male" value="남자">남자
-							</div>
-						</label> <label for="female">
-							<div
-								style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-								<input type="radio" name="gender" id="female" value="여자" checked>여자
-							</div>
-						</label>
+						<c:choose>
+							<c:when test="${sessionScope.u.gender eq '남' }">
+								<label for="male">
+									<div
+										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+										<input type="radio" name="gender" id="male" value="남자" checked readonly>남자
+									</div>
+								</label> <label for="female">
+									<div
+										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+										<input type="radio" name="gender" id="female" value="여자" readonly>여자
+									</div>
+								</label>
+							</c:when>
+							<c:otherwise>
+								<label for="male">
+									<div
+										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+										<input type="radio" name="gender" id="male" value="남자" readonly>남자
+									</div>
+								</label> <label for="female">
+									<div
+										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+										<input type="radio" name="gender" id="female" value="여자" checked readonly>여자
+									</div>
+								</label>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<hr>
 					
@@ -314,41 +331,40 @@
 		</div>
 	</div>
 	<!--================ 마이페이지_내일정 end =================-->
-	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script>
-		$("#change").click(function(){
-			if($("#change_information").css("display") == "none") {
-				$("#change_information").show();
-				$("#mypage").hide();
-				$("#mytrip").hide();
-				$("#buylist").hide();
-				$("#change").attr('class','genric-btn primary e-large');
-				$("#trip").attr('class','genric-btn primary-border e-large');
-				$("#buy").attr('class','genric-btn primary-border e-large');
-			}
-		});
-		$("#trip").click(function(){
-			if($("#mytrip").css("display") == "none") {
-				$("#mytrip").show();
-				$("#change_information").hide();
-				$("#mypage").hide();
-				$("#buylist").hide();
-				$("#trip").attr('class','genric-btn primary e-large');
-				$("#change").attr('class','genric-btn primary-border e-large');
-				$("#buy").attr('class','genric-btn primary-border e-large');
-			}
-		});
-		$("#buy").click(function(){
-			if($("#buylist").css("display") == "none") {
-				$("#buylist").show();
-				$("#change_information").hide();
-				$("#mypage").hide();
-				$("#mytrip").hide();
-				$("#buy").attr('class','genric-btn primary e-large');
-				$("#change").attr('class','genric-btn primary-border e-large');
-				$("#trip").attr('class','genric-btn primary-border e-large');
-			}
-		});
+	$("#change").click(function(){
+		if($("#change_information").css("display") == "none") {
+			$("#change_information").show();
+			$("#mypage").hide();
+			$("#mytrip").hide();
+			$("#buylist").hide();
+			$("#change").attr('class','genric-btn primary e-large');
+			$("#trip").attr('class','genric-btn primary-border e-large');
+			$("#buy").attr('class','genric-btn primary-border e-large');
+		}
+	});
+	$("#trip").click(function(){
+		if($("#mytrip").css("display") == "none") {
+			$("#mytrip").show();
+			$("#change_information").hide();
+			$("#mypage").hide();
+			$("#buylist").hide();
+			$("#trip").attr('class','genric-btn primary e-large');
+			$("#change").attr('class','genric-btn primary-border e-large');
+			$("#buy").attr('class','genric-btn primary-border e-large');
+		}
+	});
+	$("#buy").click(function(){
+		if($("#buylist").css("display") == "none") {
+			$("#buylist").show();
+			$("#change_information").hide();
+			$("#mypage").hide();
+			$("#mytrip").hide();
+			$("#buy").attr('class','genric-btn primary e-large');
+			$("#change").attr('class','genric-btn primary-border e-large');
+			$("#trip").attr('class','genric-btn primary-border e-large');
+		}
+	});
 	</script>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
