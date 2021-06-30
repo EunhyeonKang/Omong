@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
    <%@include file="/WEB-INF/views/common/header.jsp"%>
    <!-- breadcrumb start-->
    <section class="breadcrumb breadcrumb_bg"
