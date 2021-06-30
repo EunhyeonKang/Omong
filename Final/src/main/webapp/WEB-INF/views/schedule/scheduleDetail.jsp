@@ -25,9 +25,9 @@
 	#menu_wrap {
 		position:absolute;
 		top:0;
-		left:20%;
+		left:15%;
 		bottom:0;
-		width:250px;
+		width:300px;
 		margin:10px 0 30px 10px;
 		padding:5px;
 		overflow-y:auto;
@@ -40,7 +40,7 @@
 		top:0;
 		left:0;
 		bottom:0;
-		width:250px;
+		width:100px;
 		margin:10px 0 30px 10px;
 		padding:5px;
 		overflow-y:auto;
@@ -92,7 +92,7 @@
 				<div id="pagination"></div>
 			</div>
 			<!-- 일정표 -->
-			<div id="detailList" style="width: 20%; overflow-y: scroll; padding: 15px;">
+			<div id="detailList" style="width: 15%; overflow-y: scroll; padding: 15px;">
 				<div id="detail_head" style="width: 100%; height: 15%;">
 					<h3 style="text-align: center; padding-top: 10px">여행 일정표</h3>
 					<button id="day1"
@@ -195,6 +195,7 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0069a695a69eb1289dd330cee4957ce8&libraries=services"></script>
 	<!-- 카카오 맵 api 등록 스크립트 -->
 	<script>
+		var place = null;
 		// 마커를 담을 배열입니다
 		var markers = [];
 		var positions = new Array();
@@ -288,30 +289,30 @@
 				var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 					marker = addMarker(placePosition),
 					itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
 				// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 				// LatLngBounds 객체에 좌표를 추가합니다
 				marker.setDraggable(true);
 				bounds.extend(placePosition);
-
-				// 경도 위도 추가
-				positions.push({
-					La : placePosition.La,
-					Ma : placePosition.Ma
-				});
-
-				// 마커와 검색결과 항목에 mouseover 했을때
-				// 해당 장소에 인포윈도우에 장소명을 표시합니다
-				// mouseout 했을 때는 인포윈도우를 닫습니다
 				
-				(function(marker, title) {
+				// @ 6/28 저장할 객체 정보 저장
+				place = {address : places[i].address_name, lat : places[i].x, lng : places[i].y, title : places[i].place_name};
+				(function(marker, title, place) {
 					kakao.maps.event.addListener(marker, 'mouseover', function() {
-								displayInfowindow(marker, title);
-							});
+						displayInfowindow(marker, title);
+					});
 
 					kakao.maps.event.addListener(marker, 'mouseout', function() {
-								infowindow.close();
-							});
+						infowindow.close();
+					});
+					
+					kakao.maps.event.addListener(marker, 'click', function() {
+						// @ 6/29 마커 클릭 시 데이터 저장
+						if(confirm('등록하시겠습니까?')){
+							$(".detail").eq(0).append("<div class='day1'>"+place.title+"</div>");
+						}else{
+							return false;
+						}
+					});
 
 					itemEl.onmouseover = function() {
 						displayInfowindow(marker, title);
@@ -320,7 +321,16 @@
 					itemEl.onmouseout = function() {
 						infowindow.close();
 					};
-				})(marker, places[i].place_name);
+					
+					// @ 6/29 리스트 클릭 시 데이터 저장
+					itemEl.onclick = function(){
+						if(confirm('등록하시겠습니까?')){
+							$(".detail").eq(0).append("<div class='day1'>"+place.title+"</div>");
+						}else{
+							return false;
+						}
+					};
+				})(marker, places[i].place_name, place);
 
 				fragment.appendChild(itemEl);
 			}
@@ -332,7 +342,6 @@
 			// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 			map.setBounds(bounds);
 		}
-
 		// 검색결과 항목을 Element로 반환하는 함수입니다
 		function getListItem(index, places) {
 
@@ -428,11 +437,6 @@
 			}
 		}
 
-		function test() {
-			for (var i = 0; i < positions.length; i++) {
-				console.log(positions[i]);
-			}
-		}
 		/*
 		var lists = new Array();
 		$(function(){
