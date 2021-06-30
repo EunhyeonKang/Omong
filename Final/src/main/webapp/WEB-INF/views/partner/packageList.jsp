@@ -5,6 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.schedule{
+		justify-self: center;
+	 	margin:10px;
+	 	
+	}
+	.row{
+		justify-content: center;
+	}
+	.top_place{
+		width: 100%;
+	}
+	
+</style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -26,89 +40,16 @@
 	<!-- breadcrumb start-->
 
 	<!-- hotel list css start-->
-	<section class="top_place"
-		style="margin-top: 50px; margin-bottom: 50px;">
-		<h3 style="margin-left: 40px;">상품 패키지</h3>
+	<br>
+	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
+	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
+		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
-			<div class="row">
-				<div style="margin-right: 5%; margin-left: 5%;">
-					<div class="single_place">
-						<img src="/resources/img/성산일출봉.jpg" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="/packageView.do" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div style="margin-right: 5%;">
-					<div class="single_place">
-						<img src="/resources/img/single_place_2.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="single_place">
-						<img src="/resources/img/single_place_3.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="top_place" style="margin-bottom: 50px;">
-		<div class="container_reservation" style="width: 100%;">
-			<div class="row">
-				<div style="margin-right: 5%; margin-left: 5%;">
-					<div class="single_place">
+			<div class="row" style="flex-wrap: nowrap; ">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -130,8 +71,8 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 5%;">
-					<div class="single_place">
+				<div class="schedule" >
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -153,8 +94,8 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<div class="single_place">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -175,82 +116,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="top_place" style="margin-bottom: 50px;">
-		<div class="container_reservation" style="width: 100%;">
-			<div class="row">
-				<div style="margin-right: 5%; margin-left: 5%;">
-					<div class="single_place">
-						<img src="/resources/img/single_place_1.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div style="margin-right: 50px;">
-					<div class="single_place">
-						<img src="/resources/img/single_place_2.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="single_place">
-						<img src="/resources/img/single_place_3.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+				</div>		
+				
+				
 			</div>
 		</div>
 	</section>
