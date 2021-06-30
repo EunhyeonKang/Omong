@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Product {
 	private int packageProductNo;
-	private String productNo;
+	private int productNo;
 	private String productName;
 }
