@@ -1,5 +1,7 @@
 package kr.or.partner.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.oracle.jrockit.jfr.Producer;
 
 import kr.or.member.model.vo.User;
 import kr.or.partner.model.service.PartnerService;
 import sun.print.resources.serviceui;
+import kr.or.partner.model.vo.Package;
 
 @Controller
 public class PartnerController {
@@ -31,17 +35,17 @@ public class PartnerController {
 	@RequestMapping(value = "/partnerLogin.do")
 	public String login(User u, HttpServletRequest request, Model model) {
 		User partner = service.selectOnePatner(u);
-		
+
 		if (partner != null) {
-			if(partner.getYn() == 0) {
+			if (partner.getYn() == 0) {
 				model.addAttribute("msg", "미승인된 아이디 입니다. 직원에게 문의바랍니다.");
-			}else {
+			} else {
 				HttpSession session = request.getSession();
 				session.setAttribute("u", partner);
 				model.addAttribute("msg", "로그인 성공");
 			}
 		} else {
-			
+
 			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요");
 		}
 		model.addAttribute("loc", "/");
@@ -67,16 +71,30 @@ public class PartnerController {
 	public String join_partner() {
 		return "member/join_partner";
 	}
+
 	@RequestMapping(value = "/partnerJoin.do")
-	public String partnerJoin(User u , Model model) {
+	public String partnerJoin(User u, Model model) {
 		int result = service.insertPartner(u);
-		if(result>0) {
+		if (result > 0) {
 			model.addAttribute("msg", "회원가입 성공");
-		}else {
+		} else {
 			model.addAttribute("msg", "회원가입 실패");
 		}
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
-	
+
+	@RequestMapping(value = "/packageInsert.do")
+	public String packageInsert(Package pa, Model model, int[] productNum, String[] productName, String[] optionName,
+			String[] optionPrice) {
+		int packageProduct = service.packageInsert(pa, productNum, productName, optionName, optionPrice);
+		if (packageProduct > 0) {
+			model.addAttribute("msg", "상품등록이 완료되었습니다.");
+		} else {
+			model.addAttribute("msg", "상품등록중 오류발생");
+		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+
+	}
 }

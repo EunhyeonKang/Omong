@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class Option {
 	private int productNo;
+	private int optionNo;
 	private String optionName;
 	private String optionPrice;
-	private String optionInfo;
+	
 }

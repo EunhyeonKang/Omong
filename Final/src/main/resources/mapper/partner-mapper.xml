@@ -25,4 +25,48 @@
   <insert id="insertPartner" parameterType="u">
   	insert into partner values(partner_sequence.nextval,0,#{id},#{pw},#{name},#{business},#{ceo},#{email},#{phone},#{tel},#{address},'n',#{detailAddress}) 		
   </insert>
+  <insert id="packageInsert" parameterType="pac">
+  	insert into packageproduct values(
+  		#{partnerNo},
+  		packageproduct_sequence.nextval,
+  		#{packageProductName},
+  		#{packageProductInfo},
+  		'aaa',
+  		#{packageProductSubPicture},
+  		#{packageProductSubInfo1},
+  		#{packageProductSubInfo2},
+  		#{packageProductSubInfo3},
+  		#{packageProductSubInfo4},
+  		#{packageProductSubInfo5},
+  		#{ceo},
+  		#{tel},
+  		#{homepage},
+  		#{address}  		  		
+  	)
+  </insert>
+  <select id="selectPacNo" resultType="int">
+  	select max(packageproduct_no) from packageproduct 
+  </select>
+  <insert id="productInsert" parameterType="pro">
+  	insert into product values(
+  		#{packageProductNo},
+  		product_sequence.nextval,
+  		#{productName}
+  	)  	
+  </insert>
+  <select id="selectProNo" resultType="int">
+  	select max(product_no) from product  
+  </select>
+  <insert id="optionInsert">
+  	insert into product_option values(
+  		#{productNo},
+  		option_sequence.nextval,
+  		#{optionName},
+  		#{optionPrice}
+  	)
+  	
+  	
+  	
+  
+  </insert>
 </mapper>
