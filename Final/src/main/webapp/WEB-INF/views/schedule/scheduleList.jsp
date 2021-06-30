@@ -5,7 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.schedule{
+		justify-self: center;
+	 	margin:10px;
+	 	
+	}
+	.row{
+		justify-content: center;
+	}
+	.top_place{
+		width: 100%;
+	}
+	
+</style>
 </head>
+
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<!-- breadcrumb start-->
@@ -23,18 +38,17 @@
 		</div>
 	</section>
 	<!-- breadcrumb start-->
-
 	<!-- hotel list css start-->
-	<section class="top_place"
-		style="margin-top: 50px; margin-bottom: 50px;">
-		<h3 style="float: left; margin-left: 40px;">추천일정</h3>
-		<a href="/topScheduleList.do"><button
-			style="margin-left: 85%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
+	<br>
+	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
+	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
+		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
-			<div class="row">
-				<div style="margin-right: 5%; margin-left: 5%;">
-					<div class="single_place">
+			<div class="row" style="flex-wrap: nowrap; ">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -56,8 +70,8 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 5%;">
-					<div class="single_place">
+				<div class="schedule" >
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -79,8 +93,8 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<div class="single_place">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -105,15 +119,16 @@
 			</div>
 		</div>
 	</section>
-	<section class="top_place" style="margin-bottom: 50px;">
-		<h3 style="float: left; margin-left: 40px;">추천일정</h3>
-		<button
-			style="margin-left: 85%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button>
+	<br><br>
+	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
+	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
+		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
-			<div class="row">
-				<div style="margin-right: 5%; margin-left: 5%;">
-					<div class="single_place">
+			<div class="row" style="flex-wrap: nowrap; ">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -135,8 +150,8 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 5%;">
-					<div class="single_place">
+				<div class="schedule" >
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -158,8 +173,8 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<div class="single_place">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -184,15 +199,16 @@
 			</div>
 		</div>
 	</section>
-	<section class="top_place" style="margin-bottom: 50px;">
-		<h3 style="float: left; margin-left: 40px;">추천일정</h3>
-		<button
-			style="margin-left: 85%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button>
+	<br><br>
+	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
+	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
+		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
-			<div class="row">
-				<div style="margin-right: 5%; margin-left: 5%;">
-					<div class="single_place">
+			<div class="row" style="flex-wrap: nowrap; ">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_1.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -214,8 +230,8 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-right: 5%;">
-					<div class="single_place">
+				<div class="schedule" >
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_2.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -237,8 +253,8 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<div class="single_place">
+				<div class="schedule">
+					<div class="single_place" style="width : 90%; margin:30px" >
 						<img src="/resources/img/single_place_3.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
@@ -263,6 +279,7 @@
 			</div>
 		</div>
 	</section>
+	
 	<!-- hotel list css end -->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
