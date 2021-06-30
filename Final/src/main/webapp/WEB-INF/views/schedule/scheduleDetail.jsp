@@ -163,30 +163,37 @@
 			$(".detail").eq(0).show();
 		});
 		$("#day1").click(function() {
+			day = 1;
 			$(".detail").hide();
 			$(".detail").eq(0).show();
 		});
 		$("#day2").click(function() {
+			day = 2;
 			$(".detail").hide();
 			$(".detail").eq(1).show();
 		});
 		$("#day3").click(function() {
+			day = 3;
 			$(".detail").hide();
 			$(".detail").eq(2).show();
 		});
 		$("#day4").click(function() {
+			day = 4;
 			$(".detail").hide();
 			$(".detail").eq(3).show();
 		});
 		$("#day5").click(function() {
+			day = 5;
 			$(".detail").hide();
 			$(".detail").eq(4).show();
 		});
 		$("#day6").click(function() {
+			day = 6;
 			$(".detail").hide();
 			$(".detail").eq(5).show();
 		});
 		$("#day7").click(function() {
+			day = 7;
 			$(".detail").hide();
 			$(".detail").eq(6).show();
 		});
@@ -195,7 +202,10 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0069a695a69eb1289dd330cee4957ce8&libraries=services"></script>
 	<!-- 카카오 맵 api 등록 스크립트 -->
 	<script>
+		// @6/30 Day 테이블에 담을 객체 선언
 		var place = null;
+		// @6/30 Day 테이블 데이징 선언
+		var day = 1;
 		// 마커를 담을 배열입니다
 		var markers = [];
 		var positions = new Array();
@@ -308,7 +318,8 @@
 					kakao.maps.event.addListener(marker, 'click', function() {
 						// @ 6/29 마커 클릭 시 데이터 저장
 						if(confirm('등록하시겠습니까?')){
-							$(".detail").eq(0).append("<div class='day1'>"+place.title+"</div>");
+							console.log(day);
+							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
 						}else{
 							return false;
 						}
@@ -325,7 +336,8 @@
 					// @ 6/29 리스트 클릭 시 데이터 저장
 					itemEl.onclick = function(){
 						if(confirm('등록하시겠습니까?')){
-							$(".detail").eq(0).append("<div class='day1'>"+place.title+"</div>");
+							console.log(day);
+							$(".detail").eq((day-1)).append("<div class='day"+day+"'>"+place.title+"</div>");
 						}else{
 							return false;
 						}
@@ -470,24 +482,31 @@
 	</script>
 	<script>
 		$("#plus1").click(function() {
+			day = 1;
 			$(".detail").eq(0).append("<div class='day1'></div>")
 		});
 		$("#plus2").click(function() {
+			day = 2;
 			$(".detail").eq(1).append("<div class='day2'></div>")
 		});
 		$("#plus3").click(function() {
+			day = 3;
 			$(".detail").eq(2).append("<div class='day3'></div>")
 		});
 		$("#plus4").click(function() {
+			day = 4;
 			$(".detail").eq(3).append("<div class='day4'></div>")
 		});
 		$("#plus5").click(function() {
+			day = 5;
 			$(".detail").eq(4).append("<div class='day5'></div>")
 		});
 		$("#plus6").click(function() {
+			day = 6;
 			$(".detail").eq(5).append("<div class='day6'></div>")
 		});
 		$("#plus7").click(function() {
+			day = 7;
 			$(".detail").eq(6).append("<div class='day7'></div>")
 		});
 		$("#minus1").click(function() {
