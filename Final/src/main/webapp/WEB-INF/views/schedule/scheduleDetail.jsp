@@ -142,22 +142,35 @@
 	<!-- 카카오 맵 api 등록 스크립트 -->
 	<script>
 		var plan;
+		// @07/01 Day 테이블 순서 키값 선언
+		var spotNo = new Array();
+		// @07/01 Day Vo 담을 변수 선언
+		var spots = {};
+		var days = new Array();
 		// @6/30 Plan 테이블에 담을 객체 선언
 		$(function(){
 			$.ajax({
 				url : "/getPlan.do",
 				success:function(data){
-					plan = data;		
-					console.log(plan);
+					plan = data;
+
 				}
 			});
+			for(var i=0; i<${diff}; i++){
+				spotNo.push(0);
+				days.push(new Array());
+			}
+			console.log(spotNo);
+			console.log(days);
 		});
 		
-		console.log(plan);
 		// @6/30 Day 테이블에 담을 객체 선언
 		var place = null;
 		// @6/30 Day 테이블 데이징 선언
 		var day = 1;
+		
+
+
 		// 마커를 담을 배열입니다
 		var markers = [];
 		var positions = new Array();
@@ -271,7 +284,8 @@
 						// @ 6/29 마커 클릭 시 데이터 저장
 						if(confirm('등록하시겠습니까?')){
 							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
-							plan.push(place);
+							spots[(spotNo[day-1]++)] = place;
+							days[day-1] = spots;
 						}else{
 							return false;
 						}
@@ -289,7 +303,8 @@
 					itemEl.onclick = function(){
 						if(confirm('등록하시겠습니까?')){
 							$(".detail").eq((day-1)).append("<div class='day"+day+"'>"+place.title+"</div>");
-							plan.push(place);
+							spots[(spotNo[day-1]++)] = place;
+							days[day-1] = spots;
 						}else{
 							return false;
 						}
@@ -404,8 +419,8 @@
 		// @ 7/1 save 저장후 DB에 저장하기
 		function savePlan(){
 			$.ajax({
-				url : "/insertPlan",
-				data : plan,
+				url : "/insertPlan.do",
+				data : {plan: plan, days: days},
 				type : "post",
 				success : function(data){
 					

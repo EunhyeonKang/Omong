@@ -24,6 +24,7 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import kr.or.member.model.service.EmployeeService;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.User;
+import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
 
 @Controller
@@ -204,6 +205,13 @@ public class MemberController {
 		} else {
 			model.addAttribute("msg", "회원가입 실패");
 		}
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="insertPlan.do")
+	public String insertPlan(Plan p, ArrayList<Day> d, Model model) {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
