@@ -153,6 +153,7 @@
 						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<div class="day7"></div>
 				</div>
+				<button id="save" onclick="savePlan();">저장하기</button>
 			</div>
 		</div>
 	</div>
@@ -202,6 +203,8 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0069a695a69eb1289dd330cee4957ce8&libraries=services"></script>
 	<!-- 카카오 맵 api 등록 스크립트 -->
 	<script>
+		// @6/30 Plan 테이블에 담을 객체 선언
+		var plan = new Array();
 		// @6/30 Day 테이블에 담을 객체 선언
 		var place = null;
 		// @6/30 Day 테이블 데이징 선언
@@ -318,8 +321,8 @@
 					kakao.maps.event.addListener(marker, 'click', function() {
 						// @ 6/29 마커 클릭 시 데이터 저장
 						if(confirm('등록하시겠습니까?')){
-							console.log(day);
 							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
+							plan.push(place);
 						}else{
 							return false;
 						}
@@ -336,8 +339,8 @@
 					// @ 6/29 리스트 클릭 시 데이터 저장
 					itemEl.onclick = function(){
 						if(confirm('등록하시겠습니까?')){
-							console.log(day);
 							$(".detail").eq((day-1)).append("<div class='day"+day+"'>"+place.title+"</div>");
+							plan.push(place);
 						}else{
 							return false;
 						}
@@ -448,7 +451,18 @@
 				el.removeChild(el.lastChild);
 			}
 		}
-
+		
+		// @ 7/1 save 저장후 DB에 저장하기
+		function savePlan(){
+			$.ajax({
+				url : "/insertPlan",
+				data : plan,
+				type : "post",
+				success : function(data){
+					
+				}
+			});
+		}
 		/*
 		var lists = new Array();
 		$(function(){
