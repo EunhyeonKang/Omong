@@ -172,7 +172,7 @@
 										<c:otherwise>
 											<c:if test="${sessionScope.u.type eq 'm' }">
 												<div class="box" style="background: #BDBDBD; margin-right:20px">
-    												<img class="profile" src="/resources/upload/profile/">
+    												<img class="profile" src="/resources/upload/profile/${sessionScope.u.profileImage }">
 												</div>
 												<div style="margin-right:50px">
 													<h5>${sessionScope.u.name }</h5>
@@ -183,6 +183,7 @@
 											</c:if>
 										</c:otherwise>
 									</c:choose>
+									
 								</nav>
 							</div>
 						</div>

@@ -20,6 +20,7 @@
 			change_pw as changePw,
 			loginpath as path,
 			detail_address as detailAddress,
+			profileImage,
 			'm' as type
 		from member where member_id=#{email}
 		<if test="pw != null">
