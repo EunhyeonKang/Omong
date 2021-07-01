@@ -97,4 +97,5 @@ public class PartnerController {
 		return "common/msg";
 
 	}
+	
 }
