@@ -1,6 +1,10 @@
 package kr.or.partner.controller;
 
-import java.util.ArrayList;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.oracle.jrockit.jfr.Producer;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.member.model.vo.User;
 import kr.or.partner.model.service.PartnerService;
-import sun.print.resources.serviceui;
 import kr.or.partner.model.vo.Package;
 
 @Controller
@@ -33,7 +37,7 @@ public class PartnerController {
 	}
 
 	@RequestMapping(value = "/partnerLogin.do")
-	public String login(User u, HttpServletRequest request, Model model) {
+	public String login(User u, HttpServletRequest request, Model model ) {
 		User partner = service.selectOnePatner(u);
 
 		if (partner != null) {
@@ -42,7 +46,13 @@ public class PartnerController {
 			} else {
 				HttpSession session = request.getSession();
 				session.setAttribute("u", partner);
+				int partnerNo = partner.getNo();
+				int pacYn = service.selectPackage(partnerNo);
+				System.out.println(pacYn);
+				session.setAttribute("pacYn", pacYn);
+				
 				model.addAttribute("msg", "로그인 성공");
+				
 			}
 		} else {
 
@@ -85,8 +95,92 @@ public class PartnerController {
 	}
 
 	@RequestMapping(value = "/packageInsert.do")
-	public String packageInsert(Package pa, Model model, int[] productNum, String[] productName, String[] optionName,
-			String[] optionPrice) {
+	public String packageInsert(Package pa, Model model, int[] productNum, String[] productName, String[] optionName, String[] optionPrice , MultipartFile mainFiles[] ,MultipartFile subFiles[], HttpServletRequest request  ) {
+		
+		if(mainFiles[0].isEmpty()) {
+			
+		}else {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/package/");
+			for (MultipartFile file : mainFiles) {
+				String filename = file.getOriginalFilename();
+				String onlyFilename = filename.substring(0 , filename.indexOf("."));
+				String extention = filename.substring(filename.indexOf("."));
+				String filepath = null;
+				int count = 0;
+				while (true) {
+					if(count == 0 ) {
+						filepath = onlyFilename + extention;
+						
+					}else {
+						filepath = onlyFilename + "_" + count + extention;
+					}
+					File checkFile = new File(savePath + filepath);
+					if(!checkFile.exists()) {
+						break;
+						
+					}
+					count++;
+				}
+				pa.setPackageProductMainPicture(filepath);
+				
+				/* pa.setPackageProductSubPicture(); */
+				try {
+					FileOutputStream fos = new FileOutputStream(new File(savePath + filepath));
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+if(subFiles[0].isEmpty()) {
+			
+		}else {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/package/");
+			for (MultipartFile file : subFiles) {
+				String filename = file.getOriginalFilename();
+				String onlyFilename = filename.substring(0 , filename.indexOf("."));
+				String extention = filename.substring(filename.indexOf("."));
+				String filepath = null;
+				int count = 0;
+				while (true) {
+					if(count == 0 ) {
+						filepath = onlyFilename + extention;
+						
+					}else {
+						filepath = onlyFilename + "_" + count + extention;
+					}
+					File checkFile = new File(savePath + filepath);
+					if(!checkFile.exists()) {
+						break;
+						
+					}
+					count++;
+				}
+				pa.setPackageProductSubPicture(filepath);
+				
+				/* pa.setPackageProductSubPicture(); */
+				try {
+					FileOutputStream fos = new FileOutputStream(new File(savePath + filepath));
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 		int packageProduct = service.packageInsert(pa, productNum, productName, optionName, optionPrice);
 		if (packageProduct > 0) {
 			model.addAttribute("msg", "상품등록이 완료되었습니다.");
@@ -97,5 +191,7 @@ public class PartnerController {
 		return "common/msg";
 
 	}
+			
+	
 	
 }

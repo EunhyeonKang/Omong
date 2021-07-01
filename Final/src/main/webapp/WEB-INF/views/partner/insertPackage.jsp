@@ -17,7 +17,7 @@
 				<!-- 모자란거 대표사진 설명용사진? 판매할상품이름 / 옵션이름 / 가격  -->
 				<!-- 패키지 이름 / 설명 / 대표사진 / 설명용사진 / 묶고 다음 버튼 -> 이용안내 / 이용제한 안내 / 사용정보 / 안내사항 / 취소 / 환불 / 판매자명 / 연락처 / 홈페이지 주소 -> 상품명 / 옵션이름 / 가격    -->
 				<!-- 어케 묶어줘야할지 모르겠넹  -->
-				<form action="/packageInsert.do" method="post">
+				<form action="/packageInsert.do" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="partnerNo" value="${sessionScope.u.no}">
 					<div class="step">
 						<h4>패키지 이름</h4>
@@ -58,7 +58,7 @@
 						<p>대표로 보여질 사진을 선택해 주세요</p>
 						<div>
 							<label class="genric-btn primary-border" style="width: 100%; font-size: large; font-weight: bold;">
-								파일선택 <input type="file" id="imgSelector" name="mainPicture" onchange="loadImg(this);" style="display: none;" onchange="previewImage(this)" />
+								파일선택 <input type="file" id="imgSelector" name="mainFiles" onchange="loadImg(this);" style="display: none;" onchange="previewImage(this)" />
 							</label>
 						</div>
 						<div id="imagePreview" style="text-align:center;"><img src="" id="preview" class="mainPicture"></div>
@@ -67,7 +67,7 @@
 						<p>추가로 설명이필요한 파일을 첨부해주세요</p>
 						<div>
 							<label class="genric-btn primary-border" style="width: 100%; font-size: large; font-weight: bold;">
-								파일선택 <input type="file" id="subImgSelector" name="subPicture" onchange="loadImg(this);" style="display: none;" onchange="previewImage(this)" />
+								파일선택 <input type="file" id="subImgSelector" name="subFiles" onchange="loadImg(this);" style="display: none;" onchange="previewImage(this)" />
 							</label>
 						</div>
 						<div id="subImagePreview" style="text-align:center;"><img src="" id="subPreview" class="mainPicture"></div>

@@ -26,18 +26,18 @@ public class PartnerService {
 
 	public int packageInsert(Package pa, int[] productNum, String[] productName, String[] optionName, String[] optionPrice) {
 		// TODO Auto-generated method stub
-		for(int i=0;i<productNum.length;i++) {
-			System.out.println("프로덕트 번호" + productNum[i]);
-		}
-		for(int i=0;i<productName.length;i++) {
-			System.out.println("프로덕트 이름" + productName[i]);
-		}
-		for(int i=0;i<optionName.length;i++) {
-			System.out.println("옵션이름 " +optionName[i]);
-		}
-		for(int i=0;i<optionPrice.length;i++) {
-			System.out.println("옵션 가격" + optionPrice[i]);	
-		}
+//		for(int i=0;i<productNum.length;i++) {
+//			System.out.println("프로덕트 번호" + productNum[i]);
+//		}
+//		for(int i=0;i<productName.length;i++) {
+//			System.out.println("프로덕트 이름" + productName[i]);
+//		}
+//		for(int i=0;i<optionName.length;i++) {
+//			System.out.println("옵션이름 " +optionName[i]);
+//		}
+//		for(int i=0;i<optionPrice.length;i++) {
+//			System.out.println("옵션 가격" + optionPrice[i]);	
+//		}
 		int result = dao.packageInsert(pa);
 		if (result > 0) {
 
@@ -70,6 +70,12 @@ public class PartnerService {
 			return 0;
 		}
 		return 1;	
+	}
+
+
+	public int selectPackage(int partnerNo) {
+//		System.out.println(partnerNo);
+		return dao.selectPackage(partnerNo);
 	}
 	
 

@@ -49,6 +49,11 @@ public class PartnerDao {
 		return sqlSession.insert("partner.optionInsert", op);
 	}
 
+	public int selectPackage(int partnerNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("partner.selectPackage" , partnerNo);
+	}
+
 	
 	/*
 	 * public int packageInsert(Package pa, String[] productName, String[]
