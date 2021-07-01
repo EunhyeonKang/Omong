@@ -126,12 +126,12 @@
 								<label for="male">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자" checked readonly>남자
+										<input type="radio" name="gender" id="male" value="남자" checked onclick="return(false);">남자
 									</div>
 								</label> <label for="female">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자" readonly>여자
+										<input type="radio" name="gender" id="female" value="여자" onclick="return(false);">여자
 									</div>
 								</label>
 							</c:when>
@@ -139,12 +139,12 @@
 								<label for="male">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자" readonly>남자
+										<input type="radio" name="gender" id="male" value="남자" onclick="return(false);">남자
 									</div>
 								</label> <label for="female">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자" checked readonly>여자
+										<input type="radio" name="gender" id="female" value="여자" checked onclick="return(false);">여자
 									</div>
 								</label>
 							</c:otherwise>
@@ -248,12 +248,12 @@
 								<label for="male">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자" checked>남자
+										<input type="radio" name="gender" id="male" value="남자" checked onclick="return(false);">남자
 									</div>
 								</label> <label for="female">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자">여자
+										<input type="radio" name="gender" id="female" value="여자" onclick="return(false);">여자
 									</div>
 								</label>
 							</c:when>
@@ -261,12 +261,12 @@
 								<label for="male">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자">남자
+										<input type="radio" name="gender" id="male" value="남자" onclick="return(false);">남자
 									</div>
 								</label> <label for="female">
 									<div
 										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자" checked>여자
+										<input type="radio" name="gender" id="female" value="여자" checked onclick="return(false);">여자
 									</div>
 								</label>
 							</c:otherwise>
@@ -331,6 +331,7 @@
 		</div>
 	</div>
 	<!--================ 마이페이지_내일정 end =================-->
+	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script>
 	$("#change").click(function(){
 		if($("#change_information").css("display") == "none") {
@@ -366,7 +367,6 @@
 		}
 	});
 	</script>
-	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	    // 우편번호 찾기 화면을 넣을 element

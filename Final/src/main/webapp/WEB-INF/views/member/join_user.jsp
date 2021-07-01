@@ -748,7 +748,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 			<div class="step col-lg-8 col-md-8">
 				<h3 class="mb-30">회원가입</h3>
 				<hr>
-				<form action="/joinMember.do">
+				<form action="/joinMember.do" method="post" enctype="multipart/form-data">
 					<h4>아이디(메일)</h4>
 					<div class="mt-10">
 						<input type="text" name="email" placeholder="이메일을 입력해주세요"
@@ -850,7 +850,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
     					<img id="image" class="profile">
 					</div>
 					<div class="input-group-icon mt-10" style="width:30%">
-						<input type="file" name="profile_image" required class="single-input"  onchange="previewImage(this)" >						
+						<input type="file" name="files" required class="single-input"  onchange="previewImage(this)" >						
 					</div>
 					<br><br>
 					<div style="text-align : center;">

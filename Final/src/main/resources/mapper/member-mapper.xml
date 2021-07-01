@@ -4,7 +4,7 @@
 	<!-- member 회원가입 -->
 	<insert id="insertMember" parameterType="u">
 		insert into member values
-		(member_seq.nextval,#{email},#{pw},#{name},#{phone},#{address},#{birth},#{gender},'N','N',#{detailAddress})
+		(member_seq.nextval,#{email},#{pw},#{name},#{phone},#{address},#{birth},#{gender},'N','N',#{detailAddress},#{profileImage})
 	</insert>
 	<!-- member  select -->
 	<select id="selectOneMember" parameterType="u" resultType="u">
