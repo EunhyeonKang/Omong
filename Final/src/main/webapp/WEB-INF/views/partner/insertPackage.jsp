@@ -58,21 +58,19 @@
 						<p>대표로 보여질 사진을 선택해 주세요</p>
 						<div>
 							<label class="genric-btn primary-border" style="width: 100%; font-size: large; font-weight: bold;">
-								파일선택 <input type="file" id="formFile" name="mainPicture" onchange="loadImg(this);" style="display: none;" />
+								파일선택 <input type="file" id="imgSelector" name="mainPicture" onchange="loadImg(this);" style="display: none;" onchange="previewImage(this)" />
 							</label>
 						</div>
-						<div id="img-viewer"></div>
+						<div id="imagePreview" style="text-align:center;"><img src="" id="preview" class="mainPicture"></div>
 						<hr>
 						<h4>추가 첨부파일</h4>
 						<p>추가로 설명이필요한 파일을 첨부해주세요</p>
 						<div>
-							<label class="genric-btn primary-border"
-								style="width: 100%; font-size: large; font-weight: bold;">
-								파일선택 <input type="file" id="formFile" name="subPicture"
-								onchange="loadImg(this);" style="display: none;" />
+							<label class="genric-btn primary-border" style="width: 100%; font-size: large; font-weight: bold;">
+								파일선택 <input type="file" id="subImgSelector" name="subPicture" onchange="loadImg(this);" style="display: none;" onchange="previewImage(this)" />
 							</label>
 						</div>
-						<div id="img-viewer"></div>
+						<div id="subImagePreview" style="text-align:center;"><img src="" id="subPreview" class="mainPicture"></div>
 						<hr>
 						<div style="text-align: center;">
 							<button type="button" class="genric-btn primary-border circle" id="next1" style="font-size: large; font-weight: bold;">다음</button>
@@ -121,13 +119,13 @@
 						<h4>판매자명</h4>
 						<div class="input-group-icon mt-10">
 							<input type="text" name="ceo" placeholder=""
-								class="single-input">
+								class="single-input" value="${sessionScope.u.ceo }">
 						</div>
 						<hr>
 						<h4>연락처</h4>
 						<div class="input-group-icon mt-10">
-							<input type="text" name="tel" placeholder="ex) 010-0000-0000"
-								class="single-input">
+							<input type="text" name="tel" placeholder="(-)을 제외하고 적어주세요"
+								class="single-input" value=${sessionScope.u.tel }>
 						</div>
 						<hr>
 						<h4>홈페이지 주소</h4>
@@ -211,4 +209,69 @@
 		removeOption.remove();
 	});
 </script>
+<script>
+	function previewImage(f) {
+		var file = f.file;
+		
+		if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+    		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+
+    		// 선택한 파일 초기화
+    		f.outerHTML = f.outerHTML;
+
+    		document.getElementById('imagePreview').innerHTML = '';
+
+    	}else {
+
+    		// FileReader 객체 사용
+    		var reader = new FileReader();
+
+    		// 파일 읽기가 완료되었을때 실행
+    		reader.onload = function(rst){
+    			document.getElementById('imagePreview').innerHTML = '<img src="' + rst.target.result + '">';
+    		}
+
+    		// 파일을 읽는다
+    		reader.readAsDataURL(file[0]);
+
+    	}
+
+		
+	}
+
+</script>
+<script>
+
+$('#imgSelector').change(function(){
+    setImageFromFile(this, '#preview');
+});
+
+function setImageFromFile(input, expression) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(expression).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+<script>
+
+$('#subImgSelector').change(function(){
+    setImageFromFile(this, '#subPreview');
+});
+
+function setImageFromFile(input, expression) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(expression).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+	
+
 </html>
