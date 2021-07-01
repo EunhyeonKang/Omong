@@ -31,23 +31,41 @@
     <br><br>
     <h2 style="margin-left: 45%;">일정등록</h3>
     <br>
-    <h4 style="margin-left: 40%; float:left; margin-right:280px;">작성자 : user1</h4>
     <br>
     <div style="width:400px; margin-left:40%; text-align:center">
     	<br>
-    		<form action="/scheduleDetail.do" method="GET">
-	    		<input name="planWriter" type="hidden" value="user1">
+    		<form action="/planDetail.do" method="GET">
+				<div style="margin-bottom:10px;">	    		
+	    		<div class="percentage"><input  name="planWriter" type="hidden" value="${sessionScope.u.id }" readonly></div>
+	    		</div>
+	    		<div style="margin-bottom:10px;">
 		    	<h4 style="float:left; margin-right:20px">제목  </h4><div class="percentage"><input class="input-first" name="planTitle" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
-		    	<br>
+		    	</div>
+		    	<hr>
+		    	<div style="margin-bottom:10px;">
 		    	<h4 style="float:left;">기간  </h4><div class="percentage"><input name="planStart" type="text" id="sDatepicker"> ~ <input name="planEnd" id="eDatepicker" type="text"></div>
-		    	<br>
+		    	</div>
+		    	<hr>
+		    	<div style="margin-bottom:10px;">
 		    	<h4 style="float:left; margin-right:20px">인원  </h4><div class="percentage"><input class="input-first" name="planAmount" id="countPeople" type="number" min="1" max="30"></div>
-		    	<br>
+		    	</div>
+		    	<hr>
+		    	<div style="margin-bottom:10px;">
 		    	<h4 style="float:left; margin-right:20px">구분  </h4><div class="percentage"><input class="input-first" name="planContent" id="separation" type="text" placeholder='레저와 체험'></div>
-		    	<br>
+		    	</div>
+		    	<hr>
+		    	<div style="margin-bottom:10px;">
 		    	<h4 style="float:left; margin-right:20px">태그  </h4><div class="percentage"><input class="input-first" name="tag" id="tag" type="text" placeholder='#레저와 체험  #혼자'></div>
-		    	<br>
+		    	</div>
+		    	<hr>
+		    	<div style="margin-bottom:10px;">
+		    	<h4 style="float:left;">공개여부 </h4>
+				<input type="radio" name="public" id="y" value="공개">공개
+				<input type="radio" name="public" id="n" value="비공개">비공개
+				</div>
+		    	<hr><br>
 		    	<input type="hidden" id="diff" name="diff">
+		    	
 		    	<button class="genric-btn success" type="submit" id="test1">일정만들기</button>
 		    </form>
 		    
@@ -193,7 +211,7 @@
             var d2 = $('#eDatepicker').datepicker('getDate');
             var diff = 0;
             diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
-            if(diff > 7){
+            if(diff > 6){
             	alert("최대 7일까지 가능합니다");
             	e.preventDefault();
             }else{

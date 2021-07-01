@@ -19,8 +19,8 @@
 					<div>
 						<form onsubmit="searchPlaces(); return false;">
 							<input type="hidden" value="제주도" id="title" size="15">
-							키워드 : <input type="text" value="" id="keyword" size="15">
-							<button type="submit">검색하기</button>
+							<input type="text" value="" id="keyword" size="15" class="keyword" placeholder="검색어 입력">
+							<button type="submit" class="submit">검색하기</button>
 						</form>
 					</div>
 				</div>
@@ -28,70 +28,47 @@
 				<ul id="placesList"></ul>
 				<div id="pagination"></div>
 			</div>
+			<button id="cancle">
+			>
+			</button>
 			<!-- 일정표 -->
 			<div id="detailList" style="width: 15%; overflow-y: scroll; padding: 15px;">
 				<div id="detail_head" style="width: 100%; height: 15%;">
 					<h3 style="text-align: center; padding-top: 10px">여행 일정표</h3>
+					<br>
 					<button id="day1"
-						style="border: 0; background: transparent; margin-top: 15px">DAY1</button>
+						class="day">DAY1</button>
 					<c:forEach var="i" begin="2" end="${diff }" step="1">
-						<button id="day${i }" style="border: 0; background: white">DAY${i }</button>
+						<button id="day${i }" class="day">DAY${i }</button>
 					</c:forEach>
 					<hr>
 				</div>
 				<br>
 				<!-- @HC forEach로 단문 줄여볼 수 있도록 -->
 				<div class="detail" style="width: 100%;">
-					<button id="plus1"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus1"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<h3>DAY1</h3>
 				</div>
 				<div class="detail" style="width: 100%;">
-					<button id="plus2"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus2"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<h3>DAY2</h3>
 				</div>
 				<div class="detail" style="width: 100%;">
-					<button id="plus3"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus3"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<h3>DAY3</h3>
 				</div>
 				<div class="detail" style="width: 100%;">
-					<button id="plus4"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus4"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<h3>DAY4</h3>
 				</div>
 				<div class="detail" style="width: 100%;">
-					<button id="plus5"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus5"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<h3>DAY5</h3>
 				</div>
 				<div class="detail" style="width: 100%;">
-					<button id="plus6"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus6"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<h3>DAY6</h3>
 				</div>
 				<div class="detail" style="width: 100%;">
 					<h3>DAY7</h3>
-					<button id="plus7"
-						style="float: right; border: 0px; background: transparent;">추가</button>
-					<button id="minus7"
-						style="float: right; border: 0px; background: transparent;">삭제</button>
 					<div class="day7"></div>
 				</div>
-				<button id="save" onclick="savePlan();">저장하기</button>
+				<br>
+				<button id="save" class="save" onclick="savePlan();">저장하기</button>
 			</div>
 		</div>
 	</div>
@@ -142,35 +119,22 @@
 	<!-- 카카오 맵 api 등록 스크립트 -->
 	<script>
 		var plan;
-		// @07/01 Day 테이블 순서 키값 선언
-		var spotNo = new Array();
-		// @07/01 Day Vo 담을 변수 선언
-		var spots = {};
-		var days = new Array();
 		// @6/30 Plan 테이블에 담을 객체 선언
 		$(function(){
 			$.ajax({
 				url : "/getPlan.do",
 				success:function(data){
-					plan = data;
-
+					plan = data;		
+					console.log(plan);
 				}
 			});
-			for(var i=0; i<${diff}; i++){
-				spotNo.push(0);
-				days.push(new Array());
-			}
-			console.log(spotNo);
-			console.log(days);
 		});
 		
+		console.log(plan);
 		// @6/30 Day 테이블에 담을 객체 선언
 		var place = null;
 		// @6/30 Day 테이블 데이징 선언
 		var day = 1;
-		
-
-
 		// 마커를 담을 배열입니다
 		var markers = [];
 		var positions = new Array();
@@ -284,8 +248,7 @@
 						// @ 6/29 마커 클릭 시 데이터 저장
 						if(confirm('등록하시겠습니까?')){
 							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
-							spots[(spotNo[day-1]++)] = place;
-							days[day-1] = spots;
+							plan.push(place);
 						}else{
 							return false;
 						}
@@ -303,8 +266,7 @@
 					itemEl.onclick = function(){
 						if(confirm('등록하시겠습니까?')){
 							$(".detail").eq((day-1)).append("<div class='day"+day+"'>"+place.title+"</div>");
-							spots[(spotNo[day-1]++)] = place;
-							days[day-1] = spots;
+							plan.push(place);
 						}else{
 							return false;
 						}
@@ -419,8 +381,8 @@
 		// @ 7/1 save 저장후 DB에 저장하기
 		function savePlan(){
 			$.ajax({
-				url : "/insertPlan.do",
-				data : {plan: plan, days: days},
+				url : "/insertPlan",
+				data : plan,
 				type : "post",
 				success : function(data){
 					
@@ -513,6 +475,17 @@
 				$("#search").show();
 			} else {
 				$("#search").hide();
+			}
+		});
+		$("#cancle").click(function(){
+			if($("#menu_wrap").css('display') == 'none'){
+				$("#menu_wrap").show();
+				$("#cancle").css({'left':'31%'});
+				$("#cancle").html('<');
+			}else{
+				$("#menu_wrap").hide()
+				$("#cancle").css({'left':'15%'});
+				$("#cancle").html('>');
 			}
 		});
 	</script>

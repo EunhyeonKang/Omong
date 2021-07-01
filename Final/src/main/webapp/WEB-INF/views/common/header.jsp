@@ -156,8 +156,8 @@
 												id="navbarDropdown" role="button" data-toggle="dropdown"
 												aria-haspopup="true" aria-expanded="false"> 일정 </a>
 												<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-													<a class="dropdown-item" href="/scheduleInsert.do">일정등록</a>
-													<a class="dropdown-item" href="/schedule.do">일정공유</a>
+													<a class="dropdown-item" href="/planInsert.do">일정등록</a>
+													<a class="dropdown-item" href="/plan.do">일정공유</a>
 												</div></li>
 											<li class="nav-item dropdown"><a
 												class="nav-link dropdown-toggle" href="/boardList.do"
@@ -235,8 +235,8 @@
 												id="navbarDropdown" role="button" data-toggle="dropdown"
 												aria-haspopup="true" aria-expanded="false"> 일정 </a>
 												<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-													<a class="dropdown-item" href="/scheduleInsert.do">일정등록</a>
-													<a class="dropdown-item" href="/schedule.do">일정공유</a>
+													<a class="dropdown-item" href="/planInsert.do">일정등록</a>
+													<a class="dropdown-item" href="/plan.do">일정공유</a>
 												</div></li>
 											<li class="nav-item dropdown"><a
 												class="nav-link dropdown-toggle" href="/boardList.do"
