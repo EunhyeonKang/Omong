@@ -185,11 +185,5 @@ public class MemberController {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
-	
-	@ResponseBody
-	@RequestMapping(value="insertPlan.do")
-	public String insertPlan(Plan p, ArrayList<Day> d, Model model) {
-		model.addAttribute("loc", "/");
-		return "common/msg";
-	}
+
 }
