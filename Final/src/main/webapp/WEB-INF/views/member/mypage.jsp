@@ -163,6 +163,14 @@
 			<div class="col-lg-8 col-md-8">
 				<hr>
 				<form action="#">
+					<h4>프로필 사진</h4>
+					<div id="imagePreview" class="box " style="background: #BDBDBD; margin-right:20px;">
+    					<img id="image" class="profile">
+					</div>
+					<div class="input-group-icon mt-10" style="width:30%">
+						<input type="file" name="files" required class="single-input"  onchange="previewImage(this)" >						
+					</div>
+					<hr>
 					<h4>아이디(메일)</h4>
 					<div class="mt-10">
 						<input type="text" name="first_name" placeholder="First Name"
