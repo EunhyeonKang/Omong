@@ -41,10 +41,6 @@ public class MemberController {
 		return "map/map";
 	}
 
-	@RequestMapping(value = "/schedule.do")
-	public String schedule() {
-		return "schedule/scheduleList";
-	}
 
 	@RequestMapping(value = "/noticeList.do")
 	public String noticeList() {
@@ -102,23 +98,6 @@ public class MemberController {
 		return "member/mypage";
 	}
 
-	@RequestMapping(value = "/topScheduleList.do")
-	public String topScheduleList() {
-		return "schedule/topScheduleList";
-	}
-
-	@RequestMapping(value = "/scheduleInsert.do")
-	public String scheduleInsert() {
-		return "schedule/scheduleInsert";
-	}
-
-	@RequestMapping(value = "/scheduleDetail.do")
-	public String scheduleDetail(Plan p, HttpServletRequest request, Model model,HttpSession session) {
-		String diff = request.getParameter("diff");
-		session.setAttribute("plan", p);
-		model.addAttribute("diff", diff);
-		return "schedule/scheduleDetail";
-	}
 	@ResponseBody
 	@RequestMapping(value="/getPlan.do",produces = "application/json;charset=utf-8")
 	public String getPlan(@SessionAttribute Plan plan) {

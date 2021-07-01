@@ -34,6 +34,11 @@
 			<div class="col-lg-8 col-md-8">
 				<hr>
 				<form action="#">
+					<h4>프로필 사진</h4>
+					<div class="box" style="background: #BDBDBD; margin-right:20px">
+    					<img class="profile" src="/resources/upload/profile/${sessionScope.u.profileImage }">
+					</div>
+					<br>
 					<h4>아이디(메일)</h4>
 					<div class="mt-10">
 						<input type="text" name="first_name" placeholder="First Name"
@@ -165,7 +170,7 @@
 				<form action="#">
 					<h4>프로필 사진</h4>
 					<div id="imagePreview" class="box " style="background: #BDBDBD; margin-right:20px;">
-    					<img id="image" class="profile">
+    					<img id="image" src="/resources/upload/profile/${sessionScope.u.profileImage }" class="profile">
 					</div>
 					<div class="input-group-icon mt-10" style="width:30%">
 						<input type="file" name="files" required class="single-input"  onchange="previewImage(this)" >						
@@ -460,6 +465,38 @@
 	        // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
 	        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
 	        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
+	    }
+	    
+	    
+	    
+	    function previewImage(f){
+
+	    	var file = f.files;
+
+	    	// 확장자 체크
+	    	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+	    		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+
+	    		// 선택한 파일 초기화
+	    		f.outerHTML = f.outerHTML;
+
+	    		document.getElementById('imagePreview').innerHTML = '';
+
+	    	}
+	    	else {
+
+	    		// FileReader 객체 사용
+	    		var reader = new FileReader();
+
+	    		// 파일 읽기가 완료되었을때 실행
+	    		reader.onload = function(rst){
+	    			document.getElementById('imagePreview').innerHTML = '<img src="' + rst.target.result + '">';
+	    		}
+
+	    		// 파일을 읽는다
+	    		reader.readAsDataURL(file[0]);
+
+	    	}
 	    }
 	</script>
 </body>

@@ -26,6 +26,7 @@
 		background:rgba(255, 255, 255, 0.7);
 		z-index: 1;
 		font-size:12px;
+		display : none;
 	}
 	#detailList{
 		position:absolute;
@@ -40,6 +41,25 @@
 		z-index: 1;
 		font-size:12px;
 		border-radius: 10px;
+	}
+
+
+
+	#cancle {
+		position:absolute;
+		top:40%;
+		left:15%;
+		bottom:0;
+		height:50px;
+		width:50px;
+		margin:5px 0 0px 7px;
+		padding:5px;
+		overflow-y:auto;
+		z-index: 1;
+		font-size:20px;
+		border:0px;
+		background:rgba(255, 255, 255, 0.7);
+		transition: none;
 	}
 	.bg_white {background:#fff;}
 	#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
@@ -61,3 +81,96 @@
 	#pagination .on {font-weight: bold; cursor: default;color:#777;}
 	
 	.detail {display: none;}
+	
+	
+	.day1{
+	border : 2px solid #F18101;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+.day2{
+	border : 2px solid #0173BC;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+.day3{
+	border : 2px solid #00A074;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+.day4{
+	border : 2px solid #CFAC6A;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+.day5{
+	border : 2px solid #C9C9CB;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+.day6{
+	border : 2px solid #33aacc;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+.day7{
+	border : 2px solid #48c817;
+	width : 100%;
+	height : 40px;
+	margin-top:3px;
+}
+
+.day{
+	width : 40px;
+	height: 20px;
+	color: #fff;
+	background: #F18101;
+	border: 1px solid transparent;
+	margin-bottom:5px;
+}
+.day:hover {
+	color: #fe5c24;
+	border: 1px solid #F18101;
+	background: #fff;
+}
+
+.save{
+	width : 100%;
+	height: 35px;
+	color: #fff;
+	background: #0173bc;
+	border: 1px solid transparent;
+	margin-bottom:5px;
+}
+.save:hover {
+	color: #0173bc;
+	border: 1px solid #0173bc;
+	background: #fff;
+}
+
+
+.submit{
+	width : 70px;
+	height: 25px;
+	color: #fff;
+	background: #00a074;
+	border: 1px solid transparent;
+	margin-bottom:5px;
+}
+.submit:hover {
+	color: #00a074;
+	border: 1px solid #00a074;
+	background: #fff;
+}
+.keyword{
+	width: 120px;
+	height:25px;
+	background:rgba(255, 255, 255,0.5);
+	border : 0;
+}
