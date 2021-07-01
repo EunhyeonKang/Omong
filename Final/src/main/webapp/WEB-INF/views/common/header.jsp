@@ -75,7 +75,7 @@
 											
 											<li class="nav-item">
 											<c:choose>
-											<c:when test="${sessionScope.pacYn eq 0 }  ">
+											<c:when test="${sessionScope.pacYn eq 0 }">
 											<a class="nav-link" href="/insertPackage.do">상품등록</a>
 											</c:when>
 											<c:when test="${sessionScope.pacYn eq 1 }">
