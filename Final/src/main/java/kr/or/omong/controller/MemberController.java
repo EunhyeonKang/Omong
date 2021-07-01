@@ -19,9 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
-import kr.or.member.model.service.EmployeeService;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.User;
 import kr.or.plan.model.vo.Day;
