@@ -31,7 +31,7 @@
   		packageproduct_sequence.nextval,
   		#{packageProductName},
   		#{packageProductInfo},
-  		'aaa',
+  		#{packageProductMainPicture},
   		#{packageProductSubPicture},
   		#{packageProductSubInfo1},
   		#{packageProductSubInfo2},
@@ -64,9 +64,10 @@
   		#{optionName},
   		#{optionPrice}
   	)
-  	
-  	
-  	
-  
   </insert>
+  <select id="selectPackage" resultType="int" parameterType="pac">
+  	select
+  		count(*)
+  	from packageproduct where partner_no=#{partnerNo}
+  </select>
 </mapper>
