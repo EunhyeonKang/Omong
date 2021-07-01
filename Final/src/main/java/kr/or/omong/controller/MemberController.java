@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
@@ -23,6 +24,7 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import kr.or.member.model.service.EmployeeService;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.User;
+import kr.or.plan.model.vo.Plan;
 
 @Controller
 public class MemberController {
@@ -111,10 +113,16 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/scheduleDetail.do")
-	public String scheduleDetail(HttpServletRequest request, Model model) {
+	public String scheduleDetail(Plan p, HttpServletRequest request, Model model,HttpSession session) {
 		String diff = request.getParameter("diff");
+		session.setAttribute("plan", p);
 		model.addAttribute("diff", diff);
 		return "schedule/scheduleDetail";
+	}
+	@ResponseBody
+	@RequestMapping(value="/getPlan.do",produces = "application/json;charset=utf-8")
+	public String getPlan(@SessionAttribute Plan plan) {
+		return new Gson().toJson(plan);
 	}
 
 	@RequestMapping(value = "/packageList.do")

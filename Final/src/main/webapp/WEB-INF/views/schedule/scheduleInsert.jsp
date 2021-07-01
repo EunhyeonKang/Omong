@@ -36,13 +36,14 @@
     <div style="width:400px; margin-left:40%; text-align:center">
     	<br>
     		<form action="/scheduleDetail.do" method="GET">
-		    	<h4 style="float:left; margin-right:20px">제목  </h4><div class="percentage"><input class="input-first" name="schedule_title" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
+	    		<input name="planWriter" type="hidden" value="user1">
+		    	<h4 style="float:left; margin-right:20px">제목  </h4><div class="percentage"><input class="input-first" name="planTitle" id="schedule_title" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='제목을 입력하세요'></div>
 		    	<br>
-		    	<h4 style="float:left;">기간  </h4><div class="percentage"><input name="schedule_startDate" type="text" id="sDatepicker"> ~ <input name="schedule_endDate" id="eDatepicker" type="text"></div>
+		    	<h4 style="float:left;">기간  </h4><div class="percentage"><input name="planStart" type="text" id="sDatepicker"> ~ <input name="planEnd" id="eDatepicker" type="text"></div>
 		    	<br>
-		    	<h4 style="float:left; margin-right:20px">인원  </h4><div class="percentage"><input class="input-first" name="countPeople" id="countPeople" type="number" min="1" max="30"></div>
+		    	<h4 style="float:left; margin-right:20px">인원  </h4><div class="percentage"><input class="input-first" name="planAmount" id="countPeople" type="number" min="1" max="30"></div>
 		    	<br>
-		    	<h4 style="float:left; margin-right:20px">구분  </h4><div class="percentage"><input class="input-first" name="separation" id="separation" type="text" placeholder='레저와 체험'></div>
+		    	<h4 style="float:left; margin-right:20px">구분  </h4><div class="percentage"><input class="input-first" name="planContent" id="separation" type="text" placeholder='레저와 체험'></div>
 		    	<br>
 		    	<h4 style="float:left; margin-right:20px">태그  </h4><div class="percentage"><input class="input-first" name="tag" id="tag" type="text" placeholder='#레저와 체험  #혼자'></div>
 		    	<br>
