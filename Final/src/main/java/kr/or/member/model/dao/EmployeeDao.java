@@ -80,6 +80,11 @@ public class EmployeeDao {
 		return sqlSession.update("employee.updateYn",u);
 	}
 
+	public int updateNotice(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("employee.updateNotice",u);
+	}
+
 	
 	
 }

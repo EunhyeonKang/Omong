@@ -130,9 +130,41 @@
         align-self: flex-start;
         margin-left: 20px;
     }
-    #employeeChat{
-    	
+    .mainButton{
+    	position: relative;
+	    max-width: 500px;
+	    margin: 0 auto;
     }
+    .buttonInput {
+	    outline: 0;
+	    border: 0;
+	    display: block;
+	    width: 100%;
+	    padding-right: 60px;
+	    box-sizing: border-box;
+	    font-size: 1rem;
+	    padding: 24px;
+	    border-bottom-right-radius: 50px;
+	    border-top-right-radius: 50px;
+	    border-top-left-radius: 50px;
+	    border-bottom-left-radius: 50px;
+	   	box-shadow: 0px 0px 0px 5px #17a2b8;
+	}
+	
+	.buttonSearch {
+	    height: 100%;
+	    position: absolute;
+	    top: 50%;
+	    right: 0;
+	    border: 0;
+	    width: 14%;
+	    transform: translateY(-50%);
+	    background-color: #fe5c24;
+	    border: 3px solid white;
+	    border-radius: 50%;
+	    background: linear-gradient(45deg, #2493e0, #28a745);
+	     
+	}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
@@ -199,8 +231,14 @@
 					<div class="banner_text text-center">
 						<div class="banner_text_iner">
 							<form action="/search.do" method="GET">
-								<input type="text" class="search" placeholder="검색어 입력">
-								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn">
+								<!-- <input type="text" class="search" placeholder="검색어 입력">
+								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn"> -->
+								<!-- <img src="resources/img/jeju.PNG"> -->
+								<div class="mainButton">
+									
+									<input type="text" class="buttonInput" placeholder="키워드를 검색해주세요">
+							    	<button onclick="location.href = '주소';" class="buttonSearch" ><i class="fa fa-search fa-2x" style="color:white"></i></button>
+							    </div>
 							</form>
 							<!-- type이 u이면 채팅창 보이기(임시차원에서 직원으로 함)-->
 							<c:choose>

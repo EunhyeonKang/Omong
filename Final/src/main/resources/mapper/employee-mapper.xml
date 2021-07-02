@@ -114,4 +114,10 @@
  		partner_yn=#{yn}
  	where partner_no=#{no}
  	</update>
+ 	<update id="updateNotice" parameterType="u">
+ 		update notice_employee set
+ 			notice_employee_title=#{title},
+ 			notice_employee_content=#{content}
+ 		where notice_employee_no=#{noticeEmployeeNo}
+ 	</update>
 </mapper>
