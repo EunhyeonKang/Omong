@@ -28,7 +28,7 @@ input.button-add {
 				<div class="col-sm-6 col-md-5">
 					<div style="width: 700px; float: left;">
 						<h3 style="color: white;">고객센터</h3>
-						<span><input type="button" onClick="sendLinkCustom();" value="오픈채팅 링크 보내기"class="button-add"/></span><br><br> 
+						<span><a href="https://open.kakao.com/o/sBWoUtld"><img src="/resources/img/kakao.jpg" style="width:50px;"/></a></span><br><br> 
 						<!-- <input type="button" onClick="secdLinkDefault();" value="Default"/> -->
 						<script type="text/javascript">
 						 	Kakao.init('5e721adb2b93aa6c4075e9c0c13ce4b6');

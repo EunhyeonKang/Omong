@@ -75,5 +75,10 @@ public class EmployeeService {
 		return dao.updateYn(u);
 	}
 
+	public int updateNotice(User u) {
+		// TODO Auto-generated method stub
+		return dao.updateNotice(u);
+	}
+
 
 }

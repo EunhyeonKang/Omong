@@ -86,6 +86,20 @@ public class EmployeeController {
 		return "common/msg";
 	}
 	
+	@RequestMapping(value="/updateNoticeEmployee.do")
+	public String updateNotice(User u,Model model) {
+		int result = service.updateNotice(u);
+		if(result != -1) {
+			model.addAttribute("msg","글이 수정되었습니다.");
+		}else {
+			model.addAttribute("msg","수정 실패했습니다.");
+		}
+		/*
+		 * redirect:/detailNoticeEmployee.do?noticeEmployeeNo="+u.getNo()
+		 */		
+		model.addAttribute("loc","/");
+		return "common/msg";
+	}
 	@RequestMapping(value="/employeeLogin.do")
 	public String employeeLogin(User u,HttpServletRequest request,Model model) {
 		User employee = service.selectOneEmployee(u);

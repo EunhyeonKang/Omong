@@ -31,7 +31,9 @@
 			<c:choose>
 				<c:when test="${sessionScope.u.type eq 'e'}">
 					<button
-					style="margin-left: 80%; background-color: orangered; width: 50x; padding:10px; color: white; text-decoration: bold; border: none;"><a href="/deleteNoticeEmployee.do?noticeEmployeeNo=${u.noticeEmployeeNo}">삭제하기</a></button>
+					style="margin-left: 80%; background-color: green; padding:20px; text-decoration: bold; border: none;" onclick="updateNotice(this);"><span style="color:white">수정하기</span></button>
+					<button
+					style="background-color: orangered; padding:20px; text-decoration: bold; border: none;" onclick="updateNotice(this);"><a href="/deleteNoticeEmployee.do?noticeEmployeeNo=${u.noticeEmployeeNo}"><span style="color:white">삭제하기</span></a></button>
 				</c:when>
 			</c:choose>
 			<hr style="border: 1px solid black;">
@@ -39,10 +41,10 @@
 				<div class="progress-table">
 					<div class="table-head">
 						<div class="serial">번호</div>
-						<div class="serial">01</div>
+						<div class="serial">${u.noticeEmployeeNo }</div>
 						
 						<div class="serial">제목</div>
-						<div class="serial">${u.title }</div>
+						<div class="serial"><input type="text" value="${u.title }"/></div>
 						<div class="serial">작성자</div>
 						<div class="serial">${u.writer }</div>
 					</div>
@@ -62,5 +64,14 @@
 		</div>
 	</section>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
+	<script>
+	function updateNotice(data){
+		var noticeEmployeeNo =$(data).parent().children().eq(4).children().children().children().eq(1).html();
+		var title = $(data).parent().children().eq(4).children().children().children().eq(3).children().val();
+		var content =document.getElementById("message").value;
+		location.href="/updateNoticeEmployee.do?noticeEmployeeNo="+noticeEmployeeNo+"&title="+title+"&content="+content;
+
+	}
+	</script>
 </body>
 </html>
