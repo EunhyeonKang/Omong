@@ -9,5 +9,7 @@ public class Day {
 	private String dayDate;
 	private String dayLatitude;
 	private String dayLongitude;
+	private String dayTitle;
 	private String dayAddress;
+	private int next;
 }

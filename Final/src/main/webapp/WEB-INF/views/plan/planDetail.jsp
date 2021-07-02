@@ -18,7 +18,7 @@
 				<div class="option">
 					<div>
 						<form onsubmit="searchPlaces(); return false;">
-							<input type="hidden" value="제주도" id="title" size="15">
+							<input type="hidden" value="" id="title" size="15">
 							<input type="text" value="" id="keyword" size="15" class="keyword" placeholder="검색어 입력">
 							<button type="submit" class="submit">검색하기</button>
 						</form>
@@ -119,15 +119,24 @@
 	<!-- 카카오 맵 api 등록 스크립트 -->
 	<script>
 		var plan;
+		// @07/01 Day 테이블 순서 키값 선언
+		var spotNo = new Array();
+		// @07/01 Day Vo 담을 변수 선언
+		/* var spots = {}; */
+		var days = new Array();
 		// @6/30 Plan 테이블에 담을 객체 선언
 		$(function(){
 			$.ajax({
 				url : "/getPlan.do",
 				success:function(data){
-					plan = data;		
-					console.log(plan);
+					plan = data;
 				}
 			});
+			for(var i=0; i<${diff}; i++){
+				spotNo.push(0);
+				var obj = {};
+				days.push(obj);
+			}
 		});
 		
 		console.log(plan);
@@ -142,8 +151,8 @@
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+			// 지도의 확대 레벨
 			level : 3
-		// 지도의 확대 레벨
 		};
 
 		// 지도를 생성합니다    
@@ -178,10 +187,7 @@
 			var sub = document.getElementById('keyword').value;
 			var keyword = ti+sub;
 
-			if (!keyword.replace(/^\s+|\s+$/g, '')) {
-				alert('키워드를 입력해주세요!');
-				return false;
-			}
+
 
 			// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
 			ps.keywordSearch(keyword, placesSearchCB);
@@ -248,7 +254,7 @@
 						// @ 6/29 마커 클릭 시 데이터 저장
 						if(confirm('등록하시겠습니까?')){
 							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
-							plan.push(place);
+							days[day-1][spotNo[day-1]++] = place;
 						}else{
 							return false;
 						}
@@ -265,8 +271,8 @@
 					// @ 6/29 리스트 클릭 시 데이터 저장
 					itemEl.onclick = function(){
 						if(confirm('등록하시겠습니까?')){
-							$(".detail").eq((day-1)).append("<div class='day"+day+"'>"+place.title+"</div>");
-							plan.push(place);
+							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
+							days[day-1][spotNo[day-1]++] = place;
 						}else{
 							return false;
 						}
@@ -380,12 +386,14 @@
 		
 		// @ 7/1 save 저장후 DB에 저장하기
 		function savePlan(){
+			console.log(days);
 			$.ajax({
-				url : "/insertPlan",
-				data : plan,
-				type : "post",
-				success : function(data){
-					
+				url: "insertPlan.do",
+				type: "POST",
+				data: {data:JSON.stringify(days)},
+				traditional:true,				
+				success: function(data){
+					alert(data);
 				}
 			});
 		}
