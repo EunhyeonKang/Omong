@@ -31,7 +31,7 @@ public class PlanService {
 				d.setDayLongitude(spot.get("lng").getAsString());
 				d.setDayTitle(spot.get("title").getAsString());
 				d.setDayAddress(spot.get("address").getAsString());
-				if(amount == 0) {
+				if(amount != 0) {
 					result += dao.deleteDay(plan.getPlanNo());
 				}
 				result += dao.insertDay(d);
