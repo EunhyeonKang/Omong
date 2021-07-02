@@ -79,7 +79,7 @@
 											<a class="nav-link" href="/insertPackage.do">상품등록</a>
 											</c:when>
 											<c:when test="${sessionScope.pacYn eq 1 }">
-											<a class="nav-link" href="/modifyPackage.do?${sessionScope.}">상품수정</a>
+											<a class="nav-link" href="/modifyPackage.do">상품수정</a>
 											</c:when>
 											</c:choose>
 											</li>
