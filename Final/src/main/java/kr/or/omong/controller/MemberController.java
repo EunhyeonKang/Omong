@@ -41,10 +41,6 @@ public class MemberController {
 	}
 
 
-	@RequestMapping(value = "/noticeList.do")
-	public String noticeList() {
-		return "notice/noticeList";
-	}
 
 	@RequestMapping(value = "/boardList.do")
 	public String boardList() {

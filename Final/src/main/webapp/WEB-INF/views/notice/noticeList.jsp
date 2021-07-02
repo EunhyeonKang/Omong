@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,108 +27,40 @@
 	<!-- breadcrumb start-->
 
 	<!--================Blog Area =================-->
+		
 	<section class="blog_area single-post-area section_padding">
+
 		<div class="container">
+		
 			<div class="container">
+			
 			<c:choose>
 				<c:when test="${sessionScope.u.type eq 'e'}">
-					<h3 style="float: left; margin-left: 40px;">공지사항</h3>
-					<button style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;"><a href="/noticeWriteFrm.do">글쓰기</a></button>
-			</c:when>
-			<c:otherwise>
-				<h3 margin-left: 40px;">공지사항</h3>
-			</c:otherwise>
+					<button
+					style="margin-left: 80%; background-color: orangered; width: 50x; padding:10px; color: white; text-decoration: bold; border: none;"><a href="/noticeWriteFrm.do">글쓰기</a></button>
+				</c:when>
 			</c:choose>
+			<h3>공지사항</h3>
 			<hr style="border: 1px solid black;">
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
-						
 						<div class="serial">번호</div>
 						<div class="percentage">제목</div>
 						<div class="country">작성자</div>
 						<div class="visit">조회수</div>
 					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage"><a href="/noticeView.do">제목입니다</a></div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
+					<c:forEach items="${list }" var="noticeEmployee" varStatus="i">
+						<div class="table-row">
+							<div class="serial">${noticeEmployee.noticeEmployeeNo }</div>
+							<div class="percentage"><a href="/detailNoticeEmployee.do?noticeEmployeeNo=${noticeEmployee.noticeEmployeeNo }">${noticeEmployee.title }</a></div>
+							<%-- <div class="country">
+								<img src="/resources/upload/notice/${noticeEmployee.filename }">
+							</div> --%>
+							<div class="country">${noticeEmployee.writer }</div>
+							<div class="visit">${noticeEmployee.noticeEmployeeViews }</div>
+						</div>	
+					</c:forEach>
 				</div>
 			</div>
 		</div>

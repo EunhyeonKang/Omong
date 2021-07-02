@@ -29,4 +29,14 @@ public  class User {
 	private String email;
 	private String tel;
 	
+	//NoticeEmployee
+	private int noticeEmployeeNo;
+	private String title;
+	private String writer;
+	private String content;
+	private String noticeEmployeeDate;
+	private String filename;
+	private String filepath;
+	private int noticeEmployeeViews;
+	
 }

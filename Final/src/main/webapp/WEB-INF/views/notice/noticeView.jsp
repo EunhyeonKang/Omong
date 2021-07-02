@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,35 +27,35 @@
 	<section class="blog_area single-post-area section_padding">
 		<div class="container">
 			<div class="container">
-			<h3 style="float: left; margin-left: 40px;">공지사항</h3>
-			<button
-			style="margin-left: 80%; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;"><a href="noticeWriteFrm.do">글쓰기</a></button>
+			<h3 style="float: left; margin-left: 40px;">상세보기</h3>
+			<c:choose>
+				<c:when test="${sessionScope.u.type eq 'e'}">
+					<button
+					style="margin-left: 80%; background-color: orangered; width: 50x; padding:10px; color: white; text-decoration: bold; border: none;"><a href="/deleteNoticeEmployee.do?noticeEmployeeNo=${u.noticeEmployeeNo}">삭제하기</a></button>
+				</c:when>
+			</c:choose>
 			<hr style="border: 1px solid black;">
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
 						<div class="serial">번호</div>
 						<div class="serial">01</div>
-						<div class="percentage">제목</div>
-						<div class="percentage">제목입니다</div>
-					</div>
-					<div class="table-row">
+						
+						<div class="serial">제목</div>
+						<div class="serial">${u.title }</div>
 						<div class="serial">작성자</div>
-						<div class="country">
-							<img src="img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">조회수</div>
-						<div class="visit">645032</div>
+						<div class="serial">${u.writer }</div>
 					</div>
 					<div class="table-row">
-					<div class="serial">첨부파일</div>
-						<div class="percentage"><input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" ></div>
-						<div class="serial">작성일</div>
-						<div class="percentage"><input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" ></div>
+						<div class="serial">사진</div>
+						<div class="country">
+							<img src="/resources/upload/notice/${u.filename }">
+						</div> 
 					</div>
+					
 					<div class="table-row">
 						<div class="serial">내용</div>
-						<div style="width: 80%"> <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message'></textarea></div>
+						<div style="width: 80%"> <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9">${u.content }</textarea></div>
 					</div>
 				</div>
 			</div>

@@ -44,5 +44,42 @@ public class EmployeeDao {
 		List<User> list = sqlSession.selectList("employee.totalUserList");
 		return (ArrayList<User>)list;
 	}
+
+	
+	public int insertNoticeEmployee(User u) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.insert("employee.insertNoticeEmployee", u);
+		return result;
+	}
+
+
+	public ArrayList<User> totalPartnerList() {
+		// TODO Auto-generated method stub
+		List<User> list = sqlSession.selectList("employee.totalPartnerList");
+		return (ArrayList<User>)list;
+	}
+
+	public List noticeEmployeeList() {
+		// TODO Auto-generated method stub
+		List<User> list = sqlSession.selectList("employee.noticeEmployeeList");
+		return (ArrayList<User>)list;
+	}
+
+	public User detailNoticeEmployee(int noticeEmployeeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("employee.detailNoticeEmployee",noticeEmployeeNo);
+	}
+
+	public int deleteNotice(int noticeEmployeeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("employee.deleteNotice",noticeEmployeeNo);
+	}
+
+	public int updateYn(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("employee.updateYn",u);
+	}
+
+	
 	
 }
