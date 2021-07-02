@@ -2,16 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="plan">
   <insert id="insertPlan" parameterType="plan">
-  	BEGIN
-  	INSERT INTO plan VALUES(plan_seq.NEXTVAL, #{planPublic}, #{planWriter}, #{planTitle}, #{planStart}, #{planEnd}, #{planContent}, 0, 0, 0)
-  	END
+  	<selectKey keyProperty="planNo" resultType="int" order="AFTER">
+  		SELECT MAX(plan_no) FROM plan
+  	</selectKey>
+  	INSERT INTO plan VALUES(plan_sequence.NEXTVAL, #{planPublic}, #{planWriter}, #{planTitle}, #{planStart}, #{planEnd}, #{planContent}, 0, 0, 0)
   </insert>
-  <select id="selectOnePlan" resultType="int">
-  	SELECT
-		plan_seq.CURRVAL AS planNo
-  	FROM plan
+  <insert id="insertDay" parameterType="day">
+  	INSERT INTO day VALUES(day_sequence.NEXTVAL, #{dayPlan}, TO_DATE(#{dayDate}, 'YYYY-MM-DD')+#{next}, #{dayLatitude}, #{dayLongitude}, #{dayTitle}, #{dayAddress})
+  </insert>
+  <select id="selectOneDay" resultType="int">
+  	SELECT COUNT(*) AS amount FROM day WHERE day_plan = #{dayPlan}
   </select>
-  <insert id="insertDay">
-  	
-  </insert>
+  <delete id="deleteDay">
+  	DELETE FROM day WHERE day_plan = #{dayPlan}
+  </delete>
 </mapper>

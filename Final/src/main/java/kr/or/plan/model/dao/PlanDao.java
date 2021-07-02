@@ -1,7 +1,5 @@
 package kr.or.plan.model.dao;
 
-import java.util.ArrayList;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,12 +15,13 @@ public class PlanDao {
 	public int insertPlan(Plan p) {
 		return sqlSession.insert("plan.insertPlan", p);
 	}
-
-	public int selectOnePlan() {
-		return sqlSession.selectOne("plan.selectOnePlan");
-	}
-
-	public int insertDay(ArrayList<Day> d, int planNo) {
+	public int insertDay(Day d) {
 		return sqlSession.insert("plan.insertDay", d);
+	}
+	public int selectOneDay(int planNo) {
+		return sqlSession.selectOne("plan.selectOneDay", planNo);
+	}
+	public int deleteDay(int planNo) {
+		return sqlSession.delete("plan.deleteDay", planNo);
 	}
 }

@@ -60,8 +60,8 @@
 		    	<hr>
 		    	<div style="margin-bottom:10px;">
 		    	<h4 style="float:left;">공개여부 </h4>
-				<input type="radio" name="public" id="y" value="공개">공개
-				<input type="radio" name="public" id="n" value="비공개">비공개
+				<input type="radio" name="planPublic" id="y" value="Y">공개
+				<input type="radio" name="planPublic" id="n" value="N">비공개
 				</div>
 		    	<hr><br>
 		    	<input type="hidden" id="diff" name="diff">

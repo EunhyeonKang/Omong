@@ -1,7 +1,5 @@
 package kr.or.plan.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,9 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 
 import kr.or.plan.model.service.PlanService;
-import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
 
 @Controller
@@ -45,9 +46,14 @@ public class PlanController {
 	
 	@Transactional
 	@ResponseBody
-	@RequestMapping(value="insertPlan.do")
-	public String insertPlan(Plan p, ArrayList<Day> d, Model model) {
-		service.inserPlan(p, d);
-		return "common/msg";
+	@RequestMapping(value="insertPlan.do", produces = "text/html;charset=UTF-8")
+	public String insertPlan(@SessionAttribute(required=false) Plan plan, String data, Model model) {
+		JsonParser parser = new JsonParser();
+		JsonArray list = (JsonArray) parser.parse(data);
+		int result = service.insertPlan(plan, list);
+		if(result>0) {
+			return "등록 완료";
+		}
+		return "등록 실패. 관리자에게 문의바랍니다. 에러코드 [00pi]";
 	}
 }
