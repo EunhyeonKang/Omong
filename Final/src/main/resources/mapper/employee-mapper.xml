@@ -38,20 +38,80 @@
  		detail_address = #{detail_address}
  	where employee_id = #{id}
  	</update>
-	<select id="totalUserList" resultType="u">
+	<select id="totalPartnerList" resultType="u">
 	select 
-	  	employee_no as no,
-	  	employee_id as id,
-	  	employee_pw as pw, 
-	  	employee_name as name,
-	  	employee_email as email,
-	  	employee_phone as phone,
-	  	employee_address as address,
-	  	employee_birth as birth,
-	  	employee_gender as gender,
+	  	partner_no as no,
+	  	partner_yn as yn,
+	  	partner_id as id,
+	  	partner_pw as pw, 
+	  	partner_name as name,
+	  	partner_email as email,
+	  	partner_phone as phone,
+	  	partner_address as address,
 		change_pw as changePw,
 		detail_address as detailAddress,
-		'e' AS type
-	from employee
-	</select>
+		'p' AS type
+	from partner
+	</select> 
+	<select id="totalUserList" resultType="u">
+	select 
+	  	member_no as no,
+	  	member_id as id,
+	  	member_pw as pw, 
+	  	member_name as name,
+	  	member_phone as phone,
+	  	member_address as address,
+	  	member_birth as birth,
+	  	member_gender as gender,
+		change_pw as changePw,
+		detail_address as detailAddress,
+		'u' AS type
+	from member
+	</select> 
+	<insert id="insertNoticeEmployee" parameterType="u">
+ 		insert into NOTICE_EMPLOYEE values(
+ 		NOTICE_EMPLOYEE_SEQUENCE.nextval,
+ 		#{title},
+ 		#{writer},
+ 		#{content},
+ 		#{noticeEmployeeDate},
+ 		#{filename},
+ 		#{filepath},
+ 		0
+ 		)
+
+ 	</insert>
+ 	
+  <select id="noticeEmployeeList" resultType="u">
+  	select
+  		notice_employee_no as noticeEmployeeNo,
+  		notice_employee_title as title,
+  		notice_employee_writer as writer,
+  		notice_employee_content as content,
+  		notice_employee_filename as filename,
+  		notice_employee_filepath as filepath,
+  		notice_employee_date as noticeEmployeeDate,
+  		notice_employee_views as noticeEmployeeViews
+  	 from NOTICE_EMPLOYEE ORDER BY notice_employee_no DESC
+  </select>
+  <select id="detailNoticeEmployee" parameterType="int" resultType="u">
+  	select 
+  		notice_employee_no as noticeEmployeeNo,
+  		notice_employee_title as title,
+  		notice_employee_writer as writer,
+  		notice_employee_content as content,
+  		notice_employee_filename as filename,
+  		notice_employee_filepath as filepath,
+  		notice_employee_date as noticeEmployeeDate,
+  		notice_employee_views as noticeEmployeeViews
+  	 from notice_employee where notice_employee_no=#{noticeEmployeeNo}
+  </select>
+ 	<delete id="deleteNotice" parameterType="u">
+ 		delete from notice_employee where notice_employee_no=#{noticeEmployeeNo}
+ 	</delete>
+ 	<update id="updateYn" parameterType="u">
+ 	update partner set 
+ 		partner_yn=#{yn}
+ 	where partner_no=#{no}
+ 	</update>
 </mapper>

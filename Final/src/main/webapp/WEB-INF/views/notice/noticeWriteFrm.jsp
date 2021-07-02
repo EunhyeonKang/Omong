@@ -30,7 +30,7 @@
 		<div class="container">
 			<h3>자유게시판</h3>
 			<hr style="border: 1px solid black;">
-			<form action="/insertNoticeEmployee.do">
+			<form action="insertNoticeEmployee.do" method="post" enctype="multipart/form-data">
 				<div class="progress-table-wrap">
 					<div class="progress-table">
 						<div class="table-head">
@@ -41,7 +41,7 @@
 						</div>
 						<div class="table-row">
 						<div class="serial">첨부파일</div>
-							<div class="percentage"><input class="form-control" name="files" id="files" type="file" multiple></div>
+							<div class="percentage"><input class="form-control" name="files" id="file" type="file" multiple></div>
 							<div class="serial">작성일</div>
 							<c:set var="now" value="<%=new java.util.Date()%>" />
 							<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
@@ -51,12 +51,15 @@
 							<div class="serial">내용</div>
 							<div style="width: 80%"> <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9" placeholder='내용을 입력하세요'></textarea></div>
 						</div>
-						<div style="text-align : center;">
-						<input type="submit" value="작 성 완 료" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
-						</div>
+					
 					</div>
 				</div>
+				<br><br><br>
+				<div style="text-align : center;">
+					<input type="submit" value="작 성 완 료" class="genric-btn primary e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+				</div>
 			</form>
+			
 		</div>
 	</section>
 	<!--================ Blog Area end =================-->
