@@ -131,7 +131,6 @@ public class MemberController {
 	@RequestMapping(value = "/joinMember.do")
 	public String joinMember(User u, MultipartFile files[], HttpServletRequest request, Model model) {
 		u.setBirth(u.getBirth().replaceAll("-", ""));
-		System.out.println(u.getProfileImage());
 		if (files[0].isEmpty()) {
 
 		} else {
@@ -181,5 +180,55 @@ public class MemberController {
 		model.addAttribute("loc", "/");
 		return "common/msg";
 	}
-
+	@RequestMapping(value="/updateMember.do")
+	public String updateMember(User u, MultipartFile files[], HttpServletRequest request, Model model, String nofile) {
+		if (files[0].isEmpty()) {
+			u.setProfileImage(nofile);
+		} else {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/profile/");
+			for (MultipartFile file : files) {
+				String filename = file.getOriginalFilename();
+				String onlyFilename = filename.substring(0, filename.indexOf("."));
+				String extention = filename.substring(filename.indexOf("."));
+				String filepath = null;
+				int count = 0;
+				while (true) {
+					if (count == 0) {
+						filepath = onlyFilename + extention;
+					} else {
+						filepath = onlyFilename + "_" + count + extention;
+					}
+					File checkFile = new File(savePath + filepath);
+					if (!checkFile.exists()) {
+						break;
+					}
+					count++;
+				}
+				u.setProfileImage(filepath);
+				System.out.println("savepath : " + savePath);
+				System.out.println("filepath : " + filepath);
+				try {
+					FileOutputStream fos = new FileOutputStream(new File(savePath + filepath));
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		int result = service.updateMember(u);
+		if (result > 0) {
+			model.addAttribute("msg", "정보변경 성공");
+		} else {
+			model.addAttribute("msg", "정보변경 실패");
+		}
+		model.addAttribute("loc", "/");
+		return "redirect:/mypage.do?email=" + u.getId();
+	}
 }
