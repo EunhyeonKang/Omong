@@ -231,4 +231,17 @@ public class MemberController {
 		model.addAttribute("loc", "/");
 		return "redirect:/mypage.do?email=" + u.getId();
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="selectPlanList.do")
+	public String selectPlanList(User u, Model model) {
+		ArrayList list = service.selectPlanList(u);
+		model.addAttribute("list", list);
+		// 여기에 넣을꺼 만들기
+		if(list == null) {
+			return "0";
+		}else {
+			return "1";
+		}
+	}
 }

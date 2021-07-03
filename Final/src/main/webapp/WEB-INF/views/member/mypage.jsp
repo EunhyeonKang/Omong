@@ -370,7 +370,7 @@
 	<!--================ 마이페이지_내일정 end =================-->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script>
-		
+		var userId = "<c:out value='${sessionScope.u.id}'/>";
 		$("#change").click(function() {
 			if ($("#change_information").css("display") == "none") {
 				$("#change_information").show();
@@ -382,6 +382,7 @@
 				$("#buy").attr('class', 'genric-btn primary-border e-large');
 			}
 		});
+
 		$("#trip").click(
 				function() {
 					if ($("#mytrip").css("display") == "none") {
@@ -394,6 +395,16 @@
 								'genric-btn primary-border e-large');
 						$("#buy").attr('class',
 								'genric-btn primary-border e-large');
+						
+						// Plan 리스트 출력할 ajax
+						$.ajax({
+							url: "selectPlanList.do",
+							type: "POST",
+							data: {id: userId},
+							success: function(data){
+								console.log(data);
+							}
+						});
 					}
 				});
 		$("#buy").click(

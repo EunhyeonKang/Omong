@@ -16,4 +16,18 @@
   <delete id="deleteDay">
   	DELETE FROM day WHERE day_plan = #{dayPlan}
   </delete>
+  <select id="selectPlanList" parameterType="u" resultType="plan">
+  	SELECT
+  		plan_no AS planNo,
+  		plan_public AS planPublic,
+  		plan_writer AS planWriter,
+  		plan_title AS planTitle,
+  		plan_start AS planStart,
+  		plan_end AS planEnd,
+  		plan_content AS planContent,
+  		plan_like AS planLike,
+  		plan_share AS planShare,
+  		plan_view AS planView
+  	FROM plan WHERE plan_writer = #{id}
+  </select>
 </mapper>
