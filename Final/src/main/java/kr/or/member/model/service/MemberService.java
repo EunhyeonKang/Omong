@@ -29,4 +29,9 @@ public class MemberService {
 		return dao.insertMember(u);
 	}
 
+
+	public int updateMember(User u) {
+		return dao.updateMember(u);
+	}
+
 }
