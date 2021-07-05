@@ -259,6 +259,9 @@
 											</c:if>
 										</c:otherwise>
 									</c:choose>
+									<a
+									href="https://kauth.kakao.com/oauth/logout?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&logout_redirect_uri=http://localhost:8082/logout.do"
+									class="btn_1 d-none d-lg-block">로그아웃</a>
 								</nav>
 							</div>
 						</div>
