@@ -1,5 +1,7 @@
 package kr.or.plan.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +25,13 @@ public class PlanController {
 	private PlanService service;
 	
 	@RequestMapping(value = "/plan.do")
-	public String plan() {
+	public String plan(Model model) {
+		ArrayList<Plan> recommendList = service.selectRecommendPlanList();
+		ArrayList<Plan> newList = service.selectNewPlanList();
+		ArrayList<Plan> viewList = service.selectViewPlanList();
+		model.addAttribute("recommendList", recommendList);
+		model.addAttribute("newList", newList);
+		model.addAttribute("viewList", viewList);
 		return "plan/planList";
 	}
 	@RequestMapping(value = "/topplanList.do")

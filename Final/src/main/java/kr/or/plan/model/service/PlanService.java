@@ -1,5 +1,7 @@
 package kr.or.plan.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,18 @@ public class PlanService {
 			}
 		}
 		return result;
+	}
+
+	public ArrayList<Plan> selectRecommendPlanList() {
+		return dao.selectRecommendPlanList();
+	}
+
+	public ArrayList<Plan> selectNewPlanList() {
+		return dao.selectNewPlanList();
+	}
+
+	public ArrayList<Plan> selectViewPlanList() {
+		return dao.selectViewPlanList();
 	}
 
 }

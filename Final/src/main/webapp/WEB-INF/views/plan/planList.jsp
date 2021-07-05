@@ -47,21 +47,23 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
+				<c:forEach items="${recommendList }" var="plan" varStatus="i">
 				<div class="schedule">
 					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_1.png" alt="">
+						<img src="/resources/img/single_place_${i.count}.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
+								<a href="#" class="place_btn">태그..?</a>
+								<h3>${plan.planTitle}</h3>
+								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
+									<a href="#"><i class="fas fa-star">아님 여기에 태그?</i></a>
+									<div>
+										<span>${plan.planView } views |</span>
+										<span>${plan.planLike } likes |</span>
+										<span>${plan.planShare } share</span>
+									</div>
 								</div>
 							</div>
 							<div class="details_icon text-right">
@@ -70,78 +72,35 @@
 						</div>
 					</div>
 				</div>
-				<div class="schedule" >
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_2.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="schedule">
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_3.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
 	<br><br>
-	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<h3 style="float: left; margin-left: 40px;">최신일정</h3>
 	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
 	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
 		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
+				<c:forEach items="${newList }" var="plan" varStatus="i">
 				<div class="schedule">
 					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_1.png" alt="">
+						<img src="/resources/img/single_place_${i.count}.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
+								<a href="#" class="place_btn">태그..?</a>
+								<h3>${plan.planTitle}</h3>
+								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
+									<a href="#"><i class="fas fa-star">아님 여기에 태그?</i></a>
+									<div>
+										<span>${plan.planView } views |</span>
+										<span>${plan.planLike } likes |</span>
+										<span>${plan.planShare } share</span>
+									</div>
 								</div>
 							</div>
 							<div class="details_icon text-right">
@@ -150,78 +109,35 @@
 						</div>
 					</div>
 				</div>
-				<div class="schedule" >
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_2.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="schedule">
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_3.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
 	<br><br>
-	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<h3 style="float: left; margin-left: 40px;">가장 많이 찾아 본 일정</h3>
 	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
 	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
 		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
+				<c:forEach items="${viewList }" var="plan" varStatus="i">
 				<div class="schedule">
 					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_1.png" alt="">
+						<img src="/resources/img/single_place_${i.count}.png" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
+								<a href="#" class="place_btn">태그..?</a>
+								<h3>${plan.planTitle}</h3>
+								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
+									<a href="#"><i class="fas fa-star">아님 여기에 태그?</i></a>
+									<div>
+										<span>${plan.planView } views |</span>
+										<span>${plan.planLike } likes |</span>
+										<span>${plan.planShare } share</span>
+									</div>
 								</div>
 							</div>
 							<div class="details_icon text-right">
@@ -230,52 +146,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="schedule" >
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_2.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="schedule">
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_3.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
