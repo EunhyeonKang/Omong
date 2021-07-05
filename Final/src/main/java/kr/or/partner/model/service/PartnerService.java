@@ -1,5 +1,7 @@
 package kr.or.partner.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.or.partner.model.vo.Package;
@@ -76,6 +78,16 @@ public class PartnerService {
 	public int selectPackage(int partnerNo) {
 //		System.out.println(partnerNo);
 		return dao.selectPackage(partnerNo);
+	}
+
+	public ArrayList<Package> packageList() {
+		// TODO Auto-generated method stub
+		return dao.packageList();
+	}
+
+	public Package selectOnePackage(int partnerNo) {
+		// TODO Auto-generated method stub
+		return dao.selectOnePackage(partnerNo);
 	}
 	
 

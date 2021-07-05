@@ -1,5 +1,8 @@
 package kr.or.partner.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,6 +55,16 @@ public class PartnerDao {
 	public int selectPackage(int partnerNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("partner.selectPackage" , partnerNo);
+	}
+
+	public ArrayList<Package> packageList() {
+		List<Package> list = sqlSession.selectList("partner.packageList");
+		return (ArrayList<Package>)list;
+	}
+
+	public Package selectOnePackage(int partnerNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("partner.selectOnePackage" , partnerNo);
 	}
 
 	

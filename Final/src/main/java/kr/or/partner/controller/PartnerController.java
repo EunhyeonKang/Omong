@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -31,10 +32,7 @@ public class PartnerController {
 		return "partner/insertPackage";
 	}
 
-	@RequestMapping(value = "/packageView.do")
-	public String packageView() {
-		return "partner/packageView";
-	}
+	
 
 	@RequestMapping(value = "/partnerLogin.do")
 	public String login(User u, HttpServletRequest request, Model model ) {
@@ -191,7 +189,18 @@ if(subFiles[0].isEmpty()) {
 		return "common/msg";
 
 	}
-			
+	@RequestMapping(value = "/packageList.do")
+	public String packageList(Model model) {
+		ArrayList<Package> list = service.packageList();
+		model.addAttribute("list", list);
+		System.out.println(list.get(0).getPackageProductName());
+		return "partner/packageList";
+	}
 	
-	
+	@RequestMapping(value = "/packageView.do")
+	public String packageView(Model model , int partnerNo) {
+		Package packageProduct = service.selectOnePackage(partnerNo);
+		model.addAttribute("packageProduct", packageProduct);
+		return "partner/packageView";
+	}
 }
