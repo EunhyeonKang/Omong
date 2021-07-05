@@ -33,8 +33,6 @@
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">일반회원</button>
 		<button class="genric-btn info e-large" id="partner_login"
 			style="width: 250px; height: 100px; font-size: 20px; display:show;">파트너</button>
-		<button class="genric-btn success e-large" id="employee_login"
-		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
 		<div class="section-top-border" id="user" style="margin:0 auto; width:480px; display:none;">
 			<form action="/memberLogin.do">
 					<h4 style="text-align:left;">아이디(메일)</h4>
@@ -81,29 +79,6 @@
 					</div>
 				</form>
 		</div>
-		<div class="section-top-border" id="employee" style="margin:0 auto; width:480px; display:none;">
-			<form action="/employeeLogin.do">
-					<h4 style="text-align:left;">직원 아이디</h4>
-					<div class="mt-10">
-						<input type="text" name="id" placeholder="아이디를 입력해주세요"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'First Name'" required
-							class="single-input">
-					</div>
-					<hr>
-					<h4 style="text-align:left;">비밀번호</h4>
-					<div class="mt-10">
-						<input type="password" name="pw" placeholder="비밀번호를 입력해주세요"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Last Name'" required
-							class="single-input">
-					</div>
-					<br><br>
-					<div style="text-align : center;">
-					<input type="submit" value="로 그 인" class="genric-btn success e-large" style="width:300px; font-size:x-large; font-weight:bold;">
-					</div>
-				</form>
-		</div>
 	</div>
 
 	<!--================ Blog Area end =================-->
@@ -113,10 +88,8 @@
 			if($("#user").css("display") == "none"){
 				$("#user").show();
 				$("#partner").hide();
-				$("#employee").hide();
 				$("#partner_login").attr('class','genric-btn info-border e-large');
 				$("#user_login").attr('class','genric-btn primary e-large');
-				$("#employee_login").attr('class','genric-btn success-border e-large');
 			}
 		});
 
@@ -124,22 +97,11 @@
 			if($("#partner").css("display") == "none"){
 				$("#partner").show();
 				$("#user").hide();
-				$("#employee").hide();
 				$("#user_login").attr('class','genric-btn primary-border e-large');
 				$("#partner_login").attr('class','genric-btn info e-large');
-				$("#employee_login").attr('class','genric-btn success-border e-large');
 			}
 		});
-		$("#employee_login").click(function(){
-			if($("#employee").css("display") == "none"){
-				$("#employee").show();
-				$("#user").hide();
-				$("#partner").hide();
-				$("#user_login").attr('class','genric-btn primary-border e-large');
-				$("#partner_login").attr('class','genric-btn info-border e-large');
-				$("#employee_login").attr('class','genric-btn success e-large');
-			}
-		});
+
 		/* 네이버 스크립트문  */
 		var naver_id_login = new naver_id_login("_H2__p5_op3sciR2ACV2", "http://localhost/naver/naverCallback.jsp");
 	  	var state = naver_id_login.getUniqState();
