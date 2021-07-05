@@ -329,16 +329,13 @@
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
-						<div class="serial">일정번호</div>
+						<div class="serial">번호</div>
 						<div class="percentage">제목</div>
-						<div class="country">날짜</div>
+						<div class="country">여행일자</div>
+						<div class="visit">공개여부</div>
 						<div class="visit">조회수</div>
-					</div>
-					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="percentage">제목입니다</div>
-						<div class="country">2021-06-21</div>
-						<div class="visit">645032</div>
+						<div class="visit">좋아요수</div>
+						<div class="visit">공유수</div>
 					</div>
 				</div>
 			</div>
@@ -402,7 +399,22 @@
 							type: "POST",
 							data: {id: userId},
 							success: function(data){
-								console.log(data);
+								if(data != null){
+									for (var i = 0; i < data.length; i++) {
+										var table = "<div class='table-row'>";
+										table += "<div class='serial'>"+(i+1)+"</div>";
+										table += "<div class='percentage'>"+data[i].planTitle+"</div>";
+										table += "<div class='country'>"+data[i].planStart+"</div>";
+										table += "<div class='visit'>"+data[i].planPublic+"</div>";
+										table += "<div class='visit'>"+data[i].planView+"</div>";
+										table += "<div class='visit'>"+data[i].planLike+"</div>";
+										table += "<div class='visit'>"+data[i].planShare+"</div>";
+										table += "</div>";
+										$(".progress-table").eq(0).append(table);
+									}
+								}else{
+									table.append("<div class='percentage'>현재 등록 된 내 일정이 없습니다.</div>");
+								}
 							}
 						});
 					}

@@ -234,14 +234,14 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="selectPlanList.do")
-	public String selectPlanList(User u, Model model) {
+	public ArrayList<User> selectPlanList(User u, Model model) {
 		ArrayList list = service.selectPlanList(u);
 		model.addAttribute("list", list);
 		// 여기에 넣을꺼 만들기
 		if(list == null) {
-			return "0";
+			return null;
 		}else {
-			return "1";
+			return list;
 		}
 	}
 }
