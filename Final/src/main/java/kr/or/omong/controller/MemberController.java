@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.User;
+import kr.or.partner.model.vo.Package;
 import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
 
@@ -99,10 +100,7 @@ public class MemberController {
 		return new Gson().toJson(plan);
 	}
 
-	@RequestMapping(value = "/packageList.do")
-	public String packageList() {
-		return "partner/packageList";
-	}
+	
 
 	@RequestMapping(value = "/memberLogin.do")
 	public String login(User u, HttpServletRequest request, Model model) {

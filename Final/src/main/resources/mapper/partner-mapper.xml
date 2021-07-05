@@ -70,4 +70,43 @@
   		count(*)
   	from packageproduct where partner_no=#{partnerNo}
   </select>
+  <select id="packageList" resultType="pac">
+  	select
+  		partner_no as partnerNo,
+  		packageproduct_no as packageProductNo,
+  		packageproduct_name as packageProductName,
+  		packageproduct_info as packageProductInfo,
+  		packageproduct_main_picture as packageProductMainPicture,
+  		packageproduct_sub_picture as packageProductSubPicture,
+  		packageproduct_sub_info1 as packageProductSubInfo1,
+  		packageproduct_sub_info2 as packageProductSubInfo2,
+  		packageproduct_sub_info3 as packageProductSubInfo3,
+  		packageproduct_sub_info4 as packageProductSubInfo4,
+  		packageproduct_sub_info5 as packageProductSubInfo5,
+  		packageproduct_ceo as ceo,
+  		packageproduct_tel as tel,
+  		packageproduct_homepage as homepage,
+  		packageproduct_address as address
+  	from packageproduct	
+  </select>
+  <select id="selectOnePackage" parameterType="int" resultType="pac">
+  	select 
+		partner_no as partnerNo,
+  		packageproduct_no as packageProductNo,
+  		packageproduct_name as packageProductName,
+  		packageproduct_info as packageProductInfo,
+  		packageproduct_main_picture as packageProductMainPicture,
+  		packageproduct_sub_picture as packageProductSubPicture,
+  		packageproduct_sub_info1 as packageProductSubInfo1,
+  		packageproduct_sub_info2 as packageProductSubInfo2,
+  		packageproduct_sub_info3 as packageProductSubInfo3,
+  		packageproduct_sub_info4 as packageProductSubInfo4,
+  		packageproduct_sub_info5 as packageProductSubInfo5,
+  		packageproduct_ceo as ceo,
+  		packageproduct_tel as tel,
+  		packageproduct_homepage as homepage,
+  		packageproduct_address as address
+ 	from packageproduct where partner_no=#{partnerNo}
+  </select>
 </mapper>
+	

@@ -31,8 +31,7 @@
 						<hr>
 						<h4>패키지 설명</h4>
 						<div class="mt-10">
-							<textarea class="single-textarea" style="height: 150px" name="packageProductInfo"
-								placeholder="파트너님의 등록할 패키지의 간단한 설명을 적어주세요." required></textarea>
+							<textarea class="single-textarea" style="height: 150px" name="packageProductInfo" placeholder="파트너님의 등록할 패키지의 간단한 설명을 적어주세요." required></textarea>
 						</div>
 						<hr>
 						<h4>페키지 옵션</h4>

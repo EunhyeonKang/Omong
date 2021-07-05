@@ -18,6 +18,7 @@
 		width: 100%;
 	}
 	
+	
 </style>
 </head>
 <body>
@@ -41,84 +42,30 @@
 
 	<!-- hotel list css start-->
 	<br>
-	<h3 style="float: left; margin-left: 40px;">추천일정</h3>
+	<h3 style="float: left; margin-left: 40px;">상품 리스트</h3>
 	<a href="/topScheduleList.do"><button style="float:right; margin-right: 40px; background-color: orangered; width: 50x; height: 30px; color: white; text-decoration: bold; border: none;">더보기</button></a>
 	<section class="top_place" style="margin-top: 50px; margin-bottom: 50px;">
 		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
-				<div class="schedule">
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_1.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
+				<c:forEach items="${list}" var="p">
+					<div class="schedule">
+						<div class="single_place" style="width :500px; margin:30px" >
+							<img src="/resources/upload/package/${p.packageProductMainPicture}" alt="" style="width:100%;">
+							<div class="hover_Text d-flex align-items-end justify-content-between">
+								<div class="hover_text_iner">
+									<a href="packageView.do?partnerNo=${p.partnerNo}" class="place_btn">상세보기</a>
+									<h3 style="color:black;">${p.packageProductName}</h3>
+									<p style="color:black;">${p.packageProductInfo}</p>
+								</div>
+								<div class="details_icon text-right">
+									
 								</div>
 							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
 						</div>
-					</div>
-				</div>
-				<div class="schedule" >
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_2.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="schedule">
-					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_3.png" alt="">
-						<div
-							class="hover_Text d-flex align-items-end justify-content-between">
-							<div class="hover_text_iner">
-								<a href="#" class="place_btn">travel</a>
-								<h3>Saintmartine Iceland</h3>
-								<p>Technaf, Bangladesh</p>
-								<div class="place_review">
-									<a href="#"><i class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <a href="#"><i
-										class="fas fa-star"></i></a> <span>(210 review)</span>
-								</div>
-							</div>
-							<div class="details_icon text-right">
-								<i class="ti-share"></i>
-							</div>
-						</div>
-					</div>
-				</div>		
-				
-				
+					</div>		
+				</c:forEach>						
 			</div>
 		</div>
 	</section>
