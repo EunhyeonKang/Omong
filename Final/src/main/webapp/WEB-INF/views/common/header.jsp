@@ -79,11 +79,11 @@
 											<a class="nav-link" href="/insertPackage.do">상품등록</a>
 											</c:when>
 											<c:when test="${sessionScope.pacYn eq 1 }">
-											<a class="nav-link" href="/modifyPackage.do">상품수정</a>
+											
 											</c:when>
 											</c:choose>
 											</li>
-											<li class="nav-item"><a class="nav-link" href="/packageView.do">등록상품 상세보기</a></li>
+											<li class="nav-item"><a class="nav-link" href="packageView.do?partnerNo=${sessionScope.u.no}">등록상품 상세보기/수정</a></li>
 											<li class="nav-item"><a class="nav-link" href="partnerNotice.do">공지사항 리스트</a></li>
 											<!-- <li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 일정 </a>

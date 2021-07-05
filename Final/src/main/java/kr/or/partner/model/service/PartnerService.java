@@ -89,6 +89,11 @@ public class PartnerService {
 		// TODO Auto-generated method stub
 		return dao.selectOnePackage(partnerNo);
 	}
+
+	public ArrayList<Product> prodcutList() {
+		// TODO Auto-generated method stub
+		return dao.productList();
+	}
 	
 
 }
