@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.User;
 
 @Repository
@@ -36,5 +37,9 @@ public class MemberDao {
 	
 	public ArrayList selectPlanList(User u) {
 		return (ArrayList)sqlSession.selectList("plan.selectPlanList", u);
+	}
+	public int pwChangeMember(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("member.pwChangeMember",u);
 	}
 }
