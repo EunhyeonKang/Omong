@@ -67,9 +67,16 @@ public class PartnerDao {
 		return sqlSession.selectOne("partner.selectOnePackage" , partnerNo);
 	}
 
-	public ArrayList<Product> productList() {
-		List<Product> list = sqlSession.selectList("partner.productList");
-		return (ArrayList<Product>)list;
+	/*
+	 * public ArrayList<Product> productList() { List<Product> list =
+	 * sqlSession.selectList("partner.productList"); return
+	 * (ArrayList<Product>)list; }
+	 */
+
+	public List selectProduct(int packageProductNo) {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectList("partner.productList" , packageProductNo);
 	}
 	
 	/*

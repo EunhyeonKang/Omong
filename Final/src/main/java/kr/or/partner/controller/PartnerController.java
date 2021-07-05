@@ -193,10 +193,10 @@ if(subFiles[0].isEmpty()) {
 	@RequestMapping(value = "/packageList.do")
 	public String packageList(Model model) {
 		ArrayList<Package> list = service.packageList();
-		ArrayList<Product> product = service.prodcutList();
+		/* ArrayList<Product> product = service.prodcutList(); */
 		model.addAttribute("list", list);
-		model.addAttribute("product", product );
-		System.out.println(list.get(0).getPackageProductName());
+		/* model.addAttribute("product", product ); */
+//		System.out.println(list.get(0).getPackageProductName());
 		return "partner/packageList";
 	}
 	

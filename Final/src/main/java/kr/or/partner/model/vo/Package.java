@@ -1,5 +1,7 @@
 package kr.or.partner.model.vo;
 
+import java.util.ArrayList;
+
 import lombok.Data;
 
 @Data
@@ -19,4 +21,5 @@ public class Package {
 	private String tel;
 	private String homepage;
 	private String address;	
+	private ArrayList<Product> productList;
 }

@@ -105,8 +105,16 @@
   		packageproduct_ceo as ceo,
   		packageproduct_tel as tel,
   		packageproduct_homepage as homepage,
-  		packageproduct_address as address
+  		packageproduct_address as address  		
  	from packageproduct where partner_no=#{partnerNo}
   </select>
+  <select id="productList" resultType="pro" parameterType="int">
+  	select
+  		packageproduct_no as packageProductNo,
+  		product_no as productNo,
+  		product_name as productName
+  	from product where packageproduct_no=#{packageProductNo}	
+  </select>
+  
 </mapper>
 	

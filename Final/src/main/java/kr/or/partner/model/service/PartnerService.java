@@ -1,9 +1,13 @@
 package kr.or.partner.model.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack;
+
 import kr.or.partner.model.vo.Package;
 
 import kr.or.member.model.vo.User;
@@ -87,13 +91,17 @@ public class PartnerService {
 
 	public Package selectOnePackage(int partnerNo) {
 		// TODO Auto-generated method stub
-		return dao.selectOnePackage(partnerNo);
+		Package pac = new Package();
+		pac = dao.selectOnePackage(partnerNo);
+		List productList = dao.selectProduct(pac.getPackageProductNo());
+		pac.setProductList((ArrayList<Product>)productList);
+		return pac;
 	}
 
-	public ArrayList<Product> prodcutList() {
-		// TODO Auto-generated method stub
-		return dao.productList();
-	}
+	/*
+	 * public ArrayList<Product> prodcutList() { // TODO Auto-generated method stub
+	 * return dao.productList(); }
+	 */
 	
 
 }

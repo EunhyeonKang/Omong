@@ -16,7 +16,6 @@
 	background-size: cover;
 	background-position: center;
 	z-index: 1;
-	
 }
 
 .contentBox {
@@ -70,9 +69,9 @@
 						<h5>${packageProduct.packageProductInfo }</h5>
 						<select class="genric-btn primary productSelect"
 							style="font-size: 1.1em;">
-							<option value="">상품1</option>
-							<option value="">상품2</option>
-							<option value="">상품3</option>
+							<c:forEach items="${packageProduct.productList}" var="pro" >
+							<option value="">${pro.productName}</option>
+							</c:forEach>
 						</select> <select class="genric-btn primary productSelect"
 							style="font-size: 1.1em;">
 							<option value="">옵션1</option>
@@ -129,11 +128,10 @@
 					<form style="display:flex-direction:column;">
 						<h2>${packageProduct.packageProductName }</h2>
 						<h5>${packageProduct.packageProductInfo }</h5>
-						<select class="genric-btn primary productSelect"
-							style="font-size: 1.1em;">
-							<option value="">상품1</option>
-							<option value="">상품2</option>
-							<option value="">상품3</option>
+						<select class="genric-btn primary productSelect" style="font-size: 1.1em;">
+							<c:forEach items="${packageProduct.productList}" var="pro">
+							<option value="">${pro.productName}</option>
+							</c:forEach>
 						</select> <select class="genric-btn primary productSelect"
 							style="font-size: 1.1em;">
 							<option value="">옵션1</option>
