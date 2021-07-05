@@ -1,5 +1,8 @@
 package kr.or.plan.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +26,17 @@ public class PlanDao {
 	}
 	public int deleteDay(int planNo) {
 		return sqlSession.delete("plan.deleteDay", planNo);
+	}
+	public ArrayList<Plan> selectRecommendPlanList() {
+		List list = sqlSession.selectList("plan.selectRecommendPlanList");
+		return (ArrayList<Plan>)list;
+	}
+	public ArrayList<Plan> selectNewPlanList() {
+		List list = sqlSession.selectList("plan.selectNewPlanList");
+		return (ArrayList<Plan>)list;
+	}
+	public ArrayList<Plan> selectViewPlanList() {
+		List list = sqlSession.selectList("plan.selectViewPlanList");
+		return (ArrayList<Plan>)list;
 	}
 }
