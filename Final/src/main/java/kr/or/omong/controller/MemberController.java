@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.google.gson.Gson;
 
 import kr.or.member.model.service.MemberService;
+import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.User;
 import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
@@ -243,5 +244,33 @@ public class MemberController {
 		}else {
 			return list;
 		}
+	}
+	@RequestMapping(value="/pwCheck.do")
+	public String pwCheck() {
+		return "member/pwCheck";
+	}
+	@ResponseBody
+	@RequestMapping(value="/checkPw.do")
+	public String checkPw(User u) {
+		//해당하는 아이디의 비밀번호가 일치하는지 확인		
+		User member = service.selectOneMember(u);
+		if(member != null) {
+			//입력한 비밀번호가 일치하는경우
+			return "1";
+		}else {
+			//비밀번호 틀린경우
+			return "0";
+		}
+	}
+	@RequestMapping(value="/pwChange.do")
+	public String pwChange(User u,Model model) {
+		int result = service.pwChangeMember(u);
+		if(result>0) {
+			model.addAttribute("msg", "변경 성공");
+		}else {
+			model.addAttribute("msg", "변경 실패");
+		}
+		model.addAttribute("loc","/mypage.do?memberId="+u.getId());
+		return "common/msg";
 	}
 }

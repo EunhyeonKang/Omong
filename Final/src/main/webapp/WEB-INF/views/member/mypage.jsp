@@ -53,6 +53,8 @@
 							required class="single-input" value="${sessionScope.u.pw }"
 							readonly>
 					</div>
+					<a href="/pwCheck.do"><button type="button">비밀번호변경</button></a>
+					<br>
 					<hr>
 					<h4>이름</h4>
 					<div class="input-group-icon mt-10">

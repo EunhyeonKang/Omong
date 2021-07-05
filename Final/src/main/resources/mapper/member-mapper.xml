@@ -36,4 +36,9 @@
  		profileImage = #{profileImage}
  	where member_id = #{email}
 	</update>
+	<update id="pwChangeMember" parameterType="u">
+  	update member set 
+  		member_pw=#{pw}
+  	where member_id=#{email}
+  	</update>
 </mapper>

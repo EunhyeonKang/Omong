@@ -6,11 +6,13 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
@@ -70,8 +72,8 @@
 		</aop:aspect>
 	</aop:config>
 	 -->
-	 <!-- AOP어노테이션 방식 사용 선언 -->
-<!-- 	 <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	<!-- AOP어노테이션 방식 사용 선언 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<!-- 트렌젝션 어노테이션 사용 -->
 	<tx:annotation-driven/>
 	<!-- 스케줄링 어노테이션 사용 -->
