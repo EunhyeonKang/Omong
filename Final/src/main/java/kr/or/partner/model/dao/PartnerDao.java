@@ -67,6 +67,10 @@ public class PartnerDao {
 		return sqlSession.selectOne("partner.selectOnePackage" , partnerNo);
 	}
 
+	public ArrayList<Product> productList() {
+		List<Product> list = sqlSession.selectList("partner.productList");
+		return (ArrayList<Product>)list;
+	}
 	
 	/*
 	 * public int packageInsert(Package pa, String[] productName, String[]

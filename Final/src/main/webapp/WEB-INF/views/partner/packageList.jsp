@@ -17,7 +17,12 @@
 	.top_place{
 		width: 100%;
 	}
-	
+	.groupListWrap{
+		width : 1200px;
+			margin: 0 auto;
+			padding:0;			
+			overflow :hidden;
+	}
 	
 </style>
 </head>
@@ -48,10 +53,9 @@
 		
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
-			<div class="row" style="flex-wrap: nowrap; ">
+			<div class = "groupListWrap">
 				<c:forEach items="${list}" var="p">
-					<div class="schedule">
-						<div class="single_place" style="width :500px; margin:30px" >
+						<div class="single_place" style="width :28%; margin:30px; display:inline-block;"  >
 							<img src="/resources/upload/package/${p.packageProductMainPicture}" alt="" style="width:100%;">
 							<div class="hover_Text d-flex align-items-end justify-content-between">
 								<div class="hover_text_iner">
@@ -64,7 +68,7 @@
 								</div>
 							</div>
 						</div>
-					</div>		
+							
 				</c:forEach>						
 			</div>
 		</div>
@@ -72,5 +76,40 @@
 	<!-- hotel list css end -->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
-
+<script>
+		$(function(){
+			more(1);
+			$("#more-btn").click(function(){
+				more($(this).val());
+			});
+		});
+		function more(start){
+			$.ajax({
+				url : "/photoMore",
+				data : {start:start},
+				type : "post",
+				success : function(data){
+					for(var i=0;i<data.length;i++){
+						var p = data[i];
+						var html = "";
+						console.log(p.filepath);
+						html += "<div class='photo'>";
+						html += "<img src='/upload/photo/"+p.filepath+"'>";
+						html += "<p class='caption'>"+p.photoContent+"</p></div>";
+						$(".photoWrapper").append(html);
+					}
+					//이미지 추가가 끝나고나면 더보기 버튼의 value 값 조정
+					$("#more-btn").val(Number(start)+5);
+					var curr = Number($("#more-btn").attr("currentCount"));
+					$("#more-btn").attr("currentCount",curr+data.length); //수가5단위로 맞지않을때 길이를 더해주기위해 작성한 코드
+					var totalCount = $("#more-btn").attr(totalCount);
+					var currCount = $("#more-btn").attr("currentCount");
+					if(currCount == totalCount){
+						$("#more-btn").attr("disabled",true);
+					}
+				}
+				
+			})
+		}
+	</script>
 </html>

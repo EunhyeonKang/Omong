@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.or.member.model.vo.User;
 import kr.or.partner.model.service.PartnerService;
 import kr.or.partner.model.vo.Package;
+import kr.or.partner.model.vo.Product;
 
 @Controller
 public class PartnerController {
@@ -192,7 +193,9 @@ if(subFiles[0].isEmpty()) {
 	@RequestMapping(value = "/packageList.do")
 	public String packageList(Model model) {
 		ArrayList<Package> list = service.packageList();
+		ArrayList<Product> product = service.prodcutList();
 		model.addAttribute("list", list);
+		model.addAttribute("product", product );
 		System.out.println(list.get(0).getPackageProductName());
 		return "partner/packageList";
 	}
