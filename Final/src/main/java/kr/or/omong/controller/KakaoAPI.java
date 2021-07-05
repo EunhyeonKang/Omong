@@ -82,14 +82,14 @@ public class KakaoAPI {
 			String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
 			String gender = kakaoAccount.getAsJsonObject().get("gender").getAsString();
 			String birthday = kakaoAccount.getAsJsonObject().get("birthday").getAsString();
-//			String profile = kakaoAccount.getAsJsonObject().get("profile").getAsString();
+			String profile = kakaoAccount.getAsJsonObject().get("profile").getAsJsonObject().getAsJsonObject().get("profile_image_url").getAsString();
 
 			userInfo.put("kakaoAccount", kakaoAccount);
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			userInfo.put("gender", gender);
 			userInfo.put("birthday", birthday);
-//			userInfo.put("profile", profile);
+			userInfo.put("profile", profile); 
 
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -7,6 +7,7 @@
  		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0,#{detail_address})
 
  	</insert>
+ 	
  	<!-- User select 예시 -->
 	<select id="selectOneEmployee" parameterType="u" resultType="u">
 	  select 
