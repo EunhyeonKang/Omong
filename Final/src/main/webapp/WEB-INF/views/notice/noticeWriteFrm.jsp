@@ -49,7 +49,7 @@
 						</div>
 						<div class="table-row">
 							<div class="serial">내용</div>
-							<div style="width: 80%"> <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9" placeholder='내용을 입력하세요'></textarea></div>
+							<div style="width: 80%"> <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9" style="resize: none" placeholder='내용을 입력하세요'></textarea></div>
 						</div>
 					
 					</div>
