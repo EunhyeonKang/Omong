@@ -33,6 +33,12 @@ public class EmployeeController {
 		return "member/join_employee";
 	}
 	
+	@RequestMapping(value="/updateNoticeFrm.do")
+	public String updateNoticeFrm(int noticeEmployeeNo,Model model) {
+		User u = service.detailNoticeEmployee(noticeEmployeeNo);
+		model.addAttribute("u",u);
+		return "notice/updateNotice";
+	}
 	@RequestMapping(value="/join_employee_info.do")
 	public String join_employee_info(User u, Model model) {
 		int result = service.insertEmployee(u);

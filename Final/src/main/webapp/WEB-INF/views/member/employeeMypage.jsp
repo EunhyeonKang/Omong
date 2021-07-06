@@ -43,7 +43,6 @@
 	<!--마이페이지 첫 화면-->
 	<div style="margin-left: 30%; margin-top: 1%">
 		<button class="genric-btn primary-border e-large" id="change">정보변경</button>
-		<button class="genric-btn primary-border e-large" id="notice">문의사항</button>
 		<button class="genric-btn primary-border e-large" id="userList">회원리스트</button>
 	</div>
 	<div class="section-top-border" style="margin-left: 30%;" id="mypage">
@@ -170,37 +169,7 @@
 			</div>
 		</div>
 	</div>
-	<!--================ 마이페이지 문의사항 =================-->
-	<!--문의사항-->
-	<div class="section-top-border"
-		style="margin-left: 30%; display:none;" id="noticepage">
-		<div class="row">
-			<div class="col-lg-8 col-md-8">
-				<hr>
-				<form action="#">
-						<div class="progress-table-wrap">
-						<div class="progress-table">
-							<div class="table-head">
-								
-								<div class="serial">번호</div>
-								<div class="percentage">제목</div>
-								<div class="country">작성자</div>
-								<div class="visit">조회수</div>
-							</div>
-							<div class="table-row">
-								<div class="serial">01</div>
-								<div class="percentage">제목입니다</div>
-								<div class="country">
-									<img src="img/elements/f1.jpg" alt="flag">Canada
-								</div>
-								<div class="visit">645032</div>
-							</div>`
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<!--================ 마이페이지 회원리스트 =================-->
 	<!--회원리스트-->
 	<div class="section-top-border"
@@ -226,32 +195,19 @@
 		$("#change").click(function(){
 			if($("#mypage").css("display") == "none") {
 				$("#mypage").show();
-				$("#noticepage").hide();
 				$("#userListpage").hide();
 				$("#change").attr('class','genric-btn primary e-large');
-				$("#notice").attr('class','genric-btn primary-border e-large');
 				$("#userList").attr('class','genric-btn primary-border e-large');
 				
 				
 			}
 		});
-		$("#notice").click(function(){
-			if($("#noticepage").css("display") == "none") {
-				$("#noticepage").show();
-				$("#mypage").hide();
-				$("#userListpage").hide();
-				$("#change").attr('class','genric-btn primary-border e-large');
-				$("#notice").attr('class','genric-btn primary-border e-large');
-				$("#userList").attr('class','genric-btn primary-border e-large');
-			}
-		});
+	
 		$("#userList").click(function(){
 			if($("#userListpage").css("display") == "none") {
 				$("#userListpage").show();
 				$("#mypage").hide();
-				$("#noticepage").hide();
 				$("#change").attr('class','genric-btn primary-border e-large');
-				$("#notice").attr('class','genric-btn primary-border e-large');
 				$("#userList").attr('class','genric-btn primary-border e-large');
 			}
 		});

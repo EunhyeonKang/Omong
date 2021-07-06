@@ -38,10 +38,8 @@
 						</button>
 						<button
 							style="background-color: orangered; padding: 20px; text-decoration: bold; border: none;"
-							onclick="updateNotice(this);">
-							<a
-								href="/deleteNoticeEmployee.do?noticeEmployeeNo=${u.noticeEmployeeNo}"><span
-								style="color: white">삭제하기</span></a>
+							onclick="deleteNotice(this);">
+							<span style="color: white">삭제하기</span>
 						</button>
 					</c:when>
 				</c:choose>
@@ -80,15 +78,12 @@
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script>
 		function updateNotice(data) {
-			var noticeEmployeeNo = $(data).parent().children().eq(4).children()
-					.children().children().eq(1).html();
-			var title = $(data).parent().children().eq(4).children().children()
-					.children().eq(3).children().val();
-			var content = document.getElementById("message").value;
-			location.href = "/updateNoticeEmployee.do?noticeEmployeeNo="
-					+ noticeEmployeeNo + "&title=" + title + "&content="
-					+ content;
-
+			var noticeEmployeeNo = $(data).parent().children().eq(4).children().children().children().eq(1).html();
+			location.href = "/updateNoticeFrm.do?noticeEmployeeNo="+noticeEmployeeNo;
+		}
+		function deleteNotice(data){
+			var noticeEmployeeNo = $(data).parent().children().eq(4).children().children().children().eq(1).html();
+			location.href = "/deleteNoticeEmployee.do?noticeEmployeeNo="+noticeEmployeeNo;
 		}
 	</script>
 </body>
