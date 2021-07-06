@@ -15,8 +15,8 @@ public class PlanDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public int insertPlan(Plan p) {
-		return sqlSession.insert("plan.insertPlan", p);
+	public void insertPlan(Plan p) {
+		sqlSession.insert("plan.insertPlan", p);
 	}
 	public int insertDay(Day d) {
 		return sqlSession.insert("plan.insertDay", d);

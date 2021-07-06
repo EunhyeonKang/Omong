@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,24 +53,22 @@ public class PlanController {
 		return "plan/planDetail";
 	}
 	
-	@Transactional
 	@ResponseBody
 	@RequestMapping(value="insertPlan.do", produces = "text/html;charset=UTF-8")
-	public String insertPlan(@SessionAttribute(required=false) Plan plan, String data, Model model, HttpSession session) {
+	public String insertPlan(@SessionAttribute(required=false) Plan plan, String data, Model model) {
 		JsonParser parser = new JsonParser();
 		JsonArray list = (JsonArray) parser.parse(data);
 		int result = service.insertPlan(plan, list);
 		if(result>0) {
-			session.removeAttribute("plan");
-			return "등록 완료";
+			return "저장 완료";
 		}
-		return "등록 실패. 관리자에게 문의바랍니다. 에러코드 [00pi]";
+		return "저장 실패. 관리자에게 문의바랍니다. 에러코드 [00pi]";
 	}
 	
-	@Transactional
 	@RequestMapping(value="/selectOnePlan.do")
 	public String selectOnePlan(Plan plan, Model model) {
 		Plan onePlan = service.selectOnePlan(plan);
+		System.out.println(onePlan);
 		model.addAttribute("onePlan", onePlan);
 		return "/plan/planView";
 	}
