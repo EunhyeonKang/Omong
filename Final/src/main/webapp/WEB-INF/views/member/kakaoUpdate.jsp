@@ -740,7 +740,7 @@ LG U+	안심번호 / 전자결제 / SMS전송
 				<br>
 					<div style="text-align: center;">
 							<input type="submit" value=" 다 음  "
-								class="genric-btn info e-large next" style="width: 300px; font-size: x-large; font-weight: bold;">
+								class="genric-btn info e-large next" style="background-color:#17a2b8;width: 300px; font-size: x-large; font-weight: bold;">
 						</div>
 				
 			</div>
@@ -809,6 +809,10 @@ LG U+	안심번호 / 전자결제 / SMS전송
 						<div class="mt-10">
 							<input type="text" name="gender" 	class="single-input" value="${u.gender }" readonly>
 						</div>
+						<div class="mt-10">
+							<%-- <input type="hidden" name="profileImage" 	class="single-input" value="${http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg}" readonly> --%>
+						</div>
+						
 						<hr>
 						<div style="text-align: center;">
 							<input type="submit" value="회 원 가 입"
@@ -923,10 +927,10 @@ LG U+	안심번호 / 전자결제 / SMS전송
 			if($(".requiredAgree:checked").length == 3) {
 				$(".step").hide();
 				$(".step").eq(1).show();			
-				$(".tab").eq(0).css("color","#00a074");
+				$(".tab").eq(0).css("color","#17a2b8");
 				$(".tab").eq(0).css("background-color","#fff");
 				$(".tab").eq(1).css("color","#fff");
-				$(".tab").eq(1).css("background-color","#00a074");	
+				$(".tab").eq(1).css("background-color","#17a2b8");	
 			}else{
 				alert("필수항목을 체크해주세요");
 			}

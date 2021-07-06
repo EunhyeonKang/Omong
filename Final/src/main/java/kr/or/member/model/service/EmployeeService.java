@@ -80,6 +80,16 @@ public class EmployeeService {
 		return dao.updateNotice(u);
 	}
 
+	public int kakaoUpdate(User u) {
+		// TODO Auto-generated method stub
+		return dao.kakaoUpdate(u);
+	}
+
+	public User kakaoSelect(User u) {
+		// TODO Auto-generated method stub
+		return dao.kakaoSelect(u);
+	}
+
 	
 
 

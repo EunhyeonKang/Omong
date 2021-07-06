@@ -39,6 +39,35 @@
  		detail_address = #{detail_address}
  	where employee_id = #{id}
  	</update>
+ 	<update id="kakaoUpdate" parameterType="u">
+	update member set 
+ 		member_pw=#{pw},
+ 		member_phone=#{phone},
+ 		member_address=#{address},
+ 		detail_address = #{detailAddress}
+ 	<!-- 	profileImage = #{profileImage} -->
+ 	where member_id = #{email}
+	</update>
+	<select id="kakaoSelect" parameterType="u" resultType="u">
+	select
+			member_no as no,
+			member_id as id,
+			member_pw as pw,
+			member_name as name,
+			member_phone as phone,
+			member_address as address,
+			member_birth as birth,
+			member_gender as gender,
+			change_pw as changePw,
+			loginpath as path,
+			detail_address as detailAddress,
+			profileImage,
+			'm' as type
+		from member where member_id=#{email}
+		<if test="pw != null">
+			and member_pw = #{pw}
+		</if>
+	</select>
 	<select id="totalPartnerList" resultType="u">
 	select 
 	  	partner_no as no,
