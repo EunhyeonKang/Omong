@@ -54,7 +54,7 @@
 		<div class="container_reservation" style="width: 100%;">
 			<div class = "groupListWrap">
 				<c:forEach items="${list}" var="p">
-						<div class="single_place" style="width :28%; margin:30px; display:inline-block; border-radius: 30px; box-shadow: 5px 5px 5px 5px grey;"  >
+						<div class="single_place" style="width :28%; height:336px; margin:30px; display:inline-block; border-radius: 30px; box-shadow: 5px 5px 5px 5px grey;"  >
 							<img src="/resources/upload/package/${p.packageProductMainPicture}" alt="" style="width:100%;">
 							<div class="hover_Text d-flex align-items-end justify-content-between">
 								<div class="hover_text_iner">
