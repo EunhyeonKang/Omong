@@ -58,6 +58,8 @@
 							</div>
 							<div class="serial">작성자</div>
 							<div class="serial">${u.writer }</div>
+							<div class="serial">조회수</div>
+							<div class="serial">${u.noticeEmployeeViews }</div>
 						</div>
 						<div class="table-row">
 							<div class="serial">사진</div>
@@ -70,7 +72,7 @@
 							<div class="serial">내용</div>
 							<div style="width: 80%">
 								<textarea class="form-control w-100" name="message" id="message"
-									cols="30" rows="9" style="resize: none"readonly>${u.content }</textarea>
+									cols="30" rows="9" style="resize: none; background-color: white; border:none;" readonly>${u.content }</textarea>
 							</div>
 						</div>
 					</div>
