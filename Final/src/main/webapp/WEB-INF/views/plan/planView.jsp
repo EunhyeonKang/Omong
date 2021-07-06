@@ -57,6 +57,7 @@
 
 	<script>
 		var days = new Array();
+		var planStart = "${onePlan.planStart}";
 		$(function() {
 			$(".detail").eq(0).show();
 		});
@@ -66,9 +67,9 @@
 			$(".detail").hide();
 			$(".detail").eq(0).show();
 			 for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == onePlan.planStart){
+				if(days[i].dayDate == planStart){
 					console.log(days[i].dayTitle);
-					displayPlaces(days);
+					displayPlaces(days[i]);
 				}
 			} 
 		});
@@ -112,13 +113,14 @@
 		var day = 1;
 		
 		$(document).ready(function(){
-			var planNo = 22;
+			var planNo = "${onePlan.planNo}";
 			$.ajax({
 				url: "/selectOnePlanDays.do",
 				type: "POST",
 				data: {planNo : planNo},
 				success: function(data){
 					days = data;
+					console.log(days);
 				}
 			});
 		});
@@ -177,40 +179,26 @@
 		});
 		// 검색 결과 목록과 마커를 표출하는 함수입니다
 		function displayPlaces(days) {
-
 			var fragment = document.createDocumentFragment(),
 				bounds = new kakao.maps.LatLngBounds()
 				
 			// 지도에 표시되고 있는 마커를 제거합니다
 			removeMarker();
+			// 마커를 생성하고 지도에 표시합니다
+			var placePosition = new kakao.maps.LatLng(days.dayLatitude, days.dayLongitude),
+				marker = addMarker(placePosition)
+			// LatLngBounds 객체에 좌표를 추가합니다
+			bounds.extend(placePosition);
+			
+			(function(marker, days) {
+				kakao.maps.event.addListener(marker, 'mouseover', function() {
+					displayInfowindow(marker, days.dayTitle);
+				});
 
-			for (var i = 0; i < days.length; i++) {
-				// 마커를 생성하고 지도에 표시합니다
-				var placePosition = new kakao.maps.LatLng(days.dayLatitude, days.dayLongitude),
-					marker = addMarker(placePosition)
-				// LatLngBounds 객체에 좌표를 추가합니다
-				bounds.extend(placePosition);
-				
-				(function(marker, days) {
-					kakao.maps.event.addListener(marker, 'mouseover', function() {
-						displayInfowindow(marker, days.dayTitle);
-					});
-
-					kakao.maps.event.addListener(marker, 'mouseout', function() {
-						infowindow.close();
-					});
-					
-					kakao.maps.event.addListener(marker, 'click', function() {
-						// @ 6/29 마커 클릭 시 데이터 저장
-						if(confirm('등록하시겠습니까?')){
-							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+days.dayTitle+"</div>");
-							/* days[day-1][spotNo[day-1]++] = days; */
-						}else{
-							return false;
-						}
-					});
-				})(marker, days);
-			}
+				kakao.maps.event.addListener(marker, 'mouseout', function() {
+					infowindow.close();
+				});
+			})(marker, days);
 		}
 
 		// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
@@ -226,7 +214,6 @@
 				position : position, // 마커의 위치
 				image : markerImage
 			});
-
 			marker.setMap(map); // 지도 위에 마커를 표출합니다
 			markers.push(marker); // 배열에 생성된 마커를 추가합니다
 			return marker;

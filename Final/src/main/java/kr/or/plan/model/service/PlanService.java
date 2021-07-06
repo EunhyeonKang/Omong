@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -16,31 +17,28 @@ import kr.or.plan.model.vo.Plan;
 public class PlanService {
 	@Autowired
 	private PlanDao dao;
-
+	@Transactional
 	public int insertPlan(Plan plan, JsonArray list) {
+		int planNo = 0;
 		if(plan.getPlanNo()==0) {
-			
+			dao.insertPlan(plan);
 		}else {
-			
+			dao.deleteDay(plan.getPlanNo());
 		}
-		int result = dao.insertPlan(plan);
+		planNo = plan.getPlanNo();
+		int result = 0;
 		for(int i=0; i<list.size(); i++) {
 			JsonObject day = (JsonObject) list.get(i);
-			System.out.println(day);
-			int amount = dao.selectOneDay(plan.getPlanNo());
 			for(int j=0; j<day.size(); j++) {
 				Day d = new Day();
 				JsonObject spot = (JsonObject) day.get(Integer.toString(j));
-				d.setDayPlan(plan.getPlanNo());
+				d.setDayPlan(planNo);
 				d.setDayDate(plan.getPlanStart());
 				d.setNext(i);
 				d.setDayLatitude(spot.get("lat").getAsString());
 				d.setDayLongitude(spot.get("lng").getAsString());
 				d.setDayTitle(spot.get("title").getAsString());
-				d.setDayAddress(spot.get("address").getAsString());
-				if(amount != 0) {
-					result += dao.deleteDay(plan.getPlanNo());
-				}
+				d.setDayAddress(spot.get("address").getAsString());				
 				result += dao.insertDay(d);
 			}
 		}
@@ -58,7 +56,7 @@ public class PlanService {
 	public ArrayList<Plan> selectViewPlanList() {
 		return dao.selectViewPlanList();
 	}
-
+	@Transactional
 	public Plan selectOnePlan(Plan plan) {
 		int result = dao.updateOnePlan(plan);
 		if(result>0) {

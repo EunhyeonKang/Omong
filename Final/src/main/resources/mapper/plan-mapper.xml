@@ -10,9 +10,6 @@
   <insert id="insertDay" parameterType="day">
   	INSERT INTO day VALUES(day_sequence.NEXTVAL, #{dayPlan}, TO_DATE(#{dayDate}, 'YYYY-MM-DD')+#{next}, #{dayLatitude}, #{dayLongitude}, #{dayTitle}, #{dayAddress})
   </insert>
-  <select id="selectOneDay" resultType="int">
-  	SELECT COUNT(*) AS amount FROM day WHERE day_plan = #{dayPlan}
-  </select>
   <delete id="deleteDay">
   	DELETE FROM day WHERE day_plan = #{dayPlan}
   </delete>
@@ -90,7 +87,7 @@
   	SELECT
   		day_no AS dayNo,
   		day_plan AS dayPlan,
-  		day_date AS dayDate,
+  		TO_CHAR(day_date, 'YYYY-MM-DD') AS dayDate,
   		day_latitude AS dayLatitude,
   		day_longitude AS dayLongitude,
   		day_title AS dayTitle,
