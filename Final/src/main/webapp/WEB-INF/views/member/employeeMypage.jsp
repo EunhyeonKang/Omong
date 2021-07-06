@@ -44,7 +44,6 @@
 	<!--마이페이지 첫 화면-->
 	<div style="margin-left: 30%; margin-top: 1%">
 		<button class="genric-btn primary-border e-large" id="change">정보변경</button>
-		<button class="genric-btn primary-border e-large" id="notice">문의사항</button>
 		<button class="genric-btn primary-border e-large" id="userList">회원리스트</button>
 	</div>
 	<div class="section-top-border" style="margin-left: 30%;" id="mypage">
@@ -178,6 +177,7 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<!--================ 마이페이지 문의사항 =================-->
 	<!--문의사항-->
 	<div class="section-top-border"
@@ -210,6 +210,9 @@
 			</div>
 		</div>
 	</div>
+=======
+	
+>>>>>>> refs/heads/ehkang
 	<!--================ 마이페이지 회원리스트 =================-->
 	<!--회원리스트-->
 	<div class="section-top-border"
@@ -234,29 +237,12 @@
 				function() {
 					if ($("#mypage").css("display") == "none") {
 						$("#mypage").show();
-						$("#noticepage").hide();
 						$("#userListpage").hide();
 						$("#change")
 								.attr('class', 'genric-btn primary e-large');
-						$("#notice").attr('class',
-								'genric-btn primary-border e-large');
 						$("#userList").attr('class',
 								'genric-btn primary-border e-large');
 
-					}
-				});
-		$("#notice").click(
-				function() {
-					if ($("#noticepage").css("display") == "none") {
-						$("#noticepage").show();
-						$("#mypage").hide();
-						$("#userListpage").hide();
-						$("#change").attr('class',
-								'genric-btn primary-border e-large');
-						$("#notice").attr('class',
-								'genric-btn primary-border e-large');
-						$("#userList").attr('class',
-								'genric-btn primary-border e-large');
 					}
 				});
 		$("#userList").click(
@@ -264,15 +250,34 @@
 					if ($("#userListpage").css("display") == "none") {
 						$("#userListpage").show();
 						$("#mypage").hide();
-						$("#noticepage").hide();
 						$("#change").attr('class',
-								'genric-btn primary-border e-large');
-						$("#notice").attr('class',
 								'genric-btn primary-border e-large');
 						$("#userList").attr('class',
 								'genric-btn primary-border e-large');
 					}
 				});
+
+		
+		$("#change").click(function(){
+			if($("#mypage").css("display") == "none") {
+				$("#mypage").show();
+				$("#userListpage").hide();
+				$("#change").attr('class','genric-btn primary e-large');
+				$("#userList").attr('class','genric-btn primary-border e-large');
+				
+				
+			}
+		});
+	
+		$("#userList").click(function(){
+			if($("#userListpage").css("display") == "none") {
+				$("#userListpage").show();
+				$("#mypage").hide();
+				$("#change").attr('class','genric-btn primary-border e-large');
+				$("#userList").attr('class','genric-btn primary-border e-large');
+			}
+		});
+		
 	</script>
 	<script>
 		$("#btn")

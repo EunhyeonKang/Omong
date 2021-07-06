@@ -8,6 +8,10 @@
 <script type="text/javaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+ <script src="/resources/summernote/summernote-lite.js"></script>
+<script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
+<link rel="stylesheet" href="/resources/summernote/summernote-lite.css"> 
+
 <style>
 input.button-add {
    padding: 10px;
@@ -30,54 +34,6 @@ input.button-add {
 						<h3 style="color: white;">고객센터</h3>
 						<span><a href="https://open.kakao.com/o/sBWoUtld"><img src="/resources/img/kakao.jpg" style="width:50px;"/></a></span><br><br> 
 						<!-- <input type="button" onClick="secdLinkDefault();" value="Default"/> -->
-						<script type="text/javascript">
-						 	Kakao.init('5e721adb2b93aa6c4075e9c0c13ce4b6');
-							function sendLinkCustom(){
-								Kakao.Link.sendCustom({
-									templateId : 56062 
-								});
-							}
-						</script>
-			
-						<script type="text/javascript">
-						try{
-							function secdLinkDefault(){
-								Kakao.init("5e721adb2b93aa6c4075e9c0c13ce4b6")
-								Kakao.Link.sendDefault({
-									objectType: 'feed',
-								      content: {
-								        title: '오픈채팅방',
-								        description: '#제주 #여행 #계획 #공유 #모들 #오몽',
-								        imageUrl:
-								          'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png',
-								        link: {
-								          mobileWebUrl: 'https://developers.kakao.com',
-								          webUrl: 'https://developers.kakao.com',
-								        },
-								      },
-								      
-								      buttons: [
-								        {
-								          title: '웹으로 보기',
-								          link: {
-								            mobileWebUrl: 'https://developers.kakao.com',
-								            webUrl: 'https://developers.kakao.com',
-								          },
-								        },
-								        {
-								          title: '앱으로 보기',
-								          link: {
-								            mobileWebUrl: 'https://developers.kakao.com',
-								            webUrl: 'https://developers.kakao.com',
-								          },
-								        },
-								      ],
-								})
-							}
-						;window.kakaoDemoCallback && window.kakaoDemoCallback()}
-						catch(e){window.kakaoDemoException && window.kakaoDemoException(e)}
-						  </script>
-												
 						<h3 style="color: white;">1544-3100</h3>
 						<br>
 						<h5 style="color: white;">운영시간 09:00 ~ 18:00</h5>
@@ -130,30 +86,12 @@ input.button-add {
 		</div>
 	</footer>
 	<!-- jquery plugins here-->
-	<script src="/resources/js/common/jquery-1.12.1.min.js"></script><!-- datepicker충돌 로인해 주석처리 제거시 문제는 없어보임 -->
-	<!-- popper js -->
-	<script src="/resources/js/common/js/popper.min.js"></script>
-	<!-- bootstrap js -->
-	<script src="/resources/js/common/js/bootstrap.min.js"></script>
-	<!-- magnific js -->
-	<script src="/resources/js/common/js/jquery.magnific-popup.js"></script>
-	<!-- swiper js -->
-	<script src="/resources/js/common/js/owl.carousel.min.js"></script>
-	<!-- masonry js -->
-	<script src="/resources/js/common/js/masonry.pkgd.js"></script>
-	<!-- masonry js -->
-	<script src="/resources/js/common/js/jquery.nice-select.min.js"></script>
-	<script src="/resources/js/common/js/gijgo.min.js"></script>
-	<!-- contact js -->
-	<script src="/resources/js/common/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/resources/js/common/js/jquery.form.js"></script>
-	<script src="/resources/js/common/js/jquery.validate.min.js"></script>
-	<script src="/resources/js/common/js/mail-script.js"></script>
-	<script src="/resources/js/common/js/contact.js"></script>
-	<!-- custom js -->
-	<script src="/resources/js/common/js/custom.js"></script>
+	<!--<script src="/resources/js/common/jquery-1.12.1.min.js"></script> datepicker충돌 로인해 주석처리 제거시 문제는 없어보임 -->
+
+	
 	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> datepicker용 스크립트문 -->
+
 </body>
 <script>
 	$("#dblclick").dblclick(function(){

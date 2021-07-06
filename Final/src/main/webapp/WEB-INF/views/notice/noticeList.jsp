@@ -53,7 +53,7 @@
 					<c:forEach items="${list }" var="noticeEmployee" varStatus="i">
 						<div class="table-row">
 							<div class="serial">${noticeEmployee.noticeEmployeeNo }</div>
-							<div class="percentage"><a href="/detailNoticeEmployee.do?noticeEmployeeNo=${noticeEmployee.noticeEmployeeNo }">${noticeEmployee.title }</a></div>
+							<div class="percentage"><a href="/detailNoticeEmployee.do?noticeEmployeeNo=${noticeEmployee.noticeEmployeeNo}">${noticeEmployee.title }</a></div>
 							<%-- <div class="country">
 								<img src="/resources/upload/notice/${noticeEmployee.filename }">
 							</div> --%>
