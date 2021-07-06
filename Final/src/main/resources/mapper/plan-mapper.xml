@@ -5,10 +5,10 @@
   	<selectKey keyProperty="planNo" resultType="int" order="AFTER">
   		SELECT MAX(plan_no) FROM plan
   	</selectKey>
-  	INSERT INTO plan VALUES(plan_sequence.NEXTVAL, #{planPublic}, #{planWriter}, #{planTitle}, #{planStart}, #{planEnd}, #{planContent}, 0, 0, 0, ${planThumbnailNo)
+  	INSERT INTO plan VALUES(plan_sequence.NEXTVAL, #{planPublic}, #{planWriter}, #{planTitle}, #{planStart}, #{planEnd}, #{planContent}, 0, 0, 0, #{planThumbnailNo})
   </insert>
   <insert id="insertDay" parameterType="day">
-  	INSERT INTO day VALUES(day_sequence.NEXTVAL, #{dayPlan}, #{next}, #{dayLatitude}, #{dayLongitude}, #{dayTitle}, #{dayAddress})
+  	INSERT INTO day VALUES(day_sequence.NEXTVAL, #{dayPlan}, #{dayDate}, #{dayLatitude}, #{dayLongitude}, #{dayTitle}, #{dayAddress})
   </insert>
   <delete id="deleteDay">
   	DELETE FROM day WHERE day_plan = #{dayPlan}
