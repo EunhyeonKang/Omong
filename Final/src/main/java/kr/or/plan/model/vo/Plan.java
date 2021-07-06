@@ -14,6 +14,7 @@ public class Plan {
 	private int planLike;
 	private int planShare;
 	private int planView;
+	private String planThumbnailNo;
 	
 	// 일자 반복에 필요한 변수
 	private String planDay;

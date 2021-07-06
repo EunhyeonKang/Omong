@@ -66,42 +66,73 @@
 			day = 1;
 			$(".detail").hide();
 			$(".detail").eq(0).show();
-			 for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == planStart){
-					console.log(days[i].dayTitle);
+			console.log(day-1);
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
 					displayPlaces(days[i]);
+					console.log(days[i].dayTitle);
 				}
-			} 
+			}
 		});
 		$("#day2").click(function() {
 			day = 2;
 			$(".detail").hide();
 			$(".detail").eq(1).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
 		});
 		$("#day3").click(function() {
 			day = 3;
 			$(".detail").hide();
 			$(".detail").eq(2).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
 		});
 		$("#day4").click(function() {
 			day = 4;
 			$(".detail").hide();
 			$(".detail").eq(3).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
 		});
 		$("#day5").click(function() {
 			day = 5;
 			$(".detail").hide();
 			$(".detail").eq(4).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
 		});
 		$("#day6").click(function() {
 			day = 6;
 			$(".detail").hide();
 			$(".detail").eq(5).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
 		});
 		$("#day7").click(function() {
 			day = 7;
 			$(".detail").hide();
 			$(".detail").eq(6).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
 		});
 	</script>
 	<!-- 카카오 맵 api javascript key -->
@@ -126,12 +157,10 @@
 		});
 
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-			// 지도의 확대 레벨
-			level : 3
-		};
-
+		mapOption = { 
+	        center: new kakao.maps.LatLng(33.372202649734135, 126.52790662356396), // 지도의 중심좌표
+	        level: 9 // 지도의 확대 레벨
+	    };
 		// **지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
@@ -185,7 +214,7 @@
 			// 지도에 표시되고 있는 마커를 제거합니다
 			removeMarker();
 			// 마커를 생성하고 지도에 표시합니다
-			var placePosition = new kakao.maps.LatLng(days.dayLatitude, days.dayLongitude),
+			var placePosition = new kakao.maps.LatLng(days.dayLongitude, days.dayLatitude),
 				marker = addMarker(placePosition)
 			// LatLngBounds 객체에 좌표를 추가합니다
 			bounds.extend(placePosition);

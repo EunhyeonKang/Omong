@@ -6,7 +6,7 @@ import lombok.Data;
 public class Day {
 	private int dayNo;
 	private int dayPlan;
-	private String dayDate;
+	private int dayDate;
 	private String dayLatitude;
 	private String dayLongitude;
 	private String dayTitle;

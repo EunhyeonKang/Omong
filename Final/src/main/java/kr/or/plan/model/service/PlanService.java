@@ -33,8 +33,7 @@ public class PlanService {
 				Day d = new Day();
 				JsonObject spot = (JsonObject) day.get(Integer.toString(j));
 				d.setDayPlan(planNo);
-				d.setDayDate(plan.getPlanStart());
-				d.setNext(i);
+				d.setDayDate(j);
 				d.setDayLatitude(spot.get("lat").getAsString());
 				d.setDayLongitude(spot.get("lng").getAsString());
 				d.setDayTitle(spot.get("title").getAsString());

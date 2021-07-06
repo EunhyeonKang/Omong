@@ -82,7 +82,6 @@
 				</div>
 				<div class="detail" style="width: 100%;">
 					<h3>DAY7</h3>
-					<div class="day7"></div>
 				</div>
 				<br>
 				<button id="save" class="save" onclick="savePlan();">저장하기</button>
@@ -149,14 +148,13 @@
 					plan = data;
 				}
 			});
-			for(var i=0; i<${diff}; i++){
+			for(var i=0; i<${diff} ; i++){
 				spotNo.push(0);
 				var obj = {};
 				days.push(obj);
 			}
 		});
 		
-		console.log(plan);
 		// @6/30 Day 테이블에 담을 객체 선언
 		var place = null;
 		// @6/30 Day 테이블 데이징 선언
@@ -167,9 +165,9 @@
 
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+			center : new kakao.maps.LatLng(33.372202649734135, 126.52790662356396), // 지도의 중심좌표
 			// 지도의 확대 레벨
-			level : 3
+			level : 9
 		};
 
 		// 지도를 생성합니다    
@@ -217,6 +215,7 @@
 				// 정상적으로 검색이 완료됐으면
 				// 검색 목록과 마커를 표출합니다
 				displayPlaces(data);
+				console.log('data : ');
 				console.log(data);
 				// 페이지 번호를 표출합니다
 				displayPagination(pagination);
@@ -232,7 +231,8 @@
 
 		// 검색 결과 목록과 마커를 표출하는 함수입니다
 		function displayPlaces(places) {
-
+			console.log('places : ');
+			console.log(places);
 			var listEl = document.getElementById('placesList'),
 				menuEl = document.getElementById('menu_wrap'),
 				fragment = document.createDocumentFragment(),
@@ -269,6 +269,7 @@
 					
 					kakao.maps.event.addListener(marker, 'click', function() {
 						// @ 6/29 마커 클릭 시 데이터 저장
+						console.log(marker);
 						if(confirm('등록하시겠습니까?')){
 							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+place.title+"</div>");
 							days[day-1][spotNo[day-1]++] = place;
