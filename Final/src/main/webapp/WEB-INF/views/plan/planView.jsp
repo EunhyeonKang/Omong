@@ -62,77 +62,32 @@
 			$(".detail").eq(0).show();
 		});
 		$("#day1").click(function() {
-			alert("a");
 			day = 1;
-			$(".detail").hide();
-			$(".detail").eq(0).show();
-			console.log(day-1);
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-					console.log(days[i].dayTitle);
-				}
-			}
+			showDaySpots(day);
 		});
 		$("#day2").click(function() {
 			day = 2;
-			$(".detail").hide();
-			$(".detail").eq(1).show();
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-				}
-			}
+			showDaySpots(day);
 		});
 		$("#day3").click(function() {
 			day = 3;
-			$(".detail").hide();
-			$(".detail").eq(2).show();
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-				}
-			}
+			showDaySpots(day);
 		});
 		$("#day4").click(function() {
 			day = 4;
-			$(".detail").hide();
-			$(".detail").eq(3).show();
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-				}
-			}
+			showDaySpots(day);
 		});
 		$("#day5").click(function() {
 			day = 5;
-			$(".detail").hide();
-			$(".detail").eq(4).show();
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-				}
-			}
+			showDaySpots(day);
 		});
 		$("#day6").click(function() {
 			day = 6;
-			$(".detail").hide();
-			$(".detail").eq(5).show();
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-				}
-			}
+			showDaySpots(day);
 		});
 		$("#day7").click(function() {
 			day = 7;
-			$(".detail").hide();
-			$(".detail").eq(6).show();
-			for(var i=0; i<days.length; i++){
-				if(days[i].dayDate == (day-1)){
-					displayPlaces(days[i]);
-				}
-			}
+			showDaySpots(day);
 		});
 	</script>
 	<!-- 카카오 맵 api javascript key -->
@@ -206,13 +161,25 @@
 		var infowindow = new kakao.maps.InfoWindow({
 			zIndex : 1
 		});
+		// @07/06 마커를 표출하기 위해 준비하는 함수입니다
+		function showDaySpots(day){
+			// 지도에 표시되고 있는 마커를 제거합니다
+			removeMarker();
+			$(".detail").hide();
+			$(".detail").eq(day-1).show();
+			for(var i=0; i<days.length; i++){
+				if(days[i].dayDate == (day-1)){
+					displayPlaces(days[i]);
+				}
+			}
+		}
+		
 		// 검색 결과 목록과 마커를 표출하는 함수입니다
 		function displayPlaces(days) {
+			console.log('함수 실행');
 			var fragment = document.createDocumentFragment(),
 				bounds = new kakao.maps.LatLngBounds()
 				
-			// 지도에 표시되고 있는 마커를 제거합니다
-			removeMarker();
 			// 마커를 생성하고 지도에 표시합니다
 			var placePosition = new kakao.maps.LatLng(days.dayLongitude, days.dayLatitude),
 				marker = addMarker(placePosition)
@@ -232,6 +199,7 @@
 
 		// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 		function addMarker(position) {
+			console.log('마커추가');
 			var imageSrc = '/resources/img/marker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 			imageSize = new kakao.maps.Size(24, 35), // 마커 이미지의 크기
 			imgOptions = {
