@@ -28,8 +28,25 @@
 				<ul id="placesList"></ul>
 				<div id="pagination"></div>
 			</div>
-			<button id="cancle">
-			>
+			<div id="api_wrap" class="bg_white">
+				<div class="option">
+					<div>
+						<form onsubmit="searchPlaces(); return false;">
+							<input type="hidden" value="" id="title" size="15">
+							<input type="text" value="" id="keyword" size="15" class="keyword" placeholder="검색어 입력">
+							<button type="submit" class="submit">검색하기</button>
+						</form>
+					</div>
+				</div>
+				<hr>
+				<ul id="placesList"></ul>
+				<div id="pagination"></div>
+			</div>
+			<button id="web">
+			<img src="/resources/img/돋보기.png">
+			</button>
+			<button id="api">
+			<img src="/resources/img/female.png">
 			</button>
 			<!-- 일정표 -->
 			<div id="detailList" style="width: 15%; overflow-y: scroll; padding: 15px;">
@@ -485,15 +502,30 @@
 				$("#search").hide();
 			}
 		});
-		$("#cancle").click(function(){
+		$("#web").click(function(){
 			if($("#menu_wrap").css('display') == 'none'){
 				$("#menu_wrap").show();
-				$("#cancle").css({'left':'31%'});
-				$("#cancle").html('<');
+				$("#web").css({'left':'31%'});
+				$("#web").html('<');
+				$("#api").hide();
 			}else{
 				$("#menu_wrap").hide()
-				$("#cancle").css({'left':'15%'});
-				$("#cancle").html('>');
+				$("#web").css({'left':'15%'});
+				$("#web").html("<img src='/resources/img/돋보기.png'>");
+				$("#api").show();
+			}
+		});
+		$("#api").click(function(){
+			if($("#api_wrap").css('display') == 'none'){
+				$("#api_wrap").show();
+				$("#api").css({'left':'31%'});
+				$("#api").html('<');
+				$("#web").hide();
+			}else{
+				$("#api_wrap").hide()
+				$("#api").css({'left':'15%'});
+				$("#api").html("<img src='/resources/img/female.png'>");
+				$("#web").show();
 			}
 		});
 	</script>

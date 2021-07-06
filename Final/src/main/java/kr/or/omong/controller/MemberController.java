@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.google.gson.Gson;
 
 import kr.or.member.model.service.MemberService;
-import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.User;
 import kr.or.partner.model.vo.Package;
 import kr.or.plan.model.vo.Day;

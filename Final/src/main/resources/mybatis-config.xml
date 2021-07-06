@@ -6,7 +6,6 @@
 	</settings>
 	<typeAliases>
 <!-- 		<typeAlias type="" alias=""/> -->
-	<typeAlias type="kr.or.member.model.vo.Employee" alias="e"/>
 	<typeAlias type="kr.or.member.model.vo.User" alias="u"/>
 	<typeAlias type="kr.or.partner.model.vo.Package" alias="pac"/>
 	<typeAlias type="kr.or.partner.model.vo.Product" alias="pro"/>

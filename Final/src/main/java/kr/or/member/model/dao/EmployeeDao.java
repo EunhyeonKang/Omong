@@ -7,8 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.member.model.vo.Employee;
-import kr.or.member.model.vo.Member;
+
 import kr.or.member.model.vo.User;
 
 @Repository
