@@ -18,7 +18,7 @@
 				<div class="option">
 					<div>
 						<form onsubmit="searchPlaces(); return false;">
-							<input type="hidden" value="" id="title" size="15">
+							<input type="hidden" value="제주도" id="title" size="15">
 							<input type="text" value="" id="keyword" size="15" class="keyword" placeholder="검색어 입력">
 							<button type="submit" class="submit">검색하기</button>
 						</form>

@@ -54,7 +54,7 @@
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">태그..?</a>
+								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">태그..?</a>
 								<h3>${plan.planTitle}</h3>
 								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
@@ -67,7 +67,7 @@
 								</div>
 							</div>
 							<div class="details_icon text-right">
-								<i class="ti-share"></i>
+								<i>click</i>
 							</div>
 						</div>
 					</div>
@@ -91,7 +91,7 @@
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">태그..?</a>
+								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">태그..?</a>
 								<h3>${plan.planTitle}</h3>
 								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
@@ -128,7 +128,7 @@
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="#" class="place_btn">태그..?</a>
+								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">태그..?</a>
 								<h3>${plan.planTitle}</h3>
 								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">

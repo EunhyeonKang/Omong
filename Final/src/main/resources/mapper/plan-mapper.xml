@@ -69,4 +69,32 @@
   		plan_view AS planView
   	FROM (SELECT * FROM plan ORDER BY plan_view DESC) WHERE ROWNUM &lt;=3
   </select>
+  <select id="selectOnePlan" parameterType="plan" resultType="plan">
+  	SELECT
+  		plan_no AS planNo,
+  		plan_public AS planPublic,
+  		plan_title AS planTitle,
+  		TO_CHAR(plan_start, 'YYYY-MM-DD') AS planStart,
+  		TO_CHAR(plan_end, 'YYYY-MM-DD') AS planEnd,
+  		plan_content AS planContent,
+  		plan_like AS planLike,
+  		plan_share AS planShare,
+  		plan_view AS planView,
+  		(plan_end-plan_start) AS planDay
+  	FROM plan WHERE plan_no = #{planNo}
+  </select>
+  <update id="updateOnePlan" parameterType="plan">
+    UPDATE plan SET plan_view = plan_view+1 WHERE plan_no = #{planNo}
+  </update>
+  <select id="selectOnePlanDays" parameterType="plan" resultType="day">
+  	SELECT
+  		day_no AS dayNo,
+  		day_plan AS dayPlan,
+  		day_date AS dayDate,
+  		day_latitude AS dayLatitude,
+  		day_longitude AS dayLongitude,
+  		day_title AS dayTitle,
+  		day_address AS dayAddress
+  	FROM day WHERE day_plan = #{planNo}
+  </select>
 </mapper>

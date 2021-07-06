@@ -18,6 +18,11 @@ public class PlanService {
 	private PlanDao dao;
 
 	public int insertPlan(Plan plan, JsonArray list) {
+		if(plan.getPlanNo()==0) {
+			
+		}else {
+			
+		}
 		int result = dao.insertPlan(plan);
 		for(int i=0; i<list.size(); i++) {
 			JsonObject day = (JsonObject) list.get(i);
@@ -52,6 +57,19 @@ public class PlanService {
 
 	public ArrayList<Plan> selectViewPlanList() {
 		return dao.selectViewPlanList();
+	}
+
+	public Plan selectOnePlan(Plan plan) {
+		int result = dao.updateOnePlan(plan);
+		if(result>0) {
+			return dao.selectOnePlan(plan);
+		}else {
+			return null;
+		}
+	}
+
+	public ArrayList<Day> selectOnePlanDays(Plan plan) {
+		return dao.selectOnePlanDays(plan);
 	}
 
 }

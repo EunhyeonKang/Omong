@@ -39,4 +39,14 @@ public class PlanDao {
 		List list = sqlSession.selectList("plan.selectViewPlanList");
 		return (ArrayList<Plan>)list;
 	}
+	public Plan selectOnePlan(Plan plan) {
+		return sqlSession.selectOne("plan.selectOnePlan", plan);
+	}
+	public ArrayList<Day> selectOnePlanDays(Plan plan) {
+		List list = sqlSession.selectList("plan.selectOnePlanDays", plan); 
+		return (ArrayList<Day>)list;
+	}
+	public int updateOnePlan(Plan plan) {
+		return sqlSession.update("plan.updateOnePlan", plan);
+	}
 }

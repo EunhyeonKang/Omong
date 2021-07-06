@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 import kr.or.plan.model.service.PlanService;
+import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
 
 @Controller
@@ -55,13 +57,29 @@ public class PlanController {
 	@Transactional
 	@ResponseBody
 	@RequestMapping(value="insertPlan.do", produces = "text/html;charset=UTF-8")
-	public String insertPlan(@SessionAttribute(required=false) Plan plan, String data, Model model) {
+	public String insertPlan(@SessionAttribute(required=false) Plan plan, String data, Model model, HttpSession session) {
 		JsonParser parser = new JsonParser();
 		JsonArray list = (JsonArray) parser.parse(data);
 		int result = service.insertPlan(plan, list);
 		if(result>0) {
+			session.removeAttribute("plan");
 			return "등록 완료";
 		}
 		return "등록 실패. 관리자에게 문의바랍니다. 에러코드 [00pi]";
+	}
+	
+	@Transactional
+	@RequestMapping(value="/selectOnePlan.do")
+	public String selectOnePlan(Plan plan, Model model) {
+		Plan onePlan = service.selectOnePlan(plan);
+		model.addAttribute("onePlan", onePlan);
+		return "/plan/planView";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectOnePlanDays.do", produces = "application/json; charset=UTF-8")
+	public String selectOnePlanDays(Plan plan, Model model) {
+		ArrayList<Day> planDays = service.selectOnePlanDays(plan);
+		return new Gson().toJson(planDays);
 	}
 }
