@@ -153,6 +153,7 @@
 	
 	<!-- hotel list css end -->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
+	
 </body>
 
 </html>
