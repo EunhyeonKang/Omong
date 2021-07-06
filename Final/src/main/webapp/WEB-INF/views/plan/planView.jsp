@@ -19,36 +19,18 @@
 					<h3 style="text-align: center; padding-top: 10px">여행 일정표</h3>
 					<br>
 					<button id="day1"
-						class="day">DAY1</button>
+						class="day dayBtn">DAY1</button>
 					<c:forEach var="i" begin="2" end="${onePlan.planDay}" step="1">
-						<button id="day${i }" class="day">DAY${i }</button>
+						<button id="day${i }" class="day dayBtn">DAY${i }</button>
 					</c:forEach>
 					<hr>
 				</div>
 				<br>
-				<!-- @HC forEach로 단문 줄여볼 수 있도록 -->
+				<c:forEach var="i" begin="1" end="${onePlan.planDay}">
 				<div class="detail" style="width: 100%;">
-					<h3>DAY1</h3>
+					<h3 id='day'>DAY${i}</h3>
 				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY2</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY3</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY4</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY5</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY6</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY7</h3>
-					<div class="day7"></div>
-				</div>
+				</c:forEach>
 				<br>
 			</div>
 		</div>
@@ -59,36 +41,16 @@
 		var days = new Array();
 		var planStart = "${onePlan.planStart}";
 		$(function() {
+			
 			$(".detail").eq(0).show();
 		});
-		$("#day1").click(function() {
-			day = 1;
+		
+		$(".dayBtn").click(function(){
+			var day = $(".dayBtn").index(this)+1;
+			console.log(day);
 			showDaySpots(day);
 		});
-		$("#day2").click(function() {
-			day = 2;
-			showDaySpots(day);
-		});
-		$("#day3").click(function() {
-			day = 3;
-			showDaySpots(day);
-		});
-		$("#day4").click(function() {
-			day = 4;
-			showDaySpots(day);
-		});
-		$("#day5").click(function() {
-			day = 5;
-			showDaySpots(day);
-		});
-		$("#day6").click(function() {
-			day = 6;
-			showDaySpots(day);
-		});
-		$("#day7").click(function() {
-			day = 7;
-			showDaySpots(day);
-		});
+		
 	</script>
 	<!-- 카카오 맵 api javascript key -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0069a695a69eb1289dd330cee4957ce8&libraries=services"></script>
@@ -97,7 +59,7 @@
 	
 		// @6/30 Day 테이블 데이징 선언
 		var day = 1;
-		
+		var test = new Array();
 		$(document).ready(function(){
 			var planNo = "${onePlan.planNo}";
 			$.ajax({
@@ -106,14 +68,38 @@
 				data: {planNo : planNo},
 				success: function(data){
 					days = data;
-					console.log(days);
+					for(var i=0; i<days.length; i++){
+						displayPlaces(days[i]);
+						if(days[i].dayDate == (day-1)){
+							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+days[i].dayTitle+"</div>");
+						}
+						
+						days[i].latlng = new daum.maps.LatLng(days[i].dayLongitude, days[i].dayLatitude);
+						if(i != 0){
+							var linePath = [ days[i - 1].latlng, days[i].latlng ]
+						};
+						lineLine.setPath(linePath);
+						
+						var drawLine = new daum.maps.Polyline({
+							map : map,
+							path : linePath,
+							strokeWeight : 4,
+							strokeColor : '#bd4040',
+							strokeOpacity : 1,
+							strokeStyle : 'solid'
+						});
+						test.push(drawLine);
+						distance = Math.round(lineLine.getLength());
+						displayCircleDot(days[i].latlng, distance);
+					}
 				}
 			});
 		});
 
+
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = { 
-	        center: new kakao.maps.LatLng(33.372202649734135, 126.52790662356396), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng(33.402914, 126.331689), // 지도의 중심좌표
 	        level: 9 // 지도의 확대 레벨
 	    };
 		// **지도를 생성합니다    
@@ -130,32 +116,9 @@
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		var plan;
-		// @07/01 Day 테이블 순서 키값 선언
-		var spotNo = new Array();
-		// @07/01 Day Vo 담을 변수 선언
-		/* var spots = {}; */
-		
-		// @6/30 Day 테이블에 담을 객체 선언
-		var place = null;
-
 		// 마커를 담을 배열입니다
 		var markers = [];
 		var positions = new Array();
-
-
-		
 
 		// **검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
@@ -165,11 +128,38 @@
 		function showDaySpots(day){
 			// 지도에 표시되고 있는 마커를 제거합니다
 			removeMarker();
+			// 지도에 표시되고 있는 폴리라인을 제거합니다
+			for(var i=0; i<test.length; i++){
+				test[i].setMap(null);
+			}
+			test = new Array();
 			$(".detail").hide();
 			$(".detail").eq(day-1).show();
+			$(".day"+day).remove();
 			for(var i=0; i<days.length; i++){
 				if(days[i].dayDate == (day-1)){
 					displayPlaces(days[i]);
+					$(".detail").eq(day-1).append("<div class='day"+day+"'>"+days[i].dayTitle+"</div>");
+					
+					days[i].latlng = new daum.maps.LatLng(days[i].dayLongitude, days[i].dayLatitude);
+					
+					if(i != 0){
+						var linePath = [ days[i - 1].latlng, days[i].latlng ]
+					};
+					
+					lineLine.setPath(linePath);
+					
+					var drawLine = new daum.maps.Polyline({
+						map : map,
+						path : linePath,
+						strokeWeight : 2,
+						strokeColor : '#bd4040',
+						strokeOpacity : 0.8,
+						strokeStyle : 'solid'
+					});
+					
+					distance = Math.round(lineLine.getLength());
+					displayCircleDot(days[i].latlng, distance);
 				}
 			}
 		}
@@ -185,7 +175,6 @@
 				marker = addMarker(placePosition)
 			// LatLngBounds 객체에 좌표를 추가합니다
 			bounds.extend(placePosition);
-			
 			(function(marker, days) {
 				kakao.maps.event.addListener(marker, 'mouseover', function() {
 					displayInfowindow(marker, days.dayTitle);
@@ -233,6 +222,26 @@
 			infowindow.open(map, marker);
 		}
 
+		// @07/06 마커 연결 라인 긋기
+		var distanceOverlay;
+		var dots = {};
+		// @07/06 라인 객체
+		var lineLine = new daum.maps.Polyline();
+		// @07/06 거리 객체
+		var distance;
+
+		
+		function displayCircleDot(position, distance){
+			if(distance > 0){
+				var distanceOverlay = new daum.maps.CustomOverlay({
+					content : '<div class="dotOverlay"> 거리 <span class="number">' + distance + '</span>m</div>',
+					position : position,
+					yAnchor : 0,
+					zIndex : 2
+				});
+				distanceOverlay.setMap(map);
+			}
+		}
 	</script>
 </body>
 </html>

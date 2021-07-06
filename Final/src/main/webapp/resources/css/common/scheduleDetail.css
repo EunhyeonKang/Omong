@@ -310,3 +310,15 @@
 	background: rgba(255, 255, 255, 0.5);
 	border: 0;
 }
+
+.dotOverlay{
+	padding : 0 5px 0;
+	background-color: white;
+	border-radius: 10px;
+	z-index: 3;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+}
+.number{
+	font-size: 10px;
+	z-index: 3;
+}
