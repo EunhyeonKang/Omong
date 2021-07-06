@@ -124,6 +124,21 @@ public class EmployeeController {
 		int result = service.employeeUpdate(u);
 		return "redirect:/employeeMypage.do?employeeId=" + u.getId();
 	}
+	
+	@RequestMapping(value="/kakaoUpdate.do")
+	public String kakaoUpdate(User u,HttpServletRequest request,Model model) {
+		int result = service.kakaoUpdate(u);
+		if(result != -1) {
+			HttpSession session = request.getSession();
+			User user = service.kakaoSelect(u);
+			session.setAttribute("user", user);
+			model.addAttribute("msg","가입완료");
+		}else {
+			model.addAttribute("msg","가입실패");
+		}
+		model.addAttribute("loc","/");
+		return "common/msg";
+	}
 	@RequestMapping(value="/updateYn.do")
 	public String updateYn(User u,Model model) {
 		int result = service.updateYn(u);

@@ -85,6 +85,16 @@ public class EmployeeDao {
 		return sqlSession.update("employee.updateNotice",u);
 	}
 
+	public int kakaoUpdate(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("employee.kakaoUpdate",u);
+	}
+
+	public User kakaoSelect(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("employee.kakaoSelect",u);
+	}
+
 
 
 	

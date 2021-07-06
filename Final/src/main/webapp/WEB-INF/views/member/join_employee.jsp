@@ -104,6 +104,7 @@
 						<input type="text" name="address_detail" id="address_detail"  placeholder="상세주소를 입력해주세요" 
 						required class="single-input">
 					</div>
+					</div>
                <hr>
                <h4>생년월일</h4>
                <div class="mt-10">
@@ -155,7 +156,7 @@
                      <div style="width : 150px; height : 150px; background-image: url(/resources/img/female.png); background-size:cover; text-align:center;">
                         <input type="radio" name="gender" id="female" value="F">여자
                      </div>
-                    id/label>
+                    </label>
                </div>
                <hr>
                <div style="text-align : center;">

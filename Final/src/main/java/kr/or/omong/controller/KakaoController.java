@@ -49,13 +49,15 @@ public class KakaoController {
 		u.setEmail(email);
 		String profile= (String) userInfo.get("profile");
 		u.setProfileImage(profile);
-		
+		u.setType("m");
+		u.setChangePw("K");
 		
 		//userinfo 출력하기
 		//주소,프로필,핸드폰,비밀번호
 
 		if(userInfo.get("email")!=null) {
 			session.setAttribute("userId", userInfo.get("email"));
+			session.setAttribute("kakao", u);
 			session.setAttribute("access_token", accessToken);
 		}
 		model.addAttribute("u",u);

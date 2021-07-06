@@ -79,12 +79,14 @@
 											<a class="nav-link" href="/insertPackage.do">상품등록</a>
 											</c:when>
 											<c:when test="${sessionScope.pacYn eq 1 }">
-											
+											<a class="nav-link" href="/modifyPackage.do">상품수정</a>
 											</c:when>
 											</c:choose>
 											</li>
-											<li class="nav-item"><a class="nav-link" href="packageView.do?partnerNo=${sessionScope.u.no}">등록상품 상세보기/수정</a></li>
-											<li class="nav-item"><a class="nav-link" href="partnerNotice.do">공지사항 리스트</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="/packageView.do">등록상품 상세보기</a></li>
+											<li class="nav-item"><a class="nav-link"
+												href="partnerNotice.do">공지사항 리스트</a></li>
 											<!-- <li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 일정 </a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -120,7 +122,7 @@
 				</div>
 			</header>
 		</c:when>
-		<c:when test="${sessionScope.u.type eq 'm'}">
+		<c:when test="${sessionScope.u.type eq 'm' || sessionScope.kakao.type eq 'm'}">
 			<header class="main_menu">
 				<div class="main_menu_iner">
 					<div class="container">
@@ -157,7 +159,16 @@
 													<a class="dropdown-item" href="/planInsert.do">일정등록</a>
 													<a class="dropdown-item" href="/plan.do">일정공유</a>
 												</div></li>
-											<li class="nav-item"><a class="nav-link" href="/noticeList.do">공지사항</a></li>
+											<li class="nav-item dropdown"><a
+												class="nav-link dropdown-toggle" href="/boardList.do"
+												id="navbarDropdown_1" role="button" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"> 게시판 </a>
+												<div class="dropdown-menu"
+													aria-labelledby="navbarDropdown_1">
+													<a class="dropdown-item" href="/noticeList.do">공지사항</a> <a
+														class="dropdown-item" href="/boardList.do">자유게시판</a> <a
+														class="dropdown-item" href="elements.html">문의사항</a>
+												</div></li>
 										</ul>
 									</div>
 									<c:choose>
@@ -169,14 +180,32 @@
 												style="margin-left: 1px; background-color: #F18101">회원가입</a>
 										</c:when>
 										<c:otherwise>
-											<c:if test="${sessionScope.u.type eq 'm' }">
-												<div class="box" style="background: #BDBDBD; margin-right:20px">
-    												<img class="profile" src="/resources/upload/profile/${sessionScope.u.profileImage }">
-												</div>
+											<c:if test="${sessionScope.u.type eq 'm' || sessionScope.kakao.type eq 'm'}">
+												<c:choose>
+													<c:when test="${empty sessionScope.u.profileImage}">
+														<div class="box" style="background: #BDBDBD; margin-right:20px">
+    														<img class="profile" src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg">
+														</div>
+													</c:when>
+													<c:otherwise>
+														<div class="box" style="background: #BDBDBD; margin-right:20px">
+    														<img class="profile" src="/resources/upload/profile/${sessionScope.u.profileImage }">
+														</div>	
+													</c:otherwise>
+												</c:choose>
 												<div style="margin-right:50px">
 													<h5>${sessionScope.u.name }</h5>
 												</div>
-												<a href="/basicLogout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
+												<c:choose>
+													<c:when test="${sessionScope.kakao.changePw eq 'K'}">
+														<a
+														href="https://kauth.kakao.com/oauth/logout?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&logout_redirect_uri=http://localhost:8082/logout.do"
+														class="btn_1 d-none d-lg-block" style="background-color:red;">로그아웃</a>
+													</c:when>
+													<c:otherwise>
+														<a href="/basicLogout.do" class="btn_1 d-none d-lg-block">로그아웃</a>
+													</c:otherwise>
+												</c:choose>
 												<a href="/mypage.do" class="btn_1 d-none d-lg-block"
 													style="margin-left: 1px;">마이페이지</a>
 											</c:if>
@@ -227,7 +256,16 @@
 													<a class="dropdown-item" href="/planInsert.do">일정등록</a>
 													<a class="dropdown-item" href="/plan.do">일정공유</a>
 												</div></li>
-											<li class="nav-item"><a class="nav-link" href="/noticeList.do">공지사항</a></li>
+											<li class="nav-item dropdown"><a
+												class="nav-link dropdown-toggle" href="/boardList.do"
+												id="navbarDropdown_1" role="button" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"> 게시판 </a>
+												<div class="dropdown-menu"
+													aria-labelledby="navbarDropdown_1">
+													<a class="dropdown-item" href="/noticeList.do">공지사항</a> <a
+														class="dropdown-item" href="/boardList.do">자유게시판</a> <a
+														class="dropdown-item" href="elements.html">문의사항</a>
+												</div></li>
 										</ul>
 									</div>
 									<c:choose>
@@ -259,10 +297,6 @@
 											</c:if>
 										</c:otherwise>
 									</c:choose>
-									<a
-									href="https://kauth.kakao.com/oauth/logout?client_id=c4831aaf9adcbc5aa2f115cf6b83ac70&logout_redirect_uri=http://localhost:8082/logout.do"
-									class="btn_1 d-none d-lg-block">로그아웃</a>
-								</nav>
 							</div>
 						</div>
 					</div>
