@@ -47,14 +47,14 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
-				<c:forEach items="${recommendList }" var="plan" varStatus="i">
+				<c:forEach items="${recommendList }" var="plan">
 				<div class="schedule">
 					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_${i.count}.png" alt="">
+						<img src="/resources/img/jeju/제주_${plan.planThumbnailNo}.jpg" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">태그..?</a>
+								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">상세보기</a>
 								<h3>${plan.planTitle}</h3>
 								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
@@ -84,14 +84,14 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
-				<c:forEach items="${newList }" var="plan" varStatus="i">
+				<c:forEach items="${newList }" var="plan">
 				<div class="schedule">
 					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_${i.count}.png" alt="">
+						<img src="/resources/img/jeju/제주_${plan.planThumbnailNo}.jpg" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">태그..?</a>
+								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">상세보기</a>
 								<h3>${plan.planTitle}</h3>
 								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">
@@ -121,14 +121,14 @@
 		<hr style="border: solid 1px black;">
 		<div class="container_reservation" style="width: 100%;">
 			<div class="row" style="flex-wrap: nowrap; ">
-				<c:forEach items="${viewList }" var="plan" varStatus="i">
+				<c:forEach items="${viewList }" var="plan">
 				<div class="schedule">
 					<div class="single_place" style="width : 90%; margin:30px" >
-						<img src="/resources/img/single_place_${i.count}.png" alt="">
+						<img src="/resources/img/jeju/제주_${plan.planThumbnailNo}.jpg" alt="">
 						<div
 							class="hover_Text d-flex align-items-end justify-content-between">
 							<div class="hover_text_iner">
-								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">태그..?</a>
+								<a href="/selectOnePlan.do?planNo=${plan.planNo}" class="place_btn">상세보기</a>
 								<h3>${plan.planTitle}</h3>
 								<p>${plan.planStart} ~ ${plan.planEnd}</p>
 								<div class="place_review">

@@ -24,7 +24,8 @@
   		plan_content AS planContent,
   		plan_like AS planLike,
   		plan_share AS planShare,
-  		plan_view AS planView
+  		plan_view AS planView,
+  		plan_thumbnail_no AS planThumbnailNo
   	FROM plan WHERE plan_writer = #{id}
   </select>
   <select id="selectRecommendPlanList" resultType="plan">
@@ -37,7 +38,8 @@
   		plan_content AS planContent,
   		plan_like AS planLike,
   		plan_share AS planShare,
-  		plan_view AS planView
+  		plan_view AS planView,
+  		plan_thumbnail_no AS planThumbnailNo
   	FROM (SELECT * FROM plan ORDER BY plan_like DESC) WHERE ROWNUM &lt;=3
   </select>
   <select id="selectNewPlanList" resultType="plan">
@@ -50,7 +52,8 @@
   		plan_content AS planContent,
   		plan_like AS planLike,
   		plan_share AS planShare,
-  		plan_view AS planView
+  		plan_view AS planView,
+  		plan_thumbnail_no AS planThumbnailNo
   	FROM (SELECT * FROM plan ORDER BY plan_start DESC) WHERE ROWNUM &lt;=3 AND plan_start &gt;= SYSDATE -1
   </select>
     <select id="selectViewPlanList" resultType="plan">
@@ -63,7 +66,8 @@
   		plan_content AS planContent,
   		plan_like AS planLike,
   		plan_share AS planShare,
-  		plan_view AS planView
+  		plan_view AS planView,
+  		plan_thumbnail_no AS planThumbnailNo
   	FROM (SELECT * FROM plan ORDER BY plan_view DESC) WHERE ROWNUM &lt;=3
   </select>
   <select id="selectOnePlan" parameterType="plan" resultType="plan">
@@ -77,6 +81,7 @@
   		plan_like AS planLike,
   		plan_share AS planShare,
   		plan_view AS planView,
+  		plan_thumbnail_no AS planThumbnailNo,
   		(plan_end-plan_start) AS planDay
   	FROM plan WHERE plan_no = #{planNo}
   </select>
