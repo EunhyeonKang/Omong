@@ -4,7 +4,7 @@
 	<!-- User insert 예시 -->
 	<insert id="insertEmployee" parameterType="u">
  		insert into employee values
- 		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0,#{detail_address})
+ 		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0,#{detailAddress})
 
  	</insert>
  	<!-- User select 예시 -->
@@ -35,7 +35,7 @@
  		employee_address=#{address},
  		employee_birth=#{birth},
  		employee_gender=#{gender},
- 		detail_address = #{detail_address}
+ 		detail_address = #{detailAddress}
  	where employee_id = #{id}
  	</update>
 	<select id="totalPartnerList" resultType="u">

@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 
 import kr.or.member.model.service.EmployeeService;
-import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.User;
 
 @Controller

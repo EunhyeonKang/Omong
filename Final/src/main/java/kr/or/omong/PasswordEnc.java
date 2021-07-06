@@ -15,8 +15,8 @@ public class PasswordEnc {
 	@Autowired
 	private SHA256Enc enc;
 	
-	//MeberService에서 메소드명이 Member로끝나면서 매개변수가 User타입인 메소드
-	@Pointcut("execution(* kr.or.member.model.service.MemberService.*Member(kr.or.member.model.vo.User))")
+	
+	@Pointcut("execution(* kr.or..*Service.*(kr.or.member.model.vo.User))")
 	public void encPointcut() {}
 	
 	@Before("encPointcut()")
@@ -27,8 +27,7 @@ public class PasswordEnc {
 		if(u.getPw() != null) {			
 			String passwd = u.getPw();
 			String encPw = enc.encData(passwd);
-			System.out.println("메소드명 : "+methodName);
-			System.out.println("암호화 패스워드 : "+encPw);
+			
 			u.setPw(encPw);
 		}
 	}

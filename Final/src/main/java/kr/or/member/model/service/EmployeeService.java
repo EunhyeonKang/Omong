@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.EmployeeDao;
-import kr.or.member.model.vo.Employee;
 import kr.or.member.model.vo.User;
 
 @Service
