@@ -181,9 +181,7 @@
 		$(".step").hide();
 		$(".step").eq(1).show();
 	})
-	$(".productOptionMore")
-			.click(
-					function() {
+	$(".productOptionMore").click(function() {
 						var moreProductOption = $(".moreProductOption");
 						var inner = "<div class='mt-10 productOption'> <h6>추가상품</h6>	<input type='text' name='productName' placeholder='상품명' required class='single-input' style='width:90%; display:inline-block;' required><br><br><input type='hidden' value=" +productNum+ " name='productNum'><div class='detailedProductOption'><input type='text' name='optionName' placeholder='옵션명' required class='single-input' style='width:45%; display: inline-block;' required>						<input type='text' name='optionPrice' placeholder='가격 (원은 제외하고 적어주세요)' required class='single-input' style='width:45%;  display: inline-block;' required> <input class='genric-btn primary-border circle detailedProductOptionMore' type=button name='' value='+' style=' display:inline-block; font-size:large; font-weight:bold; height: 100%; padding:0 15px;'></div></div>"
 						moreProductOption.append(inner);
@@ -194,11 +192,7 @@
 		removeOption.remove();
 
 	})
-	$(document)
-			.on(
-					"click",
-					".detailedProductOptionMore",
-					function() {
+	$(document).on("click", ".detailedProductOptionMore",function() {
 						var productOption = $(this).parent().parent();
 						var inner = "<input type='hidden' value='" +$(this).parent().prev().val()+ "' name='productNum'><div class='detailedProductOption'><input type='text' name='optionName' placeholder='옵션명' required class='single-input' style='width:45%; display: inline-block;' required>						<input type='text' name='optionPrice' placeholder='가격 (원은 제외하고 적어주세요)' required class='single-input' style='width:45%;  display: inline-block;'required> <input class='genric-btn primary-border circle detailedProductOptionMore' type=button name='' value='+' style=' display:inline-block; font-size:large; font-weight:bold; height: 100%; padding:0 15px;'> <input class='genric-btn primary-border circle detailedProductOptionRemove' type=button name='' value='-' style=' display:inline-block; font-size:large; font-weight:bold; height: 100%; width:42.5px; padding:0 15px;'></div>"
 						productOption.append(inner);

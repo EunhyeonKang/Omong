@@ -24,10 +24,11 @@
 	background-color: #d3d3d3;
 	/* margin-top: 50px; */
 	justify-content: flex-end;
-	opacity: 0.8;
+	opacity: 0.9;
 	padding: 30px;
 	position:relative;
 	border-raius: 3px;
+	text-align: center;
 }
 
 .contentBox * {
@@ -52,11 +53,17 @@
 	height: 40px;
 	font-size: 1.3em;
 }
+.addProduct{
+width: 350px;
+	height: 40px;
+	font-size: 1.3em;
+}
 .content_iner h3{ 
 	padding-bottom : 15px;
 	padding-top : 15px;
 }
 </style>
+
 </head>
 
 <body>
@@ -64,7 +71,7 @@
 	<!-- banner part start-->
 	<c:choose>
 	<c:when test="${sessionScope.u.no eq packageProduct.partnerNo }">
-	<section class="mainPicture" style="width:1200px; margin:0 auto; background-image: url(/resources/upload/package/${packageProduct.packageProductMainPicture});">
+	<section class="mainPicture" style="width:100%; margin:0 auto; background-image: url(/resources/upload/package/${packageProduct.packageProductMainPicture});">
 		<div class="container" style="">
 			<div class="row align-items-center justify-content-end"
 				style="height: 800px">
@@ -72,16 +79,14 @@
 					<form style="display:flex-direction:column;">
 						<h2>${packageProduct.packageProductName }</h2>
 						<h5>${packageProduct.packageProductInfo }</h5>
-						<select class="genric-btn primary productSelect"
-							style="font-size: 1.1em;">
-							<c:forEach items="${packageProduct.productList}" var="pro" >
-							<option value="">${pro.productName}</option>
+						<select class="genric-btn primary productSelect" style="font-size: 1.1em;">
+							
+							<c:forEach items="${packageProduct.productList}" var="pro">
+							<option value="${pro.productNo}">${pro.productName}</option>
 							</c:forEach>
-						</select> <select class="genric-btn primary productSelect"
-							style="font-size: 1.1em;">
-							<option value="">옵션1</option>
-							<option value="">옵션2</option>
-							<option value="">옵션3</option>
+						</select> 
+						<select class="genric-btn primary optionSelect" style="font-size: 1.1em;">
+							<!-- <option value="" id="result">옵션1</option> -->							
 						</select> 
 						<input id="buyBtn" type="submit" class="genric-btn info-border" value="구매" style="width: 80%; height:40px; font-size: 1.3em; ">
 					</form>
@@ -90,11 +95,14 @@
 		</div>
 	</section>
 	
-	<section class="tour_details_content section_padding" style="padding-top: 0px; border-top:1px solid black;">
+	
+	
+	<section class="tour_details_content section_padding" style="padding-top: 0px; border-top:1px solid black; border-bottom:1px solid black;">
 		<div class="container">
 			<div class="subPicture" style="text-align:center;">
 				<img src="/resources/upload/package/${packageProduct.packageProductSubPicture}">
 			</div>
+			<hr>
 			<div class="row justify-content-start" >
 				<div class="col-lg-6">
 					<div class="content_iner" style="width:650px;" >
@@ -123,27 +131,40 @@
 	
 	
 
-	
+
 	<c:otherwise>
-	<section class="mainPicture" style="width:1200px; margin:0 auto; background-image: url(/resources/upload/package/${packageProduct.packageProductMainPicture});">
+	<section class="mainPicture" style="width:100%; margin:0 auto; background-image: url(/resources/upload/package/${packageProduct.packageProductMainPicture});">
 		<div class="container" style="">
 			<div class="row align-items-center justify-content-end"
 				style="height: 800px">
 				<div class="contentBox ">
-					<form style="display:flex-direction:column;">
 						<h2>${packageProduct.packageProductName }</h2>
 						<h5>${packageProduct.packageProductInfo }</h5>
 						<select class="genric-btn primary productSelect" style="font-size: 1.1em;">
-							<option class="op" value="99" selected>==선택==</option>
+							
 							<c:forEach items="${packageProduct.productList}" var="pro">
 							<option value="${pro.productNo}">${pro.productName}</option>
 							</c:forEach>
 						</select> 
 						<select class="genric-btn primary optionSelect" style="font-size: 1.1em;">
-							<!-- <option value="" id="result">옵션1</option> -->							
-						</select> 
+							<!-- <option value="" id="result">옵션1</option> -->
+						</select>
+						<div class="itemWrap" style="width: 350px; height: 60px; margin-left:20px; background-color:#fff; color:#fe5c24; border:1px solid #F18101;">
+							<div class="price" style="display:inline-block; margin:5px;">
+								<span></span>
+							</div>
+							<div class="count" style="display:inline-block; margin:5px;">
+								<button class="btn btn-secondary btn-sm" style="background-color:#fff; color:#fe5c24; border:1px solid #F18101;">-</button>
+								<span class="amount">1</span>
+								<button class="btn btn-secondary btn-sm" style="background-color:#fff; color:#fe5c24; border:1px solid #F18101;">+</button>
+							</div>
+							<div class="total" style="display:inline-block; margin:5px; margin-left:50px;">
+								<span id="totalPrice">2000</span>원				
+							</div>
+						</div> 
 						<input id="buyBtn" type="submit" class="genric-btn info-border" value="구매" style="width: 80%; height:40px; font-size: 1.3em; ">
-					</form>
+						
+					
 				</div>
 			</div>
 		</div>
@@ -151,11 +172,12 @@
 	
 	
 	
-	<section class="tour_details_content section_padding" style="padding-top: 0px; border-top:1px solid black;">
+	<section class="tour_details_content section_padding" style="padding-top: 0px; border-top:1px solid black; border-bottom:1px solid black;">
 		<div class="container">
 			<div class="subPicture" style="text-align:center;">
 				<img src="/resources/upload/package/${packageProduct.packageProductSubPicture}">
-			</div>
+			</div>		
+			<hr>
 			<div class="row justify-content-start" >
 				<div class="col-lg-6">
 					<div class="content_iner" style="width:650px;" >
@@ -188,16 +210,35 @@
 
 </body>
 	<script>
+		
+		$(function(){
+			selectProduct($(".productSelect").val());
+			
+			
+		})
+		
+		$(".optionSelect").click(function(){
+			var optionSelect = $(".optionSelect").val();
+			console.log(optionSelect);
+			
+		});
 		$(".productSelect").change(function(){
 			var selectOption = $(this).val();
 			/* var optionSelect = $(".optionSelect").val(); */
-			var html;
-			console.log(selectOption);
+			selectProduct(selectOption);
+			/* console.log(selectOption); */
+			
+
+		});
+		function selectProduct(selectOption){
 			$.ajax({
 				url : "/selectOption.do",
 				data : {selectOption : selectOption},
 				success : function(data) {
+					var html="";
 					/* console.log(data); */
+					html += "<option value=''>==옵션을 선택해주세요.==</option>";
+					console.log()
 					for(var i=0;i<data.length;i++) {
 						var productNo = data[i].productNo;
 						var optionNo = data[i].optionNo;
@@ -209,15 +250,9 @@
 				}
 				
 			})
-			
-			
-		})
-		$(".op").click(function(){
-			var html;
-			html = "<option>상품을 선택해주세요.</option>"
-			$(".optionSelect").html(html);
-			$(this).parent().next()
-		})
+		}
+		
 		
 	</script>
+	
 </html>
