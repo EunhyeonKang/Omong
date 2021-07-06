@@ -115,6 +115,13 @@
   		product_name as productName
   	from product where packageproduct_no=#{packageProductNo}	
   </select>
-  
+  <select id="selectOption" resultType="op" parameterType="int">
+  	select
+ 		product_no as productNo,
+ 		option_no as optionNo,
+ 		option_name as optionName,
+ 		option_price as optionPrice
+ 	from product_option where product_no=#{selectOption} 
+  </select>
 </mapper>
 	

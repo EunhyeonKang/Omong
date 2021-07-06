@@ -13,12 +13,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+
 import kr.or.member.model.vo.User;
 import kr.or.partner.model.service.PartnerService;
+import kr.or.partner.model.vo.Option;
 import kr.or.partner.model.vo.Package;
 import kr.or.partner.model.vo.Product;
 
@@ -206,4 +211,11 @@ if(subFiles[0].isEmpty()) {
 		model.addAttribute("packageProduct", packageProduct);
 		return "partner/packageView";
 	}
+	@ResponseBody
+	@RequestMapping(value = "/selectOption.do" , produces = "application/json;charSet=utf-8")
+	public String selectOption(Model model , int selectOption) {
+		ArrayList<Option> list = service.selectOption(selectOption);
+		return new Gson().toJson(list);
+	}
+	
 }
