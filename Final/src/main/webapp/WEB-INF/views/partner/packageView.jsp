@@ -47,6 +47,11 @@
 	height: 40px;
 	font-size: 1.3em;
 }
+.optionSelect {
+	width: 350px;
+	height: 40px;
+	font-size: 1.3em;
+}
 .content_iner h3{ 
 	padding-bottom : 15px;
 	padding-top : 15px;
@@ -129,14 +134,13 @@
 						<h2>${packageProduct.packageProductName }</h2>
 						<h5>${packageProduct.packageProductInfo }</h5>
 						<select class="genric-btn primary productSelect" style="font-size: 1.1em;">
+							<option class="op" value="99" selected>==선택==</option>
 							<c:forEach items="${packageProduct.productList}" var="pro">
-							<option value="">${pro.productName}</option>
+							<option value="${pro.productNo}">${pro.productName}</option>
 							</c:forEach>
-						</select> <select class="genric-btn primary productSelect"
-							style="font-size: 1.1em;">
-							<option value="">옵션1</option>
-							<option value="">옵션2</option>
-							<option value="">옵션3</option>
+						</select> 
+						<select class="genric-btn primary optionSelect" style="font-size: 1.1em;">
+							<!-- <option value="" id="result">옵션1</option> -->							
 						</select> 
 						<input id="buyBtn" type="submit" class="genric-btn info-border" value="구매" style="width: 80%; height:40px; font-size: 1.3em; ">
 					</form>
@@ -183,5 +187,37 @@
 
 
 </body>
-
+	<script>
+		$(".productSelect").change(function(){
+			var selectOption = $(this).val();
+			/* var optionSelect = $(".optionSelect").val(); */
+			var html;
+			console.log(selectOption);
+			$.ajax({
+				url : "/selectOption.do",
+				data : {selectOption : selectOption},
+				success : function(data) {
+					/* console.log(data); */
+					for(var i=0;i<data.length;i++) {
+						var productNo = data[i].productNo;
+						var optionNo = data[i].optionNo;
+						var optionName = data[i].optionName;
+						var optionPrice = data[i].optionPrice;
+						html += "<option value="+optionNo+">"+ optionName +" : "+ optionPrice +"원 </option>";
+					}
+					$(".optionSelect").html(html);	
+				}
+				
+			})
+			
+			
+		})
+		$(".op").click(function(){
+			var html;
+			html = "<option>상품을 선택해주세요.</option>"
+			$(".optionSelect").html(html);
+			$(this).parent().next()
+		})
+		
+	</script>
 </html>

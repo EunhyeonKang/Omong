@@ -98,6 +98,11 @@ public class PartnerService {
 		return pac;
 	}
 
+	public ArrayList<Option> selectOption(int selectOption) {
+	
+ 		return (ArrayList<Option>)dao.selectOption(selectOption);
+	}
+
 	/*
 	 * public ArrayList<Product> prodcutList() { // TODO Auto-generated method stub
 	 * return dao.productList(); }
