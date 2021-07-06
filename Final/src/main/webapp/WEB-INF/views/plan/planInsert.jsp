@@ -109,7 +109,7 @@
 					<li><img src="/resources/img/jeju/제주_10.jpg" /></li>
 				</ul>
 
-				<input type="hidden" id="thumbnail" name="thumbnail"> <input
+				<input type="hidden" id="planThumbnailNo" name="planThumbnailNo"> <input
 					type="hidden" id="diff" name="diff">
 
 				<button class="genric-btn success" type="submit" id="test1">일정만들기</button>
@@ -176,6 +176,7 @@
 				</div>
 			</div>
 		</footer>
+		
 		<!-- jquery plugins here-->
 		<!-- <script src="/resources/js/common/jquery-1.12.1.min.js"></script> datepicker충돌 로인해 주석처리 제거시 문제는 없어보임 -->
 		<!-- popper js -->
@@ -199,6 +200,7 @@
 		<script src="/resources/js/common/js/contact.js"></script>
 		<!-- custom js -->
 		<script src="/resources/js/common/js/custom.js"></script>
+		
 		<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> datepicker용 스크립트문 -->
 </body>
@@ -211,6 +213,7 @@
 <script>
 	$(document).ready(function() {
 		$('.slider').bxSlider();
+
 	});
 </script>
 </html>
@@ -276,12 +279,11 @@
 		var imgs = $(".slider>li");
 		var idx = -1;
 		for(var i=0;i<imgs.length;i++){
-			if(imgs.eq(i).attr("aria-hidden") == "true"){
+			if(imgs.eq(i).attr("aria-hidden") == "false"){
 				idx = i;
 			}
 		}
-		console.log(idx);
-		e.preventDefault();
+		$("#planThumbnailNo").val(idx);
 		var diff = 0;
 		diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
 		if (diff > 6) {
