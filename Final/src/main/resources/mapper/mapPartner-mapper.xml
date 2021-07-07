@@ -24,4 +24,15 @@
 			map_partner_thumbnailpath = #{mapPartnerThumbnailpath}
 		WHERE map_partner_id = #{mapPartnerId}
 	</update>
+	<select id="selectMapPartnerSearch" parameterType="mapPartner" resultType="mapPartner">
+		SELECT
+			map_partner_no AS mapPartnerNo,
+			map_partner_id AS mapPartnerId,
+			map_partner_name AS mapPartnerName,
+			map_partner_address AS mapPartnerAddress,
+			map_partner_latitude AS mapPartnerLatitude,
+			map_partner_longitude AS mapPartnerLongitude,
+			map_partner_thumbnailpath AS mapPartnerThumbnailpath
+		FROM map_partner WHERE map_partner_id = %#{mapPartnerId}%
+	</select>
 </mapper>

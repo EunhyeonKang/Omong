@@ -31,8 +31,8 @@
 			<div id="api_wrap" class="bg_white">
 				<div class="option">
 					<div>
-						<form onsubmit="searchPlaces(); return false;">
-							<input type="hidden" value="" id="title" size="15">
+						<form onsubmit="searchPartner(); return false;">
+							<input type="hidden" value="전망대" id="title" size="15">
 							<input type="text" value="" id="keyword" size="15" class="keyword" placeholder="검색어 입력">
 							<button type="submit" class="submit">검색하기</button>
 						</form>
@@ -53,36 +53,17 @@
 				<div id="detail_head" style="width: 100%; height: 15%;">
 					<h3 style="text-align: center; padding-top: 10px">여행 일정표</h3>
 					<br>
-					<button id="day1"
-						class="day">DAY1</button>
-					<c:forEach var="i" begin="2" end="${diff }" step="1">
-						<button id="day${i }" class="day">DAY${i }</button>
+					<c:forEach var="i" begin="0" end="${diff }" step="1">
+						<button id="day${i+1 }" class="day dayBtn">DAY${i+1 }</button>
 					</c:forEach>
 					<hr>
 				</div>
 				<br>
-				<!-- @HC forEach로 단문 줄여볼 수 있도록 -->
+				<c:forEach var="i" begin="0" end="${diff}">
 				<div class="detail" style="width: 100%;">
-					<h3>DAY1</h3>
+					<h3 id='day'>DAY${i+1}</h3>
 				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY2</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY3</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY4</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY5</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY6</h3>
-				</div>
-				<div class="detail" style="width: 100%;">
-					<h3>DAY7</h3>
-				</div>
+				</c:forEach>
 				<br>
 				<button id="save" class="save" onclick="savePlan();">저장하기</button>
 			</div>
@@ -91,44 +72,16 @@
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 
 	<script>
-		$(function() {
-			$(".detail").eq(0).show();
-		});
-		$("#day1").click(function() {
-			day = 1;
-			$(".detail").hide();
-			$(".detail").eq(0).show();
-		});
-		$("#day2").click(function() {
-			day = 2;
-			$(".detail").hide();
-			$(".detail").eq(1).show();
-		});
-		$("#day3").click(function() {
-			day = 3;
-			$(".detail").hide();
-			$(".detail").eq(2).show();
-		});
-		$("#day4").click(function() {
-			day = 4;
-			$(".detail").hide();
-			$(".detail").eq(3).show();
-		});
-		$("#day5").click(function() {
-			day = 5;
-			$(".detail").hide();
-			$(".detail").eq(4).show();
-		});
-		$("#day6").click(function() {
-			day = 6;
-			$(".detail").hide();
-			$(".detail").eq(5).show();
-		});
-		$("#day7").click(function() {
-			day = 7;
-			$(".detail").hide();
-			$(".detail").eq(6).show();
-		});
+	$(function() {
+		$(".detail").eq(0).show();
+	});
+	
+	$(".dayBtn").click(function(){
+		day = $(".dayBtn").index(this)+1;
+		$(".detail").hide();
+		$(".detail").eq(day-1).show();
+
+	});
 	</script>
 	<!-- 카카오 맵 api javascript key -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0069a695a69eb1289dd330cee4957ce8&libraries=services"></script>
@@ -195,7 +148,7 @@
 		// 키워드로 장소를 검색합니다
 		searchPlaces();
 
-		// 키워드 검색을 요청하는 함수입니다
+		// 키워드 검색을 요청하는 함수입니다 (kakao)
 		function searchPlaces() {
 
 			var ti = document.getElementById('title').value;
@@ -207,7 +160,23 @@
 			// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
 			ps.keywordSearch(keyword, placesSearchCB);
 		}
-
+		
+		// 키워드 검색을 요청하는 함수입니다  (partner)
+		function searchPartner(){
+			var ti = document.getElementById('title').value;
+			var sub = document.getElementById('keyword').value;
+			var keyword = ti+sub;
+			
+			$.ajax({
+				url : "/selectMapPartnerSearch.do",
+				data : {partnerName : partnerName},
+				type : "POST",
+				success : function(data){
+					console.log(data);
+				}
+			});
+			
+		}
 		// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 		function placesSearchCB(data, status, pagination) {
 			if (status === kakao.maps.services.Status.OK) {
@@ -250,7 +219,7 @@
 				// 마커를 생성하고 지도에 표시합니다
 				var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 					marker = addMarker(placePosition),
-					itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+					itemEl = getListItem(places[i]); // 검색 결과 항목 Element를 생성합니다
 				// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 				// LatLngBounds 객체에 좌표를 추가합니다
 				marker.setDraggable(true);
@@ -308,22 +277,20 @@
 			map.setBounds(bounds);
 		}
 		// 검색결과 항목을 Element로 반환하는 함수입니다
-		function getListItem(index, places) {
+		function getListItem(places) {
 
 			var el = document.createElement('li'),
-				itemStr = '<span class="markerbg marker_1"></span>'	+ '<div class="info">' + '   <h5>'	+ places.place_name	+ '</h5>';
-
+				itemStr = '<span class="markerbg marker_1"></span>'
+						+ '<div class="info">' +
+							 ' <h5>' + places.place_name + '</h5>';
 			if (places.road_address_name) {
-				itemStr += '    <span>' + places.road_address_name + '</span>'
-						+ '   <span class="jibun gray">' + places.address_name
-						+ '</span>';
+				itemStr += '   <span>' + places.road_address_name + '</span>'
+						+ '    <span class="jibun gray">' + places.address_name + '</span>';
 			} else {
-				itemStr += '    <span>' + places.address_name + '</span>';
+				itemStr += '   <span>' + places.address_name + '</span>';
 			}
-
-			itemStr += '  <span class="tel">' + places.phone + '</span>'
-					+ '</div>';
-
+			itemStr += '	   <span class="tel">' + places.phone + '</span>'
+					+ '	   </div>';
 			el.innerHTML = itemStr;
 			el.className = 'item';
 

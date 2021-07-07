@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
+import kr.or.mapPartner.model.vo.MapPartner;
 import kr.or.plan.model.service.PlanService;
 import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
@@ -78,5 +79,12 @@ public class PlanController {
 	public String selectOnePlanDays(Plan plan, Model model) {
 		ArrayList<Day> planDays = service.selectOnePlanDays(plan);
 		return new Gson().toJson(planDays);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="selectPartnerSearch.do", produces = "application/json; charset=UTF-8")
+	public String selectMapPartnerSearch(MapPartner mapPartner, Model model) {
+		ArrayList<MapPartner> list = service.selectMapPartnerSearch(mapPartner);
+		return new Gson().toJson(list);
 	}
 }

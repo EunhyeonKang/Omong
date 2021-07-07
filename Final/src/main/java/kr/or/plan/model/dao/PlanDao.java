@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.mapPartner.model.vo.MapPartner;
+import kr.or.member.model.vo.User;
 import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
 
@@ -48,5 +50,9 @@ public class PlanDao {
 	}
 	public int updateOnePlan(Plan plan) {
 		return sqlSession.update("plan.updateOnePlan", plan);
+	}
+	public ArrayList<MapPartner> selectMapPartnerSearch(MapPartner mapPartner) {
+		List list = sqlSession.selectList("partner.selectMapPartnerSeach", mapPartner);
+		return (ArrayList<MapPartner>)list;
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import kr.or.mapPartner.model.vo.MapPartner;
 import kr.or.plan.model.dao.PlanDao;
 import kr.or.plan.model.vo.Day;
 import kr.or.plan.model.vo.Plan;
@@ -67,6 +68,10 @@ public class PlanService {
 
 	public ArrayList<Day> selectOnePlanDays(Plan plan) {
 		return dao.selectOnePlanDays(plan);
+	}
+
+	public ArrayList<MapPartner> selectMapPartnerSearch(MapPartner mapPartner) {
+		return dao.selectMapPartnerSearch(mapPartner);
 	}
 
 }

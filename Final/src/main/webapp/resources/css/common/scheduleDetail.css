@@ -310,7 +310,7 @@
 	background: rgba(255, 255, 255, 0.5);
 	border: 0;
 }
-
+/* 거리 표시 css */
 .dotOverlay{
 	padding : 0 5px 0;
 	background-color: white;
@@ -321,4 +321,9 @@
 .number{
 	font-size: 10px;
 	z-index: 3;
+}
+.planSpots{
+	text-align: center;
+	line-height: 35px;
+	overflow: auto;
 }

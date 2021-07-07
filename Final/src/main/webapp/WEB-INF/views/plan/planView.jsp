@@ -18,17 +18,15 @@
 				<div id="detail_head" style="width: 100%; height: 15%;">
 					<h3 style="text-align: center; padding-top: 10px">여행 일정표</h3>
 					<br>
-					<button id="day1"
-						class="day dayBtn">DAY1</button>
-					<c:forEach var="i" begin="2" end="${onePlan.planDay}" step="1">
-						<button id="day${i }" class="day dayBtn">DAY${i }</button>
+					<c:forEach var="i" begin="0" end="${onePlan.planDay}" step="1">
+						<button id="day${i+1 }" class="day dayBtn">DAY${i+1 }</button>
 					</c:forEach>
 					<hr>
 				</div>
 				<br>
-				<c:forEach var="i" begin="1" end="${onePlan.planDay}">
+				<c:forEach var="i" begin="0" end="${onePlan.planDay}">
 				<div class="detail" style="width: 100%;">
-					<h3 id='day'>DAY${i}</h3>
+					<h3 id='day'>DAY${i+1}</h3>
 				</div>
 				</c:forEach>
 				<br>
@@ -40,15 +38,33 @@
 	<script>
 		var days = new Array();
 		var planStart = "${onePlan.planStart}";
+		var planDay = "${onePlan.planDay}";
 		$(function() {
-			
 			$(".detail").eq(0).show();
 		});
 		
 		$(".dayBtn").click(function(){
 			var day = $(".dayBtn").index(this)+1;
-			console.log(day);
-			showDaySpots(day);
+			$(".detail").hide();
+			$(".detail").eq(day-1).show();
+			$(".day"+day).remove();
+			var lineColor;
+			if(day==1){
+				lineColor = "#F18101";
+			}else if(day==2){
+				lineColor = "#0173BC";
+			}else if(day==3){
+				lineColor = "#00A074";
+			}else if(day==4){
+				lineColor = "#CFAC6A";
+			}else if(day==5){
+				lineColor = "#C9C9CB";
+			}else if(day==6){
+				lineColor = "#33aacc";
+			}else{
+				lineColor = "#48c817";
+			}
+			showDaySpots(day, lineColor);
 		});
 		
 	</script>
@@ -59,7 +75,8 @@
 	
 		// @6/30 Day 테이블 데이징 선언
 		var day = 1;
-		var test = new Array();
+		var points = new Array();
+		var pointsDistance = new Array();
 		$(document).ready(function(){
 			var planNo = "${onePlan.planNo}";
 			$.ajax({
@@ -71,9 +88,10 @@
 					for(var i=0; i<days.length; i++){
 						displayPlaces(days[i]);
 						if(days[i].dayDate == (day-1)){
-							$(".detail").eq(day-1).append("<div class='day"+day+"'>"+days[i].dayTitle+"</div>");
+							$(".detail").eq(day-1).append("<div class='planSpots day"+day+"'>"+days[i].dayTitle+"</div>");
 						}
 						
+						// @ 07/06 마커별 거리 라인 및 거리 측정
 						days[i].latlng = new daum.maps.LatLng(days[i].dayLongitude, days[i].dayLatitude);
 						if(i != 0){
 							var linePath = [ days[i - 1].latlng, days[i].latlng ]
@@ -88,7 +106,7 @@
 							strokeOpacity : 1,
 							strokeStyle : 'solid'
 						});
-						test.push(drawLine);
+						points.push(drawLine);
 						distance = Math.round(lineLine.getLength());
 						displayCircleDot(days[i].latlng, distance);
 					}
@@ -125,22 +143,28 @@
 			zIndex : 1
 		});
 		// @07/06 마커를 표출하기 위해 준비하는 함수입니다
-		function showDaySpots(day){
+		function showDaySpots(day, lineColor){
 			// 지도에 표시되고 있는 마커를 제거합니다
 			removeMarker();
 			// 지도에 표시되고 있는 폴리라인을 제거합니다
-			for(var i=0; i<test.length; i++){
-				test[i].setMap(null);
+			for(var i=0; i<points.length; i++){
+				points[i].setMap(null);
+				console.log('라인 지우기');
 			}
+			for(var i=0; i<pointsDistance.length; i++){
+				pointsDistance[i].setMap(null);
+				console.log('거리 지우기');
+			}
+			points = new Array();
+			pointsDistance = new Array();
 			test = new Array();
-			$(".detail").hide();
-			$(".detail").eq(day-1).show();
-			$(".day"+day).remove();
 			for(var i=0; i<days.length; i++){
 				if(days[i].dayDate == (day-1)){
 					displayPlaces(days[i]);
-					$(".detail").eq(day-1).append("<div class='day"+day+"'>"+days[i].dayTitle+"</div>");
+					$(".detail").eq(day-1).append("<div class='planSpots day"+day+"'>"+days[i].dayTitle+"</div>");
+					console.log(days[i].dayTitle);
 					
+					// @ 07/06 마커별 거리 라인 및 거리 측정
 					days[i].latlng = new daum.maps.LatLng(days[i].dayLongitude, days[i].dayLatitude);
 					
 					if(i != 0){
@@ -152,12 +176,12 @@
 					var drawLine = new daum.maps.Polyline({
 						map : map,
 						path : linePath,
-						strokeWeight : 2,
-						strokeColor : '#bd4040',
+						strokeWeight : 3,
+						strokeColor : lineColor,
 						strokeOpacity : 0.8,
 						strokeStyle : 'solid'
 					});
-					
+					points.push(drawLine);
 					distance = Math.round(lineLine.getLength());
 					displayCircleDot(days[i].latlng, distance);
 				}
@@ -166,7 +190,6 @@
 		
 		// 검색 결과 목록과 마커를 표출하는 함수입니다
 		function displayPlaces(days) {
-			console.log('함수 실행');
 			var fragment = document.createDocumentFragment(),
 				bounds = new kakao.maps.LatLngBounds()
 				
@@ -188,7 +211,6 @@
 
 		// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 		function addMarker(position) {
-			console.log('마커추가');
 			var imageSrc = '/resources/img/marker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 			imageSize = new kakao.maps.Size(24, 35), // 마커 이미지의 크기
 			imgOptions = {
@@ -240,6 +262,7 @@
 					zIndex : 2
 				});
 				distanceOverlay.setMap(map);
+				pointsDistance.push(distanceOverlay);
 			}
 		}
 	</script>
