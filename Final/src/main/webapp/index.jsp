@@ -172,7 +172,7 @@
     function initChat(param) {
         employeeId = param;
         //웹소켓 연결시도
-        ws = new WebSocket("ws://172.30.1.2:8082/chat.do");
+        ws = new WebSocket("ws://localhost:8082/chat.do");
         //소켓 연결 성공시 실행될 함수 지정
         ws.onopen = startChat;
         //소켓으로 서버가 데이터를 전송하면 로직을 수행할 함수
@@ -204,6 +204,7 @@
             ws.send(JSON.stringify(data));
             //내화면에 출력
             appendChat("<div class='chat right'>" + msg + "</div>");
+            
         }
     }
     function closeClick(){
@@ -215,6 +216,7 @@
         $("#sendMsg").keydown(function (key) {
             if (key.keyCode == 13) {
                 sendMsg();
+                $("#sendMsg").val('');
             }
         })
     });
@@ -230,7 +232,7 @@
 				<div class="col-lg-10">
 					<div class="banner_text text-center">
 						<div class="banner_text_iner">
-							<form action="/search.do" method="GET">
+							<form action="/search.do" method="GET">							
 								<!-- <input type="text" class="search" placeholder="검색어 입력">
 								<i class="icon-search"></i> <input type="submit" value="검색" class="search-btn"> -->
 								<!-- <img src="resources/img/jeju.PNG"> -->
@@ -240,9 +242,9 @@
 							    	<button onclick="location.href = '주소';" class="buttonSearch" ><i class="fa fa-search fa-2x" style="color:white"></i></button>
 							    </div>
 							</form>
-							<!-- type이 u이면 채팅창 보이기(임시차원에서 직원으로 함)-->
-							<c:choose>
-								<c:when test="${sessionScope.u.id != null && sessionScope.u.type eq 'e'}">
+							<!-- type이 u이면 채팅창 보이기(임시차원에서 직원으로 함)-->						
+							<c:choose>		
+								<c:when test="${sessionScope.kakao.type eq 'm'||sessionScope.u.type eq 'm' || sessionScope.u.type eq 'e'}">
 								   	<div class="chatting">
 								   	<button id="closeBtn" onclick="closeClick();"><i class="fa fa-power-off fa_custom fa-2x"></i></button>
 									<br>
@@ -250,9 +252,16 @@
 		                                <div class="sendBox">
 		                                    <input type="text" id="sendMsg" placeholder="메세지를 입력해주세요">
 		                                    <button id="sendBtn" onclick="sendMsg(); "><i class="fa fa-send" style="padding-right:3px;"></i></button>
-		                                </div>
+		                                </div>    
 	                            	</div>
-	                            	<button id="live-chat" onclick="initChat('${sessionScope.u.id}');this.onclick=null;">1:1 채팅 💬</button>
+	                            	<c:choose>
+										<c:when test="${sessionScope.kakao.type eq 'm'||sessionScope.u.type eq 'm'}">
+	                            			<button id="live-chat" onclick="initChat('${sessionScope.u.id}');this.onclick=null;">1:1 채팅 💬</button>
+	                            		</c:when>
+	                            		<c:otherwise>
+	                            			<button id="live-chat" onclick="initChat('${sessionScope.u.id}');this.onclick=null;">chatting</button>
+	                            		</c:otherwise>
+	                            	</c:choose>
 								</c:when>
 							</c:choose>
 						</div>

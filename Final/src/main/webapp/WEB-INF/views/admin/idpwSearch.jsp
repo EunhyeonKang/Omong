@@ -16,8 +16,8 @@
 				<div class="col-lg-12">
 					<div class="breadcrumb_iner">
 						<div class="breadcrumb_iner_item text-center">
-							<h2>로그인</h2>
-							<p>직원 . 관리자</p>
+							<h2>id/pw</h2>
+							<p>아이디|비밀번호</p>
 						</div>
 					</div>
 				</div>
@@ -26,12 +26,12 @@
 	</section>
 	<div class="section-top-border" style=" text-align: center;">
 		<button class="genric-btn info e-large" id="admin_login"
-			style="width: 250px; height: 100px; font-size: 20px; display:show;">관리자</button>
+			style="width: 250px; height: 50px; font-size: 20px; display:show;">아이디찾기</button>
 		<button class="genric-btn success e-large" id="employee_login"
-		style="width: 250px; height: 100px; font-size: 20px; display:show;">직원</button>
+		style="width: 250px; height: 50px; font-size: 20px; display:show;">비밀번호찾기</button>
 		<div class="section-top-border" id="employee" style="margin:0 auto; width:480px; display:none;">
-			<form action="/employeeLogin.do">
-					<h4 style="text-align:left;">직원 아이디</h4>
+			<form action="/pwSearch.do">
+					<h4 style="text-align:left;">아이디</h4>
 					<div class="mt-10">
 						<input type="text" name="id" placeholder="아이디를 입력해주세요"
 							onfocus="this.placeholder = ''"
@@ -39,40 +39,39 @@
 							class="single-input">
 					</div>
 					<hr>
-					<h4 style="text-align:left;">비밀번호</h4>
+					<h4 style="text-align:left;">전화번호</h4>
 					<div class="mt-10">
-						<input type="password" name="pw" placeholder="비밀번호를 입력해주세요"
+						<input type="text" name="phone" placeholder="전화번호를 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Last Name'" required
 							class="single-input">
 					</div>
-					<div><a href="idpwSearch.do">아이디찾기|비밀번호찾기</a></div>
 					<br><br>
 					<div style="text-align : center;">
-					<input type="submit" value="로 그 인" class="genric-btn success e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+					<input type="submit" value="찾 기" class="genric-btn success e-large" style="width:300px; font-size:x-large; font-weight:bold;">
 					</div>
 				</form>
 		</div>
 		<div class="section-top-border" id="admin" style="margin:0 auto; width:480px; display:none;">
-			<form action="/adminLogin.do">
-					<h4 style="text-align:left;">관리자 아이디</h4>
+			<form action="/idSearch.do">
+					<h4 style="text-align:left;">이름</h4>
 					<div class="mt-10">
-						<input type="text" name="adminid" placeholder="아이디를 입력해주세요"
+						<input type="text" name="name" placeholder="이름을 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'First Name'" required
 							class="single-input">
 					</div>
 					<hr>
-					<h4 style="text-align:left;">비밀번호</h4>
+					<h4 style="text-align:left;">전화번호</h4>
 					<div class="mt-10">
-						<input type="password" name="adminpw" placeholder="비밀번호를 입력해주세요"
+						<input type="text" name="phone" placeholder="전화번호를 입력해주세요"
 							onfocus="this.placeholder = ''"
 							onblur="this.placeholder = 'Last Name'" required
 							class="single-input">
 					</div>
 					<br><br>
 					<div style="text-align : center;">
-					<input type="submit" value="로 그 인" class="genric-btn info e-large" style="width:300px; font-size:x-large; font-weight:bold;">
+					<input type="submit" value="찾 기" class="genric-btn info e-large" style="width:300px; font-size:x-large; font-weight:bold;">
 					</div>
 				</form>
 		</div>

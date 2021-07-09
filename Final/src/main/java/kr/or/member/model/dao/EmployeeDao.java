@@ -7,7 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 import kr.or.member.model.vo.User;
 
 @Repository
@@ -92,6 +91,31 @@ public class EmployeeDao {
 	public User kakaoSelect(User u) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("employee.kakaoSelect",u);
+	}
+
+	public int uploadPhoto(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("employee.uploadPhoto",u);
+	}
+
+	public int employeeDelete(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("employee.employeeDelete",id);
+	}
+
+	public int updateReadCount(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("employee.updateReadCount",u);
+	}
+
+	public String idSearch(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("employee.idSearch",u);
+	}
+
+	public String pwSearch(User u) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("employee.pwSearch",u);
 	}
 
 

@@ -53,7 +53,8 @@
 					<c:forEach items="${list }" var="noticeEmployee" varStatus="i">
 						<div class="table-row">
 							<div class="serial">${noticeEmployee.noticeEmployeeNo }</div>
-							<div class="percentage"><a href="/detailNoticeEmployee.do?noticeEmployeeNo=${noticeEmployee.noticeEmployeeNo}">${noticeEmployee.title }</a></div>
+							<input type="hidden" value="${sessionScope.u.type }" id="type">
+							<div class="percentage"><a href="/detailNoticeEmployee.do?noticeEmployeeNo=${noticeEmployee.noticeEmployeeNo}" onclick="readCount(this);">${noticeEmployee.title }</a></div>
 							<%-- <div class="country">
 								<img src="/resources/upload/notice/${noticeEmployee.filename }">
 							</div> --%>
@@ -67,5 +68,23 @@
 	</section>
 	<!--================ Blog Area end =================-->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
+	<script>
+	function readCount(data){
+		var noticeNo = $(data).parent().parent().children().eq(0).html();
+		var noticeView = $(data).parent().parent().children().eq(4).html();
+		$.ajax({
+			data : noticeView,
+			type : "GET",
+			url : "/readCount.do?noticeEmployeeNo="+noticeNo+"&noticeEmployeeViews="+noticeView,
+			success : function(data){
+				if(data!=-1){
+					console.log("성공");
+				}else{
+					console.log("실패");
+				}
+			}
+		})
+	}
+	</script>
 </body>
 </html>

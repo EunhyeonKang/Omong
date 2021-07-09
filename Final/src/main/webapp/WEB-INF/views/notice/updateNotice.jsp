@@ -56,19 +56,19 @@
 							<div class="serial">작성자</div>
 							<div class="serial">${u.writer }</div>
 						</div>
-						<div class="table-row">
+						<input type="hidden" name="filename">
+						<input type="hidden" value='${u.noticeEmployeeNo }' name="no">
+						<%-- <div class="table-row">
 							<div class="serial">사진</div>
 							<div class="country" style="width:150px; height:150px;">
 								<img src="/resources/upload/notice/${u.filename }" style="width:150px; height:150px;object-fit:cover;">
 							</div>
-						</div>
+						</div> --%>
 
 						<div class="table-row">
 							<div class="serial">내용</div>
 							<div style="width: 80%">
-								 <textarea id="summernote" name="editordata">${u.content }</textarea>
-							<%-- 	<textarea class="summernote" name="message" id="summernote"
-									cols="30" rows="9" style="resize: none">${u.content }</textarea> --%>
+								 <textarea id="summernote" name="message" id="message">${u.content }</textarea>
 							</div>
 						</div>
 					</div>
@@ -82,11 +82,10 @@
 					.children().children().eq(1).html();
 			var title = $(data).parent().children().eq(4).children().children()
 					.children().eq(3).val();
-			var content = document.getElementById("message").value;
-			
-			location.href = "/updateNoticeEmployee.do?noticeEmployeeNo="
-					+ noticeEmployeeNo + "&title=" + title + "&content="
-					+ content;  
+			var content = document.getElementById("summernote").value;
+			console.log(content);
+			 location.href = "/updateNoticeEmployee.do?noticeEmployeeNo="
+					+ noticeEmployeeNo + "&title=" + title +"&content="+content; 
 
 		}
 		function deleteNotice(data){
@@ -118,21 +117,23 @@
 	});
        // 이미지 업로드
        function uploadImage(file, editor) {
+    	 console.log(file)
          var formData = new FormData();
          formData.append("file", file);
          $.ajax({
            data: formData,
            type: "POST",
-           url: "/uploadImage",
+           url: "/uploadImage.do",
            enctype: 'multipart/form-data',
            cache: false,
            contentType: false,
            processData: false,
            success: function (data) {
+        	  console.log(data);
              // 파일 네임 전송용
              $("[name=filename]").val(data);
              // 이미지 경로 설정
-             data = "/upload/free/" + data;
+             data = "/resources/upload/notice/" + data;
              // 이미지 미리보기
              $(editor).summernote('insertImage', data);
            }

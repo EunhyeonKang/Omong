@@ -26,7 +26,7 @@ public class EmployeeService {
 	public User selectOneEmployee(User u) {
 		return dao.selectOneEmployee(u);
 	}
-
+	@Transactional
 	public int employeeUpdate(User u) {
 		return dao.employeeUpdate(u);
 	}
@@ -87,6 +87,33 @@ public class EmployeeService {
 	public User kakaoSelect(User u) {
 		// TODO Auto-generated method stub
 		return dao.kakaoSelect(u);
+	}
+
+	
+
+	public int uploadPhoto(User u) {
+		// TODO Auto-generated method stub
+		return dao.uploadPhoto(u);
+	}
+
+	public int employeeDelete(String id) {
+		// TODO Auto-generated method stub
+		return dao.employeeDelete(id);
+	}
+
+	public int updateReadCount(User u) {
+		// TODO Auto-generated method stub
+		return dao.updateReadCount(u);
+	}
+
+	public String idSearch(User u) {
+		// TODO Auto-generated method stub
+		return dao.idSearch(u);
+	}
+
+	public String pwSearch(User u) {
+		// TODO Auto-generated method stub
+		return dao.pwSearch(u);
 	}
 
 	

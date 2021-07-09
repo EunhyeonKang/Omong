@@ -7,7 +7,9 @@
  		(EMPLOYEE_SEQUENCE.nextval,#{id},#{pw},#{name},#{email},#{phone},#{address},#{birth},#{gender},0,#{detailAddress})
 
  	</insert>
- 	
+ 	<delete id="employeeDelete" parameterType="string">
+ 		delete from employee where employee_id=#{id}
+ 	</delete>
  	<!-- User select 예시 -->
 	<select id="selectOneEmployee" parameterType="u" resultType="u">
 	  select 
@@ -38,6 +40,12 @@
  		employee_gender=#{gender},
  		detail_address = #{detailAddress}
  	where employee_id = #{id}
+ 	</update>
+ 	<update id="uploadPhoto" parameterType="u">
+ 	update notice_employee set 
+ 		notice_employee_filename = #{filename},
+  		notice_employee_filepath = #{filename}
+ 	where notice_employee_no = #{noticeEmployeeNo}
  	</update>
  	<update id="kakaoUpdate" parameterType="u">
 	update member set 
@@ -106,7 +114,7 @@
  		#{content},
  		#{noticeEmployeeDate},
  		#{filename},
- 		#{filepath},
+ 		#{filename},
  		0
  		)
 
@@ -150,4 +158,17 @@
  			notice_employee_content=#{content}
  		where notice_employee_no=#{noticeEmployeeNo}
  	</update>
+ 	<update id="updateReadCount" parameterType="u">
+	update notice_employee set 
+ 		notice_employee_views=#{noticeEmployeeViews}+1
+ 	where notice_employee_no=#{noticeEmployeeNo}
+	</update>
+	<select id="idSearch" parameterType="u" resultType="String">
+	select employee_id as id from employee 
+	where employee_name = #{name} and employee_phone = #{phone}
+	</select>
+	<select id="pwSearch" parameterType="u" resultType="String">
+	select employee_pw as pw from employee 
+	where employee_id = #{id} and employee_phone = #{phone}
+	</select>
 </mapper>
