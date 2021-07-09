@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.member.model.vo.Notice;
 import kr.or.member.model.vo.User;
 
 @Repository
@@ -44,9 +45,9 @@ public class EmployeeDao {
 	}
 
 	
-	public int insertNoticeEmployee(User u) {
+	public int insertNoticeEmployee(Notice n) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.insert("employee.insertNoticeEmployee", u);
+		int result = sqlSession.insert("employee.insertNoticeEmployee", n);
 		return result;
 	}
 
@@ -59,11 +60,11 @@ public class EmployeeDao {
 
 	public List noticeEmployeeList() {
 		// TODO Auto-generated method stub
-		List<User> list = sqlSession.selectList("employee.noticeEmployeeList");
-		return (ArrayList<User>)list;
+		List<Notice> list = sqlSession.selectList("employee.noticeEmployeeList");
+		return (ArrayList<Notice>)list;
 	}
 
-	public User detailNoticeEmployee(int noticeEmployeeNo) {
+	public Notice detailNoticeEmployee(int noticeEmployeeNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("employee.detailNoticeEmployee",noticeEmployeeNo);
 	}
@@ -78,9 +79,9 @@ public class EmployeeDao {
 		return sqlSession.update("employee.updateYn",u);
 	}
 
-	public int updateNotice(User u) {
+	public int updateNotice(Notice n) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("employee.updateNotice",u);
+		return sqlSession.update("employee.updateNotice",n);
 	}
 
 	public int kakaoUpdate(User u) {
@@ -103,9 +104,9 @@ public class EmployeeDao {
 		return sqlSession.delete("employee.employeeDelete",id);
 	}
 
-	public int updateReadCount(User u) {
+	public int updateReadCount(Notice n) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("employee.updateReadCount",u);
+		return sqlSession.update("employee.updateReadCount",n);
 	}
 
 	public String idSearch(User u) {

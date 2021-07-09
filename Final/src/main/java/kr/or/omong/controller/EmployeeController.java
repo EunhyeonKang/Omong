@@ -5,15 +5,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import kr.or.member.model.service.EmployeeService;
+import kr.or.member.model.vo.Notice;
 import kr.or.member.model.vo.User;
 
 @Controller
@@ -40,8 +37,8 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/updateNoticeFrm.do")
 	public String updateNoticeFrm(int noticeEmployeeNo,Model model) {
-		User u = service.detailNoticeEmployee(noticeEmployeeNo);
-		model.addAttribute("u",u);
+		Notice n = service.detailNoticeEmployee(noticeEmployeeNo);
+		model.addAttribute("u",n);
 		return "notice/updateNotice";
 	}
 	
@@ -105,8 +102,8 @@ public class EmployeeController {
 	}
 	@RequestMapping(value="/detailNoticeEmployee.do")
 	public String detailNoticeEmployee(int noticeEmployeeNo,Model model) {
-		User u = service.detailNoticeEmployee(noticeEmployeeNo);
-		model.addAttribute("u",u);
+		Notice n = service.detailNoticeEmployee(noticeEmployeeNo);
+		model.addAttribute("u",n);
 		return "notice/noticeView";
 	}
 	@RequestMapping(value="/deleteNoticeEmployee.do")
@@ -122,8 +119,8 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="/updateNoticeEmployee.do")
-	public String updateNotice(User u,Model model) {
-		int result = service.updateNotice(u);
+	public String updateNotice(Notice n,Model model) {
+		int result = service.updateNotice(n);
 		if(result != -1) {
 			model.addAttribute("msg","글이 수정되었습니다.");
 		}else {
@@ -187,8 +184,8 @@ public class EmployeeController {
 		int result = service.kakaoUpdate(u);
 		if(result != -1) {
 			HttpSession session = request.getSession();
-			User user = service.kakaoSelect(u);
-			session.setAttribute("user", user);
+			/* User user = service.kakaoSelect(u); */
+			session.setAttribute("user", u);
 			model.addAttribute("msg","가입완료");
 		}else {
 			model.addAttribute("msg","가입실패");
@@ -209,13 +206,13 @@ public class EmployeeController {
 	}
 	@RequestMapping(value="/noticeList.do")
 	public String noticeList(Model model) {
-		ArrayList<User> list = service.noticeEmployeeList();
+		ArrayList<Notice> list = service.noticeEmployeeList();
 		model.addAttribute("list",list);
 		return "notice/noticeList";
 	}
 	@RequestMapping(value="/insertNoticeEmployee.do")
-	public String insertNoticeEmployee(User u, Model model) {
-		int result = service.insertNoticeEmployee(u);
+	public String insertNoticeEmployee(Notice n, Model model) {
+		int result = service.insertNoticeEmployee(n);
 		if(result != -1) {
 			model.addAttribute("msg","등록성공");
 		}else {
@@ -226,10 +223,10 @@ public class EmployeeController {
 	}
 	@ResponseBody
 	@RequestMapping(value="readCount")
-	public int readCount(int noticeEmployeeViews,int noticeEmployeeNo,User u,Model model) {
-		u.setNoticeEmployeeViews(noticeEmployeeViews);
-		u.setNoticeEmployeeNo(noticeEmployeeNo);
-		int result = service.updateReadCount(u);
+	public int readCount(int noticeEmployeeViews,int noticeEmployeeNo,Notice n,Model model) {
+		n.setNoticeEmployeeViews(noticeEmployeeViews);
+		n.setNoticeEmployeeNo(noticeEmployeeNo);
+		int result = service.updateReadCount(n);
 		return result;
 	}
 	

@@ -29,7 +29,7 @@
 		<a href="/join_user.do"><button class="genric-btn primary e-large"
 				style="width: 250px; height: 200px; font-size: 30px">일반회원</button></a> <a
 			href="/join_partner.do"><button class="genric-btn info e-large"
-				style="width: 250px; height: 200px; font-size: 30px"">파트너</button></a> <<a><button
+				style="width: 250px; height: 200px; font-size: 30px"">파트너</button></a> <a><button
 				class="genric-btn success e-large"
 				style="width: 250px; height: 200px; font-size: 30px" onclick="InputCode()">직원</button></a>
 	</div>

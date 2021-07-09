@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.EmployeeDao;
+import kr.or.member.model.vo.Notice;
 import kr.or.member.model.vo.User;
 
 @Service
@@ -36,9 +37,9 @@ public class EmployeeService {
 		return dao.totalUserList();
 	}
 	@Transactional
-	public int insertNoticeEmployee(User u) {
+	public int insertNoticeEmployee(Notice n) {
 		// TODO Auto-generated method stub
-		int result1 = dao.insertNoticeEmployee(u);
+		int result1 = dao.insertNoticeEmployee(n);
 		
 		if(result1>0) {
 			return result1;
@@ -52,13 +53,13 @@ public class EmployeeService {
 		return dao.totalPartnerList();
 	}
 
-	public ArrayList<User> noticeEmployeeList() {
+	public ArrayList<Notice> noticeEmployeeList() {
 		// TODO Auto-generated method stub
 		List list = dao.noticeEmployeeList();
-		return (ArrayList<User>)list;
+		return (ArrayList<Notice>)list;
 	}
 
-	public User detailNoticeEmployee(int noticeEmployeeNo) {
+	public Notice detailNoticeEmployee(int noticeEmployeeNo) {
 		// TODO Auto-generated method stub
 		return dao.detailNoticeEmployee(noticeEmployeeNo);
 	}
@@ -74,9 +75,9 @@ public class EmployeeService {
 		return dao.updateYn(u);
 	}
 
-	public int updateNotice(User u) {
+	public int updateNotice(Notice n) {
 		// TODO Auto-generated method stub
-		return dao.updateNotice(u);
+		return dao.updateNotice(n);
 	}
 
 	public int kakaoUpdate(User u) {
@@ -101,9 +102,9 @@ public class EmployeeService {
 		return dao.employeeDelete(id);
 	}
 
-	public int updateReadCount(User u) {
+	public int updateReadCount(Notice n) {
 		// TODO Auto-generated method stub
-		return dao.updateReadCount(u);
+		return dao.updateReadCount(n);
 	}
 
 	public String idSearch(User u) {

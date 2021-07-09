@@ -41,7 +41,7 @@
  		detail_address = #{detailAddress}
  	where employee_id = #{id}
  	</update>
- 	<update id="uploadPhoto" parameterType="u">
+ 	<update id="uploadPhoto" parameterType="n">
  	update notice_employee set 
  		notice_employee_filename = #{filename},
   		notice_employee_filepath = #{filename}
@@ -106,7 +106,7 @@
 		'u' AS type
 	from member
 	</select> 
-	<insert id="insertNoticeEmployee" parameterType="u">
+	<insert id="insertNoticeEmployee" parameterType="n">
  		insert into NOTICE_EMPLOYEE values(
  		NOTICE_EMPLOYEE_SEQUENCE.nextval,
  		#{title},
@@ -120,7 +120,7 @@
 
  	</insert>
  	
-  <select id="noticeEmployeeList" resultType="u">
+  <select id="noticeEmployeeList" resultType="n">
   	select
   		notice_employee_no as noticeEmployeeNo,
   		notice_employee_title as title,
@@ -132,7 +132,7 @@
   		notice_employee_views as noticeEmployeeViews
   	 from NOTICE_EMPLOYEE ORDER BY notice_employee_no DESC
   </select>
-  <select id="detailNoticeEmployee" parameterType="int" resultType="u">
+  <select id="detailNoticeEmployee" parameterType="int" resultType="n">
   	select 
   		notice_employee_no as noticeEmployeeNo,
   		notice_employee_title as title,
@@ -144,7 +144,7 @@
   		notice_employee_views as noticeEmployeeViews
   	 from notice_employee where notice_employee_no=#{noticeEmployeeNo}
   </select>
- 	<delete id="deleteNotice" parameterType="u">
+ 	<delete id="deleteNotice" parameterType="n">
  		delete from notice_employee where notice_employee_no=#{noticeEmployeeNo}
  	</delete>
  	<update id="updateYn" parameterType="u">
@@ -152,13 +152,13 @@
  		partner_yn=#{yn}
  	where partner_no=#{no}
  	</update>
- 	<update id="updateNotice" parameterType="u">
+ 	<update id="updateNotice" parameterType="n">
  		update notice_employee set
  			notice_employee_title=#{title},
  			notice_employee_content=#{content}
  		where notice_employee_no=#{noticeEmployeeNo}
  	</update>
- 	<update id="updateReadCount" parameterType="u">
+ 	<update id="updateReadCount" parameterType="n">
 	update notice_employee set 
  		notice_employee_views=#{noticeEmployeeViews}+1
  	where notice_employee_no=#{noticeEmployeeNo}
