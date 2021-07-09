@@ -26,81 +26,103 @@
 	<!--마이페이지 첫 화면-->
 	<div style="margin-left: 30%; margin-top: 1%">
 		<button class="genric-btn primary-border e-large" id="change">정보변경</button>
-		<button class="genric-btn primary-border e-large" id="trip">내 일정</button>
+		<button class="genric-btn primary-border e-large" id="trip">내
+			일정</button>
 		<button class="genric-btn primary-border e-large" id="buy">구매이력</button>
 	</div>
 	<div class="section-top-border" style="margin-left: 30%;" id="mypage">
 		<div class="row">
 			<div class="col-lg-8 col-md-8">
-				<hr>
-				<form action="#">
-					<h4>프로필 사진</h4>
-					<div class="box" style="background: #BDBDBD; margin-right: 20px">
-						<img class="profile"
-							src="/resources/upload/profile/${sessionScope.u.profileImage }">
-					</div>
-					<br>
-					<h4>아이디(메일)</h4>
-					<div class="mt-10">
-						<input type="text" name="first_name" placeholder="First Name"
-							required class="single-input" value="${sessionScope.u.id }"
-							readonly>
-					</div>
-					<br>
-					<hr>
-					<h4>이름</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+				<c:choose>
+					<c:when test="${sessionScope.kakao.type eq 'm'}">
+						<h4>프로필 사진</h4>
+						<c:choose>
+							<c:when test="${empty sessionScope.u.profileImage}">
+								<div class="box" style="background: #BDBDBD; margin-right: 20px">
+									<img class="profile"
+										src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg">
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="box" style="background: #BDBDBD; margin-right: 20px">
+									<img class="profile"
+										src="/resources/upload/profile/${sessionScope.u.profileImage }">
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<br>
+						<h4>아이디(메일)</h4>
+						<div class="mt-10">
+							<input type="text" name="first_name" placeholder="First Name"
+								required class="single-input"
+								value="${sessionScope.kakao.email }" readonly>
 						</div>
-						<input type="text" name="address" placeholder="Address"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Address'" required
-							class="single-input" value="${sessionScope.u.name }" readonly>
-					</div>
-					<hr>
-					<h4>주소</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+						<hr>
+						<h4>비밀번호</h4>
+						<div class="mt-10">
+							<input type="password" name="last_name" placeholder="Last Name"
+								required class="single-input" value="${sessionScope.user.pw }"
+								readonly>
 						</div>
-						<input type="text" name="address" placeholder="Address"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Address'" required
-							class="single-input" value="${sessionScope.u.address }" readonly>
-					</div>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+						<br>
+						<hr>
+						<h4>이름</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="address" placeholder="Address"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Address'" required
+								class="single-input" value="${sessionScope.kakao.name }"
+								readonly>
 						</div>
-						<input type="text" name="address" placeholder="Address"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Address'" required
-							class="single-input" value="${sessionScope.u.detailAddress }"
-							readonly>
-					</div>
-					<hr>
-					<h4>전화번호</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+						<hr>
+						<h4>주소</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="address" placeholder="Address"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Address'" required
+								class="single-input" value="${sessionScope.user.address }"
+								readonly>
 						</div>
-						<input type="text" name="address" placeholder="Address"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Address'" required
-							class="single-input" value="${sessionScope.u.phone }" readonly>
-					</div>
-					<hr>
-					<h4>생년월일</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="address" placeholder="Address"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Address'" required
+								class="single-input" value="${sessionScope.user.detailAddress }"
+								readonly>
 						</div>
-						<input type="text" name="address" placeholder="Address"
-							onfocus="this.placeholder = ''"
-							onblur="this.placeholder = 'Address'" required
-							class="single-input" value="${sessionScope.u.birth }" readonly>
-						<!-- <div class="form-select" id="default-select" style="font-size:15px;">
+						<hr>
+						<h4>전화번호</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="address" placeholder="Address"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Address'" required
+								class="single-input" value="${sessionScope.user.phone }"
+								readonly>
+						</div>
+						<hr>
+						<h4>생년월일</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="address" placeholder="Address"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Address'" required
+								class="single-input" value="${sessionScope.kakao.birth }"
+								readonly>
+							<!-- <div class="form-select" id="default-select" style="font-size:15px;">
 							<select style="float:left;">
 								<c:forEach var="i" begin= "0" end= "61">
 								<option value=2021-${i}>${2021-i }</option>
@@ -120,48 +142,326 @@
 							</select>
 							<p style="float:left; margin-right:30px;">일</p>
 						</div> -->
-					</div>
-					<hr>
-					<div class="single-element-widget mt-30">
-						<h4>성별</h4>
+						</div>
+						<hr>
+						<div class="single-element-widget mt-30">
+							<h4>성별</h4>
+							<c:choose>
+								<c:when test="${sessionScope.kakao.gender eq '남' }">
+									<label for="male">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="male" value="남" checked
+												onclick="return(false);">남자
+										</div>
+									</label>
+									<label for="female">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="female" value="여"
+												onclick="return(false);">여자
+										</div>
+									</label>
+								</c:when>
+								<c:otherwise>
+									<label for="male">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="male" value="남"
+												onclick="return(false);">남자
+										</div>
+									</label>
+									<label for="female">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="female" value="여"
+												checked onclick="return(false);">여자
+										</div>
+									</label>
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<hr>
+					</c:when>
+					<c:when test="${sessionScope.u.type eq 'e'}">
+						<h4>프로필 사진</h4>
 						<c:choose>
-							<c:when test="${sessionScope.u.gender eq '남' }">
-								<label for="male">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자" checked
-											onclick="return(false);">남자
-									</div>
-								</label>
-								<label for="female">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자"
-											onclick="return(false);">여자
-									</div>
-								</label>
+							<c:when test="${empty sessionScope.u.profileImage}">
+								<div class="box" style="background: #BDBDBD; margin-right: 20px">
+									<img class="profile"
+										src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg">
+								</div>
 							</c:when>
 							<c:otherwise>
-								<label for="male">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자"
-											onclick="return(false);">남자
-									</div>
-								</label>
-								<label for="female">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자"
-											checked onclick="return(false);">여자
-									</div>
-								</label>
+								<div id="imagePreview" class="box "
+									style="background: #BDBDBD; margin-right: 20px;">
+									<img id="image"
+										src="/resources/upload/profile/${sessionScope.u.profileImage }"
+										class="profile">
+								</div>
+								<div class="input-group-icon mt-10" style="width: 30%">
+									<input type="file" name="files" class="single-input"
+										onchange="previewImage(this)"> <input type="hidden"
+										name="nofile" value="${sessionScope.u.profileImage }">
+								</div>
 							</c:otherwise>
 						</c:choose>
-					</div>
-					<hr>
+						<hr>
+						<h4>아이디(메일)</h4>
+						<div class="mt-10">
+							<input type="text" name="id" class="single-input"
+								value="${sessionScope.u.id }" style="background: #E2E2E2;"
+								readonly> <input type="hidden"
+								value="${sessionScope.u.id}@naver.com" name="email" />
+						</div>
+						<hr>
+						<h4>비밀번호</h4>
+						<div class="mt-10">
+							<input type="password" name="pw" required class="single-input"
+								value="${sessionScope.u.pw }">
+						</div>
+						<hr>
+						<h4>이름</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="name" style="background: #E2E2E2;"
+								class="single-input" value="${sessionScope.u.name }" readonly>
+						</div>
+						<hr>
+						<h4>주소</h4>
+						<span><input type="button"
+							class="genric-btn primary-border d-none d-lg-block"
+							style="border: 1;" onclick="findAddress()" value="주소 찾기"></span>
+						<div class="input-group-icon mt-10">
+							<input type="hidden" id="sample2_extraAddress">
 
-				</form>
+							<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+							<div id="layer"
+								style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+								<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+									id="btnCloseLayer"
+									style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+									onclick="closeDaumPostcode()" alt="닫기 버튼">
+							</div>
+							<input type="text" name="address" id="address"
+								placeholder="주소를 입력해주세요" required class="single-input"
+								value="${sessionScope.u.address }" readonly> <br> <input
+								type="text" name="detailAddress" id="detailAddress"
+								placeholder="상세주소를 입력해주세요" required class="single-input"
+								value="${sessionScope.u.detailAddress }">
+						</div>
+						<hr>
+						<h4>전화번호</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input class="single-input" type="text" name="phone"
+								value="${sessionScope.u.phone }">
+						</div>
+						<hr>
+						<h4>생년월일</h4>
+						<div class="input-group-icon mt-10">
+							<div class="icon">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</div>
+							<input type="text" name="birth" class="single-input"
+								value="${sessionScope.u.birth }" style="background: #E2E2E2;"
+								readonly>
+							<!-- <div class="form-select" id="default-select" style="font-size:15px;">
+									<select style="float:left;">
+										<c:forEach var="i" begin= "0" end= "61">
+										<option value=2021-${i}>${2021-i }</option>
+										</c:forEach>
+									</select>
+									<p style="float:left; margin-right:30px;">년</p>
+									<select style="float:left;">
+										<c:forEach var="i" begin= "0" end= "11">
+										<option value=1+${i}>${1+i }</option>
+										</c:forEach>
+									</select>
+									<p style="float:left; margin-right:30px;">월</p>
+									<select style="float:left;">
+										<c:forEach var="i" begin= "0" end= "30">
+										<option value=1+${i}>${1+i }</option>
+										</c:forEach>
+									</select>
+									<p style="float:left; margin-right:30px;">일</p>
+								</div> -->
+						</div>
+						<hr>
+						<div class="single-element-widget mt-30">
+							<h4>성별</h4>
+							<c:choose>
+								<c:when test="${sessionScope.u.gender eq '남' }">
+									<label for="male">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="male" value="M" checked
+												onclick="return(false);">남자
+										</div>
+									</label>
+									<label for="female">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="female" value="F"
+												onclick="return(false);">여자
+										</div>
+									</label>
+								</c:when>
+								<c:otherwise>
+									<label for="male">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="male" value="M"
+												onclick="return(false);">남자
+										</div>
+									</label>
+									<label for="female">
+										<div
+											style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+											<input type="radio" name="gender" id="female" value="F"
+												checked onclick="return(false);">여자
+										</div>
+									</label>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<form action="#">
+							<h4>프로필 사진</h4>
+							<div class="box" style="background: #BDBDBD; margin-right: 20px">
+								<img class="profile"
+									src="/resources/upload/profile/${sessionScope.u.profileImage }">
+							</div>
+							<br>
+							<h4>아이디(메일)</h4>
+							<div class="mt-10">
+								<input type="text" name="first_name" placeholder="First Name"
+									required class="single-input" value="${sessionScope.u.id }"
+									readonly>
+							</div>
+							<br>
+							<hr>
+							<h4>이름</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="address" placeholder="Address"
+									onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Address'" required
+									class="single-input" value="${sessionScope.u.name }" readonly>
+							</div>
+							<hr>
+							<h4>주소</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="address" placeholder="Address"
+									onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Address'" required
+									class="single-input" value="${sessionScope.u.address }"
+									readonly>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="address" placeholder="Address"
+									onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Address'" required
+									class="single-input" value="${sessionScope.u.detailAddress }"
+									readonly>
+							</div>
+							<hr>
+							<h4>전화번호</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="address" placeholder="Address"
+									onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Address'" required
+									class="single-input" value="${sessionScope.u.phone }" readonly>
+							</div>
+							<hr>
+							<h4>생년월일</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="address" placeholder="Address"
+									onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Address'" required
+									class="single-input" value="${sessionScope.u.birth }" readonly>
+								<!-- <div class="form-select" id="default-select" style="font-size:15px;">
+							<select style="float:left;">
+								<c:forEach var="i" begin= "0" end= "61">
+								<option value=2021-${i}>${2021-i }</option>
+								</c:forEach>
+							</select>
+							<p style="float:left; margin-right:30px;">년</p>
+							<select style="float:left;">
+								<c:forEach var="i" begin= "0" end= "11">
+								<option value=1+${i}>${1+i }</option>
+								</c:forEach>
+							</select>
+							<p style="float:left; margin-right:30px;">월</p>
+							<select style="float:left;">
+								<c:forEach var="i" begin= "0" end= "30">
+								<option value=1+${i}>${1+i }</option>
+								</c:forEach>
+							</select>
+							<p style="float:left; margin-right:30px;">일</p>
+						</div> -->
+							</div>
+							<hr>
+							<div class="single-element-widget mt-30">
+								<h4>성별</h4>
+								<c:choose>
+									<c:when test="${sessionScope.u.gender eq '남' }">
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value="남자"
+													checked onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value="여자"
+													onclick="return(false);">여자
+											</div>
+										</label>
+									</c:when>
+									<c:otherwise>
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value="남자"
+													onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value="여자"
+													checked onclick="return(false);">여자
+											</div>
+										</label>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<hr>
+						</form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>
@@ -171,79 +471,397 @@
 		style="margin-left: 30%; display: none;" id="change_information">
 		<div class="row">
 			<div class="col-lg-8 col-md-8">
-				<hr>
-				<form method="POST" action="/updateMember.do" enctype="multipart/form-data">
-					<h4>프로필 사진</h4>
-					<div id="imagePreview" class="box "
-						style="background: #BDBDBD; margin-right: 20px;">
-						<img id="image"
-							src="/resources/upload/profile/${sessionScope.u.profileImage }"
-							class="profile">
-					</div>
-					<div class="input-group-icon mt-10" style="width: 30%">
-						<input type="file" name="files" class="single-input"
-							onchange="previewImage(this)">
-						<input type="hidden" name="nofile" value="${sessionScope.u.profileImage }">
-					</div>
-					<hr>
-					<h4>아이디(메일)</h4>
-					<div class="mt-10">
-						<input type="text" name="email" class="single-input" value="${sessionScope.u.id }"
-							readonly>
-					</div>
-					<hr>
-					<h4>비밀번호 변경</h4>
-					<a href="/pwCheck.do"><button  class="genric-btn primary-border" type="button">비밀번호변경</button></a>
-					<hr>
-					<h4>이름</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input type="text" name="name"
-							class="single-input" value="${sessionScope.u.name }" readonly>
-					</div>
-					<hr>
-					<h4>주소</h4>
-					<span><input type="button"
-						class="genric-btn primary-border d-none d-lg-block"
-						style="border: 1;" onclick="findAddress()" value="주소 찾기"></span>
-					<div class="input-group-icon mt-10">
-						<input type="hidden" id="sample2_extraAddress">
+				<c:choose>
+					<c:when test="${sessionScope.u.type eq 'e'}">
+						<form method="POST"
+							action="/employeeUpdate.do?employeeId=${sessionScope.u.id}"
+							enctype="multipart/form-data">
+							<h4>프로필 사진</h4>
+							<c:choose>
+								<c:when test="${empty sessionScope.u.profileImage}">
+									<div class="box"
+										style="background: #BDBDBD; margin-right: 20px">
+										<img class="profile"
+											src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg">
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div id="imagePreview" class="box "
+										style="background: #BDBDBD; margin-right: 20px;">
+										<img id="image"
+											src="/resources/upload/profile/${sessionScope.u.profileImage }"
+											class="profile">
+									</div>
+									<div class="input-group-icon mt-10" style="width: 30%">
+										<input type="file" name="files" class="single-input"
+											onchange="previewImage(this)"> <input type="hidden"
+											name="nofile" value="${sessionScope.u.profileImage }">
+									</div>
+								</c:otherwise>
+							</c:choose>
+							<hr>
+							<h4>아이디(메일)</h4>
+							<div class="mt-10">
+								<input type="text" name="id" class="single-input"
+									value="${sessionScope.u.id }" style="background: #E2E2E2;"
+									readonly> <input type="hidden"
+									value="${sessionScope.u.id}@naver.com" name="email" />
+							</div>
+							<hr>
+							<h4>비밀번호</h4>
+							<div class="mt-10">
+								<input type="password" name="pw" required class="single-input"
+									value="${sessionScope.u.pw }">
+							</div>
+							<hr>
+							<h4>이름</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="name" style="background: #E2E2E2;"
+									class="single-input" value="${sessionScope.u.name }" readonly>
+							</div>
+							<hr>
+							<h4>주소</h4>
+							<span><input type="button"
+								class="genric-btn primary-border d-none d-lg-block"
+								style="border: 1;" onclick="findAddress()" value="주소 찾기"></span>
+							<div class="input-group-icon mt-10">
+								<input type="hidden" id="sample2_extraAddress">
 
-						<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-						<div id="layer"
-							style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-							<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
-								id="btnCloseLayer"
-								style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
-								onclick="closeDaumPostcode()" alt="닫기 버튼">
-						</div>
-						<input type="text" name="address" id="address"
-							placeholder="주소를 입력해주세요" required class="single-input"
-							value="${sessionScope.u.address }" readonly> <br> <input
-							type="text" name="detailAddress" id="detailAddress"
-							placeholder="상세주소를 입력해주세요" required class="single-input"
-							value="${sessionScope.u.detailAddress }">
-					</div>
-					<hr>
-					<h4>전화번호</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input class="single-input" type="text" name="phone"
-							value="${sessionScope.u.phone }">
-					</div>
-					<hr>
-					<h4>생년월일</h4>
-					<div class="input-group-icon mt-10">
-						<div class="icon">
-							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-						</div>
-						<input type="text" name="birth" 
-							class="single-input" value="${sessionScope.u.birth }" readonly>
-						<!-- <div class="form-select" id="default-select" style="font-size:15px;">
+								<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+								<div id="layer"
+									style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+									<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+										id="btnCloseLayer"
+										style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+										onclick="closeDaumPostcode()" alt="닫기 버튼">
+								</div>
+								<input type="text" name="address" id="address"
+									placeholder="주소를 입력해주세요" required class="single-input"
+									value="${sessionScope.u.address }" readonly> <br>
+								<input type="text" name="detailAddress" id="detailAddress"
+									placeholder="상세주소를 입력해주세요" required class="single-input"
+									value="${sessionScope.u.detailAddress }">
+							</div>
+							<hr>
+							<h4>전화번호</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input class="single-input" type="text" name="phone"
+									value="${sessionScope.u.phone }">
+							</div>
+							<hr>
+							<h4>생년월일</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="birth" class="single-input"
+									value="${sessionScope.u.birth }" style="background: #E2E2E2;"
+									readonly>
+								<!-- <div class="form-select" id="default-select" style="font-size:15px;">
+									<select style="float:left;">
+										<c:forEach var="i" begin= "0" end= "61">
+										<option value=2021-${i}>${2021-i }</option>
+										</c:forEach>
+									</select>
+									<p style="float:left; margin-right:30px;">년</p>
+									<select style="float:left;">
+										<c:forEach var="i" begin= "0" end= "11">
+										<option value=1+${i}>${1+i }</option>
+										</c:forEach>
+									</select>
+									<p style="float:left; margin-right:30px;">월</p>
+									<select style="float:left;">
+										<c:forEach var="i" begin= "0" end= "30">
+										<option value=1+${i}>${1+i }</option>
+										</c:forEach>
+									</select>
+									<p style="float:left; margin-right:30px;">일</p>
+								</div> -->
+							</div>
+							<hr>
+							<div class="single-element-widget mt-30">
+								<h4>성별</h4>
+								<c:choose>
+									<c:when test="${sessionScope.u.gender eq '남' }">
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value="M"
+													checked onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value="F"
+													onclick="return(false);">여자
+											</div>
+										</label>
+									</c:when>
+									<c:otherwise>
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value="M"
+													onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value="F"
+													checked onclick="return(false);">여자
+											</div>
+										</label>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<hr>
+							<div style="text-align: center;">
+								<input type="submit" value="정 보 수 정"
+									class="genric-btn primary e-large"
+									style="width: 300px; font-size: x-large; font-weight: bold;">
+							</div>
+						</form>
+					</c:when>
+					<c:when test="${sessionScope.kakao.type eq 'm' }">
+						<form method="POST" action="/kakaoUpdate.do"
+							enctype="multipart/form-data">
+							<h4>프로필 사진</h4>
+							<c:choose>
+								<c:when test="${empty sessionScope.u.profileImage}">
+									<div class="box"
+										style="background: #BDBDBD; margin-right: 20px">
+										<img class="profile"
+											src="http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg">
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div id="imagePreview" class="box "
+										style="background: #BDBDBD; margin-right: 20px;">
+										<img id="image"
+											src="/resources/upload/profile/${sessionScope.kakao.profileImage }"
+											class="profile">
+									</div>
+									<div class="input-group-icon mt-10" style="width: 30%">
+										<input type="file" name="files" class="single-input"
+											onchange="previewImage(this)"> <input type="hidden"
+											name="nofile" value="${sessionScope.kakao.profileImage }">
+									</div>
+								</c:otherwise>
+							</c:choose>
+							<hr>
+							<h4>아이디(메일)</h4>
+							<div class="mt-10">
+								<input type="text" name="email" class="single-input"
+									value="${sessionScope.kakao.email }"
+									style="background: #E2E2E2;" readonly>
+							</div>
+							<hr>
+							<h4>비밀번호</h4>
+							<div class="mt-10">
+								<input type="password" name="pw" required class="single-input"
+									value="${sessionScope.user.pw }">
+							</div>
+							<hr>
+							<h4>이름</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="name" style="background: #E2E2E2;"
+									class="single-input" value="${sessionScope.kakao.name }"
+									readonly>
+							</div>
+							<hr>
+							<h4>주소</h4>
+							<span><input type="button"
+								class="genric-btn primary-border d-none d-lg-block"
+								style="border: 1;" onclick="findAddress()" value="주소 찾기"></span>
+							<div class="input-group-icon mt-10">
+								<input type="hidden" id="sample2_extraAddress">
+
+								<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+								<div id="layer"
+									style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+									<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+										id="btnCloseLayer"
+										style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+										onclick="closeDaumPostcode()" alt="닫기 버튼">
+								</div>
+								<input type="text" name="address" id="address"
+									placeholder="주소를 입력해주세요" required class="single-input"
+									value="${sessionScope.user.address }" readonly> <br>
+								<input type="text" name="detailAddress" id="detailAddress"
+									placeholder="상세주소를 입력해주세요" required class="single-input"
+									value="${sessionScope.user.detailAddress }">
+							</div>
+							<hr>
+							<h4>전화번호</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input class="single-input" type="text" name="phone"
+									value="${sessionScope.user.phone }">
+							</div>
+							<hr>
+							<h4>생년월일</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="birth" class="single-input"
+									value="${sessionScope.kakao.birth }"
+									style="background: #E2E2E2;" readonly>
+								<!-- <div class="form-select" id="default-select" style="font-size:15px;">
+								<select style="float:left;">
+									<c:forEach var="i" begin= "0" end= "61">
+									<option value=2021-${i}>${2021-i }</option>
+									</c:forEach>
+								</select>
+								<p style="float:left; margin-right:30px;">년</p>
+								<select style="float:left;">
+									<c:forEach var="i" begin= "0" end= "11">
+									<option value=1+${i}>${1+i }</option>
+									</c:forEach>
+								</select>
+								<p style="float:left; margin-right:30px;">월</p>
+								<select style="float:left;">
+									<c:forEach var="i" begin= "0" end= "30">
+									<option value=1+${i}>${1+i }</option>
+									</c:forEach>
+								</select>
+								<p style="float:left; margin-right:30px;">일</p>
+							</div> -->
+							</div>
+							<hr>
+							<div class="single-element-widget mt-30">
+								<h4>성별</h4>
+								<c:choose>
+									<c:when test="${sessionScope.kakao.gender eq '남' }">
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value='남'
+													checked onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value='여'
+													onclick="return(false);">여자
+											</div>
+										</label>
+									</c:when>
+									<c:otherwise>
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value='남'
+													onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value='여'
+													checked onclick="return(false);">여자
+											</div>
+										</label>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<hr>
+							<div style="text-align: center;">
+								<input type="submit" value="정 보 수 정"
+									class="genric-btn primary e-large"
+									style="width: 300px; font-size: x-large; font-weight: bold;">
+							</div>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<form method="POST" action="/updateMember.do"
+							enctype="multipart/form-data">
+							<h4>프로필 사진</h4>
+							<div id="imagePreview" class="box "
+								style="background: #BDBDBD; margin-right: 20px;">
+								<img id="image"
+									src="/resources/upload/profile/${sessionScope.u.profileImage }"
+									class="profile">
+							</div>
+							<div class="input-group-icon mt-10" style="width: 30%">
+								<input type="file" name="files" class="single-input"
+									onchange="previewImage(this)"> <input type="hidden"
+									name="nofile" value="${sessionScope.u.profileImage }">
+							</div>
+							<hr>
+							<h4>아이디(메일)</h4>
+							<div class="mt-10">
+								<input type="text" name="email" class="single-input"
+									value="${sessionScope.u.id }" readonly>
+							</div>
+							<hr>
+							<h4>비밀번호 변경</h4>
+							<a href="/pwCheck.do"><button
+									class="genric-btn primary-border" type="button">비밀번호변경</button></a>
+							<hr>
+							<h4>이름</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="name" class="single-input"
+									value="${sessionScope.u.name }" readonly>
+							</div>
+							<hr>
+							<h4>주소</h4>
+							<span><input type="button"
+								class="genric-btn primary-border d-none d-lg-block"
+								style="border: 1;" onclick="findAddress()" value="주소 찾기"></span>
+							<div class="input-group-icon mt-10">
+								<input type="hidden" id="sample2_extraAddress">
+
+								<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+								<div id="layer"
+									style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+									<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
+										id="btnCloseLayer"
+										style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+										onclick="closeDaumPostcode()" alt="닫기 버튼">
+								</div>
+								<input type="text" name="address" id="address"
+									placeholder="주소를 입력해주세요" required class="single-input"
+									value="${sessionScope.u.address }" readonly> <br>
+								<input type="text" name="detailAddress" id="detailAddress"
+									placeholder="상세주소를 입력해주세요" required class="single-input"
+									value="${sessionScope.u.detailAddress }">
+							</div>
+							<hr>
+							<h4>전화번호</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input class="single-input" type="text" name="phone"
+									value="${sessionScope.u.phone }">
+							</div>
+							<hr>
+							<h4>생년월일</h4>
+							<div class="input-group-icon mt-10">
+								<div class="icon">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<input type="text" name="birth" class="single-input"
+									value="${sessionScope.u.birth }" readonly>
+								<!-- <div class="form-select" id="default-select" style="font-size:15px;">
 							<select style="float:left;">
 								<c:forEach var="i" begin= "0" end= "61">
 								<option value=2021-${i}>${2021-i }</option>
@@ -263,52 +881,57 @@
 							</select>
 							<p style="float:left; margin-right:30px;">일</p>
 						</div> -->
-					</div>
-					<hr>
-					<div class="single-element-widget mt-30">
-						<h4>성별</h4>
-						<c:choose>
-							<c:when test="${sessionScope.u.gender eq '남' }">
-								<label for="male">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자" checked
-											onclick="return(false);">남자
-									</div>
-								</label>
-								<label for="female">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자"
-											onclick="return(false);">여자
-									</div>
-								</label>
-							</c:when>
-							<c:otherwise>
-								<label for="male">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="male" value="남자"
-											onclick="return(false);">남자
-									</div>
-								</label>
-								<label for="female">
-									<div
-										style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
-										<input type="radio" name="gender" id="female" value="여자"
-											checked onclick="return(false);">여자
-									</div>
-								</label>
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<hr>
-					<div style="text-align: center;">
-						<input type="submit" value="정 보 수 정"
-							class="genric-btn primary e-large"
-							style="width: 300px; font-size: x-large; font-weight: bold;">
-					</div>
-				</form>
+							</div>
+							<hr>
+							<div class="single-element-widget mt-30">
+								<h4>성별</h4>
+								<c:choose>
+									<c:when test="${sessionScope.u.gender eq '남' }">
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value="남자"
+													checked onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value="여자"
+													onclick="return(false);">여자
+											</div>
+										</label>
+									</c:when>
+									<c:otherwise>
+										<label for="male">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/male.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="male" value="남자"
+													onclick="return(false);">남자
+											</div>
+										</label>
+										<label for="female">
+											<div
+												style="width: 150px; height: 150px; background-image: url(/resources/img/female.png); background-size: cover; text-align: center;">
+												<input type="radio" name="gender" id="female" value="여자"
+													checked onclick="return(false);">여자
+											</div>
+										</label>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<hr>
+							<div style="text-align: center;">
+								<input type="submit" value="정 보 수 정"
+									class="genric-btn primary e-large"
+									style="width: 300px; font-size: x-large; font-weight: bold;">
+							</div>
+						</form>
+					</c:otherwise>
+
+				</c:choose>
+				<hr>
+
 			</div>
 		</div>
 	</div>
@@ -371,45 +994,67 @@
 			}
 		});
 
-		$("#trip").click(
-				function() {
-					if ($("#mytrip").css("display") == "none") {
-						$("#mytrip").show();
-						$("#change_information").hide();
-						$("#mypage").hide();
-						$("#buylist").hide();
-						$("#trip").attr('class', 'genric-btn primary e-large');
-						$("#change").attr('class',
-								'genric-btn primary-border e-large');
-						$("#buy").attr('class',
-								'genric-btn primary-border e-large');
-						
-						// Plan 리스트 출력할 ajax
-						$.ajax({
-							url: "selectPlanList.do",
-							type: "POST",
-							data: {id: userId},
-							success: function(data){
-								if(data != null){
-									for (var i = 0; i < data.length; i++) {
-										var table = "<div class='table-row'>";
-										table += "<div class='serial'>"+(i+1)+"</div>";
-										table += "<div class='percentage'>"+data[i].planTitle+"</div>";
-										table += "<div class='country'>"+data[i].planStart+"</div>";
-										table += "<div class='visit'>"+data[i].planPublic+"</div>";
-										table += "<div class='visit'>"+data[i].planView+"</div>";
-										table += "<div class='visit'>"+data[i].planLike+"</div>";
-										table += "<div class='visit'>"+data[i].planShare+"</div>";
-										table += "</div>";
-										$(".progress-table").eq(0).append(table);
-									}
-								}else{
-									table.append("<div class='percentage'>현재 등록 된 내 일정이 없습니다.</div>");
-								}
+		$("#trip")
+				.click(
+						function() {
+							if ($("#mytrip").css("display") == "none") {
+								$("#mytrip").show();
+								$("#change_information").hide();
+								$("#mypage").hide();
+								$("#buylist").hide();
+								$("#trip").attr('class',
+										'genric-btn primary e-large');
+								$("#change").attr('class',
+										'genric-btn primary-border e-large');
+								$("#buy").attr('class',
+										'genric-btn primary-border e-large');
+
+								// Plan 리스트 출력할 ajax
+								$
+										.ajax({
+											url : "selectPlanList.do",
+											type : "POST",
+											data : {
+												id : userId
+											},
+											success : function(data) {
+												if (data != null) {
+													for (var i = 0; i < data.length; i++) {
+														var table = "<div class='table-row'>";
+														table += "<div class='serial'>"
+																+ (i + 1)
+																+ "</div>";
+														table += "<div class='percentage'>"
+																+ data[i].planTitle
+																+ "</div>";
+														table += "<div class='country'>"
+																+ data[i].planStart
+																+ "</div>";
+														table += "<div class='visit'>"
+																+ data[i].planPublic
+																+ "</div>";
+														table += "<div class='visit'>"
+																+ data[i].planView
+																+ "</div>";
+														table += "<div class='visit'>"
+																+ data[i].planLike
+																+ "</div>";
+														table += "<div class='visit'>"
+																+ data[i].planShare
+																+ "</div>";
+														table += "</div>";
+														$(".progress-table")
+																.eq(0).append(
+																		table);
+													}
+												} else {
+													table
+															.append("<div class='percentage'>현재 등록 된 내 일정이 없습니다.</div>");
+												}
+											}
+										});
 							}
 						});
-					}
-				});
 		$("#buy").click(
 				function() {
 					if ($("#buylist").css("display") == "none") {
